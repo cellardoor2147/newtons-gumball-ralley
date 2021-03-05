@@ -11,12 +11,22 @@ public class StartPointManager : MonoBehaviour
 
     private void Awake()
     {
+        SpawnBall();
+        LaunchBall();
+    }
+
+    private void SpawnBall()
+    {
         ballToSpawnOnStart = Instantiate(ballToSpawnOnStartPrefab);
         ballToSpawnOnStart.transform.position = new Vector3(
             transform.position.x,
             transform.position.y,
             0.0f
         );
-        ballToSpawnOnStart.GetComponent<BallMovement>().Launch(transform.right * launchAmount);
+    }
+
+    private void LaunchBall()
+    {
+        ballToSpawnOnStart.GetComponent<BallMovement>().AddForce(transform.right * launchAmount);
     }
 }

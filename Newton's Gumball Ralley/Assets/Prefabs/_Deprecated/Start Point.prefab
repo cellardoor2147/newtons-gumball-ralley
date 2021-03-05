@@ -104,9 +104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Start
-
-    ->'
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -272,5 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03bebb2f6d290d4ca984df01cb7d061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  launchAmount: 5000
   ballToSpawnOnStartPrefab: {fileID: 413173461657776447, guid: 421050622b09f0144b1627ec091d2fe2,
     type: 3}
