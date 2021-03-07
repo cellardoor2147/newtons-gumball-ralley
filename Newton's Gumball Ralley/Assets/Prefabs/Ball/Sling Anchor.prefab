@@ -201,6 +201,11 @@ PrefabInstance:
       propertyPath: slingAnchor
       value: 
       objectReference: {fileID: 2518574457713708540}
+    - target: {fileID: 413173461657776446, guid: 421050622b09f0144b1627ec091d2fe2,
+        type: 3}
+      propertyPath: delayAfterRelease
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 413173461657776447, guid: 421050622b09f0144b1627ec091d2fe2,
         type: 3}
       propertyPath: m_Name

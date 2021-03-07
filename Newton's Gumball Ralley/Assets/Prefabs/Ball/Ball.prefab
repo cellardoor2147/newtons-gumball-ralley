@@ -133,6 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3efd564699c0f9645a799c20a5e9a9e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMovementSpeed: 0.3
+  baseMovementSpeed: 0.4
   maxRadiusOfPull: 2
   delayAfterRelease: 0.3

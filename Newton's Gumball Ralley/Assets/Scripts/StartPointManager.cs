@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Ball;
 using UnityEngine;
 
 public class StartPointManager : MonoBehaviour
@@ -27,6 +26,6 @@ public class StartPointManager : MonoBehaviour
 
     private void LaunchBall()
     {
-        ballToSpawnOnStart.GetComponent<BallMovement>().AddForce(transform.right * launchAmount);
+        //ballToSpawnOnStart.GetComponent<BallMovement>().AddForce(transform.right * launchAmount);
     }
 }
