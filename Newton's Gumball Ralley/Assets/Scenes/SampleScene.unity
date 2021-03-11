@@ -1932,6 +1932,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play Mode GUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5106223432952852944, guid: 10f548ed0ee88e04dbceb4209d6c2f41,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 39.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106223432952852944, guid: 10f548ed0ee88e04dbceb4209d6c2f41,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3635841285297765449, guid: d7e1e1d5455dcb541bcf3464f2c9db58,
+        type: 2}
+    - target: {fileID: 5106223432952852944, guid: 10f548ed0ee88e04dbceb4209d6c2f41,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 7368071419811624080, guid: 10f548ed0ee88e04dbceb4209d6c2f41,
         type: 3}
       propertyPath: m_Pivot.x
