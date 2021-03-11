@@ -1709,6 +1709,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sling Anchor
       objectReference: {fileID: 0}
+    - target: {fileID: 2518574457713708540, guid: 6113a5a0dfc746b44a45c2f7d8189593,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2830553268661614561, guid: 6113a5a0dfc746b44a45c2f7d8189593,
         type: 3}
       propertyPath: m_Interpolate
