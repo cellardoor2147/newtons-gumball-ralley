@@ -32,10 +32,10 @@ namespace Background
                 return;
             }
             float nextRenderPositionX = GetStartingRenderPositionX();
-            for (int currCol = 0; currCol < desiredNumberOfRows; currCol++)
+            for (int currCol = 0; currCol < desiredNumberOfColumns; currCol++)
             {
                 float nextRenderPositionY = GetStartingRenderPositionY();
-                for (int currRow = 0; currRow < desiredNumberOfColumns; currRow++)
+                for (int currRow = 0; currRow < desiredNumberOfRows; currRow++)
                 {
                     GameObject nextBackgroundTexture =
                         Instantiate(backgroundTexture, transform);
@@ -50,21 +50,37 @@ namespace Background
         private float GetStartingRenderPositionX()
         {
             bool thereIsAnOddNumberOfDesiredColumns = desiredNumberOfColumns % 2 == 1;
+            int numberOfColumnsToDrawToTheLeft;
+            float offsetAmount;
             if (thereIsAnOddNumberOfDesiredColumns)
             {
-                return -((desiredNumberOfColumns - 1) * backgroundTextureWidth) / 2;
+                numberOfColumnsToDrawToTheLeft = (desiredNumberOfColumns - 1) / 2;
+                offsetAmount = 0.0f;
             }
-            return -((((desiredNumberOfColumns - 2) * backgroundTextureWidth) / 2) + backgroundTextureWidth / 2);
+            else
+            {
+                numberOfColumnsToDrawToTheLeft = (desiredNumberOfColumns - 2) / 2;
+                offsetAmount = backgroundTextureWidth / 2;
+            }
+            return -((numberOfColumnsToDrawToTheLeft * backgroundTextureWidth) + offsetAmount);
         }
 
         private float GetStartingRenderPositionY()
         {
             bool thereIsAnOddNumberOfDesiredRows = desiredNumberOfRows % 2 == 1;
+            int numberOfRowsToDrawToBelow;
+            float offsetAmount;
             if (thereIsAnOddNumberOfDesiredRows)
             {
-                return -((desiredNumberOfRows - 1) * backgroundTextureHeight) / 2;
+                numberOfRowsToDrawToBelow = (desiredNumberOfRows - 1) / 2;
+                offsetAmount = 0.0f;
             }
-            return -((((desiredNumberOfRows - 2) * backgroundTextureWidth) / 2) + backgroundTextureWidth / 2);
+            else
+            {
+                numberOfRowsToDrawToBelow = (desiredNumberOfRows - 2) / 2;
+                offsetAmount = backgroundTextureHeight / 2;
+            }
+            return -((numberOfRowsToDrawToBelow * backgroundTextureHeight) + offsetAmount);
         }
     }
 }
