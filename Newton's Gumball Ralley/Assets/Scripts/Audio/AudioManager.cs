@@ -1,92 +1,88 @@
 ﻿using UnityEngine;
 
-[System.Serializable]
-public class Sound {
-    public string name;
-    public AudioClip clip;
+namespace Audio {
+    [System.Serializable] public class Sound {
+        public SoundMetaData MetaData;
+        
+        private AudioSource source; 
 
-    [Range(0f, 1f)]    
-    public float volume = 0.7f;
-    [Range(0.5f, 1f)]
-    public float pitch = 1f;
+        public void SetSource (AudioSource _source){
+            source = _source;
+            source.clip = MetaData.clip;
+            source.loop = MetaData.loop;
+        }
 
-    public bool loop = false;
-
-    private AudioSource source; 
-
-    public void SetSource (AudioSource _source){
-        source = _source;
-        source.clip = clip;
-        source.loop = loop;
+        public void Play (){
+            source.pitch = MetaData.pitch;
+            source.volume = MetaData.volume; 
+            source.Play();
+        }
+        public void Stop()
+        {
+            source.Stop();
+        }
     }
-
-    public void Play (){
-        source.pitch = pitch;
-        source.volume = volume; 
-        source.Play();
-    }
-    public void Stop()
+    public class AudioManager : MonoBehaviour
     {
-        source.Stop();
-    }
-}
-public class AudioManager : MonoBehaviour
-{
-    public static AudioManager instance;
-    [SerializeField] Sound[] sounds;
+        public static AudioManager instance;
+        [SerializeField] Sound[] sounds;
 
-    void Awake()
-    {
-        if (instance != null) {
-            if (instance != this){
-                Destroy(this.gameObject);
+        private static readonly string Sound_ = "Sound_";
+        private static readonly string SoundNotFound = "AudioManager: Sound not found in list ";
+
+        void Awake()
+        {
+            if (instance != null) {
+                if (instance != this){
+                    Destroy(this.gameObject);
+                }
+            } else {
+                instance = this;
+                DontDestroyOnLoad(this);
             }
-        } else {
-            instance = this;
-            DontDestroyOnLoad(this);
         }
-    }
 
-    void Start () {
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
-            _go.transform.SetParent (this.transform);
-            sounds[i].SetSource (_go.AddComponent<AudioSource>());
-        }
-        PlaySound ("Main_Menu_Music"); 
-    }
-    // To be implemented when GUI/gamestate manager is added
-    
-    // void Update () {
-    //     if (time.time >5f)
-    // }
-
-    public void PlaySound (string _name) {
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            if (sounds[i].name == _name)
+        void Start () {
+            foreach (Audio.Sound element in sounds)
             {
-                sounds[i].Play();
-                return;
+                GameObject currentSoundGameObject = new GameObject(Sound_ + element + "_" + element.MetaData.name);
+                currentSoundGameObject.transform.SetParent (this.transform);
+                element.SetSource (currentSoundGameObject.AddComponent<AudioSource>());
             }
+            PlaySound ("Menu_Music"); 
         }
-        //no sound with _name
-        Debug.LogWarning("AudioManager: Sound not found in list " + _name);
-    }
+        // To be implemented when GUI/gamestate manager is added
+        
+        // void Update () {
+        //     if (time.time >5f)
+        // }
 
-    public void StopSound(string _name)
-    {
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            if (sounds[i].name == _name)
+        public void PlaySound (string _name) {
+            foreach (Audio.Sound element in sounds)
             {
-                sounds[i].Stop();
-                return;
+                if (element.MetaData.name == _name)
+                {
+                    element.Play();
+                    return;
+                }
             }
+            //no sound with _name
+            Debug.LogWarning(SoundNotFound + _name);
         }
-        //no sound with _name
-        Debug.LogWarning("AudioManager: Sound not found in list " + _name);
+
+        public void StopSound(string _name)
+        {
+            foreach (Audio.Sound element in sounds)
+            {
+                if (element.MetaData.name == _name)
+                {
+                    element.Stop();
+                    return;
+                }
+            }
+            //no sound with _name
+            Debug.LogWarning(SoundNotFound + _name);
+        }
+        
     }
-    
 }
