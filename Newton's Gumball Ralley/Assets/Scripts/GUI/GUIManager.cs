@@ -6,9 +6,10 @@ namespace GUI
 {
     public enum GUIType
     {
-        MainMenu = 0,
-        PlayMode = 1,
-        SettingsMenu = 2
+        Cutscene = 0,
+        MainMenu = 1,
+        PlayMode = 2,
+        SettingsMenu = 3
     }
 
     public class GUIManager : MonoBehaviour
@@ -47,7 +48,6 @@ namespace GUI
 
         public static void SetActiveGUI(GUIType guiType)
         {
-            Debug.Log(guiType);
             SetAllGUIToInactive();
             GUIController guiControllerToActivate = instance.guiControllers.Find(
                 guiController => guiController.guiType.Equals(guiType)

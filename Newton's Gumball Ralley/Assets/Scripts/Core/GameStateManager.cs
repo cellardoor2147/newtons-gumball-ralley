@@ -6,9 +6,10 @@ namespace Core
 {
     public enum GameState
     {
-        MainMenu = 0,
-        Playing = 1,
-        Paused = 2
+        OpeningCutscene = 0,
+        MainMenu = 1,
+        Playing = 2,
+        Paused = 3
     }
 
     public class GameStateManager : MonoBehaviour
@@ -47,7 +48,7 @@ namespace Core
 
         private void Start()
         {
-            SetGameState(GameState.MainMenu);
+            SetGameState(GameState.OpeningCutscene);
         }
 
         public static GameState GetGameState()
@@ -59,6 +60,11 @@ namespace Core
         {
             switch (gameState)
             {
+                case GameState.OpeningCutscene:
+                    Time.timeScale = 1.0f;
+                    LoadScene(MAIN_MENU_SCENE_KEY);
+                    GUIManager.SetActiveGUI(GUIType.Cutscene);
+                    break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
@@ -92,6 +98,14 @@ namespace Core
 
         private void Update()
         {
+            bool shouldSkipOpeningCutscene =
+                gameState.Equals(GameState.OpeningCutscene) &&
+                Input.anyKeyDown;
+            if (shouldSkipOpeningCutscene)
+            {
+                SetGameState(GameState.MainMenu);
+                return;
+            }
             bool shouldOpenSettingsMenuByKeyPress =
                 gameState.Equals(GameState.Playing) &&
                 (Input.GetKeyDown(KeyCode.P) ||
