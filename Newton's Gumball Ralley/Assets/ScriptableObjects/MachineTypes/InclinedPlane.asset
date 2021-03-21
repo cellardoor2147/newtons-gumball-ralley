@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0655fcb9681ef4926b94ab30dc68070a, type: 3}
+  m_Name: InclinedPlane
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4884100611504494910, guid: 5cb21fc5bdb24450fa2de9dde7b156fd, type: 3}
+  sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
