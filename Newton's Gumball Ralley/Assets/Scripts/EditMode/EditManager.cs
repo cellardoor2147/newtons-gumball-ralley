@@ -1,19 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class EditManager : MonoBehaviour
 {
 
-    [SerializeField] private MachineTypeSO activeMachineType;
+    private MachineTypeSO activeMachineType;
+
+    private bool ableToSpawnMachine;
+    private bool shouldRespondToMouseDown;
 
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+        shouldRespondToMouseDown = Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject();
+        if (shouldRespondToMouseDown) {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (CanSpawnMachine(activeMachineType, mousePosition)) {
+            ableToSpawnMachine = CanSpawnMachine(); 
+            if (ableToSpawnMachine) {
                 Instantiate(activeMachineType.prefab, mousePosition, Quaternion.identity);
             }
         }
@@ -27,10 +30,11 @@ public class EditManager : MonoBehaviour
         return activeMachineType;
     }
 
-    private bool CanSpawnMachine(MachineTypeSO machineTypeSO, Vector3 position){
-        BoxCollider2D machineCollider = machineTypeSO.prefab.GetComponent<BoxCollider2D>();
+    private bool CanSpawnMachine(){
+        Vector2 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        BoxCollider2D machineCollider = activeMachineType.prefab.GetComponent<BoxCollider2D>();
 
-        if (Physics2D.OverlapBox(position + (Vector3) machineCollider.offset, machineCollider.size, 0) != null) {
+        if (Physics2D.OverlapBox(position + machineCollider.offset, machineCollider.size, 0) != null) {
             return false;
         } else {
             return true;
