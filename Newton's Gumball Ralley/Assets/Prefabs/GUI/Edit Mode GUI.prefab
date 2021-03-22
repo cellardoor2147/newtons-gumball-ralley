@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 2076877259951009062}
   - component: {fileID: 2076877259951009063}
   m_Layer: 0
-  m_Name: Edit Mode UI
+  m_Name: Edit Mode GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,8 @@ MonoBehaviour:
   machineTypeSOList:
   - {fileID: 11400000, guid: 53adcf18469534e5086d406b483ef662, type: 2}
   - {fileID: 11400000, guid: cefd12638079e4ca99199007c80ca7a7, type: 2}
-  editManager: {fileID: 0}
+  editManager: {fileID: 2755483063682527590, guid: c81522a08662e44df94d7a181a8205f9,
+    type: 3}
 --- !u!1 &2076877260053752712
 GameObject:
   m_ObjectHideFlags: 0

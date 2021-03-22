@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Edit;
 
 public class MachineTypeSelectUI : MonoBehaviour
 {
@@ -15,18 +16,22 @@ public class MachineTypeSelectUI : MonoBehaviour
         MachineBtnTemplate.gameObject.SetActive(false);
 
         MachineBtnDictionary = new Dictionary<MachineTypeSO, Transform>();
-        spawnGUI(MachineBtnTemplate);
+        spawnGUI();
     }
 
-    private void spawnGUI(Transform template) {
+    private void spawnGUI() {
 
+        Transform MachineBtnTemplate = transform.Find("MachineBtnTemplate");
+        
         int index = 0;
         foreach (MachineTypeSO machineTypeSO in machineTypeSOList)
         {
-            Transform MachineBtnTransform = Instantiate(template, transform);
+            Transform MachineBtnTransform = Instantiate(MachineBtnTemplate, transform);
             MachineBtnTransform.gameObject.SetActive(true);
 
-            MachineBtnTransform.GetComponent<RectTransform>().anchoredPosition += new Vector2(index * 60, 0);
+            float GUI_width = MachineBtnTransform.GetComponent<RectTransform>().sizeDelta.x;
+            
+            MachineBtnTransform.GetComponent<RectTransform>().anchoredPosition += new Vector2(index * (GUI_width / 1.75f), 0);
             MachineBtnTransform.Find("Image").GetComponent<Image>().sprite = machineTypeSO.sprite;
 
             MachineBtnTransform.GetComponent<Button>().onClick.AddListener(() =>

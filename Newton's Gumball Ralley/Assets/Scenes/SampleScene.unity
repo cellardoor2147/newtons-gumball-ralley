@@ -2034,7 +2034,12 @@ PrefabInstance:
     - target: {fileID: 2076877259951009061, guid: 589f64543a63548edac73837704f6aa4,
         type: 3}
       propertyPath: m_Name
-      value: Edit Mode UI
+      value: Edit Mode GUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2076877259951009061, guid: 589f64543a63548edac73837704f6aa4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2076877259951009062, guid: 589f64543a63548edac73837704f6aa4,
         type: 3}
@@ -2146,6 +2151,11 @@ PrefabInstance:
       propertyPath: editManager
       value: 
       objectReference: {fileID: 1061008330}
+    - target: {fileID: 2076877260053752713, guid: 589f64543a63548edac73837704f6aa4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 33.899994
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 589f64543a63548edac73837704f6aa4, type: 3}
 --- !u!1001 &2518574457586686535

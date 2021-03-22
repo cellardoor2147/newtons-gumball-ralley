@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "MachineType", menuName = "ScriptableObjects/MachineType")]
 public class MachineTypeSO : ScriptableObject
