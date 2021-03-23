@@ -8,8 +8,10 @@ public class MachineTypeSelectUI : MonoBehaviour
 {
     [SerializeField] private List <MachineTypeSO> machineTypeSOList;
     [SerializeField] private EditManager editManager;
+    
 
     private Dictionary <MachineTypeSO, Transform> MachineBtnDictionary;
+
     private void Awake()
     {
         Transform MachineBtnTemplate = transform.Find("MachineBtnTemplate");
@@ -22,6 +24,11 @@ public class MachineTypeSelectUI : MonoBehaviour
     private void spawnGUI() {
 
         Transform MachineBtnTemplate = transform.Find("MachineBtnTemplate");
+
+        HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
+        RectTransform lengthRectTransform = GetComponent<RectTransform>();
+        float GUI_width = MachineBtnTemplate.GetComponent<RectTransform>().sizeDelta.x;
+        
         
         int index = 0;
         foreach (MachineTypeSO machineTypeSO in machineTypeSOList)
@@ -29,9 +36,6 @@ public class MachineTypeSelectUI : MonoBehaviour
             Transform MachineBtnTransform = Instantiate(MachineBtnTemplate, transform);
             MachineBtnTransform.gameObject.SetActive(true);
 
-            float GUI_width = MachineBtnTransform.GetComponent<RectTransform>().sizeDelta.x;
-            
-            MachineBtnTransform.GetComponent<RectTransform>().anchoredPosition += new Vector2(index * (GUI_width / 1.75f), 0);
             MachineBtnTransform.Find("Image").GetComponent<Image>().sprite = machineTypeSO.sprite;
 
             MachineBtnTransform.GetComponent<Button>().onClick.AddListener(() =>
@@ -46,6 +50,7 @@ public class MachineTypeSelectUI : MonoBehaviour
             MachineBtnDictionary[machineTypeSO] = MachineBtnTransform;
             index++;
         }
+        layoutGroup.spacing = (lengthRectTransform.rect.width - (index * GUI_width)) / (index - 1);
     }
 
     private void Start(){
