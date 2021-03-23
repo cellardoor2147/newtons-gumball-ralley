@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using GUI;
+using GUI.Dialogue;
 
 namespace Core
 {
@@ -19,6 +20,10 @@ namespace Core
         private readonly static string GAME_SCENE_KEY = "Game";
 
         private static GameStateManager instance;
+        
+        // TODO: remove and instead load conversations from the current level,
+        // if there is a conversation to load
+        [SerializeField] private Conversation exampleConversation;
 
         private GameState gameState;
 
@@ -75,11 +80,14 @@ namespace Core
                     Time.timeScale = 0.0f;
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
+                    // TODO: remove and instead load conversations from the current level,
+                    // if there is a conversation to load
+                    GUIManager.StartConversation(instance.exampleConversation);
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.Dialogue);
+                    GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;

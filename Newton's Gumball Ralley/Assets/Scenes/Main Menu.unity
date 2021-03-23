@@ -784,6 +784,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8909292218372835072, guid: fd513e4562e541241b204c72c87e7ed9,
+        type: 3}
+      propertyPath: exampleConversation
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ea1b8841af1a984bba6b4c291ce45a5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd513e4562e541241b204c72c87e7ed9, type: 3}
 --- !u!1 &2103709415

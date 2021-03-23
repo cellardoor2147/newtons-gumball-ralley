@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f1d9a3aac71db46a60eae1764cd808, type: 3}
+  m_Name: CharacterExample1
+  m_EditorClassIdentifier: 
+  fullName: Example 1
+  neutralPortrait: {fileID: 21300000, guid: 3b96ca7c326338b45a93afa5e36a7329, type: 3}
+  happyPortrait: {fileID: 21300000, guid: 81ba5ea69b414554c9559fc6f06d99af, type: 3}
+  worriedPortrait: {fileID: 21300000, guid: 31b6c9b5bbde34d4ab5377a30d3ef39c, type: 3}
+  skepticalPortrait: {fileID: 21300000, guid: 32cdb29f891c1b249be697b8c650b034, type: 3}
+  surprisedPortrait: {fileID: 21300000, guid: 61aba0cdd5b651441901721902564751, type: 3}
+  teachingPortrait: {fileID: 21300000, guid: f29fb3e2c79d3c74ca4add97837f9951, type: 3}
