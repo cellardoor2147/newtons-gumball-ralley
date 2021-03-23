@@ -8,8 +8,9 @@ namespace GUI
     {
         Cutscene = 0,
         MainMenu = 1,
-        PlayMode = 2,
-        SettingsMenu = 3
+        Dialogue = 2,
+        PlayMode = 3,
+        SettingsMenu = 4
     }
 
     public class GUIManager : MonoBehaviour

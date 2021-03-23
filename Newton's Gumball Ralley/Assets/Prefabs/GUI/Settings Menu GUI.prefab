@@ -1532,4 +1532,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f3cef3e79237f4ba4b100749d07c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiType: 3
+  guiType: 4

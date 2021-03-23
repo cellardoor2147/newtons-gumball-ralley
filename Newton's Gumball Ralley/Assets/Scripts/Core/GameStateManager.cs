@@ -8,8 +8,9 @@ namespace Core
     {
         OpeningCutscene = 0,
         MainMenu = 1,
-        Playing = 2,
-        Paused = 3
+        Dialogue = 2,
+        Playing = 3,
+        Paused = 4
     }
 
     public class GameStateManager : MonoBehaviour
@@ -70,10 +71,15 @@ namespace Core
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.MainMenu);
                     break;
+                case GameState.Dialogue:
+                    Time.timeScale = 0.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    GUIManager.SetActiveGUI(GUIType.Dialogue);
+                    break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.PlayMode);
+                    GUIManager.SetActiveGUI(GUIType.Dialogue);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
