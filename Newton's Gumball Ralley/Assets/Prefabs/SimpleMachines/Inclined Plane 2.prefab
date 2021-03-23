@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2848766991811229146}
   m_Layer: 0
   m_Name: Inclined Plane 2
-  m_TagString: Untagged
+  m_TagString: SimpleMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2848766991811229147}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.73, y: -1.05, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3888768, y: 0.05491495, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -159,7 +159,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 40
+  m_Mass: 180
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
