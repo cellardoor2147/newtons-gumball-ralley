@@ -44,15 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Main_Menu_Music
-    clip: {fileID: 8300000, guid: 32fb54c0b23d94b11a10c83237c836bf, type: 3}
-    volume: 0.7
-    pitch: 1
-  - name: Level_Music_2
-    clip: {fileID: 8300000, guid: 5609bf639c5fc420790784e27a369b7a, type: 3}
-    volume: 0.7
-    pitch: 1
-  - name: Level_Music_1
-    clip: {fileID: 8300000, guid: c907af91b6bb743b7bac80508f717d2c, type: 3}
-    volume: 0.7
-    pitch: 1
+  - MetaData: {fileID: 11400000, guid: d0dc28693f1373f48b0346b51d14a36e, type: 2}
+  - MetaData: {fileID: 11400000, guid: acf16722f7ba7dd44b75759ece2d6588, type: 2}
+  - MetaData: {fileID: 11400000, guid: 15f1b4292d838c94aba43b675bc0696d, type: 2}
+  - MetaData: {fileID: 11400000, guid: 28d8bc2322dc9f2439c15cfd703ac27f, type: 2}
+  - MetaData: {fileID: 11400000, guid: 0ca2e0a055fcf6548923789dd8f27d1d, type: 2}
+  - MetaData: {fileID: 11400000, guid: 572ea644a77477c4e8c77bef2369b7d9, type: 2}

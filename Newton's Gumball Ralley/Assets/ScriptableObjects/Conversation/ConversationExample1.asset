@@ -15,25 +15,30 @@ MonoBehaviour:
   leftSpeaker: {fileID: 11400000, guid: 4b40031ba9403564db4b5af5b5887bfb, type: 2}
   rightSpeaker: {fileID: 11400000, guid: ade6a40dd0e147a4091fb215916fa9e4, type: 2}
   lines:
-  - activeSpeakerDirection: 0
+  - secondDelayBetweenTypingEachChar: 0.03
+    activeSpeakerDirection: 0
     leftSpeakerExpression: 0
     rightSpeakerExpression: 0
     content: Left speaker is talking. Both speaker's expressions are neutral.
-  - activeSpeakerDirection: 1
+  - secondDelayBetweenTypingEachChar: 0.03
+    activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 0
     content: Right speaker is talking. Both speaker's expressions are neutral.
-  - activeSpeakerDirection: 0
+  - secondDelayBetweenTypingEachChar: 0.03
+    activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 2
     content: Left speaker is talking. Left speaker's expression is surprised. Right
       speaker's expression is worried.
-  - activeSpeakerDirection: 1
+  - secondDelayBetweenTypingEachChar: 0.03
+    activeSpeakerDirection: 1
     leftSpeakerExpression: 1
     rightSpeakerExpression: 3
     content: Right speaker is talking. Left speaker's expression is happy. Right
       speaker's expression is skeptical.
-  - activeSpeakerDirection: 0
+  - secondDelayBetweenTypingEachChar: 0.03
+    activeSpeakerDirection: 0
     leftSpeakerExpression: 2
     rightSpeakerExpression: 2
     content: Everyone's worried.

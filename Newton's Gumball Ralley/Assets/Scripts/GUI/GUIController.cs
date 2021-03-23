@@ -20,6 +20,14 @@ namespace GUI
             GameStateManager.SetGameState(GameState.Dialogue);
         }
 
+        public void SkipDialogue()
+        {
+            if (GameStateManager.GetGameState().Equals(GameState.Dialogue))
+            {
+                GameStateManager.SetGameState(GameState.Playing);
+            }
+        }
+
         public void LoadSettingsMenu()
         {
             if (GameStateManager.GetGameState().Equals(GameState.Playing))

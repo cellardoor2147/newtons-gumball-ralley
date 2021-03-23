@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using Core;
+using Audio;
 
 namespace GUI.Dialogue
 {
@@ -19,7 +20,6 @@ namespace GUI.Dialogue
         private Image rightSpeakerImage;
         private TextMeshProUGUI speakerName;
         private TextMeshProUGUI dialogueBoxContent;
-        private bool anyKeyWasPressed;
 
         private void Awake()
         {
@@ -45,6 +45,7 @@ namespace GUI.Dialogue
             {
                 SetSpeakerImages(conversation, line);
                 SetSpeakerName(conversation, line);
+                PlayActiveSpeakerSound(conversation, line);
                 yield return TypeDialogueBoxContent(line);
                 yield return new WaitUntil(() => Input.anyKeyDown);
             }
@@ -143,12 +144,60 @@ namespace GUI.Dialogue
             }
         }
 
+        private void PlayActiveSpeakerSound(Conversation conversation, Line line)
+        {
+            bool shouldPlayLeftSpeakerSound =
+                line.activeSpeakerDirection.Equals(SpeakerDirection.Left) &&
+                conversation.leftSpeaker != null;
+            if (shouldPlayLeftSpeakerSound)
+            {
+                AudioManager.instance.PlaySound(
+                    GetActiveSpeakerSoundName(conversation.leftSpeaker, line.leftSpeakerExpression)
+                );
+            }
+            bool shouldPlayRightSpeakerSound =
+                line.activeSpeakerDirection.Equals(SpeakerDirection.Right) &&
+                conversation.rightSpeaker != null;
+            if (shouldPlayRightSpeakerSound)
+            {
+                AudioManager.instance.PlaySound(
+                    GetActiveSpeakerSoundName(conversation.rightSpeaker, line.rightSpeakerExpression)
+                );
+            }
+        }
+
+        private string GetActiveSpeakerSoundName(
+            CharacterMetaData activeSpeaker,
+            Expression expression
+        )
+        {
+            switch (expression)
+            {
+                case Expression.Neutral:
+                    return activeSpeaker.neutralSound.name;
+                case Expression.Happy:
+                    return activeSpeaker.happySound.name;
+                case Expression.Worried:
+                    return activeSpeaker.worriedSound.name;
+                case Expression.Skeptical:
+                    return activeSpeaker.skepticalSound.name;
+                case Expression.Surprised:
+                    return activeSpeaker.surprisedSound.name;
+                case Expression.Teaching:
+                    return activeSpeaker.teachingSound.name;
+                default:
+                    Debug.LogError($"Tried playing sound for invalid character expression: {expression}");
+                    return null;
+            }
+
+        }
+             
         private IEnumerator TypeDialogueBoxContent(Line line)
         {
             dialogueBoxContent.text = "";
             foreach (char character in line.content)
             {
-                yield return new WaitForSecondsRealtime(0.05f);
+                yield return new WaitForSecondsRealtime(line.secondDelayBetweenTypingEachChar);
                 dialogueBoxContent.text += character;
             }
             dialogueBoxContent.text = line.content;

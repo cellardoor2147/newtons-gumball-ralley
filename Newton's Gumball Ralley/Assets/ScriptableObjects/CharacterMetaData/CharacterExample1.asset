@@ -19,3 +19,9 @@ MonoBehaviour:
   skepticalPortrait: {fileID: 21300000, guid: 32cdb29f891c1b249be697b8c650b034, type: 3}
   surprisedPortrait: {fileID: 21300000, guid: 61aba0cdd5b651441901721902564751, type: 3}
   teachingPortrait: {fileID: 21300000, guid: f29fb3e2c79d3c74ca4add97837f9951, type: 3}
+  neutralSound: {fileID: 11400000, guid: d0dc28693f1373f48b0346b51d14a36e, type: 2}
+  happySound: {fileID: 11400000, guid: acf16722f7ba7dd44b75759ece2d6588, type: 2}
+  worriedSound: {fileID: 11400000, guid: 0ca2e0a055fcf6548923789dd8f27d1d, type: 2}
+  skepticalSound: {fileID: 11400000, guid: 15f1b4292d838c94aba43b675bc0696d, type: 2}
+  surprisedSound: {fileID: 11400000, guid: 28d8bc2322dc9f2439c15cfd703ac27f, type: 2}
+  teachingSound: {fileID: 11400000, guid: 572ea644a77477c4e8c77bef2369b7d9, type: 2}

@@ -21,6 +21,7 @@ namespace GUI.Dialogue
     [System.Serializable]
     public struct Line
     {
+        public float secondDelayBetweenTypingEachChar;
         public SpeakerDirection activeSpeakerDirection;
         public Expression leftSpeakerExpression;
         public Expression rightSpeakerExpression;
