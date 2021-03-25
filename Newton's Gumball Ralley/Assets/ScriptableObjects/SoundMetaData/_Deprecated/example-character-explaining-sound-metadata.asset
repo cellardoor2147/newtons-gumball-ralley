@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb7d6ad89dbd145f889e5f6ed405f992, type: 3}
-  m_Name: example-character-teaching-sound-metadata
+  m_Name: example-character-explaining-sound-metadata
   m_EditorClassIdentifier: 
   name: example-character-teaching
   clip: {fileID: 8300000, guid: 9b00b7bb4e949b441b0ab29d66137ce6, type: 3}

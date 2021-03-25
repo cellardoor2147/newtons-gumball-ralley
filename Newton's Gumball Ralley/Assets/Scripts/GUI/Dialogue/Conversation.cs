@@ -6,10 +6,9 @@ namespace GUI.Dialogue
     {
         Neutral = 0,
         Happy = 1,
-        Worried = 2,
-        Skeptical = 3,
-        Surprised = 4,
-        Teaching = 5
+        Oops = 2,
+        Thinking = 3,
+        Explaining = 4
     }
 
     public enum SpeakerDirection

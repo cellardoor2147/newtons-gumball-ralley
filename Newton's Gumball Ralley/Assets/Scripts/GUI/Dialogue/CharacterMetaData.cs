@@ -9,15 +9,13 @@ namespace GUI.Dialogue
         public string fullName;
         public Sprite neutralPortrait;
         public Sprite happyPortrait;
-        public Sprite worriedPortrait;
-        public Sprite skepticalPortrait;
-        public Sprite surprisedPortrait;
-        public Sprite teachingPortrait;
+        public Sprite oopsPortrait;
+        public Sprite thinkingPortrait;
+        public Sprite explainingPortrait;
         public SoundMetaData neutralSound;
         public SoundMetaData happySound;
-        public SoundMetaData worriedSound;
-        public SoundMetaData skepticalSound;
-        public SoundMetaData surprisedSound;
-        public SoundMetaData teachingSound;
+        public SoundMetaData oopsSound;
+        public SoundMetaData thinkingSound;
+        public SoundMetaData explainingSound;
     }
 }
