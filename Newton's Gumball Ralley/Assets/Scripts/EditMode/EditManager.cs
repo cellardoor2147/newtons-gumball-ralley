@@ -5,7 +5,7 @@ namespace Edit {
     public class EditManager : MonoBehaviour
     {
 
-        private MachineTypeSO activeMachineType;
+        public MachineTypeSO activeMachineType;
 
         // Update is called once per frame
         private void Update()
@@ -25,6 +25,16 @@ namespace Edit {
 
         public MachineTypeSO GetActiveMachineType () {
             return activeMachineType;
+        }
+
+        public void ResetActiveMachineType()
+        {
+            GameObject container = GameObject.Find("Button Container");
+            for (int i = 0; i < container.transform.GetChildCount(); i++)
+            {
+                Transform button = container.transform.GetChild(i);
+                button.Find("Selected").gameObject.SetActive(false);
+            }
         }
 
         private bool CanSpawnMachine(){

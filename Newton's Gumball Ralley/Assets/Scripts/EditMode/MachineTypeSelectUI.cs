@@ -6,64 +6,34 @@ using Edit;
 
 public class MachineTypeSelectUI : MonoBehaviour
 {
-    [SerializeField] private List <MachineTypeSO> machineTypeSOList;
     [SerializeField] private EditManager editManager;
-    
-
-    private Dictionary <MachineTypeSO, Transform> MachineBtnDictionary;
 
     private void Awake()
     {
-        Transform MachineBtnTemplate = transform.Find("MachineBtnTemplate");
-        MachineBtnTemplate.gameObject.SetActive(false);
-
-        MachineBtnDictionary = new Dictionary<MachineTypeSO, Transform>();
-        spawnGUI();
-    }
-
-    private void spawnGUI() {
-
-        Transform MachineBtnTemplate = transform.Find("MachineBtnTemplate");
-
-        HorizontalLayoutGroup layoutGroup = GetComponent<HorizontalLayoutGroup>();
-        RectTransform lengthRectTransform = GetComponent<RectTransform>();
-        float GUI_width = MachineBtnTemplate.GetComponent<RectTransform>().sizeDelta.x;
-        
-        
-        int index = 0;
-        foreach (MachineTypeSO machineTypeSO in machineTypeSOList)
+        GameObject container = GameObject.Find("Button Container");
+        for (int i = 0; i < container.transform.GetChildCount(); i++)
         {
-            Transform MachineBtnTransform = Instantiate(MachineBtnTemplate, transform);
-            MachineBtnTransform.gameObject.SetActive(true);
-
-            MachineBtnTransform.Find("Image").GetComponent<Image>().sprite = machineTypeSO.sprite;
-
-            MachineBtnTransform.GetComponent<Button>().onClick.AddListener(() =>
+            Transform button = container.transform.GetChild(i);
+            button.GetComponent<Button>().onClick.AddListener(() =>
             {
-                editManager.SetActiveMachineType(machineTypeSO);
-                UpdateSelectedVisual();
+                ResetActiveMachineType(); 
+                editManager.SetActiveMachineType(button.GetComponent<ButtonGUI>().machineTypeSO);
+                button.transform.Find("Selected").gameObject.SetActive(true);
             });
-            if (index == 0)
-            {
-                editManager.SetActiveMachineType(machineTypeSO);
-            }
-            MachineBtnDictionary[machineTypeSO] = MachineBtnTransform;
-            index++;
         }
-        layoutGroup.spacing = (lengthRectTransform.rect.width - (index * GUI_width)) / (index - 1);
     }
 
     private void Start(){
-        UpdateSelectedVisual();
+        ResetActiveMachineType();
     }
 
-    private void UpdateSelectedVisual() {
-        foreach (MachineTypeSO machineTypeSO in MachineBtnDictionary.Keys) {
-            MachineBtnDictionary[machineTypeSO].Find("Selected").gameObject.SetActive(false);
-            
+    public void ResetActiveMachineType()
+    {
+        GameObject container = GameObject.Find("Button Container");
+        for (int i = 0; i < container.transform.GetChildCount(); i++)
+        {
+            Transform button = container.transform.GetChild(i);
+            button.Find("Selected").gameObject.SetActive(false);
         }
-
-        MachineTypeSO activeMachineType = editManager.GetActiveMachineType();
-        MachineBtnDictionary[activeMachineType].Find("Selected").gameObject.SetActive(true);
     }
 }
