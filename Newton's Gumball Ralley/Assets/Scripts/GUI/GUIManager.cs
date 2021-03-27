@@ -6,67 +6,38 @@ namespace GUI
 {
     public enum GUIType
     {
-        Cutscene = 0,
-        MainMenu = 1,
-        PlayMode = 2,
-        SettingsMenu = 3
+        MainMenu = 0,
+        PlayMode = 1,
+        PauseMenu = 2
     }
 
     public class GUIManager : MonoBehaviour
     {
-        private readonly static string CANVAS_KEY = "Canvas";
-        
-        private static GUIManager instance;
-
-        private List<GUIController> guiControllers;
-
-        private GUIManager() {} // Prevents instantiation outside of this class
+        List<GUIController> guiControllers;
 
         private void Awake()
         {
-            SetInstance();
-            AttachMainCameraToCanvas();
-            guiControllers = GetComponentsInChildren<GUIController>(true).ToList();
+            guiControllers = GetComponentsInChildren<GUIController>().ToList();
         }
 
-        private void SetInstance()
-        {
-            if (instance != null)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
-        }
-
-        private void AttachMainCameraToCanvas()
-        {
-            transform.Find(CANVAS_KEY).GetComponent<Canvas>().worldCamera = Camera.main;
-        }
-
-        public static void SetActiveGUI(GUIType guiType)
+        public void SetActiveGUI(GUIType guiType)
         {
             SetAllGUIToInactive();
-            GUIController guiControllerToActivate = instance.guiControllers.Find(
-                guiController => guiController.guiType.Equals(guiType)
-            );
+            GUIController guiControllerToActivate =
+                guiControllers.Find(guiController => guiController.guiType.Equals(guiType));
             if (guiControllerToActivate != null)
             {
                 guiControllerToActivate.gameObject.SetActive(true);
             }
             else
             {
-                Debug.LogError($"Tried setting invalid GUI type: {guiType}");
+                Debug.LogError($"Tried setting invalid GUI type: {guiType.ToString()}");
             }
         }
 
-        private static void SetAllGUIToInactive()
+        private void SetAllGUIToInactive()
         {
-            instance.guiControllers.ForEach(
-                guiController => guiController.gameObject.SetActive(false)
-            );
+            guiControllers.ForEach(guiController => guiController.gameObject.SetActive(false));
         }
     }
 }

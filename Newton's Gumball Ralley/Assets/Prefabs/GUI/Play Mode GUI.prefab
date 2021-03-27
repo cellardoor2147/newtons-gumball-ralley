@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09f3cef3e79237f4ba4b100749d07c2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guiType: 2
+  guiType: 1
 --- !u!1 &4082311379998860852
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,8 +528,7 @@ MonoBehaviour:
   m_text: 'Level: ???'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d7e1e1d5455dcb541bcf3464f2c9db58, type: 2}
-  m_sharedMaterial: {fileID: -3635841285297765449, guid: d7e1e1d5455dcb541bcf3464f2c9db58,
-    type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -553,7 +552,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.4
+  m_fontSize: 22.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
