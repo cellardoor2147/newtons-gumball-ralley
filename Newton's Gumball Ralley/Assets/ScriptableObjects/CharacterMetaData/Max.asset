@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3f1d9a3aac71db46a60eae1764cd808, type: 3}
+  m_Name: Max
+  m_EditorClassIdentifier: 
+  fullName: Max
+  neutralPortrait: {fileID: 3622792381989719942, guid: f014c88d3f7dea14a8f8daf2aa12025f,
+    type: 3}
+  happyPortrait: {fileID: 7985626363670038235, guid: b6cc70ae623373b4eb710539397d096c,
+    type: 3}
+  oopsPortrait: {fileID: 5500667264261375919, guid: 270aad7ff140e774191eb5c9155b7ce8,
+    type: 3}
+  thinkingPortrait: {fileID: -6100553203294420662, guid: 36e64c388671cc44f8919cf3fd6ac280,
+    type: 3}
+  explainingPortrait: {fileID: 9095174931793314820, guid: 2239d77079d997941a6c84472f78ac62,
+    type: 3}
+  neutralSound: {fileID: 11400000, guid: d0dc28693f1373f48b0346b51d14a36e, type: 2}
+  happySound: {fileID: 11400000, guid: acf16722f7ba7dd44b75759ece2d6588, type: 2}
+  oopsSound: {fileID: 11400000, guid: 0ca2e0a055fcf6548923789dd8f27d1d, type: 2}
+  thinkingSound: {fileID: 11400000, guid: 15f1b4292d838c94aba43b675bc0696d, type: 2}
+  explainingSound: {fileID: 11400000, guid: 572ea644a77477c4e8c77bef2369b7d9, type: 2}

@@ -14,7 +14,18 @@ namespace GUI
 
         public void LoadPlayMode()
         {
-            GameStateManager.SetGameState(GameState.Playing);
+            // TODO: load dialogue based on current level data,
+            // or go straight to play mode if there's no dialogue
+            // for the current level
+            GameStateManager.SetGameState(GameState.Dialogue);
+        }
+
+        public void SkipDialogue()
+        {
+            if (GameStateManager.GetGameState().Equals(GameState.Dialogue))
+            {
+                GameStateManager.SetGameState(GameState.Playing);
+            }
         }
 
         public void LoadSettingsMenu()

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using GUI.Dialogue;
 
 namespace GUI
 {
@@ -8,17 +9,20 @@ namespace GUI
     {
         Cutscene = 0,
         MainMenu = 1,
-        PlayMode = 2,
-        SettingsMenu = 3
+        Dialogue = 2,
+        PlayMode = 3,
+        SettingsMenu = 4
     }
 
     public class GUIManager : MonoBehaviour
     {
         private readonly static string CANVAS_KEY = "Canvas";
+        private readonly static string DIALOGUE_GUI_KEY = "Dialogue GUI";
         
         private static GUIManager instance;
 
         private List<GUIController> guiControllers;
+        private DialogueManager dialogueManager;
 
         private GUIManager() {} // Prevents instantiation outside of this class
 
@@ -27,6 +31,9 @@ namespace GUI
             SetInstance();
             AttachMainCameraToCanvas();
             guiControllers = GetComponentsInChildren<GUIController>(true).ToList();
+            dialogueManager = transform.Find(CANVAS_KEY)
+                .Find(DIALOGUE_GUI_KEY)
+                .GetComponent<DialogueManager>();
         }
 
         private void SetInstance()
@@ -67,6 +74,20 @@ namespace GUI
             instance.guiControllers.ForEach(
                 guiController => guiController.gameObject.SetActive(false)
             );
+        }
+
+        public static void StartConversation(Conversation conversation)
+        {
+
+            bool dialogueGUIIsActive = instance.guiControllers.Find(
+                guiController => guiController.guiType.Equals(GUIType.Dialogue) &&
+                                 guiController.gameObject.activeInHierarchy
+            );
+            if (!dialogueGUIIsActive)
+            {
+                return;
+            }
+            instance.dialogueManager.StartConversation(conversation);
         }
     }
 }
