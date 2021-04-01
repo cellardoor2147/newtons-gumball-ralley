@@ -82,12 +82,14 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Cutscene);
-                    instance.audioManager.PlaySound(CutsceneMusicSound.name);
+                    instance.audioManager.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.MainMenu);
+                    instance.audioManager.StopSound(instance.CutsceneMusicSound.name);
+                    instance.audioManager.PlaySound(instance.MenuMusicSound.name);
                     break;
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;

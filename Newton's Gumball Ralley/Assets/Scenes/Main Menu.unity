@@ -121,6 +121,24 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &155228439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2975785039847126842, guid: fd513e4562e541241b204c72c87e7ed9,
+    type: 3}
+  m_PrefabInstance: {fileID: 550487360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &155228441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155228439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878733db2e1754a97b0899e1d346bf0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &446329141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 501088617697291102, guid: fd513e4562e541241b204c72c87e7ed9,
@@ -784,6 +802,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8909292218372835072, guid: fd513e4562e541241b204c72c87e7ed9,
+        type: 3}
+      propertyPath: MenuMusicSound
+      value: 
+      objectReference: {fileID: 11400000, guid: ed1aea29dcf2f4aa1b27bf1e72b9e496,
+        type: 2}
+    - target: {fileID: 8909292218372835072, guid: fd513e4562e541241b204c72c87e7ed9,
+        type: 3}
+      propertyPath: CutsceneMusicSound
+      value: 
+      objectReference: {fileID: 11400000, guid: d3bac1f6c7e964303a4af4393a648781,
+        type: 2}
     - target: {fileID: 9000327746176373075, guid: fd513e4562e541241b204c72c87e7ed9,
         type: 3}
       propertyPath: sounds.Array.size

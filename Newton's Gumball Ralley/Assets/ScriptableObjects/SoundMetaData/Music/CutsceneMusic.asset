@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: CutsceneMusic
   clip: {fileID: 8300000, guid: 2d90bafa2c57d47f0a80c5850b80cc76, type: 3}
-  volume: 0.7
+  volume: 0.15
   pitch: 1
   loop: 1
