@@ -28,6 +28,8 @@ namespace Core
 
         [SerializeField] SoundMetaData CutsceneMusicSound;
         [SerializeField] SoundMetaData MenuMusicSound;
+        [SerializeField] SoundMetaData Level1MusicSound;
+        [SerializeField] SoundMetaData Level2MusicSound;
 
         AudioManager audioManager;
 
@@ -93,6 +95,7 @@ namespace Core
                     break;
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
+                    instance.audioManager.StopSound(instance.MenuMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
                     // TODO: remove and instead load conversations from the current level,
@@ -103,11 +106,13 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
+                    instance.audioManager.PlaySound(instance.Level2MusicSound.name);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.SettingsMenu);
+                    instance.audioManager.PauseSound(instance.Level2MusicSound.name);
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
