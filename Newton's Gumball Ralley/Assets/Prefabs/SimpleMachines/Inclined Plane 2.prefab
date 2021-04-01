@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2848766991811229149}
   - component: {fileID: 4507901367412685251}
   - component: {fileID: 8509002093664806336}
+  - component: {fileID: 5967638768264764270}
   m_Layer: 0
   m_Name: Inclined Plane 2
   m_TagString: SimpleMachine
@@ -131,3 +132,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.48, y: 0.34}
   m_EdgeRadius: 0
+--- !u!114 &5967638768264764270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2848766991811229147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

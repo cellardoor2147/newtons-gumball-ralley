@@ -27,12 +27,14 @@ namespace Core
         [SerializeField] private Conversation exampleConversation;
 
         private GameState gameState;
+        private Vector2 defaultGravity;
 
         private GameStateManager() {} // Prevents instantiation outside of this class
 
         private void Awake()
         {
             SetInstance();
+            defaultGravity = Physics2D.gravity;
             PreventManagersContainerFromBeingDestroyedOnLoad();
         }
 
@@ -88,11 +90,13 @@ namespace Core
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
+                    Physics2D.gravity = instance.defaultGravity;
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
                 case GameState.Editing:
-                    Time.timeScale = 0.0f;
+                    Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
+                    Physics2D.gravity = Vector2.zero;
                     GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
                 case GameState.Paused:
