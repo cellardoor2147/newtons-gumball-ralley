@@ -66,6 +66,11 @@ namespace SimpleMachine
             {
                 ResetTransform();
             }
+            else
+            {
+                lastValidPosition = transform.position;
+                lastValidRotation = transform.rotation;
+            }
             collider2D.isTrigger = false;
             spriteRenderer.color = defaultColor;
         }
@@ -101,8 +106,8 @@ namespace SimpleMachine
 
         public void UnfreezeRigidbody()
         {
-            bool hasNoValidRigidbodyToUnfreeze = rigidbody2D == null;
-            if (hasNoValidRigidbodyToUnfreeze)
+            bool canNotUnfreezeRigidBody = rigidbody2D == null;
+            if (canNotUnfreezeRigidBody)
             {
                 return;
             }
@@ -111,8 +116,8 @@ namespace SimpleMachine
 
         public void FreezeRigidbody()
         {
-            bool hasNoValidRigidbodyToFreeze = rigidbody2D == null;
-            if (hasNoValidRigidbodyToFreeze)
+            bool canNotFreezeRigidBody = rigidbody2D == null;
+            if (canNotFreezeRigidBody)
             {
                 return;
             }
