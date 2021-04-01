@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb7d6ad89dbd145f889e5f6ed405f992, type: 3}
-  m_Name: SoundMetaData
+  m_Name: Level2Music
   m_EditorClassIdentifier: 
-  name: New MyScriptableObject
-  Clip: {fileID: 0}
+  name: Level2Music
+  clip: {fileID: 8300000, guid: 5609bf639c5fc420790784e27a369b7a, type: 3}
   volume: 0.7
   pitch: 1
   loop: 0

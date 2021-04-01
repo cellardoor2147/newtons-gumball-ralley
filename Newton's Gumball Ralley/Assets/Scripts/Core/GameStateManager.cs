@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
+using Audio;
 
 namespace Core
 {
@@ -24,6 +25,11 @@ namespace Core
         // TODO: remove and instead load conversations from the current level,
         // if there is a conversation to load
         [SerializeField] private Conversation exampleConversation;
+
+        [SerializeField] SoundMetaData CutsceneMusicSound;
+        [SerializeField] SoundMetaData MenuMusicSound;
+
+        AudioManager audioManager;
 
         private GameState gameState;
 
@@ -54,6 +60,12 @@ namespace Core
 
         private void Start()
         {
+            audioManager = AudioManager.instance;
+            if (audioManager == null)
+            {
+                Debug.LogError("No audiomanager found");
+            }
+
             SetGameState(GameState.OpeningCutscene);
         }
 
@@ -70,6 +82,7 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Cutscene);
+                    instance.audioManager.PlaySound(CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
