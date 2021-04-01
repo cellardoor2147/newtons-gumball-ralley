@@ -11,7 +11,8 @@ namespace Core
         MainMenu = 1,
         Dialogue = 2,
         Playing = 3,
-        Paused = 4
+        Editing = 4,
+        Paused = 5
     }
 
     public class GameStateManager : MonoBehaviour
@@ -88,6 +89,11 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
+                    break;
+                case GameState.Editing:
+                    Time.timeScale = 0.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
