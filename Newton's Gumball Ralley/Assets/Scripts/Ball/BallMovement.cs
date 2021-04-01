@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Core;
 
 namespace Ball
 {
@@ -55,6 +56,10 @@ namespace Ball
 
         private void OnMouseDown()
         {
+            if (!GameStateManager.GetGameState().Equals(GameState.Playing))
+            {
+                return;
+            }
             if (!hasBeenReleased)
             {
                 isBeingPulled = true;
@@ -63,6 +68,10 @@ namespace Ball
 
         private void OnMouseUp()
         {
+            if (!GameStateManager.GetGameState().Equals(GameState.Playing))
+            {
+                return;
+            }
             if (!hasBeenReleased)
             {
                 isBeingPulled = false;

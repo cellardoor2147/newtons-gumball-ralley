@@ -1,20 +1,25 @@
 ﻿using UnityEngine;
 using Core;
+using Screw;
 
 namespace SimpleMachine
 {
     public class DraggingController : MonoBehaviour
     {
+        public Vector2 lastValidPosition;
+        public Quaternion lastValidRotation;
+
         private Collider2D collider2D;
         private SpriteRenderer spriteRenderer;
         private Color defaultColor;
-        private Vector2 lastValidPosition;
+        private Rigidbody2D rigidbody2D;
 
         private void Awake()
         {
             collider2D = GetComponent<Collider2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             defaultColor = spriteRenderer.color;
+            rigidbody2D = GetComponent<Rigidbody2D>();
         }
 
         private Vector2 GetMousePositionInWorldCoordinates()
@@ -29,6 +34,7 @@ namespace SimpleMachine
                 return;
             }
             lastValidPosition = transform.position;
+            lastValidRotation = transform.rotation;
             collider2D.isTrigger = true;
             transform.position = GetMousePositionInWorldCoordinates();
         }
@@ -58,12 +64,9 @@ namespace SimpleMachine
             }
             if (ObjectBeingPlacedHasCollided())
             {
-                transform.position = lastValidPosition;
+                ResetTransform();
             }
-            else
-            {
-                collider2D.isTrigger = false;
-            }
+            collider2D.isTrigger = false;
             spriteRenderer.color = defaultColor;
         }
 
@@ -83,6 +86,37 @@ namespace SimpleMachine
         private bool ObjectBeingPlacedHasCollided()
         {
             return collider2D.IsTouchingLayers(1);
+        }
+
+        public void ResetTransform()
+        {
+            bool shouldNotResetTransform = GetComponent<ScrewBehavior>() != null;
+            if (shouldNotResetTransform)
+            {
+                return;
+            }
+            transform.position = lastValidPosition;
+            transform.rotation = lastValidRotation;
+        }
+
+        public void UnfreezeRigidbody()
+        {
+            bool hasNoValidRigidbodyToUnfreeze = rigidbody2D == null;
+            if (hasNoValidRigidbodyToUnfreeze)
+            {
+                return;
+            }
+            rigidbody2D.constraints = RigidbodyConstraints2D.None;
+        }
+
+        public void FreezeRigidbody()
+        {
+            bool hasNoValidRigidbodyToFreeze = rigidbody2D == null;
+            if (hasNoValidRigidbodyToFreeze)
+            {
+                return;
+            }
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }

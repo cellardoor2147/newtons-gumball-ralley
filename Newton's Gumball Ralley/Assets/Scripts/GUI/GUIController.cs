@@ -27,8 +27,7 @@ namespace GUI
 
         public void ResetLevel()
         {
-            // TODO: reload level from JSON once serializer is
-            // finished
+            GameStateManager.ResetCurrentLevel();
         }
 
         public void SkipDialogue()

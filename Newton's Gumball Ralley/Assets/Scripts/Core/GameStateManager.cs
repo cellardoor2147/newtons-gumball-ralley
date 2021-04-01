@@ -2,6 +2,8 @@
 using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
+using SimpleMachine;
+using System.Linq;
 
 namespace Core
 {
@@ -17,6 +19,8 @@ namespace Core
 
     public class GameStateManager : MonoBehaviour
     {
+        public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
+
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
         private readonly static string GAME_SCENE_KEY = "Game";
 
@@ -90,12 +94,16 @@ namespace Core
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
+                    UnfreezePlacedObjectsRigidbodies();
                     Physics2D.gravity = instance.defaultGravity;
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
                 case GameState.Editing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
+                    ResetBallPosition();
+                    ResetPlacedObjectsTransforms();
+                    FreezePlacedObjectsRigidbodies();
                     Physics2D.gravity = Vector2.zero;
                     GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
@@ -118,6 +126,59 @@ namespace Core
                 return;
             }
             SceneManager.LoadScene(sceneName);
+        }
+
+        private static void ResetBallPosition()
+        {
+
+        }
+
+        private static void ResetPlacedObjectsTransforms()
+        {
+            GameObject.Find(PLACED_OBJECTS_KEY)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.ResetTransform()
+            );
+        }
+
+        private static void UnfreezePlacedObjectsRigidbodies()
+        {
+            GameObject placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
+            if (placedObjectsContainer == null)
+            {
+                return;
+            }
+            placedObjectsContainer
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.UnfreezeRigidbody()
+            );
+        }
+
+        private static void FreezePlacedObjectsRigidbodies()
+        {
+            GameObject placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
+            if (placedObjectsContainer == null)
+            {
+                return;
+            }
+            placedObjectsContainer
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.FreezeRigidbody()
+            );
+        }
+
+        public static void ResetCurrentLevel()
+        {
+            // TODO: properly reset scene using JSON object
+            // once level serialization works properly
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SetGameState(GameState.Playing);
         }
 
         private void Update()

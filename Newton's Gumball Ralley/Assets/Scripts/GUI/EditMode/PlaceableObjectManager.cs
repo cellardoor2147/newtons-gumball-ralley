@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Core;
+using SimpleMachine;
 
 namespace GUI.EditMode
 {
@@ -11,6 +13,7 @@ namespace GUI.EditMode
 
         [SerializeField] GameObject placeableObjectPrefab;
 
+        private GameObject placeableObjectsContainer;
         private Color placeableObjectDefaultColor;
         private SpriteRenderer objectBeingPlacedSpriteRenderer;
         private GameObject objectBeingPlaced;
@@ -18,6 +21,8 @@ namespace GUI.EditMode
 
         private void Awake()
         {
+            placeableObjectsContainer =
+                GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
             placeableObjectDefaultColor =
                 placeableObjectPrefab.GetComponent<SpriteRenderer>().color;
             transform.Find(PLACEABLE_OBJECT_IMAGE_PREFIX).GetComponent<Image>().sprite =
@@ -31,7 +36,8 @@ namespace GUI.EditMode
         
         public void OnBeginDrag(PointerEventData pointerEventData)
         {
-            objectBeingPlaced = Instantiate(placeableObjectPrefab);
+            objectBeingPlaced =
+                Instantiate(placeableObjectPrefab, placeableObjectsContainer.transform);
             objectBeingPlacedSpriteRenderer = objectBeingPlaced.GetComponent<SpriteRenderer>();
             objectBeingPlacedCollider = objectBeingPlaced.GetComponent<Collider2D>();
             objectBeingPlacedCollider.isTrigger = true;
@@ -56,11 +62,18 @@ namespace GUI.EditMode
             if (ObjectBeingPlacedHasCollided())
             {
                 Destroy(objectBeingPlaced);
+                objectBeingPlaced = null;
             }
             else
             {
                 objectBeingPlacedSpriteRenderer.color = placeableObjectDefaultColor;
                 objectBeingPlacedCollider.isTrigger = false;
+                DraggingController objectBeingPlacedDraggingController =
+                    objectBeingPlaced.GetComponent<DraggingController>();
+                objectBeingPlacedDraggingController.lastValidPosition =
+                    objectBeingPlaced.transform.position;
+                objectBeingPlacedDraggingController.lastValidRotation =
+                    objectBeingPlaced.transform.rotation;
             }
         }
 
