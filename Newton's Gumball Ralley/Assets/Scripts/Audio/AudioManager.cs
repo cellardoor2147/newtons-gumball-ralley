@@ -49,14 +49,7 @@ namespace Audio {
                 currentSoundGameObject.transform.SetParent (this.transform);
                 element.SetSource (currentSoundGameObject.AddComponent<AudioSource>());
             }
-            PlaySound ("Menu_Music"); 
         }
-        // To be implemented when GUI/gamestate manager is added
-        
-        // void Update () {
-        //     if (time.time >5f)
-        // }
-
         public void PlaySound (string _name) {
             foreach (Audio.Sound element in sounds)
             {
