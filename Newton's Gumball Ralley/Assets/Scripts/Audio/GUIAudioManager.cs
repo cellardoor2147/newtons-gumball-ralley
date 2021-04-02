@@ -20,6 +20,11 @@ public class GUIAudioManager : MonoBehaviour
         }
     }
 
+    public void OnMouseDown()
+    {
+        audioManager.PlaySound(ButtonClickSound.name);
+    }
+
     public void OnMouseOver()
     {
         audioManager.PlaySound(ButtonHoverSound.name);
