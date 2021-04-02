@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb7d6ad89dbd145f889e5f6ed405f992, type: 3}
-  m_Name: MenuMusic
+  m_Name: DialogueMusic
   m_EditorClassIdentifier: 
-  name: MenuMusic
-  clip: {fileID: 8300000, guid: 32fb54c0b23d94b11a10c83237c836bf, type: 3}
-  volume: 0.1
+  name: DialogueMusic
+  clip: {fileID: 8300000, guid: 4f107624e205f40c2b6e4639eb203e59, type: 3}
+  volume: 0.05
   pitch: 1
-  loop: 0
+  loop: 1

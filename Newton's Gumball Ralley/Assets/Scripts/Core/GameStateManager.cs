@@ -30,6 +30,8 @@ namespace Core
         [SerializeField] SoundMetaData MenuMusicSound;
         [SerializeField] SoundMetaData Level1MusicSound;
         [SerializeField] SoundMetaData Level2MusicSound;
+        [SerializeField] SoundMetaData DialogueMusicSound;
+
 
         AudioManager audioManager;
 
@@ -96,6 +98,7 @@ namespace Core
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
                     instance.audioManager.StopSound(instance.MenuMusicSound.name);
+                    instance.audioManager.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
                     // TODO: remove and instead load conversations from the current level,
@@ -104,9 +107,10 @@ namespace Core
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
+                    instance.audioManager.StopSound(instance.DialogueMusicSound.name);
+                    instance.audioManager.PlaySound(instance.Level2MusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
-                    instance.audioManager.PlaySound(instance.Level2MusicSound.name);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
