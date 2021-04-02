@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
 public class GUIAudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    [SerializeField] SoundMetaData ButtonHoverSound;
+    [SerializeField] SoundMetaData ButtonClickSound;
+
+    AudioManager audioManager;
+
+    private void Start()
     {
-        
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("No audiomanager found");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnMouseOver()
     {
-        
+        audioManager.PlaySound(ButtonHoverSound.name);
     }
 }
