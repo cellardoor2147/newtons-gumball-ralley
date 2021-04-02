@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ButtonClick
   m_EditorClassIdentifier: 
   name: ButtonClick
-  clip: {fileID: 8300000, guid: a9867e92d3f734b91baaf91f1df74b88, type: 3}
-  volume: 0.5
+  clip: {fileID: 8300000, guid: b55a498c61ed2416dbce95a6d7e69d86, type: 3}
+  volume: 0.25
   pitch: 1
   loop: 0
