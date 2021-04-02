@@ -86,5 +86,12 @@ namespace Ball
             yield return new WaitForSeconds(delayAfterRelease);
             GetComponent<SpringJoint2D>().enabled = false;
         }
+
+        public void ResetPosition()
+        {
+            transform.position = GetSlingAnchorPosition();
+            GetComponent<SpringJoint2D>().enabled = true;
+            hasBeenReleased = false;
+        }
     }
 }

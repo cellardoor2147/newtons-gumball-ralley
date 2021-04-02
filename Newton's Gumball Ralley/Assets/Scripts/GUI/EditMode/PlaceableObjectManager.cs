@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Core;
 using SimpleMachine;
-using Screw;
 
 namespace GUI.EditMode
 {
@@ -15,72 +14,33 @@ namespace GUI.EditMode
         [SerializeField] GameObject placeableObjectPrefab;
 
         private GameObject placeableObjectsContainer;
-        private Color placeableObjectDefaultColor;
-        private SpriteRenderer objectBeingPlacedSpriteRenderer;
-        private GameObject objectBeingPlaced;
-        private Collider2D objectBeingPlacedCollider;
+        private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
         {
-            placeableObjectsContainer =
-                GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
-            placeableObjectDefaultColor =
-                placeableObjectPrefab.GetComponent<SpriteRenderer>().color;
             transform.Find(PLACEABLE_OBJECT_IMAGE_PREFIX).GetComponent<Image>().sprite =
                 placeableObjectPrefab.GetComponent<SpriteRenderer>().sprite;
-        }
-
-        private Vector2 GetMousePositionInWorldCoordinates()
-        {
-            return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            placeableObjectsContainer =
+                GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
         }
         
         public void OnBeginDrag(PointerEventData pointerEventData)
         {
-            objectBeingPlaced =
+            GameObject objectBeingPlaced =
                 Instantiate(placeableObjectPrefab, placeableObjectsContainer.transform);
-            objectBeingPlacedSpriteRenderer = objectBeingPlaced.GetComponent<SpriteRenderer>();
-            objectBeingPlacedCollider = objectBeingPlaced.GetComponent<Collider2D>();
-            objectBeingPlacedCollider.isTrigger = true;
-            objectBeingPlaced.transform.position = GetMousePositionInWorldCoordinates();
+            objectBeingPlacedDraggingController =
+                objectBeingPlaced.GetComponent<DraggingController>();
+            objectBeingPlacedDraggingController.OnMouseDown();
         }
 
         public void OnDrag(PointerEventData pointerEventData)
         {
-            objectBeingPlaced.transform.position = GetMousePositionInWorldCoordinates();
-            if (ObjectBeingPlacedHasCollided())
-            {
-                objectBeingPlacedSpriteRenderer.color = Color.red;
-            }
-            else
-            {
-                objectBeingPlacedSpriteRenderer.color = Color.green;
-            }
+            objectBeingPlacedDraggingController.OnMouseDrag();
         }
 
         public void OnEndDrag(PointerEventData pointerEventData)
         {
-            if (ObjectBeingPlacedHasCollided())
-            {
-                Destroy(objectBeingPlaced);
-                objectBeingPlaced = null;
-            }
-            else
-            {
-                objectBeingPlacedSpriteRenderer.color = placeableObjectDefaultColor;
-                objectBeingPlacedCollider.isTrigger = false;
-                DraggingController objectBeingPlacedDraggingController =
-                    objectBeingPlaced.GetComponent<DraggingController>();
-                objectBeingPlacedDraggingController.lastValidPosition =
-                    objectBeingPlaced.transform.position;
-                objectBeingPlacedDraggingController.lastValidRotation =
-                    objectBeingPlaced.transform.rotation;
-            }
-        }
-
-        private bool ObjectBeingPlacedHasCollided()
-        {
-            return objectBeingPlacedCollider.IsTouchingLayers(1);
+            objectBeingPlacedDraggingController.OnMouseUp();
         }
     }
 }

@@ -1,22 +1,23 @@
 ﻿using UnityEngine;
 using Core;
-using Screw;
-
 namespace SimpleMachine
 {
     public class DraggingController : MonoBehaviour
     {
-        public Vector2 lastValidPosition;
-        public Quaternion lastValidRotation;
-
+        private bool hasBeenPlaced;
         private Collider2D collider2D;
+        private bool colliderIsTriggerByDefault;
         private SpriteRenderer spriteRenderer;
         private Color defaultColor;
         private Rigidbody2D rigidbody2D;
+        private Vector2 lastValidPosition;
+        private Quaternion lastValidRotation;
 
         private void Awake()
         {
+            hasBeenPlaced = false;
             collider2D = GetComponent<Collider2D>();
+            colliderIsTriggerByDefault = collider2D.isTrigger;
             spriteRenderer = GetComponent<SpriteRenderer>();
             defaultColor = spriteRenderer.color;
             rigidbody2D = GetComponent<Rigidbody2D>();
@@ -46,7 +47,7 @@ namespace SimpleMachine
                 return;
             }
             transform.position = GetMousePositionInWorldCoordinates();
-            if (ObjectBeingPlacedHasCollided())
+            if (ShouldPreventObjectFromBeingPlaced())
             {
                 spriteRenderer.color = Color.red;
             }
@@ -62,16 +63,21 @@ namespace SimpleMachine
             {
                 return;
             }
-            if (ObjectBeingPlacedHasCollided())
+            if (ShouldPreventObjectFromBeingPlaced())
             {
+                if (!hasBeenPlaced)
+                {
+                    Destroy(gameObject);
+                }
                 ResetTransform();
             }
             else
             {
+                hasBeenPlaced = true;
                 lastValidPosition = transform.position;
                 lastValidRotation = transform.rotation;
             }
-            collider2D.isTrigger = false;
+            collider2D.isTrigger = colliderIsTriggerByDefault;
             spriteRenderer.color = defaultColor;
         }
 
@@ -88,18 +94,15 @@ namespace SimpleMachine
             }
         }
 
-        private bool ObjectBeingPlacedHasCollided()
+        private bool ShouldPreventObjectFromBeingPlaced()
         {
-            return collider2D.IsTouchingLayers(1);
+            bool objectIsScrew = rigidbody2D == null;
+            bool objectHasCollided = collider2D.IsTouchingLayers(1);
+            return !objectIsScrew && objectHasCollided;
         }
 
         public void ResetTransform()
         {
-            bool shouldNotResetTransform = GetComponent<ScrewBehavior>() != null;
-            if (shouldNotResetTransform)
-            {
-                return;
-            }
             transform.position = lastValidPosition;
             transform.rotation = lastValidRotation;
         }
