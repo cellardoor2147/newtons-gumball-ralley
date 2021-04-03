@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: ButtonClick
   clip: {fileID: 8300000, guid: b55a498c61ed2416dbce95a6d7e69d86, type: 3}
-  volume: 0.25
+  volume: 0.2
   pitch: 1
   loop: 0

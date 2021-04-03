@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Level2Music
   clip: {fileID: 8300000, guid: 5609bf639c5fc420790784e27a369b7a, type: 3}
-  volume: 0.1
+  volume: 0.075
   pitch: 1
   loop: 1
