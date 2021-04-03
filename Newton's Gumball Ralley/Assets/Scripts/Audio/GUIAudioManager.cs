@@ -9,12 +9,9 @@ public class GUIAudioManager : MonoBehaviour
     [SerializeField] SoundMetaData ButtonHoverSound;
     [SerializeField] SoundMetaData ButtonClickSound;
 
-    AudioManager audioManager;
-
     private void Start()
     {
-        audioManager = AudioManager.instance;
-        if (audioManager == null)
+        if (AudioManager.instance == null)
         {
             Debug.LogError("No audiomanager found");
         }
@@ -22,11 +19,11 @@ public class GUIAudioManager : MonoBehaviour
 
     public void OnMouseDown()
     {
-        audioManager.PlaySound(ButtonClickSound.name);
+        AudioManager.instance.PlaySound(ButtonClickSound.name);
     }
 
     public void OnMouseOver()
     {
-        audioManager.PlaySound(ButtonHoverSound.name);
+        AudioManager.instance.PlaySound(ButtonHoverSound.name);
     }
 }
