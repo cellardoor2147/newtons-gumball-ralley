@@ -1,28 +1,33 @@
 ﻿using UnityEngine;
 
-namespace Screw
+namespace FulcrumScrew
 {
-    public class ScrewBehavior : MonoBehaviour
+    public class FulcrumScrewBehavior : MonoBehaviour
     {
-        private bool collidedWithSimpleMachine = false;
+        private bool collidedWithLeverPlatform = false;
         private Collider2D screwCollider;
+        private Rigidbody2D fulcrumRB;
 
         void Start()
         {
             screwCollider = GetComponent<Collider2D>();
+            fulcrumRB = GetComponentInParent<Rigidbody2D>();
         }
-        
+
         void Update()
         {
-            if (collidedWithSimpleMachine)
+            if (collidedWithLeverPlatform)
+            {
                 screwCollider.enabled = false;
+                fulcrumRB.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
         }
 
         void OnTriggerEnter2D(Collider2D collision)
         {
-            collidedWithSimpleMachine = collision.gameObject.GetComponent<Rigidbody2D>() != null
-                && collision.gameObject.CompareTag("SimpleMachine");
-            if (collidedWithSimpleMachine)
+            collidedWithLeverPlatform = collision.gameObject.GetComponent<Rigidbody2D>() != null
+                && collision.gameObject.name == ("LeverPlatform");
+            if (collidedWithLeverPlatform)
             {
                 collision.gameObject.AddComponent<HingeJoint2D>();
                 transform.SetParent(collision.transform, true);

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3894201689709608812}
   - component: {fileID: 3894201689709608816}
+  - component: {fileID: 3894201689709608815}
   - component: {fileID: 3894201689709608817}
   - component: {fileID: 3894201689709608814}
-  - component: {fileID: 3894201689709608815}
   m_Layer: 0
   m_Name: LeverFulcrum
   m_TagString: SimpleMachine
@@ -28,9 +28,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3894201689709608813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 2.7365, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.34552455, y: 0.13997556, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 714856092005119274}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -54,7 +55,39 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
+--- !u!60 &3894201689709608815
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894201689709608813}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1, y: -1}
+      - {x: -0.607802, y: 0.008793712}
+      - {x: 0.6092626, y: 0.0065402985}
+      - {x: 1, y: -1}
+      - {x: -0.90281487, y: -1}
+      - {x: -0.97451854, y: -1}
+      - {x: -1, y: -1}
 --- !u!1971053207 &3894201689709608817
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -154,39 +187,88 @@ MonoBehaviour:
   m_CornerAngleThreshold: 30
   m_ColliderDetail: 16
   m_ColliderOffset: 0
-  m_UpdateCollider: 1
+  m_UpdateCollider: 0
   m_OptimizeCollider: 1
   m_OptimizeGeometry: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
---- !u!60 &3894201689709608815
-PolygonCollider2D:
+--- !u!1001 &2250000523138618192
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 3894201689709608812}
+    m_Modifications:
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644436574175487614, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_Name
+      value: FulcrumScrew
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aee7ed7bd0796df4893ebdbe5c49d194, type: 3}
+--- !u!4 &714856092005119274 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+    type: 3}
+  m_PrefabInstance: {fileID: 2250000523138618192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3894201689709608813}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1, y: -1}
-      - {x: 0, y: 1.596813}
-      - {x: 1, y: -1}
-      - {x: -0.90281487, y: -1}
-      - {x: -0.97451854, y: -1}
-      - {x: -1, y: -1}
