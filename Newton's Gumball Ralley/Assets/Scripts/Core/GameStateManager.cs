@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
+using GUI.EditMode;
 using SimpleMachine;
 using Ball;
 using System.Linq;

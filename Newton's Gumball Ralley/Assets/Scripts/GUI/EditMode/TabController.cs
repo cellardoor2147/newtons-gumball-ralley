@@ -6,11 +6,6 @@ namespace GUI.EditMode
 {
     public class TabController : MonoBehaviour, IPointerClickHandler
     {
-        private static readonly string EDIT_MODE_GUI_KEY = "Edit Mode GUI";
-
-        private static EditModeManager editModeManager;
-
-
         private Image backgroundImage;
 
         public PlaceableObjectType objectType;
@@ -18,13 +13,12 @@ namespace GUI.EditMode
 
         private void Awake()
         {
-            editModeManager = GameObject.Find(EDIT_MODE_GUI_KEY).GetComponent<EditModeManager>();
             backgroundImage = GetComponent<Image>();
         }
 
         public void OnPointerClick(PointerEventData pointerEventData)
         {
-            editModeManager.SetActiveTab(objectType);
+            EditModeManager.SetActiveTab(objectType);
         }
 
         public void SetTabColorToActive()

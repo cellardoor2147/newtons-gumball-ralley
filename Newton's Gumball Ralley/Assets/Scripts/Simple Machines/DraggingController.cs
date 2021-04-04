@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Core;
+using GUI.EditMode;
+
 namespace SimpleMachine
 {
     public class DraggingController : MonoBehaviour
@@ -34,6 +36,7 @@ namespace SimpleMachine
             {
                 return;
             }
+            EditModeManager.HideEditModeGUI();
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
             collider2D.isTrigger = true;
@@ -79,6 +82,7 @@ namespace SimpleMachine
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
             spriteRenderer.color = defaultColor;
+            EditModeManager.ShowEditModeGUI();
         }
 
         public void OnMouseOver()
