@@ -6,6 +6,7 @@ using SimpleMachine;
 using Ball;
 using System.Linq;
 using System.Collections.Generic;
+using Audio;
 
 namespace Core
 {
@@ -32,6 +33,12 @@ namespace Core
         // TODO: remove and instead load conversations from the current level,
         // if there is a conversation to load
         [SerializeField] private Conversation exampleConversation;
+
+        [SerializeField] SoundMetaData CutsceneMusicSound;
+        [SerializeField] SoundMetaData MenuMusicSound;
+        [SerializeField] SoundMetaData Level1MusicSound;
+        [SerializeField] SoundMetaData Level2MusicSound;
+        [SerializeField] SoundMetaData DialogueMusicSound;
 
         private GameState gameState;
         private Vector2 defaultGravity;
@@ -64,6 +71,11 @@ namespace Core
 
         private void Start()
         {
+            if (AudioManager.instance == null)
+            {
+                Debug.LogError("No audiomanager found");
+            }
+
             SetGameState(GameState.OpeningCutscene);
         }
 
@@ -80,14 +92,19 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Cutscene);
+                    AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.MainMenu);
+                    AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
+                    AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
+                    AudioManager.instance.StopSound(instance.MenuMusicSound.name);
+                    AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
                     // TODO: remove and instead load conversations from the current level,
@@ -96,6 +113,8 @@ namespace Core
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
+                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
+                    AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     TetherPlacedObjectsToPlacedScrews();
                     UnfreezePlacedObjectsRigidbodies();
@@ -116,6 +135,7 @@ namespace Core
                     Time.timeScale = 0.0f;
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.SettingsMenu);
+                    AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
