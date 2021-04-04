@@ -97,18 +97,18 @@ namespace Core
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    UnfreezePlacedObjectsRigidbodies();
                     TetherPlacedObjectsToPlacedScrews();
+                    UnfreezePlacedObjectsRigidbodies();
                     Physics2D.gravity = instance.defaultGravity;
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
                 case GameState.Editing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
+                    UntetherPlacedObjectsFromPlacedScrews();
                     ResetBallPosition();
                     ResetPlacedObjectsTransforms();
                     FreezePlacedObjectsRigidbodies();
-                    UntetherPlacedObjectsFromPlacedScrews();
                     Physics2D.gravity = Vector2.zero;
                     GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
@@ -190,24 +190,24 @@ namespace Core
             for (int i = 0; i < placedObjectColliders.Count; i++)
             {
                 Collider2D collider1 = placedObjectColliders[i];
-                bool collider1DoesNotBelongToScrew =
-                    collider1.gameObject.GetComponent<Rigidbody2D>() != null;
-                if (collider1DoesNotBelongToScrew)
+                bool collider1BelongsToScrew =
+                    collider1.gameObject.GetComponent<Rigidbody2D>() == null;
+                if (collider1BelongsToScrew)
                 {
                     continue;
                 }
                 for (int j = 0; j < placedObjectColliders.Count; j++)
                 {
                     Collider2D collider2 = placedObjectColliders[j];
-                    bool collider2DoesBelongToScrew = i == j
-                        || collider2.gameObject.GetComponent<Rigidbody2D>() == null;
-                    if (collider2DoesBelongToScrew)
+                    bool collider2DoesNotBelongToScrew = i == j
+                        || collider2.gameObject.GetComponent<Rigidbody2D>() != null;
+                    if (collider2DoesNotBelongToScrew)
                     {
                         continue;
                     }
-                    bool screwCollidesWithOtherPlacedObject =
+                    bool objectCollidesWithScrew =
                         Physics2D.IsTouching(collider1, collider2);
-                    if (!screwCollidesWithOtherPlacedObject)
+                    if (!objectCollidesWithScrew)
                     {
                         continue;
                     }
@@ -216,23 +216,35 @@ namespace Core
             }
         }
 
-        private static void TetherObjectToScrew(GameObject screw, GameObject otherObject)
+        private static void TetherObjectToScrew(GameObject otherObject, GameObject screw)
         {
             otherObject.AddComponent<HingeJoint2D>();
             screw.transform.SetParent(otherObject.transform, true);
             otherObject.GetComponent<HingeJoint2D>().anchor = screw.transform.localPosition;
+            otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
         }
 
         private static void UntetherPlacedObjectsFromPlacedScrews()
         {
+            List<Transform> screws = new List<Transform>();
             foreach (Collider2D collider in GetPlacedObjectsColliders())
             {
-                if (!ColliderIsTetheredToScrew(collider))
+                foreach (Transform child in collider.transform)
                 {
-                    return;
+                    if (child.gameObject.GetComponent<Rigidbody2D>() == null)
+                    {
+                        screws.Add(child);
+                    }
                 }
-                Destroy(collider.gameObject.GetComponent<HingeJoint2D>());
-                collider.transform.GetChild(0).SetParent(collider.transform.parent, true);
+                foreach (HingeJoint2D joint in collider.gameObject.GetComponents<HingeJoint2D>())
+                {
+                    Destroy(joint);
+                }
+            }
+            GameObject placedObjectContainer = GameObject.Find(PLACED_OBJECTS_KEY);
+            foreach (Transform screw in screws)
+            {
+                screw.SetParent(placedObjectContainer.transform, true);
             }
         }
 
@@ -246,18 +258,6 @@ namespace Core
                 return new List<Collider2D>();
             }
             return placedObjectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
-        }
-
-        private static bool ColliderIsTetheredToScrew(Collider2D collider)
-        {
-            foreach (Transform child in collider.transform)
-            {
-                if (child.gameObject.GetComponent<Rigidbody2D>() == null)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         public static void ResetCurrentLevel()
