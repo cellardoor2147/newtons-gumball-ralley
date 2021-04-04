@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Audio {
     [System.Serializable] public class Sound {
@@ -17,6 +19,11 @@ namespace Audio {
             source.volume = MetaData.volume; 
             source.Play();
         }
+
+        public void Pause (){
+            source.Pause();
+        }
+
         public void Stop()
         {
             source.Stop();
@@ -49,13 +56,7 @@ namespace Audio {
                 currentSoundGameObject.transform.SetParent (this.transform);
                 element.SetSource (currentSoundGameObject.AddComponent<AudioSource>());
             }
-            PlaySound ("Menu_Music"); 
         }
-        // To be implemented when GUI/gamestate manager is added
-        
-        // void Update () {
-        //     if (time.time >5f)
-        // }
 
         public void PlaySound (string _name) {
             foreach (Audio.Sound element in sounds)
@@ -63,6 +64,19 @@ namespace Audio {
                 if (element.MetaData.name == _name)
                 {
                     element.Play();
+                    return;
+                }
+            }
+            //no sound with _name
+            Debug.LogWarning(SoundNotFound + _name);
+        }
+
+        public void PauseSound (string _name) {
+            foreach (Audio.Sound element in sounds)
+            {
+                if (element.MetaData.name == _name)
+                {
+                    element.Pause();
                     return;
                 }
             }

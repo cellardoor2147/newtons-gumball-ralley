@@ -113,6 +113,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2812968987502614947}
   - component: {fileID: 383362427435254110}
+  - component: {fileID: 2610485907198344459}
   m_Layer: 0
   m_Name: GUI Manager
   m_TagString: Untagged
@@ -148,6 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cceaad0c9809f804891b7b1aa1232350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2610485907198344459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812968987502614946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a454d8d9fe31940fb9eae60046d4f1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHoverSound: {fileID: 11400000, guid: a23192f27fbe6407bb181af51a30196e, type: 2}
+  ButtonClickSound: {fileID: 11400000, guid: 82ca246fcc36b4b718f0e652ae6d8ac2, type: 2}
 --- !u!1 &2812968987729119836
 GameObject:
   m_ObjectHideFlags: 0
