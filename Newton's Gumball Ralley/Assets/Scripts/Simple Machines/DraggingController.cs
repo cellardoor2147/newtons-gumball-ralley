@@ -6,6 +6,8 @@ namespace SimpleMachine
 {
     public class DraggingController : MonoBehaviour
     {
+        private static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
+
         private bool hasBeenPlaced;
         private Collider2D collider2D;
         private bool colliderIsTriggerByDefault;
@@ -23,6 +25,8 @@ namespace SimpleMachine
             spriteRenderer = GetComponent<SpriteRenderer>();
             defaultColor = spriteRenderer.color;
             rigidbody2D = GetComponent<Rigidbody2D>();
+            lastValidPosition = transform.position;
+            lastValidRotation = transform.rotation;
         }
 
         private Vector2 GetMousePositionInWorldCoordinates()
@@ -32,7 +36,7 @@ namespace SimpleMachine
 
         public void OnMouseDown()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Editing))
+            if (ShouldPreventDragging())
             {
                 return;
             }
@@ -45,7 +49,7 @@ namespace SimpleMachine
 
         public void OnMouseDrag()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Editing))
+            if (ShouldPreventDragging())
             {
                 return;
             }
@@ -62,7 +66,7 @@ namespace SimpleMachine
 
         public void OnMouseUp()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Editing))
+            if (ShouldPreventDragging())
             {
                 return;
             }
@@ -87,7 +91,7 @@ namespace SimpleMachine
 
         public void OnMouseOver()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Editing))
+            if (ShouldPreventDragging())
             {
                 return;
             }
@@ -96,6 +100,13 @@ namespace SimpleMachine
             {
                 Destroy(gameObject);
             }
+        }
+
+        public bool ShouldPreventDragging()
+        {
+            return !(GameStateManager.GetGameState().Equals(GameState.Editing)
+                && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)
+            );
         }
 
         private bool ShouldPreventObjectFromBeingPlaced()

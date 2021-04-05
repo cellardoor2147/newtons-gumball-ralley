@@ -1353,6 +1353,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cutscene GUI
       objectReference: {fileID: 0}
+    - target: {fileID: 1453246744615928657, guid: 35005e9f322c033458ecdaa676f8d19d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35005e9f322c033458ecdaa676f8d19d, type: 3}
 --- !u!224 &8563097407429869648 stripped

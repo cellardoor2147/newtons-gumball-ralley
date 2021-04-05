@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7452739008758157588}
   - component: {fileID: 7969862654975848587}
   - component: {fileID: 6485338633246049091}
+  - component: {fileID: -2636869317885675359}
   m_Layer: 0
   m_Name: Inclined Plane 1
   m_TagString: SimpleMachine
@@ -168,3 +169,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-2636869317885675359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8747652431741421954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: 43b42accf1154404f80932a6f0e409e5, type: 2}

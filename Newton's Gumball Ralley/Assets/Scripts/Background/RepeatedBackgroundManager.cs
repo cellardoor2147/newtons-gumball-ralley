@@ -5,8 +5,8 @@ namespace Background
     public class RepeatedBackgroundManager : MonoBehaviour
     {
         [SerializeField] private GameObject backgroundTexture;
-        [SerializeField] private int desiredNumberOfRows = 5;
-        [SerializeField] private int desiredNumberOfColumns = 5;
+        [SerializeField] public int desiredNumberOfRows = 5;
+        [SerializeField] public int desiredNumberOfColumns = 5;
 
         private float backgroundTextureWidth;
         private float backgroundTextureHeight;
