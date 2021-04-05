@@ -129,6 +129,7 @@ namespace Core
                     instance.StartCoroutine(TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY));
                     instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
                     instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
                     Physics2D.gravity = instance.defaultGravity;
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
@@ -142,6 +143,7 @@ namespace Core
                     instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
                     instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
                     instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
                     Physics2D.gravity = Vector2.zero;
                     GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
@@ -279,12 +281,26 @@ namespace Core
             yield return null;
         }
 
-        public static void ResetCurrentLevel()
+        private static IEnumerator RevertObjectsFromGray(string key)
         {
-            // TODO: properly reset scene using JSON object
-            // once level serialization works properly
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            SetGameState(GameState.Playing);
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.RevertFromGray()
+            );
+        }
+
+        private static IEnumerator GrayOutObjects(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.GrayOut()
+            );
         }
 
         private void Update()

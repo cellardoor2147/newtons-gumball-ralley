@@ -141,5 +141,15 @@ namespace SimpleMachine
             }
             rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+
+        public void GrayOut()
+        {
+            spriteRenderer.color = Color.gray;
+        }
+
+        public void RevertFromGray()
+        {
+            spriteRenderer.color = defaultColor;
+        }
     }
 }
