@@ -7,18 +7,31 @@ namespace DestructibleObject
         [SerializeField] float breakSpeed;
         [SerializeField] UnityEngine.Object destructibleRef;
 
+        float localVel = 0f;
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            float localYVel = collision.transform.InverseTransformDirection(collision.rigidbody.velocity).y;
-            if (collision.collider.name == "Wedge" && Mathf.Abs(localYVel) > breakSpeed)
+            if (collision.collider.name == "AxeWedgeCollider")
             {
-                Split(collision.transform);
+                localVel = collision.transform.InverseTransformDirection(collision.rigidbody.velocity).x;
+            }
+
+            if (collision.collider.name == "SpikeWedgeCollider")
+            {
+                localVel = -collision.transform.InverseTransformDirection(collision.rigidbody.velocity).y;
+            }
+
+            bool isWedge = collision.collider.name == "AxeWedgeCollider" || collision.collider.name == "SpikeWedgeCollider";
+
+            if (isWedge && localVel > breakSpeed)
+            {
+                Split(collision.GetContact(0));
             }
         }
 
-        public void Split(Transform hitTransform)
+        public void Split(ContactPoint2D contactPoint)
         {
-            GameObject destructible = Instantiate(destructibleRef, hitTransform.position, hitTransform.rotation) as GameObject;
+            GameObject destructible = Instantiate(destructibleRef, contactPoint.point, transform.rotation) as GameObject;
             destructible.transform.localScale = transform.lossyScale;
             Destroy(this.gameObject);
         }
