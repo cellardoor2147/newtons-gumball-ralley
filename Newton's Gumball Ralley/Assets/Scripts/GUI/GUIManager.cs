@@ -11,7 +11,8 @@ namespace GUI
         MainMenu = 1,
         Dialogue = 2,
         PlayMode = 3,
-        SettingsMenu = 4
+        EditMode = 4,
+        SettingsMenu = 5
     }
 
     public class GUIManager : MonoBehaviour

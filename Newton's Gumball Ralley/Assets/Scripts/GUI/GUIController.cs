@@ -17,7 +17,18 @@ namespace GUI
             // TODO: load dialogue based on current level data,
             // or go straight to play mode if there's no dialogue
             // for the current level
-            GameStateManager.SetGameState(GameState.Dialogue);
+            GameStateManager.SetGameState(GameState.Playing);
+        }
+
+        public void LoadEditMode()
+        {
+            GameStateManager.SetGameState(GameState.Editing);
+        }
+
+        public void ResetLevel()
+        {
+            // TODO: properly reload level from JSON after serialization
+            // is properly implemented
         }
 
         public void SkipDialogue()
