@@ -6,7 +6,7 @@ namespace Audio {
     [System.Serializable] public class Sound {
         public SoundMetaData MetaData;
         
-        private AudioSource source; 
+        [HideInInspector] public AudioSource source; 
 
         public void SetSource (AudioSource _source){
             source = _source;
@@ -69,6 +69,22 @@ namespace Audio {
             }
             //no sound with _name
             Debug.LogWarning(SoundNotFound + _name);
+        }
+
+        public bool isPlaying (string _name) {
+            foreach (Audio.Sound element in sounds)
+            {
+                if (element.MetaData.name == _name)
+                {
+                    if (element.source.isPlaying){
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            //no sound with _name
+            Debug.LogWarning(SoundNotFound + _name);
+            return false;
         }
 
         public void PauseSound (string _name) {
