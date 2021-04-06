@@ -26,6 +26,10 @@ namespace GUI.EditMode
         
         public void OnBeginDrag(PointerEventData pointerEventData)
         {
+            if (placeableObjectsContainer == null)
+            {
+                placeableObjectsContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
+            }
             GameObject objectBeingPlaced =
                 Instantiate(placeableObjectPrefab, placeableObjectsContainer.transform);
             objectBeingPlacedDraggingController =

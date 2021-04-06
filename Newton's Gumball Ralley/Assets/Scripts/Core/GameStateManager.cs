@@ -8,6 +8,7 @@ using Ball;
 using System.Linq;
 using System.Collections.Generic;
 using Audio;
+using System.Collections;
 
 namespace Core
 {
@@ -24,6 +25,7 @@ namespace Core
     public class GameStateManager : MonoBehaviour
     {
         public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
+        public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
 
         private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
@@ -57,7 +59,7 @@ namespace Core
         {
             if (instance != null)
             {
-                Destroy(this.gameObject);
+                Destroy(transform.parent.gameObject);
             }
             else
             {
@@ -76,8 +78,14 @@ namespace Core
             {
                 Debug.LogError("No audiomanager found");
             }
-
-            SetGameState(GameState.OpeningCutscene);
+            if (SceneManager.GetActiveScene().name.Equals(MAIN_MENU_SCENE_KEY))
+            {
+                SetGameState(GameState.OpeningCutscene);
+            }
+            else
+            {
+                SetGameState(GameState.Editing);
+            }
         }
 
         public static GameState GetGameState()
@@ -117,18 +125,25 @@ namespace Core
                     AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
                     AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
-                    TetherPlacedObjectsToPlacedScrews();
-                    UnfreezePlacedObjectsRigidbodies();
+                    instance.StartCoroutine(TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
                     Physics2D.gravity = instance.defaultGravity;
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
                 case GameState.Editing:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    UntetherPlacedObjectsFromPlacedScrews();
-                    ResetBallPosition();
-                    ResetPlacedObjectsTransforms();
-                    FreezePlacedObjectsRigidbodies();
+                    instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(ResetBallPosition());
+                    instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+                    instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
                     Physics2D.gravity = Vector2.zero;
                     GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
@@ -154,20 +169,17 @@ namespace Core
             SceneManager.LoadScene(sceneName);
         }
 
-        private static void ResetBallPosition()
+        private static IEnumerator ResetBallPosition()
         {
+            yield return new WaitUntil(() => GameObject.Find(SLING_ANCHOR_KEY) != null);
             GameObject slingAnchor = GameObject.Find(SLING_ANCHOR_KEY);
-            if (slingAnchor == null)
-            {
-                // Scene hasn't loaded yet, so sling anchor won't exist
-                return;
-            }
             slingAnchor.GetComponentInChildren<BallMovement>().ResetPosition();
         }
 
-        private static void ResetPlacedObjectsTransforms()
+        private static IEnumerator ResetObjectsTransforms(string key)
         {
-            GameObject.Find(PLACED_OBJECTS_KEY)
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
                 .GetComponentsInChildren<DraggingController>(true)
                 .ToList()
                 .ForEach(
@@ -175,14 +187,10 @@ namespace Core
             );
         }
 
-        private static void UnfreezePlacedObjectsRigidbodies()
+        private static IEnumerator UnfreezeObjectsRigidbodies(string key)
         {
-            GameObject placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
-            if (placedObjectsContainer == null)
-            {
-                return;
-            }
-            placedObjectsContainer
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
                 .GetComponentsInChildren<DraggingController>(true)
                 .ToList()
                 .ForEach(
@@ -190,14 +198,10 @@ namespace Core
             );
         }
 
-        private static void FreezePlacedObjectsRigidbodies()
+        private static IEnumerator FreezeObjectsRigidbodies(string key)
         {
-            GameObject placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
-            if (placedObjectsContainer == null)
-            {
-                return;
-            }
-            placedObjectsContainer
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
                 .GetComponentsInChildren<DraggingController>(true)
                 .ToList()
                 .ForEach(
@@ -205,21 +209,24 @@ namespace Core
             );
         }
 
-        private static void TetherPlacedObjectsToPlacedScrews()
+        private static IEnumerator TetherObjectsToPlacedScrews(string key)
         {
-            List<Collider2D> placedObjectColliders = GetPlacedObjectsColliders();
-            for (int i = 0; i < placedObjectColliders.Count; i++)
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            List<Collider2D> objectColliders =
+                objectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
+            for (int i = 0; i < objectColliders.Count; i++)
             {
-                Collider2D collider1 = placedObjectColliders[i];
+                Collider2D collider1 = objectColliders[i];
                 bool collider1BelongsToScrew =
                     collider1.gameObject.GetComponent<Rigidbody2D>() == null;
                 if (collider1BelongsToScrew)
                 {
                     continue;
                 }
-                for (int j = 0; j < placedObjectColliders.Count; j++)
+                for (int j = 0; j < objectColliders.Count; j++)
                 {
-                    Collider2D collider2 = placedObjectColliders[j];
+                    Collider2D collider2 = objectColliders[j];
                     bool collider2DoesNotBelongToScrew = i == j
                         || collider2.gameObject.GetComponent<Rigidbody2D>() != null;
                     if (collider2DoesNotBelongToScrew)
@@ -235,6 +242,7 @@ namespace Core
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
             }
+            yield return null;
         }
 
         private static void TetherObjectToScrew(GameObject otherObject, GameObject screw)
@@ -245,10 +253,14 @@ namespace Core
             otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
         }
 
-        private static void UntetherPlacedObjectsFromPlacedScrews()
+        private static IEnumerator UntetherObjectsFromPlacedScrews(string key)
         {
             List<Transform> screws = new List<Transform>();
-            foreach (Collider2D collider in GetPlacedObjectsColliders())
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            List<Collider2D> objectColliders =
+                objectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
+            foreach (Collider2D collider in objectColliders)
             {
                 foreach (Transform child in collider.transform)
                 {
@@ -262,31 +274,33 @@ namespace Core
                     Destroy(joint);
                 }
             }
-            GameObject placedObjectContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             foreach (Transform screw in screws)
             {
-                screw.SetParent(placedObjectContainer.transform, true);
+                screw.SetParent(objectContainer.transform, true);
             }
+            yield return null;
         }
 
-        private static List<Collider2D> GetPlacedObjectsColliders()
+        private static IEnumerator RevertObjectsFromGray(string key)
         {
-            GameObject placedObjectContainer = GameObject.Find(PLACED_OBJECTS_KEY);
-            if (placedObjectContainer == null)
-            {
-                // Game scene not loaded in yet, so this container
-                // doesn't exist
-                return new List<Collider2D>();
-            }
-            return placedObjectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.RevertFromGray()
+            );
         }
 
-        public static void ResetCurrentLevel()
+        private static IEnumerator GrayOutObjects(string key)
         {
-            // TODO: properly reset scene using JSON object
-            // once level serialization works properly
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            SetGameState(GameState.Playing);
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.GrayOut()
+            );
         }
 
         private void Update()
