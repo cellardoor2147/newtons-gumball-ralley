@@ -40,6 +40,7 @@ namespace GUI
                 );
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            yield return new WaitForSeconds(3);
             GameStateManager.SetGameState(GameState.MainMenu);
             yield return null;
         }
