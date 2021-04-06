@@ -2,7 +2,6 @@
 using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
-using GUI.EditMode;
 using SimpleMachine;
 using Ball;
 using System.Linq;
@@ -43,6 +42,7 @@ namespace Core
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
 
+        private GameState previousGameState;
         private GameState gameState;
         private Vector2 defaultGravity;
 
@@ -157,6 +157,7 @@ namespace Core
                     Debug.Log($"Tried setting invalid game state: {gameState}");
                     break;
             }
+            instance.previousGameState = instance.gameState;
             instance.gameState = gameState;
         }
 
@@ -314,7 +315,8 @@ namespace Core
                 return;
             }
             bool shouldOpenSettingsMenuByKeyPress =
-                gameState.Equals(GameState.Playing) &&
+                (gameState.Equals(GameState.Playing) ||
+                gameState.Equals(GameState.Editing)) &&
                 (Input.GetKeyDown(KeyCode.P) ||
                 Input.GetKeyDown(KeyCode.Escape));
             if (shouldOpenSettingsMenuByKeyPress)
@@ -328,7 +330,7 @@ namespace Core
                 Input.GetKeyDown(KeyCode.Escape));
             if (shouldCloseSettingsMenuByKeyPress)
             {
-                SetGameState(GameState.Playing);
+                SetGameState(previousGameState);
                 return;
             }
         }
