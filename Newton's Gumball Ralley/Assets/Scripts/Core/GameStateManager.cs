@@ -122,8 +122,11 @@ namespace Core
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
-                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
-                    AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
+                    AudioManager.instance.StopSound(instance.MenuMusicSound.name);
+                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);  
+                    if (!AudioManager.instance.isPlaying(instance.Level2MusicSound.name)) {
+                        AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
+                    } 
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY));
                     instance.StartCoroutine(TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY));
@@ -135,7 +138,12 @@ namespace Core
                     break;
                 case GameState.Editing:
                     Time.timeScale = 1.0f;
-                    LoadScene(GAME_SCENE_KEY);
+                    LoadScene(GAME_SCENE_KEY);              
+                    AudioManager.instance.StopSound(instance.MenuMusicSound.name);
+                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
+                    if (!AudioManager.instance.isPlaying(instance.Level2MusicSound.name)) {
+                        AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
+                    }
                     instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
                     instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
                     instance.StartCoroutine(ResetBallPosition());
