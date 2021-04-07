@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1430043746231358095}
   - component: {fileID: 4560189587688531359}
   - component: {fileID: 3487271014723814807}
+  - component: {fileID: -9133929253394571938}
+  - component: {fileID: 4576237729642667566}
   m_Layer: 0
   m_Name: LeverPlatform
   m_TagString: SimpleMachine
@@ -51,7 +53,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &4560189587688531359
@@ -130,3 +132,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.121098, y: 0.109178245}
   m_EdgeRadius: 0
+--- !u!114 &-9133929253394571938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430043746231358091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4576237729642667566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430043746231358091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77, type: 2}

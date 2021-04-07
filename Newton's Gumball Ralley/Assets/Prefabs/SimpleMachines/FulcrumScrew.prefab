@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1644436574175487610}
   - component: {fileID: 1644436574175487609}
-  - component: {fileID: 2123564333907812895}
+  - component: {fileID: -721432129271095645}
   m_Layer: 0
   m_Name: FulcrumScrew
   m_TagString: Untagged
@@ -48,7 +48,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &2123564333907812895
+--- !u!114 &-721432129271095645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

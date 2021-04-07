@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
 using SimpleMachine;
+using FulcrumScrew;
 using Ball;
 using System.Linq;
 using System.Collections.Generic;
@@ -248,6 +249,14 @@ namespace Core
                     {
                         continue;
                     }
+                    bool collider2IsFulcrumScrew =
+                        collider2.gameObject.name.Equals("FulcrumScrew");
+                    if (collider2IsFulcrumScrew)
+                    {
+                        FulcrumScrewBehavior fulcrumScrew = collider2.gameObject.GetComponent<FulcrumScrewBehavior>();
+                        if (!fulcrumScrew.FulcrumJointShouldBeCreated)
+                            continue;
+                    }
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
             }
@@ -256,36 +265,26 @@ namespace Core
 
         private static void TetherObjectToScrew(GameObject otherObject, GameObject screw)
         {
+            Transform previousParent = screw.transform.parent;
             otherObject.AddComponent<HingeJoint2D>();
             screw.transform.SetParent(otherObject.transform, true);
             otherObject.GetComponent<HingeJoint2D>().anchor = screw.transform.localPosition;
+            screw.transform.SetParent(previousParent, true);
             otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
         }
 
         private static IEnumerator UntetherObjectsFromPlacedScrews(string key)
         {
-            List<Transform> screws = new List<Transform>();
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject objectContainer = GameObject.Find(key);
             List<Collider2D> objectColliders =
                 objectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
             foreach (Collider2D collider in objectColliders)
             {
-                foreach (Transform child in collider.transform)
-                {
-                    if (child.gameObject.GetComponent<Rigidbody2D>() == null)
-                    {
-                        screws.Add(child);
-                    }
-                }
                 foreach (HingeJoint2D joint in collider.gameObject.GetComponents<HingeJoint2D>())
                 {
                     Destroy(joint);
                 }
-            }
-            foreach (Transform screw in screws)
-            {
-                screw.SetParent(objectContainer.transform, true);
             }
             yield return null;
         }

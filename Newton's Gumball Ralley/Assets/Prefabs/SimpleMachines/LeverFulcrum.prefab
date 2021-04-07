@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3894201689709608816}
   - component: {fileID: 3237775516208167531}
   - component: {fileID: 736702365118454131}
+  - component: {fileID: 2711743973641093751}
+  - component: {fileID: -9186538021647538262}
   m_Layer: 0
   m_Name: LeverFulcrum
   m_TagString: SimpleMachine
@@ -131,6 +133,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.19688922, y: 0.18318665}
   m_EdgeRadius: 0
+--- !u!114 &2711743973641093751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894201689709608813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-9186538021647538262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3894201689709608813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f, type: 2}
 --- !u!1001 &1416498234272496354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,6 +165,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3894201689709608812}
     m_Modifications:
+    - target: {fileID: 1644436574175487609, guid: aee7ed7bd0796df4893ebdbe5c49d194,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 1644436574175487610, guid: aee7ed7bd0796df4893ebdbe5c49d194,
         type: 3}
       propertyPath: m_RootOrder
@@ -213,7 +245,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: FulcrumScrew
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2123564333907812895, guid: aee7ed7bd0796df4893ebdbe5c49d194, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aee7ed7bd0796df4893ebdbe5c49d194, type: 3}
 --- !u!4 &394733443044629656 stripped
 Transform:

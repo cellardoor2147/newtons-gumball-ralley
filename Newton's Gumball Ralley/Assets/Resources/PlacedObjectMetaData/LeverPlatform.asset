@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
+  m_Name: LeverPlatform
+  m_EditorClassIdentifier: 
+  objectName: LeverPlatform
+  prefab: {fileID: 1430043746231358091, guid: ee9b4aa85425abc4d9493f546480aec2, type: 3}
