@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5659059291273092661}
   - component: {fileID: 5806661425735471176}
+  - component: {fileID: -6345983108032622269}
+  - component: {fileID: -6360999849208479691}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: SimpleMachine
@@ -54,6 +56,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-6345983108032622269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678277429543256414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6360999849208479691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678277429543256414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
 --- !u!1 &6957989907649776003
 GameObject:
   m_ObjectHideFlags: 0

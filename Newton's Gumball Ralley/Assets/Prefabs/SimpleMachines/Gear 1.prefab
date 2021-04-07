@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1578605909042512867}
   - component: {fileID: -1222494028702323485}
   - component: {fileID: 5214306395051647242}
+  - component: {fileID: 1873718688760848271}
+  - component: {fileID: 2903396123927331631}
   m_Layer: 0
   m_Name: Gear 1
   m_TagString: SimpleMachine
@@ -235,3 +237,28 @@ CircleCollider2D:
   m_Offset: {x: 0.01, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.17
+--- !u!114 &1873718688760848271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370933668024926976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2903396123927331631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370933668024926976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
