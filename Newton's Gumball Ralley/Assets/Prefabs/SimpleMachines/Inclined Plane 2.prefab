@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationArrowsPrefab: {fileID: 3558116909164844619, guid: 397aa333f7225fd4cacdb1bc0c5b65ac,
+    type: 3}
 --- !u!114 &8019181370695918798
 MonoBehaviour:
   m_ObjectHideFlags: 0

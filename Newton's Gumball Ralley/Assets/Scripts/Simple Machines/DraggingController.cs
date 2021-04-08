@@ -8,6 +8,8 @@ namespace SimpleMachine
     {
         private static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
 
+        [SerializeField] private GameObject rotationArrowsPrefab;
+
         private bool hasBeenPlaced;
         private Collider2D collider2D;
         private bool colliderIsTriggerByDefault;
@@ -16,6 +18,8 @@ namespace SimpleMachine
         private Rigidbody2D rigidbody2D;
         private Vector2 lastValidPosition;
         private Quaternion lastValidRotation;
+        private GameObject rotationArrows;
+        private GameObject placedObjectsContainer;
 
         private void Awake()
         {
@@ -27,6 +31,7 @@ namespace SimpleMachine
             rigidbody2D = GetComponent<Rigidbody2D>();
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
+            placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
         }
 
         private Vector2 GetMousePositionInWorldCoordinates()
@@ -53,6 +58,7 @@ namespace SimpleMachine
             {
                 return;
             }
+            RemoveRotationArrows();
             transform.position = GetMousePositionInWorldCoordinates();
             if (ShouldPreventObjectFromBeingPlaced())
             {
@@ -86,6 +92,7 @@ namespace SimpleMachine
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
             spriteRenderer.color = defaultColor;
+            AddRotationArrows();
             EditModeManager.ShowEditModeGUI();
         }
 
@@ -150,6 +157,40 @@ namespace SimpleMachine
         public void RevertFromGray()
         {
             spriteRenderer.color = defaultColor;
+        }
+
+        public void RemoveRotationArrows()
+        {
+            if (rotationArrows != null)
+            {
+                Destroy(rotationArrows);
+            }
+        }
+
+        public void AddRotationArrows()
+        {
+            if (rotationArrowsPrefab != null)
+            {
+                rotationArrows = Instantiate(
+                    rotationArrowsPrefab,
+                    transform.position + (transform.up / 2),
+                    Quaternion.identity,
+                    placedObjectsContainer.transform
+                );
+                foreach (
+                    RotatingController child in rotationArrows.GetComponentsInChildren<RotatingController>()
+                )
+                {
+                    child.SetObjectToRotate(gameObject);
+                }
+            }
+        }
+
+        public void Rotate(float rotationMagnitude)
+        {
+            RemoveRotationArrows();
+            transform.Rotate(new Vector3(0f, 0f, rotationMagnitude));
+            AddRotationArrows();
         }
     }
 }
