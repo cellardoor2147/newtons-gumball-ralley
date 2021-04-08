@@ -147,6 +147,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationArrowsPrefab: {fileID: 3558116909164844619, guid: 397aa333f7225fd4cacdb1bc0c5b65ac,
     type: 3}
+  leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
+    type: 2}
+  leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
+    type: 2}
 --- !u!114 &8019181370695918798
 MonoBehaviour:
   m_ObjectHideFlags: 0
