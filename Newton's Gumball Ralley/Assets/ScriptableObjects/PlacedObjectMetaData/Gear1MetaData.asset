@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
   m_Name: PlacedObjectMetaData
   m_EditorClassIdentifier: 
-  objectName: 
-  prefab: {fileID: 0}
+  objectName: Gear1
+  prefab: {fileID: 1370933668024926976, guid: fa1cbbf8f9d554124ab545170cc5e5a2, type: 3}
