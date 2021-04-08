@@ -105,6 +105,8 @@ namespace SimpleMachine
             bool playerRightClickedThisObject = Input.GetMouseButtonDown(1);
             if (playerRightClickedThisObject)
             {
+                RemoveRotationArrows();
+                EditModeManager.ShowEditModeGUI();
                 Destroy(gameObject);
             }
         }
