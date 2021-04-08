@@ -229,7 +229,7 @@ namespace Core
             {
                 Collider2D collider1 = objectColliders[i];
                 bool collider1BelongsToScrew =
-                    collider1.gameObject.GetComponent<Rigidbody2D>() == null;
+                    collider1.gameObject.CompareTag("Screw");
                 if (collider1BelongsToScrew)
                 {
                     continue;
@@ -238,7 +238,7 @@ namespace Core
                 {
                     Collider2D collider2 = objectColliders[j];
                     bool collider2DoesNotBelongToScrew = i == j
-                        || collider2.gameObject.GetComponent<Rigidbody2D>() != null;
+                        || !collider2.gameObject.CompareTag("Screw");
                     if (collider2DoesNotBelongToScrew)
                     {
                         continue;

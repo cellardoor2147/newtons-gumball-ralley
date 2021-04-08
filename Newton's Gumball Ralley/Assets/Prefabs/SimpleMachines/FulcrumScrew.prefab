@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -721432129271095645}
   m_Layer: 0
   m_Name: FulcrumScrew
-  m_TagString: Untagged
+  m_TagString: Screw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

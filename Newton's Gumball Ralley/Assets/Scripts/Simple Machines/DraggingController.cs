@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using Core;
+using SnapCheck;
 using GUI.EditMode;
+using System.Collections.Generic;
 
 namespace SimpleMachine
 {
@@ -16,6 +18,8 @@ namespace SimpleMachine
         private Rigidbody2D rigidbody2D;
         private Vector2 lastValidPosition;
         private Quaternion lastValidRotation;
+        private PlacedObjectManager objectManager;
+        private string objectName;
 
         private void Awake()
         {
@@ -27,6 +31,8 @@ namespace SimpleMachine
             rigidbody2D = GetComponent<Rigidbody2D>();
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
+            objectManager = GetComponent<PlacedObjectManager>();
+            objectName = objectManager.metaData.objectName;
         }
 
         private Vector2 GetMousePositionInWorldCoordinates()
@@ -39,6 +45,10 @@ namespace SimpleMachine
             if (ShouldPreventDragging())
             {
                 return;
+            }
+            if (CanSnap())
+            {               
+                RenderSnapLocations();
             }
             EditModeManager.HideEditModeGUI();
             lastValidPosition = transform.position;
@@ -62,6 +72,10 @@ namespace SimpleMachine
             {
                 spriteRenderer.color = Color.green;
             }
+            if (ShouldSnap())
+            {
+                SnapToNearestLocation();
+            }
         }
 
         public void OnMouseUp()
@@ -70,6 +84,9 @@ namespace SimpleMachine
             {
                 return;
             }
+
+            DisableSnapLocations();
+
             if (ShouldPreventObjectFromBeingPlaced())
             {
                 if (!hasBeenPlaced)
@@ -107,6 +124,120 @@ namespace SimpleMachine
             return !(GameStateManager.GetGameState().Equals(GameState.Editing)
                 && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)
             );
+        }
+
+        private bool CanSnap()
+        {
+            if (objectManager == null)
+                return false;
+
+            switch (objectName)
+            {
+                case "LeverFulcrum":
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        private bool ShouldSnap()
+        {
+            switch (objectName)
+            {
+                case "LeverFulcrum":
+                    SnapChecker fulcrumSnapChecker = GetComponent<SnapChecker>();
+                    return fulcrumSnapChecker.ShouldSnap;
+                default:
+                    return false;
+            }
+        }
+
+        private void SnapToNearestLocation()
+        {
+            switch (objectName)
+            {
+                case "LeverFulcrum":
+                    Transform closestSnapPoint = GetNearestSnapLocation();
+                    transform.position = closestSnapPoint.position - new Vector3(0, 0.091f, 0);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private Transform GetNearestSnapLocation()
+        {
+            List<GameObject> fulcrumSnapObjects = GetSnapObjects();
+            float closestDistance = Mathf.Infinity;
+            Transform closestSnapPoint = null;
+            Vector2 mousePosition = GetMousePositionInWorldCoordinates();
+            foreach (GameObject fulcrumSnapObject in fulcrumSnapObjects)
+            {
+                float distanceToSnapPoint = Vector2.Distance(fulcrumSnapObject.transform.position, mousePosition);
+                if (distanceToSnapPoint < closestDistance)
+                {
+                    closestDistance = distanceToSnapPoint;
+                    closestSnapPoint = fulcrumSnapObject.transform;
+                }
+            }
+
+            return closestSnapPoint;
+        }
+
+        private void RenderSnapLocations()
+        {
+            List<GameObject> placedObjects = GetPlacedObjects();
+
+            ToggleSnapLocations(placedObjects, true);
+        }
+
+        private void DisableSnapLocations()
+        {
+            List<GameObject> placedObjects = GetPlacedObjects();
+
+            ToggleSnapLocations(placedObjects, false);
+        }
+
+        private List<GameObject> GetPlacedObjects()
+        {
+            GameObject objectContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
+            List<GameObject> placedObjects = new List<GameObject>();
+            foreach (Transform placedObject in objectContainer.transform)
+            {
+                if (placedObject.GetComponent<PlacedObjectManager>())
+                    placedObjects.Add(placedObject.gameObject);
+            }
+
+            return placedObjects;
+        }
+
+        private List<GameObject> GetSnapObjects()
+        {
+            SnapChecker snapChecker = GetComponent<SnapChecker>();
+            GameObject snapPointHolder = snapChecker.SnapPointHolder;
+            List<GameObject> snapPoints = new List<GameObject>();
+            foreach (Transform snapPoint in snapPointHolder.transform)
+            {
+                snapPoints.Add(snapPoint.gameObject);
+            }
+
+            return snapPoints;
+        }
+
+        private void ToggleSnapLocations(List<GameObject> placedObjects, bool activeState)
+        {
+            switch (objectName)
+            {
+                case "LeverFulcrum":
+                    List<GameObject> existingLeverPlatforms =
+                        placedObjects.FindAll(placedObject =>
+                        placedObject.GetComponent<PlacedObjectManager>().metaData.objectName.Equals("LeverPlatform"));
+                    existingLeverPlatforms.ForEach(existingLeverPlatform =>
+                        existingLeverPlatform.transform.GetChild(0).gameObject.SetActive(activeState));
+                    break;
+                default:
+                    break;
+            }
         }
 
         private bool ShouldPreventObjectFromBeingPlaced()
