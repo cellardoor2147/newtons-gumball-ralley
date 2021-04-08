@@ -81,6 +81,8 @@ namespace SimpleMachine
                 if (!hasBeenPlaced)
                 {
                     Destroy(gameObject);
+                    EditModeManager.ShowEditModeGUI();
+                    return;
                 }
                 ResetTransform();
             }
@@ -175,7 +177,7 @@ namespace SimpleMachine
             {
                 rotationArrows = Instantiate(
                     rotationArrowsPrefab,
-                    transform.position + (transform.up / 2),
+                    transform.position,
                     Quaternion.identity,
                     placedObjectsContainer.transform
                 );
@@ -191,8 +193,20 @@ namespace SimpleMachine
         public void Rotate(float rotationMagnitude)
         {
             RemoveRotationArrows();
-            transform.Rotate(new Vector3(0f, 0f, rotationMagnitude));
+            RotateToNextValidPosition(rotationMagnitude);
             AddRotationArrows();
+        }
+
+        private void RotateToNextValidPosition(float rotationMagnitude)
+        {
+            bool rotationWouldMakeGameObjectHorizontalOrVertical =
+                (Mathf.RoundToInt(transform.rotation.eulerAngles.z + rotationMagnitude) % 90) == 0;
+            if (rotationWouldMakeGameObjectHorizontalOrVertical)
+            {
+                rotationMagnitude *= 2;
+            }
+            transform.Rotate(new Vector3(0f, 0f, rotationMagnitude));
+            lastValidRotation = transform.rotation;
         }
     }
 }
