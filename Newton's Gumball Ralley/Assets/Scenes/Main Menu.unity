@@ -188,6 +188,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 9000327746176373075, guid: fd513e4562e541241b204c72c87e7ed9,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000327746176373075, guid: fd513e4562e541241b204c72c87e7ed9,
+        type: 3}
+      propertyPath: sounds.Array.data[13].MetaData
+      value: 
+      objectReference: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd513e4562e541241b204c72c87e7ed9, type: 3}
 --- !u!1 &2103709415

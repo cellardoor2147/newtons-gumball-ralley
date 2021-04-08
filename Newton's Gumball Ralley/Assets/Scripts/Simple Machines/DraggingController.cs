@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Core;
 using GUI.EditMode;
+using Audio;
 
 namespace SimpleMachine
 {
@@ -17,6 +18,8 @@ namespace SimpleMachine
         private Vector2 lastValidPosition;
         private Quaternion lastValidRotation;
 
+        [SerializeField] SoundMetaData ScrewSound;
+
         private void Awake()
         {
             hasBeenPlaced = false;
@@ -27,6 +30,14 @@ namespace SimpleMachine
             rigidbody2D = GetComponent<Rigidbody2D>();
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
+        }
+
+        private void Start()
+        {
+            if (AudioManager.instance == null)
+            {
+                Debug.LogError("No audiomanager found");
+            }
         }
 
         private Vector2 GetMousePositionInWorldCoordinates()
@@ -83,6 +94,9 @@ namespace SimpleMachine
                 hasBeenPlaced = true;
                 lastValidPosition = transform.position;
                 lastValidRotation = transform.rotation;
+                if(rigidbody2D == null) {
+                    AudioManager.instance.PlaySound(ScrewSound.name);
+                } 
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
             spriteRenderer.color = defaultColor;
