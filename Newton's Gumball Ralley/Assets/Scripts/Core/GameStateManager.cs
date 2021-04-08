@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
 using SimpleMachine;
-using FulcrumScrew;
 using Ball;
 using System.Linq;
 using System.Collections.Generic;
@@ -267,9 +266,13 @@ namespace Core
         {
             Transform previousParent = screw.transform.parent;
             otherObject.AddComponent<HingeJoint2D>();
-            screw.transform.SetParent(otherObject.transform, true);
+            screw.transform.SetParent(otherObject.transform, true); /* screw's parent needs to be set to thing 
+                                                                     * with joint; otherwise joint won't work */
             otherObject.GetComponent<HingeJoint2D>().anchor = screw.transform.localPosition;
-            screw.transform.SetParent(previousParent, true);
+            screw.transform.SetParent(previousParent, true); /* reverts reparenting done above; 
+                                                              * e.g. with FulcrumScrew, it needs to be a child
+                                                              * of LeverFulcrum, so this line sets the parent of
+                                                              * FulcrumScrew back to LeverFulcrum */
             otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
         }
 

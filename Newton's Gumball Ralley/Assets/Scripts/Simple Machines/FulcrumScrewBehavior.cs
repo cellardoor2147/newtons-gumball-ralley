@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Core;
 
-namespace FulcrumScrew
+namespace SimpleMachine
 {
     public class FulcrumScrewBehavior : MonoBehaviour
     {

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: LeverFulcrum
   prefab: {fileID: 3894201689709608813, guid: 24a43fbfdc0344148ac0a9b036e2c20a, type: 3}
+  canSnap: 1
