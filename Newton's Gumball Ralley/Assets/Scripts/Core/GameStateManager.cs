@@ -228,7 +228,7 @@ namespace Core
             {
                 Collider2D collider1 = objectColliders[i];
                 bool collider1BelongsToScrew =
-                    collider1.gameObject.GetComponent<Rigidbody2D>() == null;
+                    collider1.gameObject.CompareTag("Screw");
                 if (collider1BelongsToScrew)
                 {
                     continue;
@@ -237,7 +237,7 @@ namespace Core
                 {
                     Collider2D collider2 = objectColliders[j];
                     bool collider2DoesNotBelongToScrew = i == j
-                        || collider2.gameObject.GetComponent<Rigidbody2D>() != null;
+                        || !collider2.gameObject.CompareTag("Screw");
                     if (collider2DoesNotBelongToScrew)
                     {
                         continue;
@@ -248,6 +248,14 @@ namespace Core
                     {
                         continue;
                     }
+                    bool collider2IsFulcrumScrew =
+                        collider2.gameObject.name.Equals("FulcrumScrew");
+                    if (collider2IsFulcrumScrew)
+                    {
+                        FulcrumScrewBehavior fulcrumScrew = collider2.gameObject.GetComponent<FulcrumScrewBehavior>();
+                        if (!fulcrumScrew.FulcrumJointShouldBeCreated)
+                            continue;
+                    }
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
             }
@@ -256,36 +264,30 @@ namespace Core
 
         private static void TetherObjectToScrew(GameObject otherObject, GameObject screw)
         {
+            Transform previousParent = screw.transform.parent;
             otherObject.AddComponent<HingeJoint2D>();
-            screw.transform.SetParent(otherObject.transform, true);
+            screw.transform.SetParent(otherObject.transform, true); /* screw's parent needs to be set to thing 
+                                                                     * with joint; otherwise joint won't work */
             otherObject.GetComponent<HingeJoint2D>().anchor = screw.transform.localPosition;
+            screw.transform.SetParent(previousParent, true); /* reverts reparenting done above; 
+                                                              * e.g. with FulcrumScrew, it needs to be a child
+                                                              * of LeverFulcrum, so this line sets the parent of
+                                                              * FulcrumScrew back to LeverFulcrum */
             otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
         }
 
         private static IEnumerator UntetherObjectsFromPlacedScrews(string key)
         {
-            List<Transform> screws = new List<Transform>();
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject objectContainer = GameObject.Find(key);
             List<Collider2D> objectColliders =
                 objectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
             foreach (Collider2D collider in objectColliders)
             {
-                foreach (Transform child in collider.transform)
-                {
-                    if (child.gameObject.GetComponent<Rigidbody2D>() == null)
-                    {
-                        screws.Add(child);
-                    }
-                }
                 foreach (HingeJoint2D joint in collider.gameObject.GetComponents<HingeJoint2D>())
                 {
                     Destroy(joint);
                 }
-            }
-            foreach (Transform screw in screws)
-            {
-                screw.SetParent(objectContainer.transform, true);
             }
             yield return null;
         }

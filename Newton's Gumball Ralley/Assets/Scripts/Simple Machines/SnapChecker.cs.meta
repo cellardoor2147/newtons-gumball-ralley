@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: a11ab1b6c63aee0418857bab933c659d
+guid: d3c703c1d9c062248b754d9c2b94616f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
