@@ -276,11 +276,6 @@ namespace Core
             yield return null;
         }
 
-        private static bool GameObjectIsNonScrewSimpleMachine(GameObject gameObject)
-        {
-            return !GameObjectIsScrew(gameObject) && gameObject.tag.Equals(SIMPLE_MACHINE_KEY);
-        }
-
         private static void TetherObjectToScrew(GameObject otherObject, GameObject screw)
         {
             Transform previousParent = screw.transform.parent;
@@ -309,14 +304,6 @@ namespace Core
                 }
             }
             yield return null;
-        }
-
-        private static bool GameObjectIsScrew(GameObject gameObject)
-        {
-            PlacedObjectManager placedObjectManager = 
-                gameObject.GetComponent<PlacedObjectManager>();
-            return placedObjectManager != null &&
-                placedObjectManager.metaData.name.Equals(SCREW_KEY);
         }
 
         private static IEnumerator RevertObjectsFromGray(string key)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8655927393971564938}
   m_Layer: 0
   m_Name: Right Arrow
-  m_TagString: Untagged
+  m_TagString: RotationArrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 8153266767749253278, guid: 4bf8646de7283e447adbdb2aad016602,
     type: 3}
   m_Color: {r: 0.59139746, g: 0.24448201, b: 0.7735849, a: 1}
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715fefdf97c1b8349a13e6eb8e26a9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationMagnitude: 15
+  rotationMagnitude: -15
 --- !u!61 &8655927393971564938
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 596466792716229077}
   m_Layer: 0
   m_Name: Left Arrow
-  m_TagString: Untagged
+  m_TagString: RotationArrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 8153266767749253278, guid: 4bf8646de7283e447adbdb2aad016602,
     type: 3}
   m_Color: {r: 0.59139746, g: 0.24448201, b: 0.7735849, a: 1}
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715fefdf97c1b8349a13e6eb8e26a9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationMagnitude: -15
+  rotationMagnitude: 15
 --- !u!61 &596466792716229077
 BoxCollider2D:
   m_ObjectHideFlags: 0
