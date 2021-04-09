@@ -169,6 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
+    type: 2}
+  leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
+    type: 2}
 --- !u!114 &-2636869317885675359
 MonoBehaviour:
   m_ObjectHideFlags: 0

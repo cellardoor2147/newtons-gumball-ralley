@@ -7,5 +7,6 @@ namespace Core
     {
         public string objectName;
         public GameObject prefab;
+        public bool canSnap;
     }
 }
