@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using Core;
-using SnapCheck;
 using GUI.EditMode;
-using System.Collections.Generic;
+using Audio;
 
 namespace SimpleMachine
 {
@@ -26,8 +25,10 @@ namespace SimpleMachine
         private GameObject placedObjectsContainer;
         private PlacedObjectManager objectManager;
         private PlacedObjectMetaData objectMetaData;
+        
         [SerializeField] private PlacedObjectMetaData leverPlatformMetaData;
         [SerializeField] private PlacedObjectMetaData leverFulcrumMetaData;
+        [SerializeField] SoundMetaData ScrewSound;
 
         private void Awake()
         {
@@ -44,6 +45,14 @@ namespace SimpleMachine
             objectMetaData = objectManager.metaData;
         }
 
+        private void Start()
+        {
+            if (AudioManager.instance == null)
+            {
+                Debug.LogError("No audiomanager found");
+            }
+        }
+
         private Vector2 GetMousePositionInWorldCoordinates()
         {
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -54,10 +63,6 @@ namespace SimpleMachine
             if (ShouldPreventDragging())
             {
                 return;
-            }
-            if (objectMetaData.canSnap)
-            {
-                ToggleSnapLocations(true);
             }
             EditModeManager.HideEditModeGUI();
             lastValidPosition = transform.position;
@@ -82,10 +87,6 @@ namespace SimpleMachine
             {
                 spriteRenderer.color = Color.green;
             }
-            if (ShouldSnap())
-            {
-                SnapToNearestLocation();
-            }
         }
 
         public void OnMouseUp()
@@ -94,9 +95,6 @@ namespace SimpleMachine
             {
                 return;
             }
-
-            ToggleSnapLocations(false);
-
             if (ShouldPreventObjectFromBeingPlaced())
             {
                 if (!hasBeenPlaced)
@@ -112,6 +110,9 @@ namespace SimpleMachine
                 hasBeenPlaced = true;
                 lastValidPosition = transform.position;
                 lastValidRotation = transform.rotation;
+                if(rigidbody2D == null) {
+                    AudioManager.instance.PlaySound(ScrewSound.name);
+                } 
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
             spriteRenderer.color = defaultColor;
@@ -139,74 +140,6 @@ namespace SimpleMachine
             return !(GameStateManager.GetGameState().Equals(GameState.Editing)
                 && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)
             );
-        }
-
-        private bool ShouldSnap()
-        {
-            if (objectMetaData.Equals(leverFulcrumMetaData))
-            {
-                SnapChecker fulcrumSnapChecker = GetComponent<SnapChecker>();
-                return fulcrumSnapChecker.ShouldSnap;
-            }
-
-            return false;
-        }
-
-        private void SnapToNearestLocation()
-        {
-            Vector3 closestSnapPoint = GetNearestSnapLocation();
-            transform.position = closestSnapPoint;
-        }
-
-        private Vector3 GetNearestSnapLocation()
-        {
-            if (objectMetaData.Equals(leverFulcrumMetaData))
-            {
-                List<GameObject> fulcrumSnapObjects = GetSnapObjects();
-                float closestDistance = Mathf.Infinity;
-                Vector3 desiredSnapLocation = new Vector3();
-                Vector2 mousePosition = GetMousePositionInWorldCoordinates();
-                foreach (GameObject fulcrumSnapObject in fulcrumSnapObjects)
-                {
-                    float distanceToSnapPoint = Vector2.Distance(fulcrumSnapObject.transform.position, mousePosition);
-                    if (distanceToSnapPoint < closestDistance)
-                    {
-                        closestDistance = distanceToSnapPoint;
-                        Transform closestSnapPoint = fulcrumSnapObject.transform;
-                        desiredSnapLocation = closestSnapPoint.position - new Vector3(0, 0.091f, 0);
-                        // .091f offset is required to get fulcrum screw in correct place
-                    }
-                }
-                return desiredSnapLocation;
-            }
-            return Vector3.zero;
-        }
-
-        private List<GameObject> GetSnapObjects()
-        {
-            GameObject snapPointHolder = GetComponent<SnapChecker>().SnapPointHolder;
-            List<GameObject> snapPoints = new List<GameObject>();
-            foreach (Transform snapPoint in snapPointHolder.transform)
-            {
-                snapPoints.Add(snapPoint.gameObject);
-            }
-
-            return snapPoints;
-        }
-
-        private void ToggleSnapLocations(bool activeState)
-        {
-            GameObject objectContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
-
-            if (objectMetaData.Equals(leverFulcrumMetaData))
-            {
-                foreach (Transform placedObject in objectContainer.transform)
-                {
-                    PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
-                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(leverPlatformMetaData))
-                        placedObject.GetChild(0).gameObject.SetActive(activeState);
-                }
-            }
         }
 
         private bool ShouldPreventObjectFromBeingPlaced()
