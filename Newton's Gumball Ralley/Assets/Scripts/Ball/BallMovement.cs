@@ -115,6 +115,7 @@ namespace Ball
                 isBeingPulled = false;
                 hasBeenReleased = true;
                 rigidBody.gravityScale = 1.0f;
+                AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 StartCoroutine(ReleaseAfterDelay());
             }
         }
