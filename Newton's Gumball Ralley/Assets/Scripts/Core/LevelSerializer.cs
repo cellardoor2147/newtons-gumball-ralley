@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Background;
+using System.Collections;
 
 namespace Core
 {
@@ -42,6 +43,7 @@ namespace Core
         private static readonly string SLING_ANCHOR_KEY = "Sling Anchor";
         private static readonly string WRITE_FILE_PATH_PREFIX = "Assets/LevelsData/";
         private static readonly string ENVIRONMENT_BLOCK_KEY = "EnvironmentBlock";
+        private static readonly string GAME_SCENE_KEY = "Game";
 
         public static void Serialize(int worldIndex, int levelIndex, string customLevelName)
         {
@@ -133,11 +135,10 @@ namespace Core
                 serializedLevelData = streamReader.ReadToEnd();
             }
             LevelData levelData = JsonUtility.FromJson<LevelData>(serializedLevelData);
-            SetSceneWithLevelData(levelData);
             return levelData;
         }
 
-        private static void SetSceneWithLevelData(LevelData levelData)
+        public static void SetSceneWithLevelData(LevelData levelData)
         {
             List<GameObject> rootGameObjects = new List<GameObject>();
             SceneManager.GetActiveScene().GetRootGameObjects(rootGameObjects);
@@ -202,6 +203,18 @@ namespace Core
             {
                 GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
             }
+        }
+
+        public static IEnumerator AsyncSetSceneWithLevelData(LevelData levelData)
+        {
+            yield return new WaitUntil(() => GameSceneIsLoaded());
+            SetSceneWithLevelData(levelData);
+        }
+
+        private static bool GameSceneIsLoaded()
+        {
+            return SceneManager.GetActiveScene().name.Equals(GAME_SCENE_KEY) &&
+                SceneManager.GetActiveScene().isLoaded;
         }
     }
 }
