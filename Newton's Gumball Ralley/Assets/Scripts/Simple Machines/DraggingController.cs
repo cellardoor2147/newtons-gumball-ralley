@@ -3,6 +3,7 @@ using Core;
 using SnapCheck;
 using GUI.EditMode;
 using System.Collections.Generic;
+using Audio;
 
 namespace SimpleMachine
 {
@@ -23,6 +24,8 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData leverPlatformMetaData;
         [SerializeField] private PlacedObjectMetaData leverFulcrumMetaData;
 
+        [SerializeField] SoundMetaData ScrewSound;
+
         private void Awake()
         {
             hasBeenPlaced = false;
@@ -35,6 +38,13 @@ namespace SimpleMachine
             lastValidRotation = transform.rotation;
             objectManager = GetComponent<PlacedObjectManager>();
             objectMetaData = objectManager.metaData;
+        }
+        private void Start()
+        {
+            if (AudioManager.instance == null)
+            {
+                Debug.LogError("No audiomanager found");
+            }
         }
 
         private Vector2 GetMousePositionInWorldCoordinates()
@@ -102,6 +112,9 @@ namespace SimpleMachine
                 hasBeenPlaced = true;
                 lastValidPosition = transform.position;
                 lastValidRotation = transform.rotation;
+                if (rigidbody2D == null) {
+                    AudioManager.instance.PlaySound(ScrewSound.name);
+                }
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
             spriteRenderer.color = defaultColor;

@@ -113,6 +113,47 @@ namespace Audio {
             //no sound with _name
             Debug.LogWarning(SoundNotFound + _name);
         }
-        
+
+        public IEnumerator Fade(Audio.Sound element, float duration, float targetVolume) 
+        {
+            float currentTime = 0;
+            float start = element.MetaData.volume;
+
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                element.MetaData.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                yield return null;
+            }
+            yield break;
+        }
+
+        public void FadeSound(string _name, float duration, float targetVolume)
+        {
+            foreach (Audio.Sound element in sounds)
+            {
+                if (element.MetaData.name == _name)
+                {
+                    StartCoroutine(Fade(element, duration, targetVolume));
+                    return;
+                }
+            }
+            //no sound with _name
+            Debug.LogWarning(SoundNotFound + _name);
+        }
+
+        public void SetVolume(string _name, float Volume)
+        {
+            foreach (Audio.Sound element in sounds)
+            {
+                if (element.MetaData.name == _name)
+                {
+                    element.MetaData.volume = Volume;
+                    return;
+                }
+            }
+            //no sound with _name
+            Debug.LogWarning(SoundNotFound + _name);
+        }
     }
 }

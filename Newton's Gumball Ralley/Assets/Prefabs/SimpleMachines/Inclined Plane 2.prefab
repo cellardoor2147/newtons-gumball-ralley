@@ -149,6 +149,7 @@ MonoBehaviour:
     type: 2}
   leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
     type: 2}
+  ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &8019181370695918798
 MonoBehaviour:
   m_ObjectHideFlags: 0
