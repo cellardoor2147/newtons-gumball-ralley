@@ -27,6 +27,8 @@ namespace Core
         public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
 
         private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
+        private readonly static string SCREW_KEY = "Screw";
+        private readonly static string SIMPLE_MACHINE_KEY = "SimpleMachine";
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
         private readonly static string GAME_SCENE_KEY = "Game";
 
@@ -128,12 +130,7 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     } 
                     LoadScene(GAME_SCENE_KEY);
-                    instance.StartCoroutine(TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
-                    Physics2D.gravity = instance.defaultGravity;
+                    ResetSceneForPlayMode();
                     GUIManager.SetActiveGUI(GUIType.PlayMode);
                     break;
                 case GameState.Editing:
@@ -144,15 +141,7 @@ namespace Core
                     if (!AudioManager.instance.isPlaying(instance.Level2MusicSound.name)) {
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     }
-                    instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(ResetBallPosition());
-                    instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
-                    instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
-                    Physics2D.gravity = Vector2.zero;
+                    ResetSceneForEditMode();
                     GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
                 case GameState.Paused:
@@ -176,6 +165,31 @@ namespace Core
                 return;
             }
             SceneManager.LoadScene(sceneName);
+        }
+
+        private static void ResetSceneForPlayMode()
+        {
+            instance.StartCoroutine(TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
+            Physics2D.gravity = instance.defaultGravity;
+        }
+
+        private static void ResetSceneForEditMode()
+        {
+            instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(ResetBallPosition());
+            instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
+            Physics2D.gravity = Vector2.zero;
         }
 
         private static IEnumerator ResetBallPosition()
@@ -311,6 +325,28 @@ namespace Core
                 .ToList()
                 .ForEach(
                     draggingController => draggingController.GrayOut()
+            );
+        }
+
+        private static IEnumerator RemoveAllRotationArrows(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.RemoveRotationArrows()
+            );
+        }
+
+        private static IEnumerator AddAllRotationArrows(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<DraggingController>(true)
+                .ToList()
+                .ForEach(
+                    draggingController => draggingController.AddRotationArrows()
             );
         }
 

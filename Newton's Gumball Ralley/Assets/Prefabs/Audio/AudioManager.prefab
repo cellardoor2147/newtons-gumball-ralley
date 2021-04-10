@@ -45,8 +45,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - MetaData: {fileID: 11400000, guid: d0dc28693f1373f48b0346b51d14a36e, type: 2}
+    source: {fileID: 0}
   - MetaData: {fileID: 11400000, guid: acf16722f7ba7dd44b75759ece2d6588, type: 2}
+    source: {fileID: 0}
   - MetaData: {fileID: 11400000, guid: 15f1b4292d838c94aba43b675bc0696d, type: 2}
+    source: {fileID: 0}
   - MetaData: {fileID: 11400000, guid: 28d8bc2322dc9f2439c15cfd703ac27f, type: 2}
+    source: {fileID: 0}
   - MetaData: {fileID: 11400000, guid: 0ca2e0a055fcf6548923789dd8f27d1d, type: 2}
+    source: {fileID: 0}
   - MetaData: {fileID: 11400000, guid: 572ea644a77477c4e8c77bef2369b7d9, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: d3bac1f6c7e964303a4af4393a648781, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: 7fab56f8fa53f4b82af6aa461328dcf9, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: 4e1c36c47e9b4488eb71a52f60dec7a7, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: 22c6e5c18b90744f4805d74f00109053, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: ed1aea29dcf2f4aa1b27bf1e72b9e496, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: a23192f27fbe6407bb181af51a30196e, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: 82ca246fcc36b4b718f0e652ae6d8ac2, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: 5b19837bd08884f39b0fde5f5234a6b2, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
+    source: {fileID: 0}
+  - MetaData: {fileID: 11400000, guid: cfd74200c87a7490aaa928733d77a408, type: 2}
+    source: {fileID: 0}

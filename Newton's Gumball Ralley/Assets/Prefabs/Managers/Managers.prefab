@@ -214,11 +214,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6964367020300184667, guid: 45504dadbd5cc487586499fffa5c21be,
         type: 3}
-      propertyPath: sounds.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 6964367020300184667, guid: 45504dadbd5cc487586499fffa5c21be,
-        type: 3}
       propertyPath: sounds.Array.data[0].MetaData
       value: 
       objectReference: {fileID: 11400000, guid: d3bac1f6c7e964303a4af4393a648781,
@@ -1164,9 +1159,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6059463437999081707}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &955567620614963381 stripped
+--- !u!1 &8569944898171267184 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6437141764720150622, guid: 5ed5d96dbdcb5bb439500f4250dac97f,
+  m_CorrespondingSourceObject: {fileID: 2520052745642991771, guid: 5ed5d96dbdcb5bb439500f4250dac97f,
     type: 3}
   m_PrefabInstance: {fileID: 6059463437999081707}
   m_PrefabAsset: {fileID: 0}
