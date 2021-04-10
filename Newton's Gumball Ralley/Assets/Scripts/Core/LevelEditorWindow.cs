@@ -28,6 +28,7 @@ namespace Core
                 string readFilePath =
                     EditorUtility.OpenFilePanel("Select level JSON to load", "", "json");
                 LevelData levelData = LevelSerializer.Deserialize(readFilePath);
+                LevelSerializer.SetSceneWithLevelData(levelData);
                 worldIndex = levelData.worldIndex;
                 levelIndex = levelData.levelIndex;
                 customLevelName = levelData.customLevelName;
@@ -53,7 +54,7 @@ namespace Core
             return "---Saving a level---"
                 + "\n1. In the hierarchy, go to the 'Background' game object, then to its child game object. Set the desired number of rows/columns for the repeated background here"
                 + "\n2. Place environment blocks in the 'Environment' game object in the scene hierarchy"
-                + "\n3. Place preplaced simpile machines in the 'Preplaced Objects' game object in the scene hierarchy"
+                + "\n3. Place preplaced simple machines in the 'Preplaced Objects' game object in the scene hierarchy"
                 + "\n4. Move the sling anchor (ball slingshot) object wherever you want to it be for this level"
                 + "\n5. Add desired world/level indices above for the resulting level"
                 + "\n6. [Optional] Add custom level name above to save w/ a custom name (don't do this if you're saving an official level)"
