@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 1424160326704616623}
   - component: {fileID: 3802181513646416252}
   - component: {fileID: 1128974288094353045}
+  - component: {fileID: 7870435663456708483}
   m_Layer: 0
   m_Name: Pulley Tab
   m_TagString: Untagged
@@ -372,6 +373,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 3
+--- !u!114 &7870435663456708483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299035100652028624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1345724433034746987
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +493,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.35
+  m_fontSize: 33.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -594,6 +624,7 @@ GameObject:
   - component: {fileID: 8219592616505165879}
   - component: {fileID: 258635578868535317}
   - component: {fileID: 3499003128248198552}
+  - component: {fileID: 2870808181552969617}
   m_Layer: 0
   m_Name: Play Button
   m_TagString: Untagged
@@ -711,6 +742,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+          type: 3}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2870808181552969617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869688612159842731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2340727883436409645
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,7 +874,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.95
+  m_fontSize: 24.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -856,6 +928,7 @@ GameObject:
   - component: {fileID: 6908122106503348803}
   - component: {fileID: 4308493092019455670}
   - component: {fileID: 4279785344482289055}
+  - component: {fileID: 281294704883066120}
   m_Layer: 0
   m_Name: Screws Tab
   m_TagString: Untagged
@@ -933,6 +1006,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 1
+--- !u!114 &281294704883066120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476509195470095432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2909550939334080477
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,6 +1047,7 @@ GameObject:
   - component: {fileID: 67754950446186136}
   - component: {fileID: 3337951661035342094}
   - component: {fileID: 7854672128619686831}
+  - component: {fileID: 6071318704222215137}
   m_Layer: 0
   m_Name: Wheels Tab
   m_TagString: Untagged
@@ -1022,6 +1125,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 4
+--- !u!114 &6071318704222215137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909550939334080477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &3950296227607898644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1166,7 @@ GameObject:
   - component: {fileID: 334893292540424166}
   - component: {fileID: 7957438846814765529}
   - component: {fileID: 4402990741520069768}
+  - component: {fileID: 2160221681321460015}
   m_Layer: 0
   m_Name: Wedges Tab
   m_TagString: Untagged
@@ -1111,6 +1244,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 5
+--- !u!114 &2160221681321460015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3950296227607898644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &4371332033000692619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,7 +1427,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.6
+  m_fontSize: 27.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1537,6 +1699,7 @@ GameObject:
   - component: {fileID: 6949247193166819072}
   - component: {fileID: 6531899538087956750}
   - component: {fileID: 6425763284662763299}
+  - component: {fileID: 6832844215319151166}
   m_Layer: 0
   m_Name: Restart Button
   m_TagString: Untagged
@@ -1654,6 +1817,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+          type: 3}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6832844215319151166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352803678793037809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5862476388655405549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,6 +1945,7 @@ GameObject:
   - component: {fileID: 1035934348185052878}
   - component: {fileID: 8553940091897129248}
   - component: {fileID: 4571458244879123871}
+  - component: {fileID: 2781657588770238327}
   m_Layer: 0
   m_Name: Miscellaneous Tab
   m_TagString: Untagged
@@ -1818,6 +2023,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 6
+--- !u!114 &2781657588770238327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882868537491470790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5930902746630328629
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,6 +2277,7 @@ GameObject:
   - component: {fileID: 2001421330134519324}
   - component: {fileID: 988815732084749058}
   - component: {fileID: 169553025545045941}
+  - component: {fileID: 2096108883437564854}
   m_Layer: 0
   m_Name: Incline Planes Tab
   m_TagString: Untagged
@@ -2120,6 +2355,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 0
+--- !u!114 &2096108883437564854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6280822080627038159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6979759835854796053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2211,7 +2475,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.65
+  m_fontSize: 28
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2376,6 +2640,7 @@ GameObject:
   - component: {fileID: 5626824017480990232}
   - component: {fileID: 1764019409463762578}
   - component: {fileID: 2611087698903126128}
+  - component: {fileID: 1910288630174674438}
   m_Layer: 0
   m_Name: Levers Tab
   m_TagString: Untagged
@@ -2453,6 +2718,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectType: 2
+--- !u!114 &1910288630174674438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7933675592706585050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseDown
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7985577390548403938
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,7 +2992,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34.35
+  m_fontSize: 30.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

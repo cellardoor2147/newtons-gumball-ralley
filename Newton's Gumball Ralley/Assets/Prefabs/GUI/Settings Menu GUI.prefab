@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4359276172846637334}
   - component: {fileID: 7202334836610246421}
   - component: {fileID: 5583841130895457917}
+  - component: {fileID: 4485281136699010736}
   m_Layer: 0
   m_Name: Quit Button
   m_TagString: Untagged
@@ -129,6 +130,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+          type: 3}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4485281136699010736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30255477653765384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1069779903668756238
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +455,7 @@ GameObject:
   - component: {fileID: 3701501734814325174}
   - component: {fileID: 941390063621994108}
   - component: {fileID: 7753380032219599962}
+  - component: {fileID: 7219255018949782625}
   m_Layer: 0
   m_Name: Back Button
   m_TagString: Untagged
@@ -530,6 +573,47 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+          type: 3}
+        m_MethodName: OnMouseDown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7219255018949782625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835338519016669004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: -119828213724201434, guid: 78326da8d762a4bb4be62109a51d0e7a,
+            type: 3}
+          m_MethodName: OnMouseOver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8646157526429149990
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3705913007957463982}
   - component: {fileID: 1145837923330712313}
+  - component: {fileID: 469696367874523210}
   m_Layer: 0
   m_Name: Settings Menu GUI
   m_TagString: Untagged
@@ -581,3 +666,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guiType: 5
+--- !u!114 &469696367874523210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646157526429149990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a454d8d9fe31940fb9eae60046d4f1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonHoverSound: {fileID: 11400000, guid: a23192f27fbe6407bb181af51a30196e, type: 2}
+  ButtonClickSound: {fileID: 11400000, guid: 82ca246fcc36b4b718f0e652ae6d8ac2, type: 2}
