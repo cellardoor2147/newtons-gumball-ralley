@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SimpleMachine
+  - Screw
+  - LeverSnapPoint
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Dragging
+  - AllowPlacement
   - 
   - 
   - 
@@ -41,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Dragging
+    uniqueID: 2445817371
     locked: 0
