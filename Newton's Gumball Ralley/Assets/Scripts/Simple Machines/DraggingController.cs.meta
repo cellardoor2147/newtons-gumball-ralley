@@ -3,7 +3,10 @@ guid: d2f19a003527c2b4298e2686445f55a3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - leverPlatformMetaData: {instanceID: 0}
+  - leverFulcrumMetaData: {instanceID: 0}
+  - ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
