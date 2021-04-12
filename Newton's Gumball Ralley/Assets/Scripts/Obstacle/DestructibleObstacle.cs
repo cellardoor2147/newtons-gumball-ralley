@@ -27,7 +27,6 @@ namespace DestructibleObject
 
                 bool isWedge = collision.name == "AxeWedgeCollider" || collision.name == "SpikeWedgeCollider";
 
-                Debug.Log(localVel);
                 if (isWedge && localVel > breakSpeed)
                 {
                     collision.Raycast(Vector2.down, contacts);

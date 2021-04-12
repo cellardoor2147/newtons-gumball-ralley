@@ -44,7 +44,7 @@ namespace SimpleMachine
             lastValidRotation = transform.rotation;
             placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             objectManager = GetComponent<PlacedObjectManager>();
-            objectMetaData = objectManager != null ? objectManager.metaData : null;
+            objectMetaData = objectManager.metaData;
         }
         private void Start()
         {

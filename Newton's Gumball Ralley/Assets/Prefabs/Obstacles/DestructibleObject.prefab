@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5151198367505448853}
   - component: {fileID: 5151198367505448854}
   - component: {fileID: 799354803183805906}
+  - component: {fileID: 706361541142173668}
   m_Layer: 0
   m_Name: DestructibleObject
   m_TagString: Untagged
@@ -165,3 +166,16 @@ MonoBehaviour:
   leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
     type: 2}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
+--- !u!114 &706361541142173668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151198367505448850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: 23187c3bcbd4f9d4fad06c8833b19ded, type: 2}
