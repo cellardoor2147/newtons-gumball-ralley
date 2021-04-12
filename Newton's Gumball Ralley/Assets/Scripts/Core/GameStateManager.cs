@@ -18,7 +18,8 @@ namespace Core
         Dialogue = 2,
         Playing = 3,
         Editing = 4,
-        Paused = 5
+        Paused = 5,
+        LevelCompleted = 6
     }
 
     public class GameStateManager : MonoBehaviour
@@ -142,7 +143,8 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     }
                     ResetSceneForEditMode();
-                    GUIManager.SetActiveGUI(GUIType.EditMode);
+                    //GUIManager.SetActiveGUI(GUIType.EditMode);
+                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
