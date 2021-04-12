@@ -143,6 +143,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -703892100436361823, guid: d687d487e260c44a6ae1c27152b836b2,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -703892100436361823, guid: d687d487e260c44a6ae1c27152b836b2,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 91020983841394921, guid: 67ac9274324a09a4fafb5b7be282af5e,
@@ -271,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 8875287349658364724, guid: d687d487e260c44a6ae1c27152b836b2,
         type: 3}
       propertyPath: m_Name
-      value: Sandbox Button
+      value: Sandbox Button Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d687d487e260c44a6ae1c27152b836b2, type: 3}
