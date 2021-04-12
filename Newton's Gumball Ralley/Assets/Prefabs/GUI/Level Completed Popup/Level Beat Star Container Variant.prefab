@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &952270225087399485
+--- !u!1001 &4685816696008463205
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -41,16 +41,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361334632151085330, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1361334632151085330, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 1361334632151085330, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
@@ -115,12 +105,17 @@ PrefabInstance:
     - target: {fileID: 1639237393231499791, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
       propertyPath: m_text
-      value: Machines Used
+      value: Level Beat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1639237393231499791, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 18.8
       objectReference: {fileID: 0}
     - target: {fileID: 4335699784549196567, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
       propertyPath: m_Name
-      value: Machine Usage Star Container
+      value: Level Beat Star Container Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd, type: 3}
