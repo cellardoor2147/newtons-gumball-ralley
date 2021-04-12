@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4476589562616175171}
-  - component: {fileID: 695984620455217333}
+  - component: {fileID: 4074290432771969883}
   m_Layer: 0
   m_Name: AxeWedgeCollider
   m_TagString: Untagged
@@ -31,8 +31,8 @@ Transform:
   m_Father: {fileID: 210489242033077768}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &695984620455217333
-PolygonCollider2D:
+--- !u!68 &4074290432771969883
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -41,27 +41,17 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_EdgeRadius: 0
   m_Points:
-    m_Paths:
-    - - {x: 0.4895036, y: 0.939341}
-      - {x: 0.41177398, y: 1.1006558}
-      - {x: 0.30256647, y: 0.7894199}
-      - {x: 0.40019915, y: 0.38512772}
-      - {x: 0.5186727, y: 0.5369433}
-      - {x: 0.53928244, y: 0.7573933}
+  - {x: 0.419629, y: 0.38432246}
+  - {x: 0.5243191, y: 0.5332101}
+  - {x: 0.53493917, y: 0.782546}
+  - {x: 0.49399167, y: 0.98314816}
+  - {x: 0.41764504, y: 1.1026393}
 --- !u!1 &4694918795534134036
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +63,9 @@ GameObject:
   - component: {fileID: 210489242033077768}
   - component: {fileID: 5870146734736057096}
   - component: {fileID: 8203884248617717078}
-  - component: {fileID: 9070396111062351118}
+  - component: {fileID: 418832416926016983}
+  - component: {fileID: -2652160822440591369}
+  - component: {fileID: 6494589377452356334}
   m_Layer: 0
   m_Name: AxeWedge
   m_TagString: SimpleMachine
@@ -167,7 +159,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &9070396111062351118
+--- !u!60 &418832416926016983
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,13 +193,15 @@ PolygonCollider2D:
       - {x: -0.085, y: 0.45999998}
       - {x: 0.055, y: 0.5}
       - {x: 0.225, y: 0.48999998}
-      - {x: 0.36669916, y: 0.43575266}
-      - {x: 0.28251088, y: 0.8073174}
-      - {x: 0.36839786, y: 1.0422206}
-      - {x: 0.1504248, y: 0.99797314}
-      - {x: -0.023301072, y: 0.9625484}
-      - {x: -0.11547567, y: 0.97793037}
-      - {x: -0.21787626, y: 1.0408496}
+      - {x: 0.3895752, y: 0.41287634}
+      - {x: 0.460097, y: 0.51660216}
+      - {x: 0.4983573, y: 0.6086316}
+      - {x: 0.48658648, y: 0.79857343}
+      - {x: 0.45637113, y: 0.96287644}
+      - {x: 0.40042478, y: 1.0650969}
+      - {x: 0.155, y: 1.03}
+      - {x: -0.005, y: 0.98999995}
+      - {x: -0.195, y: 1.05}
       - {x: -0.285, y: 1.12}
       - {x: -0.415, y: 1.12}
       - {x: -0.475, y: 1.0699999}
@@ -228,3 +222,34 @@ PolygonCollider2D:
       - {x: -0.065, y: -1.04}
       - {x: -0.035, y: -0.98999995}
       - {x: -0.095, y: -0.58}
+--- !u!114 &-2652160822440591369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694918795534134036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationArrowsPrefab: {fileID: 0}
+  leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
+    type: 2}
+  leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
+    type: 2}
+  ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
+--- !u!114 &6494589377452356334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4694918795534134036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  metaData: {fileID: 11400000, guid: baccd2f2ce7240c4ea8fdfe2413929f6, type: 2}

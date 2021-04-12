@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 
 namespace DestructibleObject
 {
@@ -6,34 +7,46 @@ namespace DestructibleObject
     {
         [SerializeField] float breakSpeed;
         [SerializeField] UnityEngine.Object destructibleRef;
+        private RaycastHit2D[] contacts = new RaycastHit2D[1];
 
         float localVel = 0f;
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.collider.name == "AxeWedgeCollider")
+            if (GameStateManager.GetGameState() == GameState.Playing)
             {
-                localVel = collision.transform.InverseTransformDirection(collision.rigidbody.velocity).x;
-            }
+                if (collision.name == "AxeWedgeCollider")
+                {
+                    localVel = collision.transform.InverseTransformDirection(collision.attachedRigidbody.velocity).x;
+                }
 
-            if (collision.collider.name == "SpikeWedgeCollider")
-            {
-                localVel = -collision.transform.InverseTransformDirection(collision.rigidbody.velocity).y;
-            }
+                if (collision.name == "SpikeWedgeCollider")
+                {
+                    localVel = -collision.transform.InverseTransformDirection(collision.attachedRigidbody.velocity).y;
+                }
 
-            bool isWedge = collision.collider.name == "AxeWedgeCollider" || collision.collider.name == "SpikeWedgeCollider";
+                bool isWedge = collision.name == "AxeWedgeCollider" || collision.name == "SpikeWedgeCollider";
 
-            if (isWedge && localVel > breakSpeed)
-            {
-                Split(collision.GetContact(0));
+                Debug.Log(localVel);
+                if (isWedge && localVel > breakSpeed)
+                {
+                    collision.Raycast(Vector2.down, contacts);
+                    Split(contacts[0]);
+                }
             }
         }
 
-        public void Split(ContactPoint2D contactPoint)
+        public void Split(RaycastHit2D contactPoint)
         {
             GameObject destructible = Instantiate(destructibleRef, contactPoint.point, transform.rotation) as GameObject;
             destructible.transform.localScale = transform.lossyScale;
-            Destroy(this.gameObject);
+            destructible.transform.parent = this.transform.parent;
+            ToggleObject(false);
+        }
+
+        public void ToggleObject(bool isActive)
+        {
+            gameObject.SetActive(isActive);
         }
     }
 }

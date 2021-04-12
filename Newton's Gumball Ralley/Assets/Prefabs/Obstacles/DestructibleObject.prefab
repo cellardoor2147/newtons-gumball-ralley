@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5151198367505448849}
   - component: {fileID: 5151198367505448853}
   - component: {fileID: 5151198367505448854}
+  - component: {fileID: 799354803183805906}
   m_Layer: 0
   m_Name: DestructibleObject
   m_TagString: Untagged
@@ -146,3 +147,21 @@ MonoBehaviour:
   breakSpeed: 5
   destructibleRef: {fileID: 8267225454755627695, guid: 0abf07682cf8e7a468260988be9d861a,
     type: 3}
+--- !u!114 &799354803183805906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151198367505448850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationArrowsPrefab: {fileID: 0}
+  leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
+    type: 2}
+  leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
+    type: 2}
+  ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}

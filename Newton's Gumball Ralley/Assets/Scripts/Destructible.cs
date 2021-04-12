@@ -2,5 +2,5 @@
 
 public interface IDestructible
 {
-    void Split(ContactPoint2D contactPoint);
+    void Split(RaycastHit2D contactPoint);
 }
