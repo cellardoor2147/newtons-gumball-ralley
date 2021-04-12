@@ -110,12 +110,18 @@ PrefabInstance:
     - target: {fileID: 1639237393231499791, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
       propertyPath: m_fontSize
-      value: 18.8
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4335699784549196567, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
       propertyPath: m_Name
       value: Level Beat Star Container Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5428795232429066554, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d11500a81b8a5844c8f78369cdb2fe4b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd, type: 3}
