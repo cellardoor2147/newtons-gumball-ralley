@@ -37,11 +37,13 @@ namespace Core
 
     public static class LevelSerializer
     {
+        public static readonly string WRITE_DIRECTORY_PATH =
+            Application.persistentDataPath + "/LevelsData/";
+
         private static readonly string BACKGROUND_KEY = "Background";
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
         private static readonly string SLING_ANCHOR_KEY = "Sling Anchor";
-        private static readonly string WRITE_FILE_PATH_PREFIX = "Assets/LevelsData/";
         private static readonly string ENVIRONMENT_BLOCK_KEY = "EnvironmentBlock";
         private static readonly string GAME_SCENE_KEY = "Game";
 
@@ -49,7 +51,7 @@ namespace Core
         {
             LevelData levelData = GetLevelData(worldIndex, levelIndex, customLevelName);
             string serializedLevelData = JsonUtility.ToJson(levelData, true);
-            string writeFilePath = WRITE_FILE_PATH_PREFIX;
+            string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))
             {
                 writeFilePath += worldIndex.ToString() + "-" + levelIndex.ToString();
@@ -59,6 +61,7 @@ namespace Core
                 writeFilePath += customLevelName;
             }
             writeFilePath += ".json";
+            Directory.CreateDirectory(WRITE_DIRECTORY_PATH);
             using (StreamWriter streamWriter = new StreamWriter(writeFilePath))
             {
                 streamWriter.Write(serializedLevelData);
