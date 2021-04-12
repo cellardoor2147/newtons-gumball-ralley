@@ -143,14 +143,19 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     }
                     ResetSceneForEditMode();
-                    //GUIManager.SetActiveGUI(GUIType.EditMode);
-                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
+                    GUIManager.SetActiveGUI(GUIType.EditMode);
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.SettingsMenu);
                     AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
+                    break;
+                case GameState.LevelCompleted:
+                    Time.timeScale = 1.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
+                    // TODO: play victory sound
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
@@ -350,6 +355,21 @@ namespace Core
                 .ForEach(
                     draggingController => draggingController.AddRotationArrows()
             );
+        }
+
+        public static IEnumerator LoadNextLevel()
+        {
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+            LevelManager.LoadNextLevel();
+        }
+
+        private static void DeleteAllChildren(GameObject gameObject)
+        {
+            for (int i = gameObject.transform.childCount - 1; i >= 0; i--)
+            {
+                GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
+            }
         }
 
         private void Update()

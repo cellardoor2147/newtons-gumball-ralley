@@ -97,7 +97,7 @@ namespace GUI
 
         public void LoadNextLevel()
         {
-            LevelManager.LoadNextLevel();
+            StartCoroutine(GameStateManager.LoadNextLevel());
         }
 
         public void GoBackFromSettingsMenu()
