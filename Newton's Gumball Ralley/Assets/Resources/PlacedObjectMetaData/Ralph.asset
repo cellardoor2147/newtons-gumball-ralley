@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
-  m_Name: EndPoint
+  m_Name: Ralph
   m_EditorClassIdentifier: 
-  objectName: EndPoint
+  objectName: Ralph
   prefab: {fileID: 7586168171179101629, guid: d19a70eb123dc694f9863ca00500283f, type: 3}
   canSnap: 0
