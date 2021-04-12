@@ -39,11 +39,19 @@ namespace GUI.EditMode
 
         public void OnDrag(PointerEventData pointerEventData)
         {
+            if (objectBeingPlacedDraggingController == null)
+            {
+                return;
+            }
             objectBeingPlacedDraggingController.OnMouseDrag();
         }
 
         public void OnEndDrag(PointerEventData pointerEventData)
         {
+            if (objectBeingPlacedDraggingController == null)
+            {
+                return;
+            }
             objectBeingPlacedDraggingController.OnMouseUp();
         }
     }
