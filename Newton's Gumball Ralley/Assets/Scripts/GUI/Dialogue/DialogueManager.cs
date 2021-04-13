@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 using Core;
 using Audio;
 
@@ -16,6 +17,8 @@ namespace GUI.Dialogue
         private readonly static string RIGHT_SPEAKER_NAME_KEY = "Right Speaker Name";
         private readonly static string SPEAKER_NAME_TEXT_KEY = "Speaker Name Text";
         private readonly static string DIALOGUE_BOX_TEXT_KEY = "Dialogue Box Content";
+
+        [SerializeField] private List<Conversation> conversations;
 
         private Transform leftSpeakerTransform;
         private Transform rightSpeakerTransform;
@@ -46,6 +49,22 @@ namespace GUI.Dialogue
             dialogueBoxContent = transform.Find(DIALOGUE_BOX_KEY)
                 .transform.Find(DIALOGUE_BOX_TEXT_KEY)
                 .GetComponent<TextMeshProUGUI>();
+        }
+
+        private void OnEnable()
+        {
+            foreach (Conversation conversation in conversations)
+            {
+                bool conversationShouldPlay =
+                    conversation.worldIndex == LevelManager.GetCurrentWorldIndex()
+                    && conversation.levelIndex == LevelManager.GetCurrentLevelIndex();
+                if (conversationShouldPlay)
+                {
+                    StartConversation(conversation);
+                    return;
+                }
+            }
+            GameStateManager.SetGameState(GameState.Editing); // Couldn't find a conversation to play
         }
 
         public void StartConversation(Conversation conversation)
@@ -84,7 +103,7 @@ namespace GUI.Dialogue
                 yield return TypeDialogueBoxContent(line);
                 yield return new WaitUntil(() => Input.anyKeyDown);
             }
-            GameStateManager.SetGameState(GameState.Playing);
+            GameStateManager.SetGameState(GameState.Editing);
         }
 
         private void SetSpeakerImage(SpeakerDirection direction, CharacterMetaData character, Line line)
