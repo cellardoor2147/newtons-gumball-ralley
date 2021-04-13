@@ -95,6 +95,11 @@ namespace GUI
             }
         }
 
+        public void LoadNextLevel()
+        {
+            StartCoroutine(GameStateManager.LoadNextLevel());
+        }
+
         public void GoBackFromSettingsMenu()
         {
             if (GameStateManager.GetGameState().Equals(GameState.Paused))

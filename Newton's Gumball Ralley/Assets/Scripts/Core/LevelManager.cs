@@ -38,12 +38,12 @@ namespace Core
         {
             List<LevelData> levelsData = new List<LevelData>();
             DirectoryInfo directoryInfo =
-                new DirectoryInfo(Application.dataPath + LEVELS_DATA_KEY);
+                new DirectoryInfo(LevelSerializer.WRITE_DIRECTORY_PATH);
             FileInfo[] filesInfo = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
             foreach (FileInfo fileInfo in filesInfo) 
             {
                 LevelData levelData = LevelSerializer.Deserialize(
-                    Application.dataPath + LEVELS_DATA_KEY + "/" + fileInfo.Name
+                    LevelSerializer.WRITE_DIRECTORY_PATH + fileInfo.Name
                 );
                 levelsData.Add(levelData);
             }

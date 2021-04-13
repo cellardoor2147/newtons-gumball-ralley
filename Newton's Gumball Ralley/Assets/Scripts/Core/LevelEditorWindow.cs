@@ -3,6 +3,7 @@ using UnityEditor;
 
 namespace Core
 {
+#if(UNITY_EDITOR)
     public class LevelEditorWindow : EditorWindow
     {
         private int worldIndex;
@@ -25,8 +26,11 @@ namespace Core
             }
             if (GUILayout.Button("Load Level"))
             {
-                string readFilePath =
-                    EditorUtility.OpenFilePanel("Select level JSON to load", "", "json");
+                string readFilePath = EditorUtility.OpenFilePanel(
+                    "Select level JSON to load",
+                    LevelSerializer.WRITE_DIRECTORY_PATH,
+                    "json"
+                );
                 LevelData levelData = LevelSerializer.Deserialize(readFilePath);
                 LevelSerializer.SetSceneWithLevelData(levelData);
                 worldIndex = levelData.worldIndex;
@@ -62,10 +66,9 @@ namespace Core
                 + "\nNOTE: 'Background', 'Environment', 'Preplaced Objects', and 'Sling Anchor' should be at the highest level in the hierarchy"
                 + "\n\n---Loading a level---"
                 + "\n1. Press 'Load Level' button above"
-                + "\n2. Navigate to wherever you have the game stored locally"
-                + "\n3. Navigate to Assets/LevelData/"
-                + "\n4. Select the level to load (should be a .json file)"
-                + "\n5. Press 'Open' to load";
+                + "\n2. Select the level to load (should be a .json file)"
+                + "\n3. Press 'Open' to load";
         }
     }
+#endif
 }

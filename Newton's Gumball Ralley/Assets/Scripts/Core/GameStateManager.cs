@@ -19,7 +19,8 @@ namespace Core
         Dialogue = 2,
         Playing = 3,
         Editing = 4,
-        Paused = 5
+        Paused = 5,
+        LevelCompleted = 6
     }
 
     public class GameStateManager : MonoBehaviour
@@ -150,6 +151,12 @@ namespace Core
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.SettingsMenu);
                     AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
+                    break;
+                case GameState.LevelCompleted:
+                    Time.timeScale = 1.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
+                    // TODO: play victory sound
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
@@ -375,6 +382,21 @@ namespace Core
                 .ForEach(
                     draggingController => draggingController.AddRotationArrows()
             );
+        }
+
+        public static IEnumerator LoadNextLevel()
+        {
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+            LevelManager.LoadNextLevel();
+        }
+
+        private static void DeleteAllChildren(GameObject gameObject)
+        {
+            for (int i = gameObject.transform.childCount - 1; i >= 0; i--)
+            {
+                GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
+            }
         }
 
         private void Update()
