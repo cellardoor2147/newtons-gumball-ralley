@@ -44,6 +44,8 @@ namespace Core
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
 
+        [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
+
         private GameState previousGameState;
         private GameState gameState;
         private Vector2 defaultGravity;
@@ -175,6 +177,7 @@ namespace Core
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(DisableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             Physics2D.gravity = instance.defaultGravity;
         }
 
@@ -189,6 +192,7 @@ namespace Core
             instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             Physics2D.gravity = Vector2.zero;
         }
 
@@ -288,6 +292,31 @@ namespace Core
                                                               * of LeverFulcrum, so this line sets the parent of
                                                               * FulcrumScrew back to LeverFulcrum */
             otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
+        }
+
+        private static IEnumerator DisableObjects(string key, PlacedObjectMetaData metaData) 
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            foreach (Transform placeableobject in objectContainer.transform) 
+            {
+                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(instance.gearBackgroundMetaData) == metaData) 
+                {
+                    placeableobject.gameObject.SetActive(false);
+                }
+            }
+        }
+        private static IEnumerator EnableObjects(string key, PlacedObjectMetaData metaData)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            foreach (Transform placeableobject in objectContainer.transform)
+            {
+                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(instance.gearBackgroundMetaData) == metaData)
+                {
+                    placeableobject.gameObject.SetActive(true);
+                }
+            }
         }
 
         private static IEnumerator UntetherObjectsFromPlacedScrews(string key)

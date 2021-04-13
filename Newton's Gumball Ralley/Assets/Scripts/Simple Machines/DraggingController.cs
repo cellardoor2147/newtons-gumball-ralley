@@ -64,9 +64,17 @@ namespace SimpleMachine
         }
         private void FixedUpdate()
         {
-            if (objectMetaData.Equals(gear2MetaData) && hasBeenPlaced && rigidbody2D.angularVelocity < 180)
+            if (GameStateManager.GetGameState().Equals(GameState.Playing) && 
+                objectMetaData.Equals(gear2MetaData) && hasBeenPlaced && rigidbody2D.angularVelocity < 180)
             {
+                rigidbody2D.freezeRotation = false;
                 rigidbody2D.AddTorque(torque);
+            }
+            else if (GameStateManager.GetGameState().Equals(GameState.Editing) && 
+                objectMetaData.Equals(gear2MetaData) && hasBeenPlaced) 
+            {
+                rigidbody2D.angularVelocity = 0f;
+                rigidbody2D.freezeRotation = true;
             }
         }
 
@@ -152,7 +160,10 @@ namespace SimpleMachine
         {
             if (ShouldPreventDragging())
             {
-                return;
+                if (!gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear2MetaData)) 
+                {
+                    return;
+                } 
             }
             bool playerRightClickedThisObject = Input.GetMouseButtonDown(1);
             if (playerRightClickedThisObject)
@@ -160,17 +171,6 @@ namespace SimpleMachine
                 RemoveRotationArrows();
                 EditModeManager.ShowEditModeGUI();
                 Destroy(gameObject);
-            }
-        }
-
-        private void OnTriggerStay2D(Collider2D other)
-        {
-            Debug.Log("stay");
-            PlacedObjectManager placedObjectManager = other.transform.parent.gameObject.GetComponent<PlacedObjectManager>();
-            if (placedObjectManager.metaData.Equals(gearBackgroundMetaData) && hasBeenPlaced) 
-            {
-                other.transform.parent.gameObject.SetActive(false);
-                Debug.Log("set inactive");
             }
         }
 

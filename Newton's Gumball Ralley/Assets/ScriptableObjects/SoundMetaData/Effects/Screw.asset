@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7d6ad89dbd145f889e5f6ed405f992, type: 3}
   m_Name: Screw
   m_EditorClassIdentifier: 
-  name: New MyScriptableObject
-  clip: {fileID: 0}
-  volume: 0.7
+  name: Screw
+  clip: {fileID: 8300000, guid: 0e66ad7b020e84aeea44efc50442ebeb, type: 3}
+  volume: 0.15
   pitch: 1
   loop: 0
