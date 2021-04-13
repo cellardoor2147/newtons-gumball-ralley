@@ -27,8 +27,16 @@ namespace SimpleMachine
         private GameObject placedObjectsContainer;
         private PlacedObjectManager objectManager;
         private PlacedObjectMetaData objectMetaData;
+
         [SerializeField] private PlacedObjectMetaData leverPlatformMetaData;
         [SerializeField] private PlacedObjectMetaData leverFulcrumMetaData;
+        [SerializeField] private PlacedObjectMetaData screwMetaData;
+        [SerializeField] private PlacedObjectMetaData gear1MetaData;
+        [SerializeField] private PlacedObjectMetaData gear2MetaData;
+        [SerializeField] private PlacedObjectMetaData gear3MetaData;
+        [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
+        [SerializeField] private PlacedObjectMetaData wheelMetaData;
+        [SerializeField] float torque;
 
         [SerializeField] SoundMetaData ScrewSound;
 
@@ -45,12 +53,20 @@ namespace SimpleMachine
             placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             objectManager = GetComponent<PlacedObjectManager>();
             objectMetaData = objectManager.metaData;
+            torque = 1f;
         }
         private void Start()
         {
             if (AudioManager.instance == null)
             {
                 Debug.LogError("No audiomanager found");
+            }
+        }
+        private void FixedUpdate()
+        {
+            if (objectMetaData.Equals(gear2MetaData) && hasBeenPlaced && rigidbody2D.angularVelocity < 180)
+            {
+                rigidbody2D.AddTorque(torque);
             }
         }
 
@@ -147,10 +163,22 @@ namespace SimpleMachine
             }
         }
 
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            Debug.Log("stay");
+            PlacedObjectManager placedObjectManager = other.transform.parent.gameObject.GetComponent<PlacedObjectManager>();
+            if (placedObjectManager.metaData.Equals(gearBackgroundMetaData) && hasBeenPlaced) 
+            {
+                other.transform.parent.gameObject.SetActive(false);
+                Debug.Log("set inactive");
+            }
+        }
+
         public bool ShouldPreventDragging()
         {
-            return !(GameStateManager.GetGameState().Equals(GameState.Editing)
-                && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)
+            return (!(GameStateManager.GetGameState().Equals(GameState.Editing)
+                && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)) 
+                || (objectMetaData.Equals(gear2MetaData) && hasBeenPlaced)
             );
         }
 
@@ -161,7 +189,16 @@ namespace SimpleMachine
                 SnapChecker fulcrumSnapChecker = GetComponent<SnapChecker>();
                 return fulcrumSnapChecker.ShouldSnap;
             }
-
+            else if (objectMetaData.Equals(screwMetaData))
+            {
+                SnapChecker screwSnapChecker = GetComponent<SnapChecker>();
+                return screwSnapChecker.ShouldSnap;
+            }
+            else if (objectMetaData.Equals(gear2MetaData))
+            {
+                SnapChecker gear2SnapChecker = GetComponent<SnapChecker>();
+                return gear2SnapChecker.ShouldSnap;
+            }
             return false;
         }
 
@@ -192,6 +229,26 @@ namespace SimpleMachine
                 }
                 return desiredSnapLocation;
             }
+            else if (objectMetaData.Equals(screwMetaData))
+            {
+                List<GameObject> screwSnapObjects = GetSnapObjects();
+                Vector3 desiredSnapLocation = new Vector3();
+
+                desiredSnapLocation = screwSnapObjects[0].transform.position - new Vector3(0, 0, 0);
+                // 0f offset is required to get screw in correct place
+
+                return desiredSnapLocation;
+            }
+            else if (objectMetaData.Equals(gear2MetaData))
+            {
+                List<GameObject> gear2SnapObjects = GetSnapObjects();
+                Vector3 desiredSnapLocation = new Vector3();
+
+                desiredSnapLocation = gear2SnapObjects[0].transform.position - new Vector3(0, 0, 0);
+                // 0f offset is required to get gear2 in correct place
+
+                return desiredSnapLocation;
+            }
             return Vector3.zero;
         }
 
@@ -203,7 +260,6 @@ namespace SimpleMachine
             {
                 snapPoints.Add(snapPoint.gameObject);
             }
-
             return snapPoints;
         }
 
@@ -220,12 +276,42 @@ namespace SimpleMachine
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
                 }
             }
+            else if (objectMetaData.Equals(screwMetaData)) {
+                foreach (Transform placedObject in objectContainer.transform)
+                {
+                    PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
+                    if (placedObjectManager != null && (placedObjectManager.metaData.Equals(gear1MetaData)
+                                                        || placedObjectManager.metaData.Equals(gear3MetaData)
+                                                        || placedObjectManager.metaData.Equals(wheelMetaData))) {
+                        placedObject.GetChild(0).gameObject.SetActive(activeState);
+                    }
+                }
+            }
+            else if (objectMetaData.Equals(gearBackgroundMetaData))
+            {
+                foreach (Transform placedObject in objectContainer.transform)
+                {
+                    PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
+                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(gear2MetaData))
+                    {
+                        placedObject.GetChild(0).gameObject.SetActive(activeState);
+                    }
+                }
+            }
         }
 
         private bool ShouldPreventObjectFromBeingPlaced()
         {
             bool objectIsScrew = rigidbody2D == null;
-            bool objectHasCollided = collider2D.IsTouchingLayers(1);
+            bool objectHasCollided;
+            if (!objectMetaData.Equals(gear2MetaData)) 
+            {
+                objectHasCollided = collider2D.IsTouchingLayers(1);
+            }
+            else 
+            {
+                objectHasCollided = GetComponent<SnapChecker>().SnapPointHolder == null;
+            }
             return !objectIsScrew && objectHasCollided;
         }
 

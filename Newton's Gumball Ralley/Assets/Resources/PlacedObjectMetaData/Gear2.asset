@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
-  m_Name: Screw
+  m_Name: Gear2
   m_EditorClassIdentifier: 
-  objectName: Screw
-  prefab: {fileID: 6844120024245546676, guid: fa723c6bd0320f24e808cf7fbb234c6d, type: 3}
+  objectName: Gear2
+  prefab: {fileID: 1393190835938677185, guid: b09e85f1cb9ec4009b00232bccb1860d, type: 3}
   canSnap: 1

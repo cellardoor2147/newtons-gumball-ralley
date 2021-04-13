@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
-  m_Name: PlacedObjectMetaData
+  m_Name: GearBackground
   m_EditorClassIdentifier: 
-  objectName: Gear3
-  prefab: {fileID: 4168943314005634181, guid: 9da0ec6a69f5641c4a68155a87bd9f6b, type: 3}
+  objectName: GearBackground
+  prefab: {fileID: 8862932798149475211, guid: e53de79539e46400f8732738ae84a80c, type: 3}
+  canSnap: 0

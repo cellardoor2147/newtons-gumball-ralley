@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1838228068605329955}
   - component: {fileID: 3901163314908294279}
   - component: {fileID: 2664846384037392687}
+  - component: {fileID: -4197338832165763289}
   m_Layer: 0
   m_Name: Gear 2
   m_TagString: SimpleMachine
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2584086501481753425, guid: c2c0a002419d24bc497d7144ef23f97f,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -101,12 +102,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!114 &-1838228068605329955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationArrowsPrefab: {fileID: 0}
+  leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
+    type: 2}
+  leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
+    type: 2}
+  screwMetaData: {fileID: 11400000, guid: a060d4b5ca3f6a74eb82eceb500a2177, type: 2}
+  gear1MetaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
+  gear2MetaData: {fileID: 11400000, guid: 275d02e1e0c0d4854aa968a10e9d1e75, type: 2}
+  gear3MetaData: {fileID: 11400000, guid: c61080e63d78e4cdda7c294f915bedba, type: 2}
+  gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
+    type: 2}
+  wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
+  torque: 1
+  ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &3901163314908294279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,3 +403,15 @@ PolygonCollider2D:
       - {x: -0.049999997, y: -0.88}
       - {x: -0.07, y: -0.89}
       - {x: -0.08, y: -0.88}
+--- !u!114 &-4197338832165763289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393190835938677185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c703c1d9c062248b754d9c2b94616f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
