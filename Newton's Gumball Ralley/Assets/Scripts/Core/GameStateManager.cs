@@ -4,6 +4,7 @@ using GUI;
 using GUI.Dialogue;
 using SimpleMachine;
 using Ball;
+using DestructibleObject;
 using System.Linq;
 using System.Collections.Generic;
 using Audio;
@@ -196,7 +197,33 @@ namespace Core
             instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
+            instance.StartCoroutine(DestroyDebris(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(EnableDestructibleObjects(PREPLACED_OBJECTS_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator EnableDestructibleObjects(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+               .GetComponentsInChildren<DestructibleObstacle>(true)
+               .ToList()
+               .ForEach(
+                   destructibleObstacle => destructibleObstacle.ToggleObject(true)
+           );
+        }
+
+        private static IEnumerator DestroyDebris(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            foreach (Transform objectTransform in objectContainer.transform)
+            {
+                if (objectTransform.gameObject.CompareTag("Debris"))
+                {
+                    Destroy(objectTransform.gameObject);
+                }
+            }
         }
 
         private static IEnumerator ResetBallPosition()
