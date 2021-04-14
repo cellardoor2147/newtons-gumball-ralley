@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5767995113863092001}
   - component: {fileID: 3404477755399522254}
   - component: {fileID: -755903813422345728}
+  - component: {fileID: 6768288585375491447}
+  - component: {fileID: 6231011946603111179}
   m_Layer: 0
   m_Name: Gear 3
   m_TagString: SimpleMachine
@@ -28,14 +30,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4168943314005634181}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9848078, w: 0.17364825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1601106061018514226}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -160}
 --- !u!212 &4063242726370010550
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,9 +101,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.25
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -132,7 +134,9 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
+  torque: 0
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
+  GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
 --- !u!114 &3404477755399522254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +328,34 @@ PolygonCollider2D:
       - {x: -0.024999999, y: -0.375}
       - {x: -0.035, y: -0.385}
       - {x: -0.044999998, y: -0.375}
+--- !u!58 &6768288585375491447
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4168943314005634181}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
+--- !u!114 &6231011946603111179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4168943314005634181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654875e9986284c7ca183bc92c7184d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6048876460171187094
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,8 +429,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7082141532715368219}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.08, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_LocalPosition: {x: -0.014, y: -0.065, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 1601106061018514226}
   m_RootOrder: 0

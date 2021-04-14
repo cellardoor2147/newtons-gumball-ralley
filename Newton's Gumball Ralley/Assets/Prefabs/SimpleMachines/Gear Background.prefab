@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4441437900502004064}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GearBackgroundSnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 390291904479269287}
   - component: {fileID: 3138071131390651427}
   - component: {fileID: 242650951561947719}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GearBackgroundSnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,8 +111,7 @@ GameObject:
   - component: {fileID: 6858490828568171571}
   - component: {fileID: 6316009037694196497}
   - component: {fileID: 665421745395816373}
-  - component: {fileID: 7714902636231625432}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gear Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -198,15 +197,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf, type: 2}
---- !u!114 &7714902636231625432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8862932798149475211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8068c8fa9284facab70c86c3d5f3d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

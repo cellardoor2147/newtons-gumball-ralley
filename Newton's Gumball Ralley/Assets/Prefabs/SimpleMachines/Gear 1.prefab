@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -1222494028702323485}
   - component: {fileID: 1873718688760848271}
   - component: {fileID: 2903396123927331631}
+  - component: {fileID: 5318874952568717528}
   m_Layer: 0
   m_Name: Gear 1
   m_TagString: SimpleMachine
@@ -28,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370933668024926976}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9848078, w: 0.17364825}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 8084464181750474674}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -160}
 --- !u!212 &3157203922840208772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,9 +100,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.25
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -245,7 +246,9 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
+  torque: 0
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
+  GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
 --- !u!114 &2903396123927331631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +262,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
+--- !u!114 &5318874952568717528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370933668024926976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654875e9986284c7ca183bc92c7184d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5761812476416768397
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3974687230654402756
 Transform:
   m_ObjectHideFlags: 0
@@ -332,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8613953922089595038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.009, y: -0.114, z: 0}
+  m_LocalPosition: {x: 0.011, y: -0.112, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 8084464181750474674}

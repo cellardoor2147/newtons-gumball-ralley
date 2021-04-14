@@ -306,6 +306,7 @@ namespace Core
                 }
             }
         }
+        
         private static IEnumerator EnableObjects(string key, PlacedObjectMetaData metaData)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);

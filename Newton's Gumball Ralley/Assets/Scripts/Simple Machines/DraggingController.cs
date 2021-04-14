@@ -37,8 +37,10 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] private PlacedObjectMetaData wheelMetaData;
         [SerializeField] float torque;
+        private int SpinState;
 
         [SerializeField] SoundMetaData ScrewSound;
+        [SerializeField] SoundMetaData GearSound;
 
         private void Awake()
         {
@@ -53,7 +55,8 @@ namespace SimpleMachine
             placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             objectManager = GetComponent<PlacedObjectManager>();
             objectMetaData = objectManager.metaData;
-            torque = 1f;
+            torque = 20f;
+            SpinState = 0;
         }
         private void Start()
         {
@@ -64,17 +67,35 @@ namespace SimpleMachine
         }
         private void FixedUpdate()
         {
-            if (GameStateManager.GetGameState().Equals(GameState.Playing) && 
-                objectMetaData.Equals(gear2MetaData) && hasBeenPlaced && rigidbody2D.angularVelocity < 180)
+            if (objectMetaData.Equals(gear2MetaData)) 
             {
-                rigidbody2D.freezeRotation = false;
-                rigidbody2D.AddTorque(torque);
-            }
-            else if (GameStateManager.GetGameState().Equals(GameState.Editing) && 
-                objectMetaData.Equals(gear2MetaData) && hasBeenPlaced) 
-            {
-                rigidbody2D.angularVelocity = 0f;
-                rigidbody2D.freezeRotation = true;
+                if (GameStateManager.GetGameState().Equals(GameState.Playing) && 
+                    SpinState == 1 && rigidbody2D.angularVelocity < 180)
+                {
+                    if (!AudioManager.instance.isPlaying(GearSound.name)) 
+                    {
+                        AudioManager.instance.PlaySound(GearSound.name);
+                    }
+                    rigidbody2D.freezeRotation = false;
+                    rigidbody2D.AddTorque(torque);
+                }
+                if (GameStateManager.GetGameState().Equals(GameState.Playing) &&
+                    SpinState == 2 && rigidbody2D.angularVelocity > -180)
+                {
+                    if (!AudioManager.instance.isPlaying(GearSound.name))
+                    {
+                        AudioManager.instance.PlaySound(GearSound.name);
+                    }
+                    rigidbody2D.freezeRotation = false;
+                    rigidbody2D.AddTorque(torque * -1);
+                }
+                else if (GameStateManager.GetGameState().Equals(GameState.Editing) || SpinState == 0)  
+                {
+                    SpinState = 0;
+                    rigidbody2D.angularVelocity = 0f;
+                    rigidbody2D.freezeRotation = true;
+                    AudioManager.instance.StopSound(GearSound.name);
+                }
             }
         }
 
@@ -85,6 +106,26 @@ namespace SimpleMachine
 
         public void OnMouseDown()
         {
+            if (GameStateManager.GetGameState().Equals(GameState.Playing) && objectMetaData.Equals(gear2MetaData) 
+                && SpinState == 0) 
+            {
+                SpinState = 1;
+                AudioManager.instance.StopSound(GearSound.name);
+            }
+            else if (GameStateManager.GetGameState().Equals(GameState.Playing) && objectMetaData.Equals(gear2MetaData)
+                && SpinState == 1) 
+            {
+                rigidbody2D.angularVelocity = 0f;
+                SpinState = 2;
+                AudioManager.instance.StopSound(GearSound.name);  
+            }
+            else if (GameStateManager.GetGameState().Equals(GameState.Playing) && objectMetaData.Equals(gear2MetaData)
+                && SpinState == 2)
+            {
+                rigidbody2D.angularVelocity = 0f;
+                SpinState = 1;
+                AudioManager.instance.StopSound(GearSound.name);
+            }
             if (ShouldPreventDragging())
             {
                 return;
@@ -160,7 +201,8 @@ namespace SimpleMachine
         {
             if (ShouldPreventDragging())
             {
-                if (!gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear2MetaData)) 
+                if (!gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear2MetaData) 
+                || !GameStateManager.GetGameState().Equals(GameState.Editing)) 
                 {
                     return;
                 } 
