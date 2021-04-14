@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7026563859862279242}
   - component: {fileID: 1873718688760848271}
   - component: {fileID: 2903396123927331631}
-  - component: {fileID: 5318874952568717528}
   m_Layer: 0
   m_Name: Gear 1
   m_TagString: SimpleMachine
@@ -262,18 +261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
---- !u!114 &5318874952568717528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370933668024926976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 654875e9986284c7ca183bc92c7184d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5761812476416768397
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3974687230654402756
 Transform:
   m_ObjectHideFlags: 0
@@ -347,7 +334,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8613953922089595038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011, y: -0.112, z: 0}
+  m_LocalPosition: {x: 0.005, y: 0.021, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 8084464181750474674}
@@ -391,7 +378,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0, g: 0.764151, b: 0.29700327, a: 1}
   m_FlipX: 0

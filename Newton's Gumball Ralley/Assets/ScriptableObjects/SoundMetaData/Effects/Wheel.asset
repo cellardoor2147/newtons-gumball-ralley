@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wheel
   clip: {fileID: 8300000, guid: 4fd78f081a5e34bf4989703af1a1b725, type: 3}
-  volume: 0.5
+  volume: 0.25
   pitch: 1
   loop: 1
