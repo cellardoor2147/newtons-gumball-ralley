@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 413173461657776433}
   - component: {fileID: 413173461657776434}
   - component: {fileID: 413173461657776446}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Ball
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -138,7 +138,6 @@ MonoBehaviour:
   delayAfterRelease: 0.3
   BounceSound: {fileID: 11400000, guid: cfd74200c87a7490aaa928733d77a408, type: 2}
   RollingSound: {fileID: 11400000, guid: 5b19837bd08884f39b0fde5f5234a6b2, type: 2}
-  delayAfterExit: 2
   fadeTime: 0.5
   finalVolume: 0
   rollingVolume: 0.2
