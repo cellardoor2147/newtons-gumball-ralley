@@ -55,7 +55,7 @@ namespace SimpleMachine
             placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             objectManager = GetComponent<PlacedObjectManager>();
             objectMetaData = objectManager.metaData;
-            torque = 20f;
+            torque = 1000f;
             SpinState = 0;
         }
         private void Start()
