@@ -36,10 +36,6 @@ namespace Core
         private readonly static string GAME_SCENE_KEY = "Game";
 
         private static GameStateManager instance;
-        
-        // TODO: remove and instead load conversations from the current level,
-        // if there is a conversation to load
-        [SerializeField] private Conversation exampleConversation;
 
         [SerializeField] SoundMetaData CutsceneMusicSound;
         [SerializeField] SoundMetaData MenuMusicSound;
@@ -121,9 +117,6 @@ namespace Core
                     AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
-                    // TODO: remove and instead load conversations from the current level,
-                    // if there is a conversation to load
-                    GUIManager.StartConversation(instance.exampleConversation);
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
