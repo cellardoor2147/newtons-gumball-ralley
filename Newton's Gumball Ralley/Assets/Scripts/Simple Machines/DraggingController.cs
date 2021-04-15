@@ -36,11 +36,7 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData gear3MetaData;
         [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] private PlacedObjectMetaData wheelMetaData;
-        [SerializeField] float torque;
-        private int SpinState;
-
         [SerializeField] SoundMetaData ScrewSound;
-        [SerializeField] SoundMetaData GearSound;
 
         private void Awake()
         {
@@ -55,47 +51,12 @@ namespace SimpleMachine
             placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             objectManager = GetComponent<PlacedObjectManager>();
             objectMetaData = objectManager.metaData;
-            torque = 1000f;
-            SpinState = 0;
         }
         private void Start()
         {
             if (AudioManager.instance == null)
             {
                 Debug.LogError("No audiomanager found");
-            }
-        }
-        private void FixedUpdate()
-        {
-            if (objectMetaData.Equals(gear2MetaData)) 
-            {
-                if (GameStateManager.GetGameState().Equals(GameState.Playing) && 
-                    SpinState == 1 && rigidbody2D.angularVelocity < 180)
-                {
-                    if (!AudioManager.instance.isPlaying(GearSound.name)) 
-                    {
-                        AudioManager.instance.PlaySound(GearSound.name);
-                    }
-                    rigidbody2D.freezeRotation = false;
-                    rigidbody2D.AddTorque(torque);
-                }
-                if (GameStateManager.GetGameState().Equals(GameState.Playing) &&
-                    SpinState == 2 && rigidbody2D.angularVelocity > -180)
-                {
-                    if (!AudioManager.instance.isPlaying(GearSound.name))
-                    {
-                        AudioManager.instance.PlaySound(GearSound.name);
-                    }
-                    rigidbody2D.freezeRotation = false;
-                    rigidbody2D.AddTorque(torque * -1);
-                }
-                else if (GameStateManager.GetGameState().Equals(GameState.Editing) || SpinState == 0)  
-                {
-                    SpinState = 0;
-                    rigidbody2D.angularVelocity = 0f;
-                    rigidbody2D.freezeRotation = true;
-                    AudioManager.instance.StopSound(GearSound.name);
-                }
             }
         }
 
@@ -106,26 +67,6 @@ namespace SimpleMachine
 
         public void OnMouseDown()
         {
-            if (GameStateManager.GetGameState().Equals(GameState.Playing) && objectMetaData.Equals(gear2MetaData) 
-                && SpinState == 0) 
-            {
-                SpinState = 1;
-                AudioManager.instance.StopSound(GearSound.name);
-            }
-            else if (GameStateManager.GetGameState().Equals(GameState.Playing) && objectMetaData.Equals(gear2MetaData)
-                && SpinState == 1) 
-            {
-                rigidbody2D.angularVelocity = 0f;
-                SpinState = 2;
-                AudioManager.instance.StopSound(GearSound.name);  
-            }
-            else if (GameStateManager.GetGameState().Equals(GameState.Playing) && objectMetaData.Equals(gear2MetaData)
-                && SpinState == 2)
-            {
-                rigidbody2D.angularVelocity = 0f;
-                SpinState = 1;
-                AudioManager.instance.StopSound(GearSound.name);
-            }
             if (ShouldPreventDragging())
             {
                 return;
@@ -238,22 +179,12 @@ namespace SimpleMachine
 
         private bool ShouldSnap()
         {
-            if (objectMetaData.Equals(leverFulcrumMetaData))
+            if (GetComponent<SnapChecker>() != null)
             {
-                SnapChecker fulcrumSnapChecker = GetComponent<SnapChecker>();
-                return fulcrumSnapChecker.ShouldSnap;
+                SnapChecker snapChecker = GetComponent<SnapChecker>();
+                return snapChecker.ShouldSnap;
             }
-            else if (objectMetaData.Equals(screwMetaData))
-            {
-                SnapChecker screwSnapChecker = GetComponent<SnapChecker>();
-                return screwSnapChecker.ShouldSnap;
-            }
-            else if (objectMetaData.Equals(gear2MetaData))
-            {
-                SnapChecker gear2SnapChecker = GetComponent<SnapChecker>();
-                return gear2SnapChecker.ShouldSnap;
-            }
-            return false;
+            return false;      
         }
 
         private void SnapToNearestLocation()
@@ -283,23 +214,13 @@ namespace SimpleMachine
                 }
                 return desiredSnapLocation;
             }
-            else if (objectMetaData.Equals(screwMetaData))
+            else if (objectMetaData.Equals(screwMetaData) || objectMetaData.Equals(gear2MetaData))
             {
                 List<GameObject> screwSnapObjects = GetSnapObjects();
                 Vector3 desiredSnapLocation = new Vector3();
 
                 desiredSnapLocation = screwSnapObjects[0].transform.position - new Vector3(0, 0, 0);
                 // 0f offset is required to get screw in correct place
-
-                return desiredSnapLocation;
-            }
-            else if (objectMetaData.Equals(gear2MetaData))
-            {
-                List<GameObject> gear2SnapObjects = GetSnapObjects();
-                Vector3 desiredSnapLocation = new Vector3();
-
-                desiredSnapLocation = gear2SnapObjects[0].transform.position - new Vector3(0, 0, 0);
-                // 0f offset is required to get gear2 in correct place
 
                 return desiredSnapLocation;
             }
@@ -321,12 +242,12 @@ namespace SimpleMachine
         {
             GameObject objectContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
 
-            if (objectMetaData.Equals(leverFulcrumMetaData))
+            if (objectMetaData.Equals(leverFulcrumMetaData) || objectMetaData.Equals(gearBackgroundMetaData))
             {
                 foreach (Transform placedObject in objectContainer.transform)
                 {
                     PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
-                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(leverPlatformMetaData))
+                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(objectMetaData))
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
                 }
             }
@@ -337,17 +258,6 @@ namespace SimpleMachine
                     if (placedObjectManager != null && (placedObjectManager.metaData.Equals(gear1MetaData)
                                                         || placedObjectManager.metaData.Equals(gear3MetaData)
                                                         || placedObjectManager.metaData.Equals(wheelMetaData))) {
-                        placedObject.GetChild(0).gameObject.SetActive(activeState);
-                    }
-                }
-            }
-            else if (objectMetaData.Equals(gearBackgroundMetaData))
-            {
-                foreach (Transform placedObject in objectContainer.transform)
-                {
-                    PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
-                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(gear2MetaData))
-                    {
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
                     }
                 }

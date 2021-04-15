@@ -300,7 +300,7 @@ namespace Core
             GameObject objectContainer = GameObject.Find(key);
             foreach (Transform placeableobject in objectContainer.transform) 
             {
-                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(instance.gearBackgroundMetaData) == metaData) 
+                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData)) 
                 {
                     placeableobject.gameObject.SetActive(false);
                 }
@@ -313,7 +313,7 @@ namespace Core
             GameObject objectContainer = GameObject.Find(key);
             foreach (Transform placeableobject in objectContainer.transform)
             {
-                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(instance.gearBackgroundMetaData) == metaData)
+                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData))
                 {
                     placeableobject.gameObject.SetActive(true);
                 }
