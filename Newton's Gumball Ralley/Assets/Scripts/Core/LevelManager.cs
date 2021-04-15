@@ -6,8 +6,6 @@ namespace Core
 {
     public class LevelManager : MonoBehaviour
     {
-        private static readonly string LEVELS_DATA_KEY = "/LevelsData";
-
         private static LevelManager instance;
 
         private List<LevelData> levelsData;

@@ -146,6 +146,9 @@ namespace Ball
         public void ResetPosition()
         {
             transform.position = GetSlingAnchorPosition();
+            rigidBody.velocity = Vector2.zero;
+            rigidBody.angularVelocity = 0f;
+            rigidBody.gravityScale = 0f;
             GetComponent<SpringJoint2D>().enabled = true;
             hasBeenReleased = false;
         }

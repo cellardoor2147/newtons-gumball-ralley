@@ -28,9 +28,7 @@ namespace Core
         public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
 
-        private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
-        private readonly static string SCREW_KEY = "Screw";
-        private readonly static string SIMPLE_MACHINE_KEY = "SimpleMachine";
+        private readonly static string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
         private readonly static string GAME_SCENE_KEY = "Game";
 
@@ -228,9 +226,9 @@ namespace Core
 
         private static IEnumerator ResetBallPosition()
         {
-            yield return new WaitUntil(() => GameObject.Find(SLING_ANCHOR_KEY) != null);
-            GameObject slingAnchor = GameObject.Find(SLING_ANCHOR_KEY);
-            slingAnchor.GetComponentInChildren<BallMovement>().ResetPosition();
+            yield return new WaitUntil(() => GameObject.Find(GUMBALL_MACHINE_KEY) != null);
+            GameObject gumballMachine = GameObject.Find(GUMBALL_MACHINE_KEY);
+            gumballMachine.GetComponentInChildren<BallMovement>().ResetPosition();
         }
 
         private static IEnumerator ResetObjectsTransforms(string key)

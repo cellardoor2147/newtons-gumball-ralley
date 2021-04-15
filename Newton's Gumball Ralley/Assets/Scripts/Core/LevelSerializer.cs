@@ -32,7 +32,7 @@ namespace Core
         public int repeatedBackgroundColumns;
         public List<SerializableTransform> environmentTransforms;
         public List<SerializablePreplacedObject> preplacedObjects;
-        public SerializableTransform slingAnchorTransform;
+        public SerializableTransform gumballMachineTransform;
     }
 
     public static class LevelSerializer
@@ -43,7 +43,7 @@ namespace Core
         private static readonly string BACKGROUND_KEY = "Background";
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
-        private static readonly string SLING_ANCHOR_KEY = "Sling Anchor";
+        private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string ENVIRONMENT_BLOCK_KEY = "EnvironmentBlock";
         private static readonly string GAME_SCENE_KEY = "Game";
 
@@ -113,9 +113,9 @@ namespace Core
                     }
                     levelData.preplacedObjects = preplacedObjects;
                 }
-                else if (gameObject.name.Equals(SLING_ANCHOR_KEY))
+                else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
-                    levelData.slingAnchorTransform = SerializeTransform(gameObject.transform);
+                    levelData.gumballMachineTransform = SerializeTransform(gameObject.transform);
                 }
             }
             return levelData;
@@ -191,11 +191,11 @@ namespace Core
                             serializedPreplacedObject.transform.scale;
                     }
                 }
-                else if (gameObject.name.Equals(SLING_ANCHOR_KEY))
+                else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
-                    gameObject.transform.position = levelData.slingAnchorTransform.position;
-                    gameObject.transform.rotation = levelData.slingAnchorTransform.rotation;
-                    gameObject.transform.localScale = levelData.slingAnchorTransform.scale;
+                    gameObject.transform.position = levelData.gumballMachineTransform.position;
+                    gameObject.transform.rotation = levelData.gumballMachineTransform.rotation;
+                    gameObject.transform.localScale = levelData.gumballMachineTransform.scale;
                 }
             }
         }
