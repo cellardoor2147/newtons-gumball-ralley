@@ -27,6 +27,7 @@ namespace Core
     {
         public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
+        public static readonly string ENVIRONMENT_KEY = "Environment";
 
         private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
         private readonly static string SCREW_KEY = "Screw";
@@ -187,13 +188,27 @@ namespace Core
             instance.StartCoroutine(ResetBallPosition());
             instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
             instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(FreezeObjectsRigidbodies(ENVIRONMENT_KEY));
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(DestroyDebris(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(RepairDestructibleObjects(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
+            instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
+            instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator ResetDestructibleObjectLayer(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+               .GetComponentsInChildren<DestructibleObstacleLayerController>(true)
+               .ToList()
+               .ForEach(
+                   layerController => layerController.UpdateAllLayers(DestructibleObstacleLayerController.defaultLayer)
+            );
         }
 
         private static IEnumerator RepairDestructibleObjects(string key)
@@ -203,7 +218,7 @@ namespace Core
                .GetComponentsInChildren<D2dDestructibleSprite>(true)
                .ToList()
                .ForEach(
-                   destructibleSprite => destructibleSprite.Rebuild()
+                   destructibleSprite => destructibleSprite.Rebuild(2)
             );
         }
 
