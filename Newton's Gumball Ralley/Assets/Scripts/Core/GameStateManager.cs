@@ -399,6 +399,11 @@ namespace Core
             }
         }
 
+        public static void StartStaticCoroutine(IEnumerator coroutineEnumerator)
+        {
+            instance.StartCoroutine(coroutineEnumerator);
+        }
+
         private void Update()
         {
             bool shouldSkipOpeningCutscene =
