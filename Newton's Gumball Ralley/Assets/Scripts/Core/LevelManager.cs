@@ -87,5 +87,20 @@ namespace Core
             GameStateManager.SetGameState(GameState.Editing);
             instance.StartCoroutine(LevelSerializer.AsyncSetSceneWithLevelData(levelData));
         }
+
+        public static Vector3 GetGumballMachinePosition()
+        {
+            return instance.levelsData[instance.levelsDataIndex].gumballMachineTransform.position;
+        }
+
+        public static Quaternion GetGumballMachineRotation()
+        {
+            return instance.levelsData[instance.levelsDataIndex].gumballMachineTransform.rotation;
+        }
+
+        public static Vector3 GetGumballMachineScale()
+        {
+            return instance.levelsData[instance.levelsDataIndex].gumballMachineTransform.scale;
+        }
     }
 }

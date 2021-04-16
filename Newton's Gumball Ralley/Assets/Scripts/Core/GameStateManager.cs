@@ -188,7 +188,7 @@ namespace Core
         {
             instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(ResetBallPosition());
+            instance.StartCoroutine(ResetGumballMachine());
             instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
@@ -224,11 +224,13 @@ namespace Core
             }
         }
 
-        private static IEnumerator ResetBallPosition()
+        private static IEnumerator ResetGumballMachine()
         {
             yield return new WaitUntil(() => GameObject.Find(GUMBALL_MACHINE_KEY) != null);
             GameObject gumballMachine = GameObject.Find(GUMBALL_MACHINE_KEY);
-            gumballMachine.GetComponentInChildren<BallMovement>().ResetPosition();
+            GumballMachineManager gumballMachineManager =
+                gumballMachine.GetComponent<GumballMachineManager>();
+            gumballMachineManager.SetGumballMachineState(GumballMachineState.Closed);
         }
 
         private static IEnumerator ResetObjectsTransforms(string key)

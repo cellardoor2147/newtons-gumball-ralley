@@ -143,7 +143,13 @@ namespace Ball
             GetComponent<SpringJoint2D>().enabled = false;
         }
 
-        public void ResetPosition()
+        public IEnumerator AsyncResetPosition()
+        {
+            yield return new WaitUntil(() => transform != null && rigidBody != null);
+            ResetPosition();
+        }
+
+        private void ResetPosition()
         {
             transform.position = GetSlingAnchorPosition();
             rigidBody.velocity = Vector2.zero;
