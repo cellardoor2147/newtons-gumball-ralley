@@ -39,7 +39,8 @@ namespace Ball
             spriteRender = GetComponent<SpriteRenderer>();
             collider2D = GetComponent<Collider2D>();
             slingAnchor = transform.Find(SLING_ANCHOR_KEY).gameObject;
-            ballMovement = slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
+            ballMovement =
+                slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<SpriteRenderer>();
             SetGumballMachineState(GumballMachineState.Closed);
@@ -54,6 +55,7 @@ namespace Ball
             switch (gumballMachineState)
             {
                 case GumballMachineState.Closed:
+                    ballSpriteRenderer.enabled = false;
                     StartCoroutine(ResetBallPosition());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     SetClickability(true);
@@ -75,9 +77,7 @@ namespace Ball
 
         private IEnumerator ResetBallPosition()
         {
-            slingAnchor.SetActive(true);
             yield return ballMovement.AsyncResetPosition();
-            slingAnchor.SetActive(false);
         }
 
         private void SetClickability(bool isClickable)
@@ -168,8 +168,8 @@ namespace Ball
 
         private IEnumerator DispenseGumball(Vector3 originalScale)
         {
-            slingAnchor.SetActive(true);
             slingAnchor.transform.localScale = Vector3.zero;
+            ballSpriteRenderer.enabled = true;
             ballSpriteRenderer.color = Color.black;
             while (slingAnchor.transform.localScale.x < originalScale.x)
             {
