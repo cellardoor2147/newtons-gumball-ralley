@@ -262,7 +262,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.25
   m_GravityScale: 1
@@ -470,9 +470,9 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  torque: 0
+  smallAxleMetaData: {fileID: 0}
+  largeAxleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
-  GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
 --- !u!114 &4161818804681175105
 MonoBehaviour:
   m_ObjectHideFlags: 0

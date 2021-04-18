@@ -276,14 +276,16 @@ namespace Core
                     }
                     bool collider2IsLargeAxle =
                         collider2.gameObject.name.Equals("LargeAxle(Clone)");
+                    Debug.Log(collider2IsLargeAxle + " " + collider2.gameObject.name);
                     bool collider2IsSmallAxle =
                         collider2.gameObject.name.Equals("SmallAxle(Clone)");
                     bool collider1IsGear3 =
                         collider1.gameObject.name.Equals("Gear3(Clone)");
+                    Debug.Log(collider1IsGear3 + " " + collider1.gameObject.name);
                     bool collider1IsGear1orWheel =
                         collider1.gameObject.name.Equals("Gear1(Clone)") || collider1.gameObject.name.Equals("Wheel(Clone)");
                     if ((collider2IsLargeAxle && !collider1IsGear3) 
-                        || (collider2IsLargeAxle && !collider1IsGear1orWheel))
+                        || (collider2IsSmallAxle && !collider1IsGear1orWheel))
                     {
                         continue;
                     }

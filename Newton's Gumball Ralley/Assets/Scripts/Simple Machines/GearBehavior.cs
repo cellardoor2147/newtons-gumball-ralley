@@ -15,7 +15,8 @@ public class GearBehavior : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Vector3 ConstrainedPosition;
     private bool hasSet;
-    [SerializeField] float torque;
+    private float torque;
+    private float spinSpeed;
 
     private SpinState spinState;
 
@@ -25,6 +26,7 @@ public class GearBehavior : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         torque = 5000f;
+        spinSpeed = 100f;
         spinState = SpinState.NotSpinning;
     }
 
@@ -73,12 +75,12 @@ public class GearBehavior : MonoBehaviour
         }
 
         if (GameStateManager.GetGameState().Equals(GameState.Playing) &&
-            spinState.Equals(SpinState.SpinningRight) && rigidbody2D.angularVelocity < 180)
+            spinState.Equals(SpinState.SpinningRight) && rigidbody2D.angularVelocity < spinSpeed)
         {
             rigidbody2D.AddTorque(torque);
         }
         if (GameStateManager.GetGameState().Equals(GameState.Playing) &&
-            spinState.Equals(SpinState.SpinningLeft) && rigidbody2D.angularVelocity > -180)
+            spinState.Equals(SpinState.SpinningLeft) && rigidbody2D.angularVelocity > (-1 * spinSpeed))
         {
             rigidbody2D.AddTorque(torque * -1);
         }
