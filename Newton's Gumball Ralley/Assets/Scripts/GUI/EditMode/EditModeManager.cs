@@ -12,20 +12,21 @@ namespace GUI.EditMode
         Lever = 2,
         Pulley = 3,
         Wheel = 4,
-        Wedge = 5,
-        Miscellaneous = 6
+        Wedge = 5
     }
 
     public class EditModeManager : MonoBehaviour
     {
         private static readonly string PLACEABLE_OBJECTS_MENU_KEY =
             "Placeable Objects Menu";
-        private static readonly string TABS_CONTAINER_KEY = "Tabs Container";
+        private static readonly string INACTIVE_TABS_CONTAINER_KEY = "Inactive Tabs Container";
+        private static readonly string ACTIVE_TABS_CONTAINER_KEY = "Active Tabs Container";
         private static readonly string CONTENT_CONTAINER_KEY = "Content Container";
 
         private static EditModeManager instance;
 
-        private List<TabController> tabControllers;
+        private List<TabController> inactiveTabControllers;
+        private List<TabController> activeTabControllers;
         private List<ContentController> contentControllers;
         private RectTransform placeableObjectsMenuTransform;
         private float placeableObjectsMenuMaxYPosition;
@@ -38,9 +39,13 @@ namespace GUI.EditMode
         private void Awake()
         {
             SetInstance();
-            tabControllers = transform
+            inactiveTabControllers = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
-                .Find(TABS_CONTAINER_KEY)
+                .Find(INACTIVE_TABS_CONTAINER_KEY)
+                .GetComponentsInChildren<TabController>(true).ToList();
+            activeTabControllers = transform
+                .Find(PLACEABLE_OBJECTS_MENU_KEY)
+                .Find(ACTIVE_TABS_CONTAINER_KEY)
                 .GetComponentsInChildren<TabController>(true).ToList();
             contentControllers = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
@@ -67,7 +72,7 @@ namespace GUI.EditMode
         private void SetPlaceableObjectsMenuPositionConstraints()
         {
             float tabsContainerHeight = placeableObjectsMenuTransform
-                .Find(TABS_CONTAINER_KEY)
+                .Find(INACTIVE_TABS_CONTAINER_KEY)
                 .GetComponent<RectTransform>()
                 .sizeDelta.y;
             placeableObjectsMenuMaxYPosition =
@@ -81,45 +86,40 @@ namespace GUI.EditMode
             SetActiveTab(PlaceableObjectType.InclinePlane);
         }
 
-        private void SetAllTabsToInactive()
-        {
-            tabControllers.ForEach(
-                tabController => tabController.SetTabColorToInactive()
-            );
-            contentControllers.ForEach(
-                contentController => contentController.gameObject.SetActive(false)
-            );
-        }
-
         public static void SetActiveTab(PlaceableObjectType objectType)
         {
-            instance.SetAllTabsToInactive();
-            TabController tabControllerToActivate = instance.tabControllers.Find(
-                tabController => tabController.objectType.Equals(objectType)
-            );
-            if (tabControllerToActivate != null)
+            foreach (TabController inactiveTab in instance.inactiveTabControllers)
             {
-                tabControllerToActivate.SetTabColorToActive();
-                instance.ActivateContent(objectType);
+                if (inactiveTab.objectType.Equals(objectType))
+                {
+                    inactiveTab.Hide();
+                }
+                else
+                {
+                    inactiveTab.Show();
+                }
             }
-            else
+            foreach (TabController activeTab in instance.activeTabControllers)
             {
-                Debug.LogError($"Tried setting invalid placeable object type: {objectType}");
+                if (activeTab.objectType.Equals(objectType))
+                {
+                    activeTab.Show();
+                }
+                else
+                {
+                    activeTab.Hide();
+                }
             }
+            instance.ActivateContent(objectType);
         }
 
         private void ActivateContent(PlaceableObjectType objectType)
         {
-            ContentController contentControllerToActivate = contentControllers.Find(
-                contentController => contentController.objectType.Equals(objectType)
-            );
-            if (contentControllerToActivate != null)
+            foreach (ContentController contentController in instance.contentControllers)
             {
-                contentControllerToActivate.gameObject.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError($"Tried activating invalid placeable object type: {objectType}");
+                contentController.gameObject.SetActive(
+                    contentController.objectType.Equals(objectType)
+                );
             }
         }
 
