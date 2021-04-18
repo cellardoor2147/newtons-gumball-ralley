@@ -274,8 +274,29 @@ namespace Core
                         if (!fulcrumScrew.FulcrumJointShouldBeCreated)
                             continue;
                     }
+                    bool collider2IsLargeAxle =
+                        collider2.gameObject.name.Equals("LargeAxle(Clone)");
+                    bool collider2IsSmallAxle =
+                        collider2.gameObject.name.Equals("SmallAxle(Clone)");
+                    bool collider1IsGear3 =
+                        collider1.gameObject.name.Equals("Gear3(Clone)");
+                    bool collider1IsGear1orWheel =
+                        collider1.gameObject.name.Equals("Gear1(Clone)") || collider1.gameObject.name.Equals("Wheel(Clone)");
+                    if ((collider2IsLargeAxle && !collider1IsGear3) 
+                        || (collider2IsLargeAxle && !collider1IsGear1orWheel))
+                    {
+                        continue;
+                    }
+                    bool collider2IsScrew =
+                       collider2.gameObject.name.Equals("Screw(Clone)");
+                    if (collider2IsScrew && 
+                        (collider1IsGear3 || collider1IsGear1orWheel))
+                    {
+                        continue;
+                    }
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
+                
             }
             yield return null;
         }

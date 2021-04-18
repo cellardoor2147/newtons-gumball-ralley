@@ -36,6 +36,8 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData gear3MetaData;
         [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] private PlacedObjectMetaData wheelMetaData;
+        [SerializeField] private PlacedObjectMetaData smallAxleMetaData;
+        [SerializeField] private PlacedObjectMetaData largeAxleMetaData;
         [SerializeField] SoundMetaData ScrewSound;
 
         private void Awake()
@@ -214,7 +216,7 @@ namespace SimpleMachine
                 }
                 return desiredSnapLocation;
             }
-            else if (objectMetaData.Equals(screwMetaData) || objectMetaData.Equals(gear2MetaData))
+            else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData) || objectMetaData.Equals(gear2MetaData))
             {
                 List<GameObject> screwSnapObjects = GetSnapObjects();
                 Vector3 desiredSnapLocation = new Vector3();
@@ -251,7 +253,7 @@ namespace SimpleMachine
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
                 }
             }
-            else if (objectMetaData.Equals(screwMetaData)) {
+            else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData))  {
                 foreach (Transform placedObject in objectContainer.transform)
                 {
                     PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
@@ -266,8 +268,9 @@ namespace SimpleMachine
 
         private bool ShouldPreventObjectFromBeingPlaced()
         {
-            bool objectIsScrew = rigidbody2D == null;
-            bool objectHasCollided;
+            bool objectIsAxle = rigidbody2D == null;
+            bool objectHasCollided; 
+            bool shouldSnap;
             if (!objectMetaData.Equals(gear2MetaData)) 
             {
                 objectHasCollided = collider2D.IsTouchingLayers(1);
@@ -276,7 +279,7 @@ namespace SimpleMachine
             {
                 objectHasCollided = GetComponent<SnapChecker>().SnapPointHolder == null;
             }
-            return !objectIsScrew && objectHasCollided;
+            return !objectIsAxle && objectHasCollided;
         }
 
         public void ResetTransform()

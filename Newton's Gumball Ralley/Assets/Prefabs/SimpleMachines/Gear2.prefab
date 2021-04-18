@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4197338832165763289}
   - component: {fileID: 1243878983184720625}
   m_Layer: 0
-  m_Name: Gear 2
+  m_Name: Gear2
   m_TagString: SimpleMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,6 +406,8 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
+  smallAxleMetaData: {fileID: 0}
+  largeAxleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &3901163314908294279
 MonoBehaviour:
