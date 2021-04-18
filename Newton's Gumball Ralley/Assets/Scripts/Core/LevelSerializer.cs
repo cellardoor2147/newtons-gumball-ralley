@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Background;
+using System.Collections;
 
 namespace Core
 {
@@ -36,18 +37,21 @@ namespace Core
 
     public static class LevelSerializer
     {
+        public static readonly string WRITE_DIRECTORY_PATH =
+            Application.persistentDataPath + "/LevelsData/";
+
         private static readonly string BACKGROUND_KEY = "Background";
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
         private static readonly string SLING_ANCHOR_KEY = "Sling Anchor";
-        private static readonly string WRITE_FILE_PATH_PREFIX = "Assets/LevelsData/";
         private static readonly string ENVIRONMENT_BLOCK_KEY = "EnvironmentBlock";
+        private static readonly string GAME_SCENE_KEY = "Game";
 
         public static void Serialize(int worldIndex, int levelIndex, string customLevelName)
         {
             LevelData levelData = GetLevelData(worldIndex, levelIndex, customLevelName);
             string serializedLevelData = JsonUtility.ToJson(levelData, true);
-            string writeFilePath = WRITE_FILE_PATH_PREFIX;
+            string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))
             {
                 writeFilePath += worldIndex.ToString() + "-" + levelIndex.ToString();
@@ -57,6 +61,7 @@ namespace Core
                 writeFilePath += customLevelName;
             }
             writeFilePath += ".json";
+            Directory.CreateDirectory(WRITE_DIRECTORY_PATH);
             using (StreamWriter streamWriter = new StreamWriter(writeFilePath))
             {
                 streamWriter.Write(serializedLevelData);
@@ -133,11 +138,10 @@ namespace Core
                 serializedLevelData = streamReader.ReadToEnd();
             }
             LevelData levelData = JsonUtility.FromJson<LevelData>(serializedLevelData);
-            SetSceneWithLevelData(levelData);
             return levelData;
         }
 
-        private static void SetSceneWithLevelData(LevelData levelData)
+        public static void SetSceneWithLevelData(LevelData levelData)
         {
             List<GameObject> rootGameObjects = new List<GameObject>();
             SceneManager.GetActiveScene().GetRootGameObjects(rootGameObjects);
@@ -202,6 +206,18 @@ namespace Core
             {
                 GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
             }
+        }
+
+        public static IEnumerator AsyncSetSceneWithLevelData(LevelData levelData)
+        {
+            yield return new WaitUntil(() => GameSceneIsLoaded());
+            SetSceneWithLevelData(levelData);
+        }
+
+        private static bool GameSceneIsLoaded()
+        {
+            return SceneManager.GetActiveScene().name.Equals(GAME_SCENE_KEY) &&
+                SceneManager.GetActiveScene().isLoaded;
         }
     }
 }

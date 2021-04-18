@@ -21,8 +21,6 @@ namespace SimpleMachine
         private SpriteRenderer spriteRenderer;
         private Color defaultColor;
         private Rigidbody2D rigidbody2D;
-        private Vector2 lastValidPosition;
-        private Quaternion lastValidRotation;
         private GameObject rotationArrows;
         private GameObject placedObjectsContainer;
         private PlacedObjectManager objectManager;
@@ -48,11 +46,11 @@ namespace SimpleMachine
             spriteRenderer = GetComponent<SpriteRenderer>();
             defaultColor = spriteRenderer.color;
             rigidbody2D = GetComponent<Rigidbody2D>();
-            lastValidPosition = transform.position;
-            lastValidRotation = transform.rotation;
             placedObjectsContainer = GameObject.Find(PLACED_OBJECTS_KEY);
             objectManager = GetComponent<PlacedObjectManager>();
             objectMetaData = objectManager.metaData;
+            objectManager.SetLastValidPosition(transform.position);
+            objectManager.SetLastValidRotation(transform.rotation);
         }
         private void Start()
         {
@@ -78,8 +76,8 @@ namespace SimpleMachine
                 ToggleSnapLocations(true);
             }
             EditModeManager.HideEditModeGUI();
-            lastValidPosition = transform.position;
-            lastValidRotation = transform.rotation;
+            objectManager.SetLastValidPosition(transform.position);
+            objectManager.SetLastValidRotation(transform.rotation);
             collider2D.isTrigger = true;
             transform.position = GetMousePositionInWorldCoordinates();
         }
@@ -131,13 +129,13 @@ namespace SimpleMachine
                     EditModeManager.ShowEditModeGUI();
                     return;
                 }
-                ResetTransform();
+                objectManager.ResetTransform();
             }
             else
             {
                 hasBeenPlaced = true;
-                lastValidPosition = transform.position;
-                lastValidRotation = transform.rotation;
+                objectManager.SetLastValidPosition(transform.position);
+                objectManager.SetLastValidRotation(transform.rotation);
                 if (rigidbody2D == null) {
                     AudioManager.instance.PlaySound(ScrewSound.name);
                 }
@@ -268,44 +266,16 @@ namespace SimpleMachine
 
         private bool ShouldPreventObjectFromBeingPlaced()
         {
-            bool objectIsAxle = rigidbody2D == null;
-            bool objectHasCollided; 
-            bool shouldSnap;
+            bool objectIsScrew = rigidbody2D == null; 
             if (!objectMetaData.Equals(gear2MetaData)) 
             {
-                objectHasCollided = collider2D.IsTouchingLayers(1);
+                objectHasCollided = collider2D.IsTouchingLayers(1) || collider2D.IsTouchingLayers(LayerMask.GetMask("Ball"));
             }
             else 
             {
                 objectHasCollided = GetComponent<SnapChecker>().SnapPointHolder == null;
             }
-            return !objectIsAxle && objectHasCollided;
-        }
-
-        public void ResetTransform()
-        {
-            transform.position = lastValidPosition;
-            transform.rotation = lastValidRotation;
-        }
-
-        public void UnfreezeRigidbody()
-        {
-            bool canNotUnfreezeRigidBody = rigidbody2D == null;
-            if (canNotUnfreezeRigidBody)
-            {
-                return;
-            }
-            rigidbody2D.constraints = RigidbodyConstraints2D.None;
-        }
-
-        public void FreezeRigidbody()
-        {
-            bool canNotFreezeRigidBody = rigidbody2D == null;
-            if (canNotFreezeRigidBody)
-            {
-                return;
-            }
-            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            return !objectIsScrew && objectHasCollided;
         }
 
         public void GrayOut()
@@ -372,7 +342,7 @@ namespace SimpleMachine
                 && totalRotationMagnitude > -360f
             );
             transform.Rotate(new Vector3(0f, 0f, totalRotationMagnitude));
-            lastValidRotation = transform.rotation;
+            objectManager.SetLastValidRotation(transform.rotation);
         }
         
         private float GetNextPotentiallyValidRotation(float rotationMagnitude)

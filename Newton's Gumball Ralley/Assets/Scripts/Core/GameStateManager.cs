@@ -4,6 +4,8 @@ using GUI;
 using GUI.Dialogue;
 using SimpleMachine;
 using Ball;
+using Destructible2D;
+using DestructibleObject;
 using System.Linq;
 using System.Collections.Generic;
 using Audio;
@@ -18,7 +20,8 @@ namespace Core
         Dialogue = 2,
         Playing = 3,
         Editing = 4,
-        Paused = 5
+        Paused = 5,
+        LevelCompleted = 6
     }
 
     public class GameStateManager : MonoBehaviour
@@ -33,10 +36,6 @@ namespace Core
         private readonly static string GAME_SCENE_KEY = "Game";
 
         private static GameStateManager instance;
-        
-        // TODO: remove and instead load conversations from the current level,
-        // if there is a conversation to load
-        [SerializeField] private Conversation exampleConversation;
 
         [SerializeField] SoundMetaData CutsceneMusicSound;
         [SerializeField] SoundMetaData MenuMusicSound;
@@ -120,9 +119,6 @@ namespace Core
                     AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
-                    // TODO: remove and instead load conversations from the current level,
-                    // if there is a conversation to load
-                    GUIManager.StartConversation(instance.exampleConversation);
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
@@ -151,6 +147,12 @@ namespace Core
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.SettingsMenu);
                     AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
+                    break;
+                case GameState.LevelCompleted:
+                    Time.timeScale = 1.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
+                    // TODO: play victory sound
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
@@ -193,7 +195,33 @@ namespace Core
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
+            instance.StartCoroutine(DestroyDebris(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(RepairDestructibleObjects(PREPLACED_OBJECTS_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator RepairDestructibleObjects(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+               .GetComponentsInChildren<D2dDestructibleSprite>(true)
+               .ToList()
+               .ForEach(
+                   destructibleSprite => destructibleSprite.Rebuild()
+            );
+        }
+
+        private static IEnumerator DestroyDebris(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            foreach (Transform objectTransform in objectContainer.transform)
+            {
+                if (objectTransform.gameObject.name.Contains("(Clone)"))
+                {
+                    Destroy(objectTransform.gameObject);
+                }
+            }
         }
 
         private static IEnumerator ResetBallPosition()
@@ -207,10 +235,10 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.ResetTransform()
+                    placedObjectManager => placedObjectManager.ResetTransform()
             );
         }
 
@@ -218,10 +246,10 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.UnfreezeRigidbody()
+                    placedObjectManager => placedObjectManager.UnfreezeRigidbody()
             );
         }
 
@@ -229,10 +257,10 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.FreezeRigidbody()
+                    placedObjectManager => placedObjectManager.FreezeRigidbody()
             );
         }
 
@@ -401,6 +429,21 @@ namespace Core
                 .ForEach(
                     draggingController => draggingController.AddRotationArrows()
             );
+        }
+
+        public static IEnumerator LoadNextLevel()
+        {
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+            LevelManager.LoadNextLevel();
+        }
+
+        private static void DeleteAllChildren(GameObject gameObject)
+        {
+            for (int i = gameObject.transform.childCount - 1; i >= 0; i--)
+            {
+                GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
+            }
         }
 
         private void Update()

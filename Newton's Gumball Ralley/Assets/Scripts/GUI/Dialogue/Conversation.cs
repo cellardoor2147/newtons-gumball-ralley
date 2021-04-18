@@ -31,6 +31,8 @@ namespace GUI.Dialogue
     [CreateAssetMenu(fileName = "Conversation", menuName = "ScriptableObjects/Conversation", order = 2)]
     public class Conversation : ScriptableObject
     {
+        public int worldIndex;
+        public int levelIndex;
         public CharacterMetaData leftSpeaker;
         public CharacterMetaData rightSpeaker;
         public Line[] lines;

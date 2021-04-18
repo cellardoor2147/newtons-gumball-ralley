@@ -12,7 +12,8 @@ namespace GUI
         Dialogue = 2,
         PlayMode = 3,
         EditMode = 4,
-        SettingsMenu = 5
+        SettingsMenu = 5,
+        LevelCompletedPopup = 6
     }
 
     public class GUIManager : MonoBehaviour
@@ -75,20 +76,6 @@ namespace GUI
             instance.guiControllers.ForEach(
                 guiController => guiController.gameObject.SetActive(false)
             );
-        }
-
-        public static void StartConversation(Conversation conversation)
-        {
-
-            bool dialogueGUIIsActive = instance.guiControllers.Find(
-                guiController => guiController.guiType.Equals(GUIType.Dialogue) &&
-                                 guiController.gameObject.activeInHierarchy
-            );
-            if (!dialogueGUIIsActive)
-            {
-                return;
-            }
-            instance.dialogueManager.StartConversation(conversation);
         }
     }
 }
