@@ -21,7 +21,8 @@ namespace GUI.EditMode
             "Placeable Objects Menu";
         private static readonly string INACTIVE_TABS_CONTAINER_KEY = "Inactive Tabs Container";
         private static readonly string ACTIVE_TABS_CONTAINER_KEY = "Active Tabs Container";
-        private static readonly string CONTENT_CONTAINER_KEY = "Content Container";
+        private static readonly string TOOLBAR_KEY = "Toolbar";
+        private static readonly string TOOLBAR_CONTENT_CONTAINER_KEY = "Toolbar Content Container";
 
         private static EditModeManager instance;
 
@@ -49,7 +50,8 @@ namespace GUI.EditMode
                 .GetComponentsInChildren<TabController>(true).ToList();
             contentControllers = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
-                .Find(CONTENT_CONTAINER_KEY)
+                .Find(TOOLBAR_KEY)
+                .Find(TOOLBAR_CONTENT_CONTAINER_KEY)
                 .GetComponentsInChildren<ContentController>(true).ToList();
             placeableObjectsMenuTransform = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
