@@ -101,7 +101,7 @@ Transform:
   m_GameObject: {fileID: 4694918795534134036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3111781, y: 1.3111781, z: 1.3111781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 655094342231892582}
   m_Father: {fileID: 0}
@@ -124,9 +124,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 0
 --- !u!212 &8203884248617717078
 SpriteRenderer:
@@ -212,7 +212,7 @@ PolygonCollider2D:
       - {x: -0.284963, y: 0.5060946}
       - {x: -0.26845133, y: 0.4182744}
       - {x: -0.24845125, y: 0.34827426}
-      - {x: 0.03910087, y: -0.69076073}
+      - {x: 0.03960237, y: -0.6849993}
 --- !u!114 &3975391859514392428
 MonoBehaviour:
   m_ObjectHideFlags: 0
