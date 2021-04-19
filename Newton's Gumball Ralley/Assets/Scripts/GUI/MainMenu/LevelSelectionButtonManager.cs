@@ -27,7 +27,7 @@ namespace GUI.MainMenu
 
         public void LoadLevel()
         {
-            LevelManager.LoadLevel(worldIndex, levelIndex);
+            LevelManager.LoadLevelWithIndices(worldIndex, levelIndex);
         }
     }
 }
