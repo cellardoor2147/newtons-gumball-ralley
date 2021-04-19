@@ -84,5 +84,20 @@ namespace Core
         {
             return currentLevelData.levelIndex;
         }
+
+        public static Vector3 GetCurrentLevelGumballMachinePosition()
+        {
+            return currentLevelData.gumballMachineTransform.position;
+        }
+
+        public static Quaternion GetCurrentLevelGumballMachineRotation()
+        {
+            return currentLevelData.gumballMachineTransform.rotation;
+        }
+
+        public static Vector3 GetCurrentLevelGumballMachineScale()
+        {
+            return currentLevelData.gumballMachineTransform.scale;
+        }
     }
 }

@@ -44,7 +44,6 @@ namespace Core
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
         private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
-        private static readonly string ENVIRONMENT_BLOCK_KEY = "EnvironmentBlock";
         private static readonly string GAME_SCENE_KEY = "Game";
 
         public static void Serialize(int worldIndex, int levelIndex, string customLevelName)

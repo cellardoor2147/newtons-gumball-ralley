@@ -30,9 +30,6 @@ namespace Ball
         private GameObject slingAnchor;
         private BallMovement ballMovement;
         private SpriteRenderer ballSpriteRenderer;
-        private Vector3 originalPosition;
-        private Vector3 originalEulerAngles;
-        private Vector3 originalScale;
 
         private void Awake()
         {
@@ -43,10 +40,26 @@ namespace Ball
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<SpriteRenderer>();
-            SetGumballMachineState(GumballMachineState.Closed);
-            originalPosition = transform.position;
-            originalEulerAngles = transform.localEulerAngles;
-            originalScale = transform.localScale;
+            ResetTransform();
+        }
+
+        private void ResetTransform()
+        {
+            /*
+             * If the level was loaded in the game scene from the unity editor,
+             * LevelManager.currentLevel will be zero, seeing as a level transition
+             * hasn't triggered currentLevel to being updated from its zero value.
+             * In which case, it's appropriate to leave the gumball machine's transform
+             * alone.
+             */
+            bool levelWasLoadedInGameSceneFromUnityEditor =
+                LevelManager.GetCurrentLevelGumballMachineScale().x == 0f;
+            if (!levelWasLoadedInGameSceneFromUnityEditor)
+            {
+                transform.position = LevelManager.GetCurrentLevelGumballMachinePosition();
+                transform.rotation = LevelManager.GetCurrentLevelGumballMachineRotation();
+                transform.localScale = LevelManager.GetCurrentLevelGumballMachineScale();
+            }
         }
 
         public void SetGumballMachineState(GumballMachineState gumballMachineState)
@@ -56,13 +69,13 @@ namespace Ball
             {
                 case GumballMachineState.Closed:
                     ballSpriteRenderer.enabled = false;
-                    StartCoroutine(ResetBallPosition());
+                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     SetClickability(true);
                     break;
                 case GumballMachineState.Shaking:
                     SetClickability(false);
-                    StartCoroutine(ResetBallPosition());
+                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     StartCoroutine(ShakeThenResetTransform());
                     break;
@@ -75,9 +88,10 @@ namespace Ball
             this.gumballMachineState = gumballMachineState;
         }
 
-        private IEnumerator ResetBallPosition()
+        private IEnumerator ResetBallPositionAndGumballMachineTransform()
         {
             yield return ballMovement.AsyncResetPosition();
+            ResetTransform();
         }
 
         private void SetClickability(bool isClickable)
@@ -99,9 +113,7 @@ namespace Ball
         private IEnumerator ShakeThenResetTransform()
         {
             yield return Shake();
-            transform.position = originalPosition;
-            transform.localEulerAngles = originalEulerAngles;
-            transform.localScale = originalScale;
+            ResetTransform();
             SetGumballMachineState(GumballMachineState.Open);
         }
 
@@ -122,11 +134,11 @@ namespace Ball
             return new Vector3(
                 GetClampedRandomShakePositionOnAxis(
                     transform.position.x,
-                    originalPosition.x
+                    LevelManager.GetCurrentLevelGumballMachinePosition().x
                 ),
                 GetClampedRandomShakePositionOnAxis(
                     transform.position.y,
-                    originalPosition.y
+                    LevelManager.GetCurrentLevelGumballMachinePosition().y
                 ),
                 transform.position.z
             );
