@@ -6,6 +6,52 @@ namespace Core
     public class PlacedObjectManager : MonoBehaviour
     {
         [SerializeField] public PlacedObjectMetaData metaData;
+        private Rigidbody2D placedObjectRB;
+        private Vector2 lastValidPosition;
+        private Quaternion lastValidRotation;
+
+        private void Awake()
+        {
+            placedObjectRB = GetComponent<Rigidbody2D>();
+            lastValidPosition = transform.position;
+            lastValidRotation = transform.rotation;
+        }
+
+        public void UnfreezeRigidbody()
+        {
+            bool canNotUnfreezeRigidBody = placedObjectRB == null;
+            if (canNotUnfreezeRigidBody)
+            {
+                return;
+            }
+            placedObjectRB.constraints = RigidbodyConstraints2D.None;
+        }
+
+        public void FreezeRigidbody()
+        {
+            bool canNotFreezeRigidBody = placedObjectRB == null;
+            if (canNotFreezeRigidBody)
+            {
+                return;
+            }
+            placedObjectRB.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        public void ResetTransform()
+        {
+            transform.position = lastValidPosition;
+            transform.rotation = lastValidRotation;
+        }
+
+        public void SetLastValidPosition(Vector2 position)
+        {
+            lastValidPosition = position;
+        }
+
+        public void SetLastValidRotation(Quaternion rotation)
+        {
+            lastValidRotation = rotation;
+        }
     }
 
     public static class PlacedObjectPrefabDictionary

@@ -4,6 +4,7 @@ using GUI;
 using GUI.Dialogue;
 using SimpleMachine;
 using Ball;
+using Destructible2D;
 using DestructibleObject;
 using System.Linq;
 using System.Collections.Generic;
@@ -33,10 +34,6 @@ namespace Core
         private readonly static string GAME_SCENE_KEY = "Game";
 
         private static GameStateManager instance;
-        
-        // TODO: remove and instead load conversations from the current level,
-        // if there is a conversation to load
-        [SerializeField] private Conversation exampleConversation;
 
         [SerializeField] SoundMetaData CutsceneMusicSound;
         [SerializeField] SoundMetaData MenuMusicSound;
@@ -118,9 +115,6 @@ namespace Core
                     AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
                     GUIManager.SetActiveGUI(GUIType.Dialogue);
-                    // TODO: remove and instead load conversations from the current level,
-                    // if there is a conversation to load
-                    GUIManager.StartConversation(instance.exampleConversation);
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
@@ -196,19 +190,19 @@ namespace Core
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(DestroyDebris(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(EnableDestructibleObjects(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(RepairDestructibleObjects(PREPLACED_OBJECTS_KEY));
             Physics2D.gravity = Vector2.zero;
         }
 
-        private static IEnumerator EnableDestructibleObjects(string key)
+        private static IEnumerator RepairDestructibleObjects(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-               .GetComponentsInChildren<DestructibleObstacle>(true)
+               .GetComponentsInChildren<D2dDestructibleSprite>(true)
                .ToList()
                .ForEach(
-                   destructibleObstacle => destructibleObstacle.ToggleObject(true)
-           );
+                   destructibleSprite => destructibleSprite.Rebuild()
+            );
         }
 
         private static IEnumerator DestroyDebris(string key)
@@ -217,7 +211,7 @@ namespace Core
             GameObject objectContainer = GameObject.Find(key);
             foreach (Transform objectTransform in objectContainer.transform)
             {
-                if (objectTransform.gameObject.CompareTag("Debris"))
+                if (objectTransform.gameObject.name.Contains("(Clone)"))
                 {
                     Destroy(objectTransform.gameObject);
                 }
@@ -237,10 +231,10 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.ResetTransform()
+                    placedObjectManager => placedObjectManager.ResetTransform()
             );
         }
 
@@ -248,10 +242,10 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.UnfreezeRigidbody()
+                    placedObjectManager => placedObjectManager.UnfreezeRigidbody()
             );
         }
 
@@ -259,10 +253,10 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.FreezeRigidbody()
+                    placedObjectManager => placedObjectManager.FreezeRigidbody()
             );
         }
 

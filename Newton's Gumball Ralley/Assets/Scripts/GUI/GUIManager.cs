@@ -77,19 +77,5 @@ namespace GUI
                 guiController => guiController.gameObject.SetActive(false)
             );
         }
-
-        public static void StartConversation(Conversation conversation)
-        {
-
-            bool dialogueGUIIsActive = instance.guiControllers.Find(
-                guiController => guiController.guiType.Equals(GUIType.Dialogue) &&
-                                 guiController.gameObject.activeInHierarchy
-            );
-            if (!dialogueGUIIsActive)
-            {
-                return;
-            }
-            instance.dialogueManager.StartConversation(conversation);
-        }
     }
 }

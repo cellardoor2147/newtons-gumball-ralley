@@ -74,5 +74,15 @@ namespace Core
                 );
             }
         }
+
+        public static int GetCurrentWorldIndex()
+        {
+            return currentLevelData.worldIndex;
+        }
+
+        public static int GetCurrentLevelIndex()
+        {
+            return currentLevelData.levelIndex;
+        }
     }
 }
