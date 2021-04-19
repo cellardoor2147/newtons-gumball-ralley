@@ -171,19 +171,22 @@ namespace Ball
         private IEnumerator DispenseGumballThenResetItsScaleAndColor()
         {
             ballMovement.enabled = false;
-            Vector3 originalScale = slingAnchor.transform.localScale;
-            yield return DispenseGumball(originalScale);
-            slingAnchor.transform.localScale = originalScale;
+            yield return DispenseGumball();
+            slingAnchor.transform.localScale = LevelManager.GetCurrentLevelGumballMachineScale();
             ballSpriteRenderer.color = Color.white;
             ballMovement.enabled = true;
         }
 
-        private IEnumerator DispenseGumball(Vector3 originalScale)
+        private IEnumerator DispenseGumball()
         {
             slingAnchor.transform.localScale = Vector3.zero;
             ballSpriteRenderer.enabled = true;
             ballSpriteRenderer.color = Color.black;
-            while (slingAnchor.transform.localScale.x < originalScale.x)
+            while
+            (
+                slingAnchor.transform.localScale.x 
+                < LevelManager.GetCurrentLevelGumballMachineScale().x
+            )
             {
                 slingAnchor.transform.localScale = new Vector3(
                     slingAnchor.transform.localScale.x + Time.deltaTime,
@@ -191,7 +194,8 @@ namespace Ball
                     slingAnchor.transform.localScale.z
                 );
                 float ballSpriteRendererColorMultiplier =
-                    slingAnchor.transform.localScale.x / originalScale.x;
+                    slingAnchor.transform.localScale.x 
+                    / LevelManager.GetCurrentLevelGumballMachineScale().x;
                 ballSpriteRenderer.color = new Color(
                     ballSpriteRendererColorMultiplier,
                     ballSpriteRendererColorMultiplier,

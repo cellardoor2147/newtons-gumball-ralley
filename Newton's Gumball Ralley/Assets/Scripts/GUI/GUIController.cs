@@ -88,7 +88,7 @@ namespace GUI
             }
             else
             {
-                GUIManager.AsyncSetActiveGUI(GUIType.SettingsMenu);
+                StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.SettingsMenu));
             }
         }
 
