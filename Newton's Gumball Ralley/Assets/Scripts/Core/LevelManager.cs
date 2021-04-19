@@ -6,8 +6,6 @@ namespace Core
 {
     public class LevelManager : MonoBehaviour
     {
-        private static readonly string LEVELS_DATA_KEY = "/LevelsData";
-
         private static LevelManager instance;
 
         private List<LevelData> levelsData;
@@ -59,8 +57,8 @@ namespace Core
                     levelData.worldIndex == worldIndex && levelData.levelIndex == levelIndex;
                 if (levelDataIsTheLevelToLoad)
                 {
-                    LoadLevelWithLevelData(levelData);
                     instance.levelsDataIndex = i;
+                    LoadLevelWithLevelData(levelData);
                     break;
                 }
             }
@@ -80,14 +78,24 @@ namespace Core
                 GameStateManager.SetGameState(GameState.MainMenu);
                 return;
             }
-            LoadLevelWithLevelData(instance.levelsData[index]);
             instance.levelsDataIndex = index;
+            LoadLevelWithLevelData(instance.levelsData[index]);
         }
 
         private static void LoadLevelWithLevelData(LevelData levelData)
         {
-            GameStateManager.SetGameState(GameState.Editing);
+            GameStateManager.SetGameState(GameState.Dialogue);
             instance.StartCoroutine(LevelSerializer.AsyncSetSceneWithLevelData(levelData));
+        }
+
+        public static int GetCurrentWorldIndex()
+        {
+            return instance.levelsData[instance.levelsDataIndex].worldIndex;
+        }
+
+        public static int GetCurrentLevelIndex()
+        {
+            return instance.levelsData[instance.levelsDataIndex].levelIndex;
         }
     }
 }

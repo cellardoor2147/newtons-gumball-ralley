@@ -9,6 +9,7 @@ TagManager:
   - LeverSnapPoint
   - RotationArrow
   - Debris
+  - Destructible
   layers:
   - Default
   - TransparentFX
@@ -20,10 +21,10 @@ TagManager:
   - 
   - Dragging
   - AllowPlacement
-  - 
-  - 
-  - 
-  - 
+  - Wedge
+  - Destructible
+  - Debris
+  - Ball
   - 
   - 
   - 
