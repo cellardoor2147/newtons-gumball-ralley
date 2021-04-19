@@ -38,7 +38,7 @@ namespace Core
     public static class LevelSerializer
     {
         public static readonly string WRITE_DIRECTORY_PATH =
-            Application.persistentDataPath + "/LevelsData/";
+            Application.streamingAssetsPath + "/LevelsData/";
 
         private static readonly string BACKGROUND_KEY = "Background";
         private static readonly string ENVIRONMENT_KEY = "Environment";
