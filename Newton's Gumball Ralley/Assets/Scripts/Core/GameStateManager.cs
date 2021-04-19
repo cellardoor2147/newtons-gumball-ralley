@@ -29,9 +29,7 @@ namespace Core
         public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
 
-        private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
-        private readonly static string SCREW_KEY = "Screw";
-        private readonly static string SIMPLE_MACHINE_KEY = "SimpleMachine";
+        private readonly static string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
         private readonly static string GAME_SCENE_KEY = "Game";
 
@@ -184,7 +182,7 @@ namespace Core
         {
             instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(ResetBallPosition());
+            instance.StartCoroutine(ResetGumballMachine());
             instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
@@ -220,11 +218,13 @@ namespace Core
             }
         }
 
-        private static IEnumerator ResetBallPosition()
+        private static IEnumerator ResetGumballMachine()
         {
-            yield return new WaitUntil(() => GameObject.Find(SLING_ANCHOR_KEY) != null);
-            GameObject slingAnchor = GameObject.Find(SLING_ANCHOR_KEY);
-            slingAnchor.GetComponentInChildren<BallMovement>().ResetPosition();
+            yield return new WaitUntil(() => GameObject.Find(GUMBALL_MACHINE_KEY) != null);
+            GameObject gumballMachine = GameObject.Find(GUMBALL_MACHINE_KEY);
+            GumballMachineManager gumballMachineManager =
+                gumballMachine.GetComponent<GumballMachineManager>();
+            gumballMachineManager.SetGumballMachineState(GumballMachineState.Closed);
         }
 
         private static IEnumerator ResetObjectsTransforms(string key)
@@ -391,6 +391,11 @@ namespace Core
             {
                 GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
             }
+        }
+
+        public static void StartStaticCoroutine(IEnumerator coroutineEnumerator)
+        {
+            instance.StartCoroutine(coroutineEnumerator);
         }
 
         private void Update()
