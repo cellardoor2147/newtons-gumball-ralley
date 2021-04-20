@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using GUI.Dialogue;
+using System.Collections;
 
 namespace GUI
 {
@@ -19,12 +20,10 @@ namespace GUI
     public class GUIManager : MonoBehaviour
     {
         private readonly static string CANVAS_KEY = "Canvas";
-        private readonly static string DIALOGUE_GUI_KEY = "Dialogue GUI";
         
         private static GUIManager instance;
 
         private List<GUIController> guiControllers;
-        private DialogueManager dialogueManager;
 
         private GUIManager() {} // Prevents instantiation outside of this class
 
@@ -33,9 +32,6 @@ namespace GUI
             SetInstance();
             AttachMainCameraToCanvas();
             guiControllers = GetComponentsInChildren<GUIController>(true).ToList();
-            dialogueManager = transform.Find(CANVAS_KEY)
-                .Find(DIALOGUE_GUI_KEY)
-                .GetComponent<DialogueManager>();
         }
 
         private void SetInstance()
@@ -55,7 +51,13 @@ namespace GUI
             transform.Find(CANVAS_KEY).GetComponent<Canvas>().worldCamera = Camera.main;
         }
 
-        public static void SetActiveGUI(GUIType guiType)
+        public static IEnumerator AsyncSetActiveGUI(GUIType guiType)
+        {
+            yield return new WaitUntil(() => instance != null && instance.guiControllers != null);
+            SetActiveGUI(guiType);
+        }
+
+        protected static void SetActiveGUI(GUIType guiType)
         {
             SetAllGUIToInactive();
             GUIController guiControllerToActivate = instance.guiControllers.Find(

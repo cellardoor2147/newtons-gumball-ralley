@@ -30,21 +30,20 @@ namespace Core
         public string customLevelName;
         public int repeatedBackgroundRows;
         public int repeatedBackgroundColumns;
-        public List<SerializableTransform> environmentTransforms;
+        public List<SerializablePreplacedObject> environmentObjects;
         public List<SerializablePreplacedObject> preplacedObjects;
-        public SerializableTransform slingAnchorTransform;
+        public SerializableTransform gumballMachineTransform;
     }
 
     public static class LevelSerializer
     {
         public static readonly string WRITE_DIRECTORY_PATH =
-            Application.persistentDataPath + "/LevelsData/";
+            Application.streamingAssetsPath + "/LevelsData/";
 
         private static readonly string BACKGROUND_KEY = "Background";
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
-        private static readonly string SLING_ANCHOR_KEY = "Sling Anchor";
-        private static readonly string ENVIRONMENT_BLOCK_KEY = "EnvironmentBlock";
+        private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string GAME_SCENE_KEY = "Game";
 
         public static void Serialize(int worldIndex, int levelIndex, string customLevelName)
@@ -89,36 +88,36 @@ namespace Core
                 }
                 else if (gameObject.name.Equals(ENVIRONMENT_KEY))
                 {
-                    List<SerializableTransform> environmentTransforms =
-                        new List<SerializableTransform>();
-                    foreach (Transform environmentObject in gameObject.transform)
-                    {
-                        environmentTransforms.Add(SerializeTransform(environmentObject.transform));
-                    }
-                    levelData.environmentTransforms = environmentTransforms;
+                    List<SerializablePreplacedObject> environmentObjects = GetObjectsInContainer(gameObject);
+                    levelData.environmentObjects = environmentObjects;
                 }
                 else if (gameObject.name.Equals(PREPLACED_OBJECTS_KEY))
                 {
-                    List<SerializablePreplacedObject> preplacedObjects =
-                        new List<SerializablePreplacedObject>();
-                    foreach (Transform preplacedObjectTransform in gameObject.transform)
-                    {
-                        SerializablePreplacedObject preplacedObject =
-                            new SerializablePreplacedObject();
-                        preplacedObject.objectName = preplacedObjectTransform
-                            .GetComponent<PlacedObjectManager>()
-                            .metaData.objectName;
-                        preplacedObject.transform = SerializeTransform(preplacedObjectTransform);
-                        preplacedObjects.Add(preplacedObject);
-                    }
+                    List<SerializablePreplacedObject> preplacedObjects = GetObjectsInContainer(gameObject);
                     levelData.preplacedObjects = preplacedObjects;
                 }
-                else if (gameObject.name.Equals(SLING_ANCHOR_KEY))
+                else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
-                    levelData.slingAnchorTransform = SerializeTransform(gameObject.transform);
+                    levelData.gumballMachineTransform = SerializeTransform(gameObject.transform);
                 }
             }
             return levelData;
+        }
+
+        private static List<SerializablePreplacedObject> GetObjectsInContainer(GameObject container)
+        {
+            List<SerializablePreplacedObject> preplacedObjects = new List<SerializablePreplacedObject>();
+            foreach (Transform objectTransform in container.transform)
+            {
+                SerializablePreplacedObject preplacedObject = new SerializablePreplacedObject();
+                preplacedObject.objectName = objectTransform
+                    .GetComponent<PlacedObjectManager>()
+                    .metaData.objectName;
+                preplacedObject.transform = SerializeTransform(objectTransform);
+                preplacedObjects.Add(preplacedObject);
+            }
+
+            return preplacedObjects;
         }
 
         private static SerializableTransform SerializeTransform(Transform transform)
@@ -156,47 +155,36 @@ namespace Core
                 }
                 else if (gameObject.name.Equals(ENVIRONMENT_KEY))
                 {
-                    DeleteAllChildren(gameObject);
-                    GameObject environmentBlockPrefab =
-                        PlacedObjectPrefabDictionary.Get(ENVIRONMENT_BLOCK_KEY);
-                    foreach (SerializableTransform transform in levelData.environmentTransforms)
-                    {
-
-                        GameObject environmentBlock = Object.Instantiate(
-                            environmentBlockPrefab,
-                            transform.position,
-                            transform.rotation,
-                            gameObject.transform
-                        );
-                        environmentBlock.transform.localScale = transform.scale;
-                    }
+                    PopulateContainer(gameObject, levelData.environmentObjects);
                 }
                 else if (gameObject.name.Equals(PREPLACED_OBJECTS_KEY))
                 {
-                    DeleteAllChildren(gameObject);
-                    foreach (
-                        SerializablePreplacedObject serializedPreplacedObject
-                        in levelData.preplacedObjects
-                    )
-                    {
-                        GameObject preplacedObjectPrefab =
-                            PlacedObjectPrefabDictionary.Get(serializedPreplacedObject.objectName);
-                        GameObject preplacedObject = Object.Instantiate(
-                            preplacedObjectPrefab,
-                            serializedPreplacedObject.transform.position,
-                            serializedPreplacedObject.transform.rotation,
-                            gameObject.transform
-                        );
-                        preplacedObject.transform.localScale =
-                            serializedPreplacedObject.transform.scale;
-                    }
+                    PopulateContainer(gameObject, levelData.preplacedObjects);
                 }
-                else if (gameObject.name.Equals(SLING_ANCHOR_KEY))
+                else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
-                    gameObject.transform.position = levelData.slingAnchorTransform.position;
-                    gameObject.transform.rotation = levelData.slingAnchorTransform.rotation;
-                    gameObject.transform.localScale = levelData.slingAnchorTransform.scale;
+                    gameObject.transform.position = levelData.gumballMachineTransform.position;
+                    gameObject.transform.rotation = levelData.gumballMachineTransform.rotation;
+                    gameObject.transform.localScale = levelData.gumballMachineTransform.scale;
                 }
+            }
+        }
+
+        private static void PopulateContainer(GameObject container, List<SerializablePreplacedObject> placedObjects)
+        {
+            DeleteAllChildren(container);
+            foreach (SerializablePreplacedObject serializedPreplacedObject in placedObjects)
+            {
+                GameObject preplacedObjectPrefab =
+                    PlacedObjectPrefabDictionary.Get(serializedPreplacedObject.objectName);
+                GameObject preplacedObject = Object.Instantiate(
+                    preplacedObjectPrefab,
+                    serializedPreplacedObject.transform.position,
+                    serializedPreplacedObject.transform.rotation,
+                    container.transform
+                );
+                preplacedObject.transform.localScale =
+                    serializedPreplacedObject.transform.scale;
             }
         }
 

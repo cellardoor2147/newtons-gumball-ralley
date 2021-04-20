@@ -4,35 +4,13 @@ using UnityEngine;
 
 namespace Core
 {
-    public class LevelManager : MonoBehaviour
+    public static class LevelManager
     {
-        private static LevelManager instance;
+        private static readonly List<LevelData> levelsData = GetLevelsData();
 
-        private List<LevelData> levelsData;
-        private int levelsDataIndex;
+        private static LevelData currentLevelData;
 
-        private LevelManager() { } // Prevents instantiation outside of this class
-
-        private void Awake()
-        {
-            SetInstance();
-            levelsData = GetLevelsData();
-            levelsDataIndex = 0;
-        }
-
-        private void SetInstance()
-        {
-            if (instance != null)
-            {
-                Destroy(transform.parent.gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
-        }
-
-        private List<LevelData> GetLevelsData()
+        private static List<LevelData> GetLevelsData()
         {
             List<LevelData> levelsData = new List<LevelData>();
             DirectoryInfo directoryInfo =
@@ -48,16 +26,14 @@ namespace Core
             return levelsData;
         }
 
-        public static void LoadLevel(int worldIndex, int levelIndex)
+        public static void LoadLevelWithIndices(int worldIndex, int levelIndex)
         {
-            for (int i = 0; i < instance.levelsData.Count; i++)
+            foreach (LevelData levelData in levelsData)
             {
-                LevelData levelData = instance.levelsData[i];
                 bool levelDataIsTheLevelToLoad =
                     levelData.worldIndex == worldIndex && levelData.levelIndex == levelIndex;
                 if (levelDataIsTheLevelToLoad)
                 {
-                    instance.levelsDataIndex = i;
                     LoadLevelWithLevelData(levelData);
                     break;
                 }
@@ -66,36 +42,62 @@ namespace Core
 
         public static void LoadNextLevel()
         {
-            LoadLevelByIndex(instance.levelsDataIndex + 1);
-        }
-
-        public static void LoadLevelByIndex(int index)
-        {
-            if (index >= instance.levelsData.Count)
+            for (int i = 0; i < levelsData.Count - 1; i++)
             {
-                // TODO: load a credits sequence or whatever ends up happening
-                // once the game concludes
-                GameStateManager.SetGameState(GameState.MainMenu);
-                return;
+                bool levelDataIsCurrentLevelData =
+                    levelsData[i].worldIndex == currentLevelData.worldIndex
+                    && levelsData[i].levelIndex == currentLevelData.levelIndex;
+                if (levelDataIsCurrentLevelData)
+                {
+                    LoadLevelWithLevelData(levelsData[i + 1]);
+                    return;
+                }
             }
-            instance.levelsDataIndex = index;
-            LoadLevelWithLevelData(instance.levelsData[index]);
+            // Couldn't find a next level, so load the main menu
+            // (TODO: replaced with credits sequence)
+            GameStateManager.SetGameState(GameState.MainMenu);
         }
 
-        private static void LoadLevelWithLevelData(LevelData levelData)
+        public static void LoadLevelWithLevelData(LevelData levelData)
         {
-            GameStateManager.SetGameState(GameState.Dialogue);
-            instance.StartCoroutine(LevelSerializer.AsyncSetSceneWithLevelData(levelData));
+            currentLevelData = levelData;
+            bool applicationIsNotRunning = Application.isEditor && !Application.isPlaying;
+            if (applicationIsNotRunning)
+            {
+                LevelSerializer.SetSceneWithLevelData(levelData);
+            }
+            else
+            {
+                GameStateManager.SetGameState(GameState.Editing);
+                GameStateManager.StartStaticCoroutine(
+                    LevelSerializer.AsyncSetSceneWithLevelData(levelData)
+                );
+            }
         }
 
         public static int GetCurrentWorldIndex()
         {
-            return instance.levelsData[instance.levelsDataIndex].worldIndex;
+            return currentLevelData.worldIndex;
         }
 
         public static int GetCurrentLevelIndex()
         {
-            return instance.levelsData[instance.levelsDataIndex].levelIndex;
+            return currentLevelData.levelIndex;
+        }
+
+        public static Vector3 GetCurrentLevelGumballMachinePosition()
+        {
+            return currentLevelData.gumballMachineTransform.position;
+        }
+
+        public static Quaternion GetCurrentLevelGumballMachineRotation()
+        {
+            return currentLevelData.gumballMachineTransform.rotation;
+        }
+
+        public static Vector3 GetCurrentLevelGumballMachineScale()
+        {
+            return currentLevelData.gumballMachineTransform.scale;
         }
     }
 }

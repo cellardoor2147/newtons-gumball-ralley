@@ -267,6 +267,7 @@ namespace SimpleMachine
         private bool ShouldPreventObjectFromBeingPlaced()
         {
             bool objectIsScrew = rigidbody2D == null; 
+            bool objectHasCollided;
             if (!objectMetaData.Equals(gear2MetaData)) 
             {
                 objectHasCollided = collider2D.IsTouchingLayers(1) || collider2D.IsTouchingLayers(LayerMask.GetMask("Ball"));

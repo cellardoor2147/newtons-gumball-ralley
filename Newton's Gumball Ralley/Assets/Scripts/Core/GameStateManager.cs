@@ -28,10 +28,9 @@ namespace Core
     {
         public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
+        public static readonly string ENVIRONMENT_KEY = "Environment";
 
-        private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
-        private readonly static string SCREW_KEY = "Screw";
-        private readonly static string SIMPLE_MACHINE_KEY = "SimpleMachine";
+        private readonly static string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
         private readonly static string GAME_SCENE_KEY = "Game";
 
@@ -42,8 +41,6 @@ namespace Core
         [SerializeField] SoundMetaData Level1MusicSound;
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
-
-        [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
 
         private GameState previousGameState;
         private GameState gameState;
@@ -103,13 +100,13 @@ namespace Core
                 case GameState.OpeningCutscene:
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.Cutscene);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
                     AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.MainMenu);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
                     AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;
@@ -118,7 +115,7 @@ namespace Core
                     AudioManager.instance.StopSound(instance.MenuMusicSound.name);
                     AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.Dialogue);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
@@ -129,7 +126,7 @@ namespace Core
                     } 
                     LoadScene(GAME_SCENE_KEY);
                     ResetSceneForPlayMode();
-                    GUIManager.SetActiveGUI(GUIType.PlayMode);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.PlayMode));
                     break;
                 case GameState.Editing:
                     Time.timeScale = 1.0f;
@@ -140,18 +137,18 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     }
                     ResetSceneForEditMode();
-                    GUIManager.SetActiveGUI(GUIType.EditMode);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.EditMode));
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.SettingsMenu);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.SettingsMenu));
                     AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
                     break;
                 case GameState.LevelCompleted:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
                     // TODO: play victory sound
                     break;
                 default:
@@ -179,7 +176,6 @@ namespace Core
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(DisableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             Physics2D.gravity = instance.defaultGravity;
         }
 
@@ -187,17 +183,30 @@ namespace Core
         {
             instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(ResetBallPosition());
+            instance.StartCoroutine(ResetGumballMachine());
             instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
             instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(FreezeObjectsRigidbodies(ENVIRONMENT_KEY));
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
-            instance.StartCoroutine(DestroyDebris(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(RepairDestructibleObjects(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
+            instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
+            instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator ResetDestructibleObjectLayer(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+               .GetComponentsInChildren<DestructibleObstacleLayerController>(true)
+               .ToList()
+               .ForEach(
+                   layerController => layerController.UpdateAllLayers(DestructibleObstacleLayerController.defaultLayer)
+            );
         }
 
         private static IEnumerator RepairDestructibleObjects(string key)
@@ -207,7 +216,7 @@ namespace Core
                .GetComponentsInChildren<D2dDestructibleSprite>(true)
                .ToList()
                .ForEach(
-                   destructibleSprite => destructibleSprite.Rebuild()
+                   destructibleSprite => destructibleSprite.Rebuild(2)
             );
         }
 
@@ -217,18 +226,20 @@ namespace Core
             GameObject objectContainer = GameObject.Find(key);
             foreach (Transform objectTransform in objectContainer.transform)
             {
-                if (objectTransform.gameObject.name.Contains("(Clone)"))
+                if (objectTransform.gameObject.GetComponent<PlacedObjectManager>() == null)
                 {
                     Destroy(objectTransform.gameObject);
                 }
             }
         }
 
-        private static IEnumerator ResetBallPosition()
+        private static IEnumerator ResetGumballMachine()
         {
-            yield return new WaitUntil(() => GameObject.Find(SLING_ANCHOR_KEY) != null);
-            GameObject slingAnchor = GameObject.Find(SLING_ANCHOR_KEY);
-            slingAnchor.GetComponentInChildren<BallMovement>().ResetPosition();
+            yield return new WaitUntil(() => GameObject.Find(GUMBALL_MACHINE_KEY) != null);
+            GameObject gumballMachine = GameObject.Find(GUMBALL_MACHINE_KEY);
+            GumballMachineManager gumballMachineManager =
+                gumballMachine.GetComponent<GumballMachineManager>();
+            gumballMachineManager.SetGumballMachineState(GumballMachineState.Closed);
         }
 
         private static IEnumerator ResetObjectsTransforms(string key)
@@ -302,31 +313,8 @@ namespace Core
                         if (!fulcrumScrew.FulcrumJointShouldBeCreated)
                             continue;
                     }
-                    bool collider2IsLargeAxle =
-                        collider2.gameObject.name.Equals("LargeAxle(Clone)");
-                    Debug.Log(collider2IsLargeAxle + " " + collider2.gameObject.name);
-                    bool collider2IsSmallAxle =
-                        collider2.gameObject.name.Equals("SmallAxle(Clone)");
-                    bool collider1IsGear3 =
-                        collider1.gameObject.name.Equals("Gear3(Clone)");
-                    Debug.Log(collider1IsGear3 + " " + collider1.gameObject.name);
-                    bool collider1IsGear1orWheel =
-                        collider1.gameObject.name.Equals("Gear1(Clone)") || collider1.gameObject.name.Equals("Wheel(Clone)");
-                    if ((collider2IsLargeAxle && !collider1IsGear3) 
-                        || (collider2IsSmallAxle && !collider1IsGear1orWheel))
-                    {
-                        continue;
-                    }
-                    bool collider2IsScrew =
-                       collider2.gameObject.name.Equals("Screw(Clone)");
-                    if (collider2IsScrew && 
-                        (collider1IsGear3 || collider1IsGear1orWheel))
-                    {
-                        continue;
-                    }
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
-                
             }
             yield return null;
         }
@@ -343,32 +331,6 @@ namespace Core
                                                               * of LeverFulcrum, so this line sets the parent of
                                                               * FulcrumScrew back to LeverFulcrum */
             otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
-        }
-
-        private static IEnumerator DisableObjects(string key, PlacedObjectMetaData metaData) 
-        {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject objectContainer = GameObject.Find(key);
-            foreach (Transform placeableobject in objectContainer.transform) 
-            {
-                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData)) 
-                {
-                    placeableobject.gameObject.SetActive(false);
-                }
-            }
-        }
-        
-        private static IEnumerator EnableObjects(string key, PlacedObjectMetaData metaData)
-        {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject objectContainer = GameObject.Find(key);
-            foreach (Transform placeableobject in objectContainer.transform)
-            {
-                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData))
-                {
-                    placeableobject.gameObject.SetActive(true);
-                }
-            }
         }
 
         private static IEnumerator UntetherObjectsFromPlacedScrews(string key)
@@ -444,6 +406,16 @@ namespace Core
             {
                 GameObject.DestroyImmediate(gameObject.transform.GetChild(i).gameObject);
             }
+        }
+
+        public static void StartStaticCoroutine(IEnumerator coroutineEnumerator)
+        {
+            instance.StartCoroutine(coroutineEnumerator);
+        }
+
+        public static bool GameSceneSceneIsRunning()
+        {
+            return SceneManager.GetActiveScene().name.Equals(GAME_SCENE_KEY);
         }
 
         private void Update()
