@@ -43,11 +43,10 @@ namespace Ball
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<SpriteRenderer>();
-            SetOriginalTransform();
-            ResetTransformToOriginalState();
+            SetOriginalTransformAndResetTransform();
         }
 
-        private void SetOriginalTransform()
+        private void SetOriginalTransformAndResetTransform()
         {
             /*
              * If the level was loaded in the game scene from the unity editor,
@@ -70,6 +69,7 @@ namespace Ball
                 originalRotation = transform.rotation;
                 originalScale = transform.localScale;
             }
+            ResetTransformToOriginalState();
         }
 
         private void ResetTransformToOriginalState()
@@ -108,7 +108,7 @@ namespace Ball
         private IEnumerator ResetBallPositionAndGumballMachineTransform()
         {
             yield return ballMovement.AsyncResetPosition();
-            ResetTransformToOriginalState();
+            SetOriginalTransformAndResetTransform();
         }
 
         private void SetClickability(bool isClickable)
