@@ -32,7 +32,7 @@ namespace Core
                     "json"
                 );
                 LevelData levelData = LevelSerializer.Deserialize(readFilePath);
-                LevelSerializer.SetSceneWithLevelData(levelData);
+                LevelManager.LoadLevelWithLevelData(levelData);
                 worldIndex = levelData.worldIndex;
                 levelIndex = levelData.levelIndex;
                 customLevelName = levelData.customLevelName;
