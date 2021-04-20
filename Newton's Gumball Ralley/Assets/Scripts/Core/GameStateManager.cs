@@ -168,6 +168,22 @@ namespace Core
             SceneManager.LoadScene(sceneName);
         }
 
+        public static void ResetLevel()
+        {
+            if (instance.gameState.Equals(GameState.Playing))
+            {
+                ResetSceneForPlayMode();
+                instance.StartCoroutine(ResetGumballMachine());
+                instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
+                instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
+                instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
+            }
+            else if (instance.gameState.Equals(GameState.Editing))
+            {
+                DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+            }
+        }
+
         private static void ResetSceneForPlayMode()
         {
             instance.StartCoroutine(TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY));
