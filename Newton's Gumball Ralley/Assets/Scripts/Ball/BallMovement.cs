@@ -14,7 +14,7 @@ namespace Ball
 
         private Rigidbody2D rigidBody;
         private bool isBeingPulled;
-        private bool hasBeenReleased;
+        public bool HasBeenReleased { get; private set; }
 
         [SerializeField] SoundMetaData BounceSound;
         [SerializeField] SoundMetaData RollingSound;
@@ -42,7 +42,7 @@ namespace Ball
 
         private void FixedUpdate()
         {
-            if (!hasBeenReleased)
+            if (!HasBeenReleased)
             {
                 AudioManager.instance.StopSound(RollingSound.name);
                 UpdateBallPositionRelativeToSling();
@@ -98,7 +98,7 @@ namespace Ball
             {
                 return;
             }
-            if (!hasBeenReleased)
+            if (!HasBeenReleased)
             {
                 isBeingPulled = true;
             }
@@ -110,10 +110,10 @@ namespace Ball
             {
                 return;
             }
-            if (!hasBeenReleased)
+            if (!HasBeenReleased)
             {
                 isBeingPulled = false;
-                hasBeenReleased = true;
+                HasBeenReleased = true;
                 rigidBody.gravityScale = 1.0f;
                 AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 StartCoroutine(ReleaseAfterDelay());
@@ -122,7 +122,7 @@ namespace Ball
 
         private void OnCollisionEnter2D(Collision2D other) 
         {
-            if (hasBeenReleased) 
+            if (HasBeenReleased) 
             {
                 isTouching = true;
                 AudioManager.instance.PlaySound(BounceSound.name);
@@ -131,7 +131,7 @@ namespace Ball
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (hasBeenReleased) 
+            if (HasBeenReleased) 
             {
                 isTouching = false;
             } 
@@ -156,7 +156,7 @@ namespace Ball
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
             GetComponent<SpringJoint2D>().enabled = true;
-            hasBeenReleased = false;
+            HasBeenReleased = false;
         }
     }
 }

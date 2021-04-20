@@ -226,7 +226,7 @@ namespace Core
             GameObject objectContainer = GameObject.Find(key);
             foreach (Transform objectTransform in objectContainer.transform)
             {
-                if (objectTransform.gameObject.name.Contains("(Clone)"))
+                if (objectTransform.gameObject.CompareTag("Debris"))
                 {
                     Destroy(objectTransform.gameObject);
                 }

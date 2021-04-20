@@ -1,5 +1,6 @@
 ﻿using Core;
 using UnityEngine;
+using System.Collections.Generic;
 using Destructible2D;
 
 namespace DestructibleObject
@@ -18,18 +19,12 @@ namespace DestructibleObject
             destructible.OnSplitStart += Destructible_OnSplitStart;
             defaultLayer = LayerMask.NameToLayer("Default");
             debrisLayer = LayerMask.NameToLayer("Debris");
-            UpdateAllLayers(defaultLayer);
-        }
-
-        private void Start()
-        {
-            if (gameObject.name.Contains("(Clone)"))
-                UpdateAllLayers(debrisLayer);
         }
 
         private void Destructible_OnSplitStart()
         {
             rb.constraints = RigidbodyConstraints2D.None;
+            UpdateAllLayers(debrisLayer);
         }
 
         public void UpdateAllLayers(LayerMask desiredLayer)

@@ -283,10 +283,10 @@ GameObject:
   - component: {fileID: 1162525421533642299}
   - component: {fileID: 6841131606577560133}
   - component: {fileID: 4292409581835724120}
-  - component: {fileID: 2194692487812085993}
   - component: {fileID: 8784975479468066586}
   - component: {fileID: 5444536597035932220}
   - component: {fileID: 3098449946041425673}
+  - component: {fileID: -3455478988523722303}
   m_Layer: 0
   m_Name: DestructibleObject
   m_TagString: Destructible
@@ -370,8 +370,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 0.14980637
+  m_UseAutoMass: 0
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1411,18 +1411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4bbf9abb895c248917caccbfc6043a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2194692487812085993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5151198367505448850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab3c1fd85e053f64ab748a5f998a9f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8784975479468066586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1453,7 +1441,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   threshold: 5
-  delay: 0.1
+  delay: 0.02
   prefab: {fileID: 0}
   paint: 0
   shape: {fileID: -949900613627661759, guid: 680d8c53cd894aa4791aa07a59c9c537, type: 2}
@@ -1489,3 +1477,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30ac5ec9ecb419419b3cd9e5613d03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3455478988523722303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5151198367505448850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9146809a401edfc4f820d4a3d61db624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applyTo: 1
+  force: 2
+  forcePerSolidPixel: 0.01

@@ -8,5 +8,7 @@ namespace Core
         public string objectName;
         public GameObject prefab;
         public bool canSnap;
+        public bool isSimpleMachine;
+        public float amountOfScrap;
     }
 }

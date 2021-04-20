@@ -1,0 +1,75 @@
+{
+    "worldIndex": 2,
+    "levelIndex": 2,
+    "customLevelName": "",
+    "repeatedBackgroundRows": 4,
+    "repeatedBackgroundColumns": 8,
+    "environmentObjects": [
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -3.7100000381469728,
+                    "y": 2.9000000953674318,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    ],
+    "preplacedObjects": [
+        {
+            "objectName": "Ralph",
+            "transform": {
+                "position": {
+                    "x": -6.0,
+                    "y": -3.8299999237060549,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 1.0
+                }
+            }
+        }
+    ],
+    "gumballMachineTransform": {
+        "position": {
+            "x": -8.862829208374024,
+            "y": 0.39836329221725466,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+        },
+        "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "starConditions": {
+        "timeConstraint": 10.0,
+        "scrapConstraint": 1.0
+    }
+}

@@ -23,7 +23,8 @@ namespace Wedge
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (collision.CompareTag("Destructible") && GameStateManager.GetGameState().Equals(GameState.Playing))
+            if ((collision.CompareTag("Destructible") || collision.CompareTag("Debris"))
+                && GameStateManager.GetGameState().Equals(GameState.Playing))
                 targetWedge.layer = wedgeLayer;
         }
 
