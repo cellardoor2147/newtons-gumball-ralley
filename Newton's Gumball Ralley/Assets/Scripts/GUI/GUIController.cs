@@ -1,4 +1,5 @@
 ﻿using Core;
+using LevelTimer;
 using UnityEngine;
 
 namespace GUI
@@ -63,6 +64,7 @@ namespace GUI
 
         public void LoadEditMode()
         {
+            Timer.StopTimer();
             GameStateManager.SetGameState(GameState.Editing);
         }
 

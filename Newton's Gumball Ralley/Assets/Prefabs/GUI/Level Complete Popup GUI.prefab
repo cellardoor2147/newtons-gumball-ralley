@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4189245647992314175}
   - component: {fileID: 8618801999942072723}
   - component: {fileID: 949986593635196633}
+  - component: {fileID: 4717958208194618456}
   m_Layer: 0
   m_Name: Level Complete Popup GUI
   m_TagString: Untagged
@@ -116,6 +117,18 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &4717958208194618456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338900945409832237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef466b519a1b80a4dad63500be101b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5000389126681822605
 GameObject:
   m_ObjectHideFlags: 0
