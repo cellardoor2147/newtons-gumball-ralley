@@ -15,3 +15,5 @@ MonoBehaviour:
   objectName: SpikeWedge
   prefab: {fileID: 4694918795534134036, guid: 460fdacff2b4fdb43ac6aeb390706911, type: 3}
   canSnap: 0
+  isSimpleMachine: 1
+  amountOfScrap: 1

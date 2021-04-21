@@ -15,3 +15,5 @@ MonoBehaviour:
   objectName: AxeWedge
   prefab: {fileID: 4694918795534134036, guid: 79af464560e605d41a4e6e6ae6ec9599, type: 3}
   canSnap: 0
+  isSimpleMachine: 1
+  amountOfScrap: 1

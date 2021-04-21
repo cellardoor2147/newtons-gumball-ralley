@@ -85,6 +85,16 @@ namespace Core
             return currentLevelData.levelIndex;
         }
 
+        public static float GetCurrentLevelTimeConstraint()
+        {
+            return currentLevelData.starConditions.timeConstraint;
+        }
+
+        public static float GetCurrentLevelScrapConstraint()
+        {
+            return currentLevelData.starConditions.scrapConstraint;
+        }
+        
         public static Vector3 GetCurrentLevelGumballMachinePosition()
         {
             return currentLevelData.gumballMachineTransform.position;
