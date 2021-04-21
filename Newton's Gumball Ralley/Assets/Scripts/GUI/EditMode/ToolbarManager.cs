@@ -8,6 +8,8 @@ namespace GUI.EditMode
         private static readonly string SCROLL_LEFT_BUTTON_KEY = "Scroll Left Button";
         private static readonly string SCROLL_RIGHT_BUTTON_KEY = "Scroll Right Button";
 
+        [SerializeField] private float scrollAmount;
+
         private GameObject scrollLeftButton;
         private GameObject scrollRightButton;
         private ScrollRect scrollRect;
@@ -40,7 +42,8 @@ namespace GUI.EditMode
                 scrollLeftButton.GetComponent<ScrollController>().StopScrolling();
                 return;
             }
-            scrollRect.normalizedPosition = new Vector2(currentPositionX - Time.deltaTime, 1f);
+            scrollRect.normalizedPosition =
+                new Vector2(currentPositionX - (Time.deltaTime * scrollAmount), 1f);
         }
 
         public void HandleScrollRight()
@@ -54,7 +57,8 @@ namespace GUI.EditMode
                 scrollRightButton.GetComponent<ScrollController>().StopScrolling();
                 return;
             }
-            scrollRect.normalizedPosition = new Vector2(currentPositionX + Time.deltaTime, 1f);
+            scrollRect.normalizedPosition =
+                new Vector2(currentPositionX + (Time.deltaTime * scrollAmount), 1f);
         }
     }
 }
