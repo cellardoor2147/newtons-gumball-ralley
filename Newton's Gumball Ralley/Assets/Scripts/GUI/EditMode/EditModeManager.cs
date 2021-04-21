@@ -29,6 +29,7 @@ namespace GUI.EditMode
         private List<TabController> inactiveTabControllers;
         private List<TabController> activeTabControllers;
         private List<ContentController> contentControllers;
+        private ToolbarManager toolbarManager;
         private RectTransform placeableObjectsMenuTransform;
         private float placeableObjectsMenuMaxYPosition;
         private float placeableObjectsMenuMinYPosition;
@@ -53,6 +54,11 @@ namespace GUI.EditMode
                 .Find(TOOLBAR_KEY)
                 .Find(TOOLBAR_CONTENT_CONTAINER_KEY)
                 .GetComponentsInChildren<ContentController>(true).ToList();
+            toolbarManager = transform
+                .Find(PLACEABLE_OBJECTS_MENU_KEY)
+                .Find(TOOLBAR_KEY)
+                .Find(TOOLBAR_CONTENT_CONTAINER_KEY)
+                .GetComponent<ToolbarManager>();
             placeableObjectsMenuTransform = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
                 .GetComponent<RectTransform>();
@@ -119,9 +125,15 @@ namespace GUI.EditMode
         {
             foreach (ContentController contentController in instance.contentControllers)
             {
+                bool contentControllerGameObjectShouldBeActivated =
+                    contentController.objectType.Equals(objectType);
                 contentController.gameObject.SetActive(
-                    contentController.objectType.Equals(objectType)
+                    contentControllerGameObjectShouldBeActivated
                 );
+                if (contentControllerGameObjectShouldBeActivated)
+                {
+                    toolbarManager.SetContent(contentController.gameObject);
+                }
             }
         }
 
