@@ -20,9 +20,10 @@ namespace Core
 
         private static List<LevelProgress> levelProgresses = GetLevelProgresses();
 
-        private static void Serialize(int worldIndex, int levelIndex)
+        private static void Serialize(LevelProgress levelProgress)
         {
-            LevelProgress levelProgress = GetLevelProgress(worldIndex, levelIndex);
+            int worldIndex = levelProgress.worldIndex;
+            int levelIndex = levelProgress.levelIndex;
             string serializedLevelProgress = JsonUtility.ToJson(levelProgress, true);
             string writeFilePath = WRITE_DIRECTORY_PATH;
             writeFilePath += worldIndex.ToString() + "-" + levelIndex.ToString() + ".json";
@@ -92,7 +93,7 @@ namespace Core
                         newLevelProgress.levelIndex = currentLevelIndex;
                         newLevelProgress.bestStarsEarned = starsEarned;
                         levelProgresses[i] = newLevelProgress;
-                        Serialize(currentWorldIndex, currentLevelIndex);
+                        Serialize(levelProgresses[i]);
                         return;
                     }
                     return;
@@ -103,7 +104,7 @@ namespace Core
             levelProgress.levelIndex = currentLevelIndex;
             levelProgress.bestStarsEarned = starsEarned;
             levelProgresses.Add(levelProgress);
-            Serialize(currentWorldIndex, currentLevelIndex);
+            Serialize(levelProgress);
         }
     }
 }

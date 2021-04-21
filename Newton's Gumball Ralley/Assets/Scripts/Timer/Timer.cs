@@ -6,36 +6,37 @@ namespace LevelTimer
 {
     public class Timer : MonoBehaviour
     {
-        public float CurrentTime { get; private set; } = 0f;
+        public static float CurrentTime { get; private set; } = 0f;
         public static float CompletionTime { get; private set; }
-        private bool completionTimeIsSet = false;
-        private BallMovement ball;
-
-        private void Awake()
-        {
-            GameObject ballObject = GameObject.FindGameObjectWithTag("Player");
-            if (ballObject)
-                ball = ballObject.GetComponent<BallMovement>();
-        }
+        private static bool completionTimeIsSet = false;
+        private static bool shouldIncrementTimer = false;
 
         void Update()
         {
-            if (ball != null 
-                && ball.HasBeenReleased
-                && !GameStateManager.GetGameState().Equals(GameState.LevelCompleted))
+            if (shouldIncrementTimer)
             {
                 CurrentTime += Time.deltaTime;
             }
             else
             {
-                if (GameStateManager.GetGameState().Equals(GameState.LevelCompleted)
-                    && !completionTimeIsSet)
+                if (!completionTimeIsSet)
                 {
                     CompletionTime = CurrentTime;
                     completionTimeIsSet = true;
                 }
                 CurrentTime = 0f;
             }
+        }
+
+        public static void StartTimer()
+        {
+            shouldIncrementTimer = true;
+            completionTimeIsSet = false;
+        }
+
+        public static void StopTimer()
+        {
+            shouldIncrementTimer = false;
         }
     }
 }

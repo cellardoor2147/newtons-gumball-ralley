@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Core;
+using LevelTimer;
 using Audio;
 
 namespace Ball
@@ -14,7 +15,7 @@ namespace Ball
 
         private Rigidbody2D rigidBody;
         private bool isBeingPulled;
-        public bool HasBeenReleased { get; private set; }
+        private bool hasBeenReleased;
 
         [SerializeField] SoundMetaData BounceSound;
         [SerializeField] SoundMetaData RollingSound;
@@ -42,12 +43,13 @@ namespace Ball
 
         private void FixedUpdate()
         {
-            if (!HasBeenReleased)
+            if (!hasBeenReleased)
             {
                 AudioManager.instance.StopSound(RollingSound.name);
                 UpdateBallPositionRelativeToSling();
             }
-            else {
+            else 
+            {
                 if (rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) && isTouching) 
                 {
                     AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
@@ -98,7 +100,7 @@ namespace Ball
             {
                 return;
             }
-            if (!HasBeenReleased)
+            if (!hasBeenReleased)
             {
                 isBeingPulled = true;
             }
@@ -110,10 +112,10 @@ namespace Ball
             {
                 return;
             }
-            if (!HasBeenReleased)
+            if (!hasBeenReleased)
             {
                 isBeingPulled = false;
-                HasBeenReleased = true;
+                hasBeenReleased = true;
                 rigidBody.gravityScale = 1.0f;
                 AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 StartCoroutine(ReleaseAfterDelay());
@@ -122,7 +124,7 @@ namespace Ball
 
         private void OnCollisionEnter2D(Collision2D other) 
         {
-            if (HasBeenReleased) 
+            if (hasBeenReleased) 
             {
                 isTouching = true;
                 AudioManager.instance.PlaySound(BounceSound.name);
@@ -131,7 +133,7 @@ namespace Ball
 
         private void OnCollisionExit2D(Collision2D other)
         {
-            if (HasBeenReleased) 
+            if (hasBeenReleased) 
             {
                 isTouching = false;
             } 
@@ -140,6 +142,7 @@ namespace Ball
         private IEnumerator ReleaseAfterDelay()
         {
             yield return new WaitForSeconds(delayAfterRelease);
+            Timer.StartTimer();
             GetComponent<SpringJoint2D>().enabled = false;
         }
 
@@ -156,7 +159,7 @@ namespace Ball
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
             GetComponent<SpringJoint2D>().enabled = true;
-            HasBeenReleased = false;
+            hasBeenReleased = false;
         }
     }
 }
