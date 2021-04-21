@@ -8,20 +8,33 @@ namespace GUI.EditMode
 {
     public class PlaceableObjectManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        private static readonly string PLACEABLE_OBJECT_IMAGE_PREFIX =
-            "Placeable Object Image";
-
-        [SerializeField] GameObject placeableObjectPrefab;
+        [SerializeField] private float maxSpriteHeightInToolbar;
+        [SerializeField] private GameObject placeableObjectPrefab;
 
         private GameObject placeableObjectsContainer;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
         {
-            transform.Find(PLACEABLE_OBJECT_IMAGE_PREFIX).GetComponent<Image>().sprite =
+            GetComponent<Image>().sprite =
                 placeableObjectPrefab.GetComponent<SpriteRenderer>().sprite;
+            GetComponent<RectTransform>().sizeDelta = GetSizeDelta();
             placeableObjectsContainer =
                 GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
+        }
+
+        private Vector2 GetSizeDelta()
+        {
+            float spriteWidth =
+                placeableObjectPrefab.GetComponent<SpriteRenderer>().sprite.rect.size.x;
+            float spriteHeight =
+                placeableObjectPrefab.GetComponent<SpriteRenderer>().sprite.rect.size.y;
+            if (spriteHeight > maxSpriteHeightInToolbar)
+            {
+                spriteWidth *= maxSpriteHeightInToolbar / spriteHeight;
+                spriteHeight = maxSpriteHeightInToolbar;
+            }
+            return new Vector2(spriteWidth, spriteHeight);
         }
         
         public void OnBeginDrag(PointerEventData pointerEventData)

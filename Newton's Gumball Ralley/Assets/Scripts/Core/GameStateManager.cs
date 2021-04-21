@@ -100,13 +100,13 @@ namespace Core
                 case GameState.OpeningCutscene:
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.Cutscene);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
                     AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.MainMenu);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
                     AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;
@@ -115,7 +115,7 @@ namespace Core
                     AudioManager.instance.StopSound(instance.MenuMusicSound.name);
                     AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.Dialogue);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
@@ -126,7 +126,7 @@ namespace Core
                     } 
                     LoadScene(GAME_SCENE_KEY);
                     ResetSceneForPlayMode();
-                    GUIManager.SetActiveGUI(GUIType.PlayMode);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.PlayMode));
                     break;
                 case GameState.Editing:
                     Time.timeScale = 1.0f;
@@ -137,18 +137,18 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     }
                     ResetSceneForEditMode();
-                    GUIManager.SetActiveGUI(GUIType.EditMode);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.EditMode));
                     break;
                 case GameState.Paused:
                     Time.timeScale = 0.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.SettingsMenu);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.SettingsMenu));
                     AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
                     break;
                 case GameState.LevelCompleted:
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
-                    GUIManager.SetActiveGUI(GUIType.LevelCompletedPopup);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
                     // TODO: play victory sound
                     break;
                 default:
@@ -166,6 +166,22 @@ namespace Core
                 return;
             }
             SceneManager.LoadScene(sceneName);
+        }
+
+        public static void ResetLevel()
+        {
+            if (instance.gameState.Equals(GameState.Playing))
+            {
+                ResetSceneForPlayMode();
+                instance.StartCoroutine(ResetGumballMachine());
+                instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
+                instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
+                instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
+            }
+            else if (instance.gameState.Equals(GameState.Editing))
+            {
+                DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+            }
         }
 
         private static void ResetSceneForPlayMode()
@@ -411,6 +427,11 @@ namespace Core
         public static void StartStaticCoroutine(IEnumerator coroutineEnumerator)
         {
             instance.StartCoroutine(coroutineEnumerator);
+        }
+
+        public static bool GameSceneSceneIsRunning()
+        {
+            return SceneManager.GetActiveScene().name.Equals(GAME_SCENE_KEY);
         }
 
         private void Update()

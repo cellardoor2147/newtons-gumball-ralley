@@ -31,7 +31,7 @@ namespace Ball
         private BallMovement ballMovement;
         private SpriteRenderer ballSpriteRenderer;
         private Vector3 originalPosition;
-        private Vector3 originalEulerAngles;
+        private Quaternion originalRotation;
         private Vector3 originalScale;
 
         private void Awake()
@@ -43,10 +43,40 @@ namespace Ball
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<SpriteRenderer>();
-            SetGumballMachineState(GumballMachineState.Closed);
-            originalPosition = transform.position;
-            originalEulerAngles = transform.localEulerAngles;
-            originalScale = transform.localScale;
+            SetOriginalTransformAndResetTransform();
+        }
+
+        private void SetOriginalTransformAndResetTransform()
+        {
+            /*
+             * If the level was loaded in the game scene from the unity editor,
+             * LevelManager.currentLevel will be zero, seeing as a level transition
+             * hasn't triggered currentLevel to being updated from its zero value.
+             * In which case, it's appropriate to leave the gumball machine's transform
+             * alone.
+             */
+            bool levelWasLoadedInGameSceneFromUnityEditor =
+                LevelManager.GetCurrentLevelGumballMachineScale().x == 0f;
+            if (!levelWasLoadedInGameSceneFromUnityEditor)
+            {
+                originalPosition = LevelManager.GetCurrentLevelGumballMachinePosition();
+                originalRotation = LevelManager.GetCurrentLevelGumballMachineRotation();
+                originalScale = LevelManager.GetCurrentLevelGumballMachineScale();
+            }
+            else
+            {
+                originalPosition = transform.position;
+                originalRotation = transform.rotation;
+                originalScale = transform.localScale;
+            }
+            ResetTransformToOriginalState();
+        }
+
+        private void ResetTransformToOriginalState()
+        {
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
+            transform.localScale = originalScale;
         }
 
         public void SetGumballMachineState(GumballMachineState gumballMachineState)
@@ -56,13 +86,13 @@ namespace Ball
             {
                 case GumballMachineState.Closed:
                     ballSpriteRenderer.enabled = false;
-                    StartCoroutine(ResetBallPosition());
+                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     SetClickability(true);
                     break;
                 case GumballMachineState.Shaking:
                     SetClickability(false);
-                    StartCoroutine(ResetBallPosition());
+                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     StartCoroutine(ShakeThenResetTransform());
                     break;
@@ -75,9 +105,10 @@ namespace Ball
             this.gumballMachineState = gumballMachineState;
         }
 
-        private IEnumerator ResetBallPosition()
+        private IEnumerator ResetBallPositionAndGumballMachineTransform()
         {
             yield return ballMovement.AsyncResetPosition();
+            SetOriginalTransformAndResetTransform();
         }
 
         private void SetClickability(bool isClickable)
@@ -99,9 +130,7 @@ namespace Ball
         private IEnumerator ShakeThenResetTransform()
         {
             yield return Shake();
-            transform.position = originalPosition;
-            transform.localEulerAngles = originalEulerAngles;
-            transform.localScale = originalScale;
+            ResetTransformToOriginalState();
             SetGumballMachineState(GumballMachineState.Open);
         }
 
@@ -159,19 +188,23 @@ namespace Ball
         private IEnumerator DispenseGumballThenResetItsScaleAndColor()
         {
             ballMovement.enabled = false;
-            Vector3 originalScale = slingAnchor.transform.localScale;
-            yield return DispenseGumball(originalScale);
-            slingAnchor.transform.localScale = originalScale;
+            Vector3 slingAnchorScale = slingAnchor.transform.localScale;
+            yield return DispenseGumball(slingAnchorScale);
+            slingAnchor.transform.localScale = slingAnchorScale;
             ballSpriteRenderer.color = Color.white;
             ballMovement.enabled = true;
         }
 
-        private IEnumerator DispenseGumball(Vector3 originalScale)
+        private IEnumerator DispenseGumball(Vector3 slingAnchorScale)
         {
             slingAnchor.transform.localScale = Vector3.zero;
             ballSpriteRenderer.enabled = true;
             ballSpriteRenderer.color = Color.black;
-            while (slingAnchor.transform.localScale.x < originalScale.x)
+            while
+            (
+                slingAnchor.transform.localScale.x 
+                < slingAnchorScale.x
+            )
             {
                 slingAnchor.transform.localScale = new Vector3(
                     slingAnchor.transform.localScale.x + Time.deltaTime,
@@ -179,7 +212,8 @@ namespace Ball
                     slingAnchor.transform.localScale.z
                 );
                 float ballSpriteRendererColorMultiplier =
-                    slingAnchor.transform.localScale.x / originalScale.x;
+                    slingAnchor.transform.localScale.x 
+                    / slingAnchorScale.x;
                 ballSpriteRenderer.color = new Color(
                     ballSpriteRendererColorMultiplier,
                     ballSpriteRendererColorMultiplier,

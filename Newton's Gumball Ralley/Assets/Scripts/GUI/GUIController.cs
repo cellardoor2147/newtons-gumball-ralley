@@ -68,8 +68,7 @@ namespace GUI
 
         public void ResetLevel()
         {
-            // TODO: properly reload level from JSON after serialization
-            // is properly implemented
+            GameStateManager.ResetLevel();
         }
 
         public void SkipDialogue()
@@ -88,7 +87,7 @@ namespace GUI
             }
             else
             {
-                GUIManager.SetActiveGUI(GUIType.SettingsMenu);
+                StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.SettingsMenu));
             }
         }
 
@@ -105,7 +104,7 @@ namespace GUI
             }
             else
             {
-                GUIManager.SetActiveGUI(GUIType.MainMenu);
+                StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
             }
         }
 
