@@ -25,9 +25,17 @@ namespace SimpleMachine
         private GameObject placedObjectsContainer;
         private PlacedObjectManager objectManager;
         private PlacedObjectMetaData objectMetaData;
+
         [SerializeField] private PlacedObjectMetaData leverPlatformMetaData;
         [SerializeField] private PlacedObjectMetaData leverFulcrumMetaData;
-
+        [SerializeField] private PlacedObjectMetaData screwMetaData;
+        [SerializeField] private PlacedObjectMetaData gear1MetaData;
+        [SerializeField] private PlacedObjectMetaData gear2MetaData;
+        [SerializeField] private PlacedObjectMetaData gear3MetaData;
+        [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
+        [SerializeField] private PlacedObjectMetaData wheelMetaData;
+        [SerializeField] private PlacedObjectMetaData smallAxleMetaData;
+        [SerializeField] private PlacedObjectMetaData largeAxleMetaData;
         [SerializeField] SoundMetaData ScrewSound;
 
         private void Awake()
@@ -84,10 +92,18 @@ namespace SimpleMachine
             transform.position = GetMousePositionInWorldCoordinates();
             if (ShouldPreventObjectFromBeingPlaced())
             {
+                if (objectMetaData.Equals(wheelMetaData)) 
+                {
+                    transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+                }
                 spriteRenderer.color = Color.red;
             }
             else
             {
+                if (objectMetaData.Equals(wheelMetaData))
+                {
+                    transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                }
                 spriteRenderer.color = Color.green;
             }
             if (ShouldSnap())
@@ -125,6 +141,10 @@ namespace SimpleMachine
                 }
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
+            if (objectMetaData.Equals(wheelMetaData))
+            {
+                transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
+            }
             spriteRenderer.color = defaultColor;
             AddRotationArrows();
             EditModeManager.ShowEditModeGUI();
@@ -134,7 +154,11 @@ namespace SimpleMachine
         {
             if (ShouldPreventDragging())
             {
-                return;
+                if (!gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear2MetaData) 
+                || !GameStateManager.GetGameState().Equals(GameState.Editing)) 
+                {
+                    return;
+                } 
             }
             bool playerRightClickedThisObject = Input.GetMouseButtonDown(1);
             if (playerRightClickedThisObject)
@@ -147,20 +171,20 @@ namespace SimpleMachine
 
         public bool ShouldPreventDragging()
         {
-            return !(GameStateManager.GetGameState().Equals(GameState.Editing)
-                && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)
+            return (!(GameStateManager.GetGameState().Equals(GameState.Editing)
+                && transform.parent.gameObject.name.Equals(PLACED_OBJECTS_KEY)) 
+                || (objectMetaData.Equals(gear2MetaData) && hasBeenPlaced)
             );
         }
 
         private bool ShouldSnap()
         {
-            if (objectMetaData.Equals(leverFulcrumMetaData))
+            if (GetComponent<SnapChecker>() != null)
             {
-                SnapChecker fulcrumSnapChecker = GetComponent<SnapChecker>();
-                return fulcrumSnapChecker.ShouldSnap;
+                SnapChecker snapChecker = GetComponent<SnapChecker>();
+                return snapChecker.ShouldSnap;
             }
-
-            return false;
+            return false;      
         }
 
         private void SnapToNearestLocation()
@@ -190,6 +214,16 @@ namespace SimpleMachine
                 }
                 return desiredSnapLocation;
             }
+            else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData) || objectMetaData.Equals(gear2MetaData))
+            {
+                List<GameObject> screwSnapObjects = GetSnapObjects();
+                Vector3 desiredSnapLocation = new Vector3();
+
+                desiredSnapLocation = screwSnapObjects[0].transform.position - new Vector3(0, 0, 0);
+                // 0f offset is required to get screw in correct place
+
+                return desiredSnapLocation;
+            }
             return Vector3.zero;
         }
 
@@ -201,7 +235,6 @@ namespace SimpleMachine
             {
                 snapPoints.Add(snapPoint.gameObject);
             }
-
             return snapPoints;
         }
 
@@ -209,22 +242,40 @@ namespace SimpleMachine
         {
             GameObject objectContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
 
-            if (objectMetaData.Equals(leverFulcrumMetaData))
+            if (objectMetaData.Equals(leverFulcrumMetaData) || objectMetaData.Equals(gearBackgroundMetaData))
             {
                 foreach (Transform placedObject in objectContainer.transform)
                 {
                     PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
-                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(leverPlatformMetaData))
+                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(objectMetaData))
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
+                }
+            }
+            else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData))  {
+                foreach (Transform placedObject in objectContainer.transform)
+                {
+                    PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
+                    if (placedObjectManager != null && (placedObjectManager.metaData.Equals(gear1MetaData)
+                                                        || placedObjectManager.metaData.Equals(gear3MetaData)
+                                                        || placedObjectManager.metaData.Equals(wheelMetaData))) {
+                        placedObject.GetChild(0).gameObject.SetActive(activeState);
+                    }
                 }
             }
         }
 
         private bool ShouldPreventObjectFromBeingPlaced()
         {
-            bool objectIsScrew = rigidbody2D == null;
-            bool objectHasCollided = collider2D.IsTouchingLayers(1) 
-                || collider2D.IsTouchingLayers(LayerMask.GetMask("Ball"));
+            bool objectIsScrew = rigidbody2D == null; 
+            bool objectHasCollided;
+            if (!objectMetaData.Equals(gear2MetaData)) 
+            {
+                objectHasCollided = collider2D.IsTouchingLayers(1) || collider2D.IsTouchingLayers(LayerMask.GetMask("Ball"));
+            }
+            else 
+            {
+                objectHasCollided = GetComponent<SnapChecker>().SnapPointHolder == null;
+            }
             return !objectIsScrew && objectHasCollided;
         }
 

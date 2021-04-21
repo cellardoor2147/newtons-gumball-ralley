@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb7d6ad89dbd145f889e5f6ed405f992, type: 3}
-  m_Name: Screw
+  m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
+  m_Name: LargeAxle
   m_EditorClassIdentifier: 
-  name: Screw
-  clip: {fileID: 8300000, guid: 0e66ad7b020e84aeea44efc50442ebeb, type: 3}
-  volume: 0.15
-  pitch: 1
-  loop: 0
+  objectName: LargeAxle
+  prefab: {fileID: 6377117644443219594, guid: ecf4653c9070e44a4882324c0ad84f38, type: 3}
+  canSnap: 1

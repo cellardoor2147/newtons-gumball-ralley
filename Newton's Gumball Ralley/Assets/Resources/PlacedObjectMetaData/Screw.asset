@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: Screw
   prefab: {fileID: 6844120024245546676, guid: fa723c6bd0320f24e808cf7fbb234c6d, type: 3}
+  canSnap: 1
