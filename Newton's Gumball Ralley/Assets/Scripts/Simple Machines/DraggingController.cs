@@ -247,8 +247,11 @@ namespace SimpleMachine
                 foreach (Transform placedObject in objectContainer.transform)
                 {
                     PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
-                    if (placedObjectManager != null && placedObjectManager.metaData.Equals(objectMetaData))
+                    if (placedObjectManager != null && (placedObjectManager.metaData.Equals(leverPlatformMetaData)
+                                                        || placedObjectManager.metaData.Equals(gear2MetaData))) 
+                    {
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
+                    }
                 }
             }
             else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData))  {

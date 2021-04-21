@@ -42,6 +42,8 @@ namespace Core
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
 
+        [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
+
         private GameState previousGameState;
         private GameState gameState;
         private Vector2 defaultGravity;
@@ -175,6 +177,7 @@ namespace Core
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
+            instance.StartCoroutine(DisableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
             Physics2D.gravity = instance.defaultGravity;
         }
@@ -194,6 +197,7 @@ namespace Core
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
             instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
+            instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
         }
@@ -347,6 +351,32 @@ namespace Core
                 }
             }
             yield return null;
+        }
+        
+        private static IEnumerator DisableObjects(string key, PlacedObjectMetaData metaData)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            foreach (Transform placeableobject in objectContainer.transform)
+            {
+                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData))
+                {
+                    placeableobject.gameObject.SetActive(false);
+                }
+            }
+        }
+
+        private static IEnumerator EnableObjects(string key, PlacedObjectMetaData metaData)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject objectContainer = GameObject.Find(key);
+            foreach (Transform placeableobject in objectContainer.transform)
+            {
+                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData))
+                {
+                    placeableobject.gameObject.SetActive(true);
+                }
+            }
         }
 
         private static IEnumerator RevertObjectsFromGray(string key)
