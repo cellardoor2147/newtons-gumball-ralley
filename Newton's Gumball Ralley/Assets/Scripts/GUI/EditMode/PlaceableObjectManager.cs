@@ -49,22 +49,26 @@ namespace GUI.EditMode
             {
                 placeableObjectsContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
             }
+            if (!ScrapManager.ShouldDisableDragging)
+            {
             GameObject objectBeingPlaced =
                 Instantiate(placeableObjectPrefab, placeableObjectsContainer.transform);
-            ScrapManager.ChangeScrapRemaining(-ObjectMetaData.amountOfScrap);
-            ScrapManager.ToggleButtonsDependingOnCost();
             objectBeingPlacedDraggingController =
                 objectBeingPlaced.GetComponent<DraggingController>();
             objectBeingPlacedDraggingController.OnMouseDown();
+            ScrapManager.ToggleButtonsDependingOnCost();
+            }           
         }
-
         public void OnDrag(PointerEventData pointerEventData)
         {
             if (objectBeingPlacedDraggingController == null)
             {
                 return;
             }
-            objectBeingPlacedDraggingController.OnMouseDrag();
+            if (!ScrapManager.ShouldDisableDragging)
+            {
+                objectBeingPlacedDraggingController.OnMouseDrag();
+            }
         }
 
         public void OnEndDrag(PointerEventData pointerEventData)
@@ -73,7 +77,10 @@ namespace GUI.EditMode
             {
                 return;
             }
-            objectBeingPlacedDraggingController.OnMouseUp();
+            if (!ScrapManager.ShouldDisableDragging)
+            {
+                objectBeingPlacedDraggingController.OnMouseUp();
+            }
         }
     }
 }

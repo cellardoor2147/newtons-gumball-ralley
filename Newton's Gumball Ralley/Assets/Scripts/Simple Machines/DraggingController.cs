@@ -136,6 +136,8 @@ namespace SimpleMachine
             else
             {
                 hasBeenPlaced = true;
+                ScrapManager.ChangeScrapRemaining(-objectMetaData.amountOfScrap);
+                ScrapManager.ToggleButtonsDependingOnCost();
                 objectManager.SetLastValidPosition(transform.position);
                 objectManager.SetLastValidRotation(transform.rotation);
                 if (rigidbody2D == null) {

@@ -12,6 +12,7 @@ namespace GUI.EditMode
         public static readonly string BUTTON_CONTAINER = "Toolbar Content Container";
 
         public static float ScrapRemaining { get; private set; }
+        public static bool ShouldDisableDragging { get; private set; }
         private static TextMeshProUGUI scrapRemainingText;
         private static List<PlaceableObjectManager> placeableObjects;
 
@@ -47,10 +48,12 @@ namespace GUI.EditMode
                     && placeableObject.ObjectMetaData.amountOfScrap > ScrapRemaining)
                 {
                     objectImage.color = Color.gray;
+                    ShouldDisableDragging = true;
                 }
                 else if (objectImage.color == Color.gray)
                 {
                     objectImage.color = placeableObject.DefaultColor;
+                    ShouldDisableDragging = false;
                 }
             }
         }
