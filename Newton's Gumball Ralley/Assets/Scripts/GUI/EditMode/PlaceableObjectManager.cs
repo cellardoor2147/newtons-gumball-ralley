@@ -15,6 +15,7 @@ namespace GUI.EditMode
         public PlacedObjectMetaData ObjectMetaData { get; private set; }
         public Color DefaultColor { get; private set; }
         private Image objectImage;
+        private bool shouldDisableDragging;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
@@ -42,30 +43,48 @@ namespace GUI.EditMode
             }
             return new Vector2(spriteWidth, spriteHeight);
         }
-        
+
+        public void ToggleBasedOnAvailableScrap()
+        {
+            Image objectImage = gameObject.GetComponent<Image>();
+
+            if (ObjectMetaData != null
+                && ObjectMetaData.amountOfScrap > ScrapManager.ScrapRemaining)
+            {
+                objectImage.color = Color.gray;
+                shouldDisableDragging = true;
+            }
+            else if (objectImage.color == Color.gray)
+            {
+                objectImage.color = DefaultColor;
+                shouldDisableDragging = false;
+            }
+        }
+
         public void OnBeginDrag(PointerEventData pointerEventData)
         {
             if (placeableObjectsContainer == null)
             {
                 placeableObjectsContainer = GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
             }
-            if (!ScrapManager.ShouldDisableDragging)
+            if (!shouldDisableDragging)
             {
             GameObject objectBeingPlaced =
                 Instantiate(placeableObjectPrefab, placeableObjectsContainer.transform);
             objectBeingPlacedDraggingController =
                 objectBeingPlaced.GetComponent<DraggingController>();
             objectBeingPlacedDraggingController.OnMouseDown();
-            ScrapManager.ToggleButtonsDependingOnCost();
+            EditModeManager.ToggleButtonsBasedOnAvailableScrap();
             }           
         }
+
         public void OnDrag(PointerEventData pointerEventData)
         {
             if (objectBeingPlacedDraggingController == null)
             {
                 return;
             }
-            if (!ScrapManager.ShouldDisableDragging)
+            if (!shouldDisableDragging)
             {
                 objectBeingPlacedDraggingController.OnMouseDrag();
             }
@@ -77,7 +96,7 @@ namespace GUI.EditMode
             {
                 return;
             }
-            if (!ScrapManager.ShouldDisableDragging)
+            if (!shouldDisableDragging)
             {
                 objectBeingPlacedDraggingController.OnMouseUp();
             }

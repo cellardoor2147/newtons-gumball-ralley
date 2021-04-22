@@ -126,8 +126,7 @@ namespace SimpleMachine
                 if (!hasBeenPlaced)
                 {
                     Destroy(gameObject);
-                    ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
-                    ScrapManager.ToggleButtonsDependingOnCost();
+                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
                     EditModeManager.ShowEditModeGUI();
                     return;
                 }
@@ -137,7 +136,7 @@ namespace SimpleMachine
             {
                 hasBeenPlaced = true;
                 ScrapManager.ChangeScrapRemaining(-objectMetaData.amountOfScrap);
-                ScrapManager.ToggleButtonsDependingOnCost();
+                EditModeManager.ToggleButtonsBasedOnAvailableScrap();
                 objectManager.SetLastValidPosition(transform.position);
                 objectManager.SetLastValidRotation(transform.rotation);
                 if (rigidbody2D == null) {
@@ -171,7 +170,7 @@ namespace SimpleMachine
                 EditModeManager.ShowEditModeGUI();
                 Destroy(gameObject);
                 ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
-                ScrapManager.ToggleButtonsDependingOnCost();
+                EditModeManager.ToggleButtonsBasedOnAvailableScrap();
             }
         }
 

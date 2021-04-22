@@ -135,9 +135,18 @@ namespace GUI.EditMode
                 if (contentControllerGameObjectShouldBeActivated)
                 {
                     ActiveContentController = contentController;
-                    ScrapManager.ToggleButtonsDependingOnCost();
+                    ToggleButtonsBasedOnAvailableScrap();
                     toolbarManager.SetContent(contentController.gameObject);
                 }
+            }
+        }
+
+        public static void ToggleButtonsBasedOnAvailableScrap()
+        {
+            foreach (Transform button in ActiveContentController.transform)
+            {
+                PlaceableObjectManager placeableObject = button.GetComponent<PlaceableObjectManager>();
+                placeableObject.ToggleBasedOnAvailableScrap();
             }
         }
 
