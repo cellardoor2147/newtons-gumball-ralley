@@ -126,7 +126,6 @@ namespace SimpleMachine
                 if (!hasBeenPlaced)
                 {
                     Destroy(gameObject);
-                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
                     EditModeManager.ShowEditModeGUI();
                     return;
                 }
