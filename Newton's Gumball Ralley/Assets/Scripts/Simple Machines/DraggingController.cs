@@ -133,9 +133,12 @@ namespace SimpleMachine
             }
             else
             {
+                if (!hasBeenPlaced)
+                {
+                    ScrapManager.ChangeScrapRemaining(-objectMetaData.amountOfScrap);
+                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
+                }
                 hasBeenPlaced = true;
-                ScrapManager.ChangeScrapRemaining(-objectMetaData.amountOfScrap);
-                EditModeManager.ToggleButtonsBasedOnAvailableScrap();
                 objectManager.SetLastValidPosition(transform.position);
                 objectManager.SetLastValidRotation(transform.rotation);
                 if (rigidbody2D == null) {
