@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace GUI.EditMode
@@ -25,6 +26,7 @@ namespace GUI.EditMode
         private static readonly string TOOLBAR_CONTENT_CONTAINER_KEY = "Toolbar Content Container";
 
         private static EditModeManager instance;
+        public static ContentController ActiveContentController { get; private set; }
 
         private List<TabController> inactiveTabControllers;
         private List<TabController> activeTabControllers;
@@ -132,6 +134,8 @@ namespace GUI.EditMode
                 );
                 if (contentControllerGameObjectShouldBeActivated)
                 {
+                    ActiveContentController = contentController;
+                    ScrapManager.ToggleButtonsDependingOnCost();
                     toolbarManager.SetContent(contentController.gameObject);
                 }
             }

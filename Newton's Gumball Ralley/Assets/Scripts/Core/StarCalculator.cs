@@ -38,7 +38,7 @@ namespace Core
             return starsEarned;
         }
 
-        private float GetAmountOfScrapUsed()
+        private static float GetAmountOfScrapUsed()
         {
             float amountOfScrapUsed = 0;
             List<PlacedObjectManager> placedObjects = 

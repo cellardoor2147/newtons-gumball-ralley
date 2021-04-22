@@ -12,6 +12,9 @@ namespace GUI.EditMode
         [SerializeField] private GameObject placeableObjectPrefab;
 
         private GameObject placeableObjectsContainer;
+        public PlacedObjectMetaData ObjectMetaData { get; private set; }
+        public Color DefaultColor { get; private set; }
+        private Image objectImage;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
@@ -21,6 +24,9 @@ namespace GUI.EditMode
             GetComponent<RectTransform>().sizeDelta = GetSizeDelta();
             placeableObjectsContainer =
                 GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);
+            ObjectMetaData = placeableObjectPrefab.GetComponent<PlacedObjectManager>().metaData;
+            objectImage = GetComponent<Image>();
+            DefaultColor = objectImage.color;
         }
 
         private Vector2 GetSizeDelta()
@@ -45,6 +51,8 @@ namespace GUI.EditMode
             }
             GameObject objectBeingPlaced =
                 Instantiate(placeableObjectPrefab, placeableObjectsContainer.transform);
+            ScrapManager.ChangeScrapRemaining(-ObjectMetaData.amountOfScrap);
+            ScrapManager.ToggleButtonsDependingOnCost();
             objectBeingPlacedDraggingController =
                 objectBeingPlaced.GetComponent<DraggingController>();
             objectBeingPlacedDraggingController.OnMouseDown();

@@ -94,6 +94,11 @@ namespace Core
         {
             return currentLevelData.starConditions.scrapConstraint;
         }
+
+        public static float GetCurrentLevelScrapAllotted()
+        {
+            return currentLevelData.placeableScrapLimit;
+        }
         
         public static Vector3 GetCurrentLevelGumballMachinePosition()
         {

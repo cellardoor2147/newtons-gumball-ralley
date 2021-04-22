@@ -126,6 +126,8 @@ namespace SimpleMachine
                 if (!hasBeenPlaced)
                 {
                     Destroy(gameObject);
+                    ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
+                    ScrapManager.ToggleButtonsDependingOnCost();
                     EditModeManager.ShowEditModeGUI();
                     return;
                 }
@@ -166,6 +168,8 @@ namespace SimpleMachine
                 RemoveRotationArrows();
                 EditModeManager.ShowEditModeGUI();
                 Destroy(gameObject);
+                ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
+                ScrapManager.ToggleButtonsDependingOnCost();
             }
         }
 
