@@ -170,9 +170,12 @@ namespace SimpleMachine
             {
                 RemoveRotationArrows();
                 EditModeManager.ShowEditModeGUI();
+                if (hasBeenPlaced)
+                {
+                    ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
+                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
+                }
                 Destroy(gameObject);
-                ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
-                EditModeManager.ToggleButtonsBasedOnAvailableScrap();
             }
         }
 
