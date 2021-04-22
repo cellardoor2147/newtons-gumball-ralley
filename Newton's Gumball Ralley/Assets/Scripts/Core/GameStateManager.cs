@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 using GUI;
 using GUI.Dialogue;
+using GUI.EditMode;
 using SimpleMachine;
 using Ball;
 using Destructible2D;
@@ -181,6 +182,8 @@ namespace Core
             else if (instance.gameState.Equals(GameState.Editing))
             {
                 DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+                ScrapManager.ResetRemainingScrap();
+                EditModeManager.ToggleButtonsBasedOnAvailableScrap();
             }
         }
 

@@ -30,5 +30,10 @@ namespace GUI.EditMode
         {
             ScrapRemaining += value;
         }
+
+        public static void ResetRemainingScrap()
+        {
+            ScrapRemaining = LevelManager.GetCurrentLevelScrapAllotted();
+        }
     }
 }

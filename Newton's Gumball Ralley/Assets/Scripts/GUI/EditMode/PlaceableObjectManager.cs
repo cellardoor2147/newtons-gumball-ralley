@@ -15,7 +15,7 @@ namespace GUI.EditMode
         public PlacedObjectMetaData ObjectMetaData { get; private set; }
         public Color DefaultColor { get; private set; }
         private Image objectImage;
-        private bool shouldDisableDragging;
+        private bool shouldDisableDragging = false;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
