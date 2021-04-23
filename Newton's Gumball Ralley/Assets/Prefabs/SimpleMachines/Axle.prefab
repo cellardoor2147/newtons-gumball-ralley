@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9134097122421534157}
   - component: {fileID: 4695660233829269813}
   m_Layer: 0
-  m_Name: LargeAxle
+  m_Name: Axle
   m_TagString: Screw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,8 +126,7 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  smallAxleMetaData: {fileID: 11400000, guid: dd10f85c8c0774e4dbc8f6a9cdfd4273, type: 2}
-  largeAxleMetaData: {fileID: 11400000, guid: 2699ab06bb5e34bf59fcefaf2bf9572b, type: 2}
+  axleMetaData: {fileID: 11400000, guid: 2699ab06bb5e34bf59fcefaf2bf9572b, type: 2}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &9134097122421534157
 MonoBehaviour:

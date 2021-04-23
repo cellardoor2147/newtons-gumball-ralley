@@ -317,6 +317,22 @@ namespace Core
                         if (!fulcrumScrew.FulcrumJointShouldBeCreated)
                             continue;
                     }
+                    bool collider2IsAxle =
+                        collider2.gameObject.name.Equals("Axle(Clone)");
+                    bool collider1IsGearorWheel =
+                        collider1.gameObject.name.Equals("Gear1(Clone)") 
+                        || collider1.gameObject.name.Equals("Wheel(Clone)")
+                        || collider1.gameObject.name.Equals("Gear3(Clone)");
+                    if (collider2IsAxle && !collider1IsGearorWheel)
+                    {
+                        continue;
+                    }
+                    bool collider2IsScrew =
+                       collider2.gameObject.name.Equals("Screw(Clone)");
+                    if (collider2IsScrew && collider1IsGearorWheel)
+                    {
+                        continue;
+                    }
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
             }
@@ -352,7 +368,7 @@ namespace Core
             }
             yield return null;
         }
-        
+
         private static IEnumerator DisableObjects(string key, PlacedObjectMetaData metaData)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);

@@ -34,8 +34,7 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData gear3MetaData;
         [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] private PlacedObjectMetaData wheelMetaData;
-        [SerializeField] private PlacedObjectMetaData smallAxleMetaData;
-        [SerializeField] private PlacedObjectMetaData largeAxleMetaData;
+        [SerializeField] private PlacedObjectMetaData axleMetaData;
         [SerializeField] SoundMetaData ScrewSound;
 
         private void Awake()
@@ -214,7 +213,7 @@ namespace SimpleMachine
                 }
                 return desiredSnapLocation;
             }
-            else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData) || objectMetaData.Equals(gear2MetaData))
+            else if (objectMetaData.Equals(axleMetaData) || objectMetaData.Equals(gear2MetaData))
             {
                 List<GameObject> screwSnapObjects = GetSnapObjects();
                 Vector3 desiredSnapLocation = new Vector3();
@@ -254,7 +253,7 @@ namespace SimpleMachine
                     }
                 }
             }
-            else if (objectMetaData.Equals(largeAxleMetaData) || objectMetaData.Equals(smallAxleMetaData))  {
+            else if (objectMetaData.Equals(axleMetaData))  {
                 foreach (Transform placedObject in objectContainer.transform)
                 {
                     PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
