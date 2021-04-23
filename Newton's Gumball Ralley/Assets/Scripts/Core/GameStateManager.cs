@@ -41,9 +41,8 @@ namespace Core
         [SerializeField] SoundMetaData Level1MusicSound;
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
-
+        
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
-
         private GameState previousGameState;
         private GameState gameState;
         private Vector2 defaultGravity;
@@ -196,6 +195,7 @@ namespace Core
             instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
+            instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
             instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
@@ -398,22 +398,22 @@ namespace Core
         private static IEnumerator RevertObjectsFromGray(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                GameObject.Find(key)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.RevertFromGray()
+                    placedObjectManager => placedObjectManager.RevertFromGray()
             );
         }
 
         private static IEnumerator GrayOutObjects(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                GameObject.Find(key)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.GrayOut()
+                    placedObjectManager => placedObjectManager.GrayOut()
             );
         }
 

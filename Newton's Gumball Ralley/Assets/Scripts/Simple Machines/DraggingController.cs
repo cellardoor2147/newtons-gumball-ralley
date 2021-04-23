@@ -281,16 +281,6 @@ namespace SimpleMachine
             return !objectIsScrew && objectHasCollided;
         }
 
-        public void GrayOut()
-        {
-            spriteRenderer.color = Color.gray;
-        }
-
-        public void RevertFromGray()
-        {
-            spriteRenderer.color = defaultColor;
-        }
-
         public void RemoveRotationArrows()
         {
             if (rotationArrows != null)

@@ -19,7 +19,7 @@ namespace SimpleMachine {
         private bool hasSpawned;
         private float torque;
         private float spinSpeed;
-
+        [HideInInspector] public bool shouldRise;
         public SpinState spinState;
 
         [SerializeField] SoundMetaData GearSound;
