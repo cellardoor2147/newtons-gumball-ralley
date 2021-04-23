@@ -20,6 +20,9 @@ namespace SimpleMachine {
         private PulleyState pulleyState;
         private PlatformState platformState;
 
+        private int currPulley;
+        private int currPlatform;
+
         private Transform pulleyFulcrums;
         private Transform pulleyPlatforms;
 
@@ -31,6 +34,10 @@ namespace SimpleMachine {
         private bool shouldFall;
 
         private float minSpeed;
+        private float[] minHeight = new float[2];
+        private float[] maxHeight = new float[2];
+        private float raiseDistance;
+        private float platformSpeed;
         [SerializeField] SoundMetaData PulleySound;
 
         [SerializeField] PlacedObjectMetaData simplePulleyMetaData;
@@ -43,7 +50,13 @@ namespace SimpleMachine {
             pulleyPlatforms = transform.GetChild(1);
             pulleyState = defaultPulleyState;
             platformState = defaultPlatformState;
-            minSpeed = 20f;
+            raiseDistance = 2.5f;
+            minHeight[0] = pulleyPlatforms.GetChild(0).position.y;
+            maxHeight[0] = pulleyPlatforms.GetChild(0).position.y + raiseDistance;
+            minHeight[1] = pulleyPlatforms.GetChild(1).position.y;
+            maxHeight[1] = pulleyPlatforms.GetChild(1).position.y + raiseDistance;
+            minSpeed = 20f;  
+            platformSpeed = 0.5f;
         }
 
         private void Update()
@@ -61,10 +74,12 @@ namespace SimpleMachine {
                 case PulleyState.SimplePulley:
                     pulleyFulcrums.GetChild(0).gameObject.SetActive(true);
                     pulleyFulcrums.GetChild(1).gameObject.SetActive(false);
+                    currPulley = 0;
                     break;
                 case PulleyState.CompoundPulley:
                     pulleyFulcrums.GetChild(0).gameObject.SetActive(false);
                     pulleyFulcrums.GetChild(1).gameObject.SetActive(true);
+                    currPulley = 1;
                     break;
             }
             switch (platformState)
@@ -72,41 +87,39 @@ namespace SimpleMachine {
                 case PlatformState.FlatPlatform:
                     pulleyPlatforms.GetChild(0).gameObject.SetActive(true);
                     pulleyPlatforms.GetChild(1).gameObject.SetActive(false);
+                    currPlatform = 0;
                     break;
                 case PlatformState.SpikeWedge:
                     pulleyPlatforms.GetChild(0).gameObject.SetActive(false);
                     pulleyPlatforms.GetChild(1).gameObject.SetActive(true);
+                    currPlatform = 1;
                     break;
             }
         }
 
         private void FixedUpdate()
         {
+            Transform activePlatform = pulleyPlatforms.GetChild(currPlatform);
             if (shouldRise)
             {
-                if (pulleyPlatforms.GetChild(0).gameObject.activeSelf)
+                if (activePlatform.position.y <= maxHeight[currPlatform])
                 {
-                    //Move Up Platform
-                    Debug.Log("up");
-                }
-                if (pulleyPlatforms.GetChild(1).gameObject.activeSelf)
-                {
-                    //Move Up Wedge
+                    activePlatform.transform.Translate(Vector3.up * platformSpeed * Time.deltaTime);
                 }
             }
             else if (shouldFall)
             {
-                if (pulleyPlatforms.GetChild(0).gameObject.activeSelf)
+                if (currPlatform == 0 && activePlatform.position.y >= minHeight[currPlatform])
                 {
-                    //Move Up Platform
-                    Debug.Log("down");
+                    activePlatform.transform.Translate(Vector3.down * platformSpeed * Time.deltaTime);
                 }
-                if (pulleyPlatforms.GetChild(1).gameObject.activeSelf)
+                if (currPlatform == 1)
                 {
-                    //Move Up Wedge
+                   DropWedge();
+                   shouldFall = false;
                 }
             }
-            else if (shouldRise && !shouldFall)
+            else if (!shouldRise && !shouldFall)
             {
                 if (pulleyPlatforms.GetChild(0).gameObject.activeSelf)
                 {
@@ -119,12 +132,12 @@ namespace SimpleMachine {
             }
         }
 
-        private void OnCollisionStay2D(Collision2D other)
+        private void OnTriggerStay2D(Collider2D other)
         {
-            if (other.gameObject.name.Equals("Gear2")) 
+            if (other.gameObject.name.Equals("Gear2(Clone)")) 
             {
                 Rigidbody2D gearRigidbody = other.gameObject.GetComponent<Rigidbody2D>();
-                if (gearRigidbody.angularVelocity > minSpeed 
+                if (gearRigidbody.angularVelocity < -1 * minSpeed 
                     && (pulleyState.Equals(PulleyState.SimplePulley) && platformState.Equals(PlatformState.FlatPlatform))
                     || pulleyState.Equals(PulleyState.CompoundPulley)) 
                 {
@@ -132,7 +145,7 @@ namespace SimpleMachine {
                     shouldFall = false;
 
                 }
-                else if (gearRigidbody.angularVelocity > -1 * minSpeed 
+                else if (gearRigidbody.angularVelocity > minSpeed 
                     && platformState.Equals(PlatformState.FlatPlatform))
                 {
                     shouldRise = false;
@@ -158,5 +171,9 @@ namespace SimpleMachine {
             }
         }
 
+        private void DropWedge()
+        {
+            Debug.Log("DropWedge");
+        }
     }
 }
