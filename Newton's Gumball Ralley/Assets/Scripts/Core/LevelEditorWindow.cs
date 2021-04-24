@@ -33,7 +33,8 @@ namespace Core
                     LevelSerializer.WRITE_DIRECTORY_PATH,
                     "json"
                 );
-                LevelData levelData = LevelSerializer.Deserialize(readFilePath);
+                LevelData levelData =
+                    LevelSerializer.DeserializeFromReadFilePath(readFilePath);
                 LevelManager.LoadLevelWithLevelData(levelData);
                 worldIndex = levelData.worldIndex;
                 levelIndex = levelData.levelIndex;
