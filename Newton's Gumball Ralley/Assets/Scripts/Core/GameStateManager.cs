@@ -43,6 +43,11 @@ namespace Core
         [SerializeField] SoundMetaData DialogueMusicSound;
 
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
+        [SerializeField] PlacedObjectMetaData axleMetaData;
+        [SerializeField] PlacedObjectMetaData gear1MetaData;
+        [SerializeField] PlacedObjectMetaData gear3MetaData;
+        [SerializeField] PlacedObjectMetaData wheelMetaData;
+        [SerializeField] PlacedObjectMetaData screwMetaData;
 
         private GameState previousGameState;
         private GameState gameState;
@@ -177,7 +182,7 @@ namespace Core
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(DisableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
+            instance.StartCoroutine(SetObjectsActive(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData, false));
             instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
             Physics2D.gravity = instance.defaultGravity;
         }
@@ -197,7 +202,7 @@ namespace Core
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
             instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
-            instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
+            instance.StartCoroutine(SetObjectsActive(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData, true));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
         }
@@ -317,18 +322,19 @@ namespace Core
                         if (!fulcrumScrew.FulcrumJointShouldBeCreated)
                             continue;
                     }
+                    PlacedObjectMetaData collider2MetaData = collider2.gameObject.GetComponent<PlacedObjectManager>().metaData;
+                    PlacedObjectMetaData collider1MetaData = collider1.gameObject.GetComponent<PlacedObjectManager>().metaData;
                     bool collider2IsAxle =
-                        collider2.gameObject.name.Equals("Axle(Clone)");
+                        collider2MetaData.Equals(instance.axleMetaData);
                     bool collider1IsGearorWheel =
-                        collider1.gameObject.name.Equals("Gear1(Clone)") 
-                        || collider1.gameObject.name.Equals("Wheel(Clone)")
-                        || collider1.gameObject.name.Equals("Gear3(Clone)");
+                        collider1MetaData.Equals(instance.gear1MetaData)
+                        || collider1MetaData.Equals(instance.wheelMetaData)
+                        || collider1MetaData.Equals(instance.gear3MetaData);
                     if (collider2IsAxle && !collider1IsGearorWheel)
                     {
                         continue;
                     }
-                    bool collider2IsScrew =
-                       collider2.gameObject.name.Equals("Screw(Clone)");
+                    bool collider2IsScrew = collider1MetaData.Equals(instance.screwMetaData);
                     if (collider2IsScrew && collider1IsGearorWheel)
                     {
                         continue;
@@ -369,7 +375,7 @@ namespace Core
             yield return null;
         }
 
-        private static IEnumerator DisableObjects(string key, PlacedObjectMetaData metaData)
+        private static IEnumerator SetObjectsActive(string key, PlacedObjectMetaData metaData, bool setActive)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject objectContainer = GameObject.Find(key);
@@ -377,20 +383,7 @@ namespace Core
             {
                 if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData))
                 {
-                    placeableobject.gameObject.SetActive(false);
-                }
-            }
-        }
-
-        private static IEnumerator EnableObjects(string key, PlacedObjectMetaData metaData)
-        {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject objectContainer = GameObject.Find(key);
-            foreach (Transform placeableobject in objectContainer.transform)
-            {
-                if (placeableobject.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(metaData))
-                {
-                    placeableobject.gameObject.SetActive(true);
+                    placeableobject.gameObject.SetActive(setActive);
                 }
             }
         }
