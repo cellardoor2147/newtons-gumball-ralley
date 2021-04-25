@@ -105,7 +105,7 @@ namespace Core
                     AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
-                    Time.timeScale = 0.0f;
+                    Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
                     RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
