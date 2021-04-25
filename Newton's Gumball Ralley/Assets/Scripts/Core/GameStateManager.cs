@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using GUI;
-using GUI.Dialogue;
 using SimpleMachine;
 using Ball;
 using Destructible2D;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Audio;
 using System.Collections;
+using Background;
 
 namespace Core
 {
@@ -101,12 +101,14 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
                     AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 0.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
                     AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;

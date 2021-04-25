@@ -50,7 +50,6 @@ namespace Core
                 if (placedObject.metaData.isSimpleMachine)
                     amountOfScrapUsed += placedObject.metaData.amountOfScrap;
             }
-
             return amountOfScrapUsed;
         }
     }

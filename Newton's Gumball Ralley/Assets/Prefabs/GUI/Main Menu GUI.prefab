@@ -1855,7 +1855,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.6
+  m_fontSize: 45.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2337,6 +2337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4452800684805890494}
   - component: {fileID: 91020983841394921}
+  - component: {fileID: 8767000949665698449}
   m_Layer: 0
   m_Name: Main Menu GUI
   m_TagString: Untagged
@@ -2379,6 +2380,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guiType: 1
+--- !u!222 &8767000949665698449
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8743977173730482486}
+  m_CullTransparentMesh: 0
 --- !u!1001 &1081392747138432728
 PrefabInstance:
   m_ObjectHideFlags: 0
