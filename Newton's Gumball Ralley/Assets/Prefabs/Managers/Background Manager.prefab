@@ -45,8 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundTexture: {fileID: 6767857159710695678, guid: 78010fa997cc7c24c9ed0a395d13be9c,
     type: 3}
-  desiredNumberOfRows: 4
-  desiredNumberOfColumns: 8
 --- !u!1 &4302677713385360097
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,7 +55,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4302677713385360098}
   m_Layer: 0
-  m_Name: Background
+  m_Name: Background Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
