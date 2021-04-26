@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using GUI;
+using GUI.EditMode;
 using SimpleMachine;
 using Ball;
 using Destructible2D;
