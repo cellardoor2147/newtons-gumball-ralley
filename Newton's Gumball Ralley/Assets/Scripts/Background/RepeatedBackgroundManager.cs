@@ -114,7 +114,10 @@ namespace Background
 
         public static float GetBorderLeftPositionX()
         {
-            return instance.GetStartingRenderPositionX() + instance.backgroundTextureWidth / 2;
+            float halfScreenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+            return instance.GetStartingRenderPositionX()
+                + halfScreenWidth
+                - instance.backgroundTextureWidth / 2;
         }
 
         public static float GetBorderRightPositionX()

@@ -37,7 +37,6 @@ namespace MainCamera
 
         private void LimitCameraPosition()
         {
-
             transform.position = new Vector3(
                 Mathf.Clamp(
                     transform.position.x,
