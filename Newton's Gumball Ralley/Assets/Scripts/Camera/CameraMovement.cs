@@ -4,8 +4,8 @@ namespace MainCamera
 {
     public class CameraMovement : MonoBehaviour
     {
+        [SerializeField] private Sprite scrollDirectionIndicatorSprite;
         [SerializeField] private float cameraPanSpeed = 5.0f;
-        [SerializeField] private float cameraPanBorderThickness = 20.0f;
         [SerializeField] private float cameraPanLimitX = 10.0f;
         [SerializeField] private float cameraPanLimitY = 5.0f;
         [SerializeField] private float cameraScrollSpeed = 0.1f;
@@ -22,12 +22,14 @@ namespace MainCamera
 
         private void UpdateCameraPositionX()
         {
-            bool shouldMoveCameraLeft = Input.mousePosition.x <= cameraPanBorderThickness;
+            bool shouldMoveCameraLeft =
+                Input.mousePosition.x <= -16f;
             if (shouldMoveCameraLeft)
             {
                 transform.Translate(Vector2.left * cameraPanSpeed * Time.deltaTime);
             }
-            bool shouldMoveCameraRight = Input.mousePosition.x >= Screen.width - cameraPanBorderThickness;
+            bool shouldMoveCameraRight =
+                Input.mousePosition.x >= Screen.width + 16f;
             if (shouldMoveCameraRight)
             {
                 transform.Translate(Vector2.right * cameraPanSpeed * Time.deltaTime);
@@ -45,12 +47,14 @@ namespace MainCamera
 
         private void UpdateCameraPositionY()
         {
-            bool shouldMoveCameraDown = Input.mousePosition.y <= cameraPanBorderThickness;
+            bool shouldMoveCameraDown =
+                Input.mousePosition.y <= -16f;
             if (shouldMoveCameraDown)
             {
                 transform.Translate(Vector2.down * cameraPanSpeed * Time.deltaTime);
             }
-            bool shouldMoveCameraUp = Input.mousePosition.y >= Screen.height - cameraPanBorderThickness;
+            bool shouldMoveCameraUp =
+                Input.mousePosition.y >= Screen.height + 16f;
             if (shouldMoveCameraUp)
             {
                 transform.Translate(Vector2.up * cameraPanSpeed * Time.deltaTime);
