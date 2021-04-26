@@ -13,6 +13,7 @@ namespace Core
         private int repeatedBackgroundRows;
         private float timeConstraint;
         private float scrapConstraint;
+        private float placeableScrapLimit;
 
         [MenuItem("Window/Level Editor")]
         private static void Init()
@@ -32,6 +33,7 @@ namespace Core
                     customLevelName,
                     timeConstraint,
                     scrapConstraint,
+                    placeableScrapLimit,
                     repeatedBackgroundColumns,
                     repeatedBackgroundRows
                 );
@@ -78,7 +80,12 @@ namespace Core
             scrapConstraint =
                 EditorGUI.FloatField(new Rect(0, 30, position.width, 15), "Scrap Constraint", scrapConstraint);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 240, position.width, 1000));
+            GUILayout.BeginArea(new Rect(0, 240, position.width, 60));
+            GUILayout.Label("Scrap Allotted to Player", EditorStyles.boldLabel);
+            placeableScrapLimit = 
+                EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Placeable Scrap Limit", placeableScrapLimit);
+            GUILayout.EndArea();
+            GUILayout.BeginArea(new Rect(0, 300, position.width, 1000));
             GUILayout.Label("How To Use", EditorStyles.boldLabel);
             GUILayout.Label(GetHowToUseText(), EditorStyles.helpBox);
             GUILayout.EndArea();

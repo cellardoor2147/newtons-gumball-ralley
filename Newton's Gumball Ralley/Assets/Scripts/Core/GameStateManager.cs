@@ -183,6 +183,8 @@ namespace Core
             else if (instance.gameState.Equals(GameState.Editing))
             {
                 DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
+                ScrapManager.ResetRemainingScrap();
+                EditModeManager.ToggleButtonsBasedOnAvailableScrap();
             }
         }
 

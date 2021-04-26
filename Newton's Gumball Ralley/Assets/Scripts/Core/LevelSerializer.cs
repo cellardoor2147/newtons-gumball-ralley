@@ -40,6 +40,7 @@ namespace Core
         public List<SerializablePreplacedObject> environmentObjects;
         public List<SerializablePreplacedObject> preplacedObjects;
         public SerializableTransform gumballMachineTransform;
+        public float placeableScrapLimit;
         public StarConditions starConditions;
     }
 
@@ -61,6 +62,7 @@ namespace Core
             string customLevelName, 
             float timeConstraint,
             float scrapConstraint,
+            float placeableScrapLimit,
             int repeatedBackgroundColumns,
             int repeatedBackgroundRows
         )
@@ -74,6 +76,7 @@ namespace Core
             levelData.repeatedBackgroundRows = repeatedBackgroundRows;
             levelData.starConditions.timeConstraint = timeConstraint;
             levelData.starConditions.scrapConstraint = scrapConstraint;
+            levelData.placeableScrapLimit = placeableScrapLimit;
             string serializedLevelData = JsonUtility.ToJson(levelData, true);
             string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))

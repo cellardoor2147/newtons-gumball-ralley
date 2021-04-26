@@ -15,3 +15,5 @@ MonoBehaviour:
   objectName: SmallAxle
   prefab: {fileID: 1216216082095455859, guid: 774a9e32c9c2341cd886dcd3d3832de6, type: 3}
   canSnap: 1
+  isSimpleMachine: 1
+  amountOfScrap: 4
