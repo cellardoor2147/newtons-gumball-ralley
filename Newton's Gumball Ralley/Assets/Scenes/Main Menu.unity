@@ -478,16 +478,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -125
       objectReference: {fileID: 0}
-    - target: {fileID: 7947044097507279748, guid: fd513e4562e541241b204c72c87e7ed9,
-        type: 3}
-      propertyPath: armRotationLimit
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7947044097507279748, guid: fd513e4562e541241b204c72c87e7ed9,
-        type: 3}
-      propertyPath: armRotationSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8700634096736929207, guid: fd513e4562e541241b204c72c87e7ed9,
         type: 3}
       propertyPath: m_AnchorMax.y
