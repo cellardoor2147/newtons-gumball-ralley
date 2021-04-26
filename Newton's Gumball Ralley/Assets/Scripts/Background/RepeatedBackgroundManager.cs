@@ -111,5 +111,25 @@ namespace Background
             instance.desiredNumberOfRows = desiredNumberOfRows;
             instance.RenderRepeatedBackground();
         }
+
+        public static float GetBorderLeftPositionX()
+        {
+            return instance.GetStartingRenderPositionX() + instance.backgroundTextureWidth / 2;
+        }
+
+        public static float GetBorderRightPositionX()
+        {
+            return -GetBorderLeftPositionX();
+        }
+
+        public static float GetBorderUpPositionY()
+        {
+            return instance.GetStartingRenderPositionY();
+        }
+
+        public static float GetBorderDownPositionY()
+        {
+            return -GetBorderUpPositionY();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Background;
 
 namespace MainCamera
 {
@@ -6,8 +7,6 @@ namespace MainCamera
     {
         [SerializeField] private Sprite scrollDirectionIndicatorSprite;
         [SerializeField] private float cameraPanSpeed = 5.0f;
-        [SerializeField] private float cameraPanLimitX = 10.0f;
-        [SerializeField] private float cameraPanLimitY = 5.0f;
         [SerializeField] private float cameraScrollSpeed = 0.1f;
         [SerializeField] private float cameraMinSize = 2.5f;
         [SerializeField] private float cameraMaxSize = 7.0f;
@@ -38,9 +37,18 @@ namespace MainCamera
 
         private void LimitCameraPosition()
         {
+
             transform.position = new Vector3(
-                Mathf.Clamp(transform.position.x, -cameraPanLimitX, cameraPanLimitX),
-                Mathf.Clamp(transform.position.y, -cameraPanLimitY, cameraPanLimitY),
+                Mathf.Clamp(
+                    transform.position.x,
+                    RepeatedBackgroundManager.GetBorderLeftPositionX(),
+                    RepeatedBackgroundManager.GetBorderRightPositionX()
+                ),
+                Mathf.Clamp(
+                    transform.position.y,
+                    RepeatedBackgroundManager.GetBorderUpPositionY(),
+                    RepeatedBackgroundManager.GetBorderDownPositionY()
+                ),
                 transform.position.z
             );
         }
