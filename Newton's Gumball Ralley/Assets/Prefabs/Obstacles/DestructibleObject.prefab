@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 8784975479468066586}
   - component: {fileID: 5444536597035932220}
   - component: {fileID: 3098449946041425673}
-  - component: {fileID: -3455478988523722303}
+  - component: {fileID: -2649860210512141947}
   m_Layer: 0
   m_Name: DestructibleObject
   m_TagString: Destructible
@@ -377,7 +377,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 2
   m_CollisionDetection: 0
   m_Constraints: 7
 --- !u!114 &706361541142173668
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   paint: 0
   shape: {fileID: -949900613627661759, guid: 680d8c53cd894aa4791aa07a59c9c537, type: 2}
   color: {r: 1, g: 1, b: 1, a: 1}
-  thickness: 0.5
+  thickness: 0.25
   depth: 2.5
   offset: 1
   useSurfaceNormal: 0
@@ -1477,7 +1477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30ac5ec9ecb419419b3cd9e5613d03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3455478988523722303
+  impactThreshold: 10
+--- !u!114 &-2649860210512141947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1486,9 +1487,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5151198367505448850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9146809a401edfc4f820d4a3d61db624, type: 3}
+  m_Script: {fileID: 11500000, guid: ab3c1fd85e053f64ab748a5f998a9f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  applyTo: 1
-  force: 2
-  forcePerSolidPixel: 0.01
