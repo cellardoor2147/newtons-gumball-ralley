@@ -410,7 +410,6 @@
     "gumballMachineTransform": {
         "position": {
             "x": -8.800000190734864,
-            "y": 0.3100000023841858,
             "z": 0.0
         },
         "rotation": {
@@ -425,6 +424,7 @@
             "z": 1.0
         }
     },
+    "placeableScrapLimit": 8.0,
     "starConditions": {
         "timeConstraint": 10.0,
         "scrapConstraint": 50.0

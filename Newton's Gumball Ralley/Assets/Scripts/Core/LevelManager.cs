@@ -12,7 +12,7 @@ namespace Core
         private static List<LevelData> levelsData = new List<LevelData>();
         private static LevelData currentLevelData;
         private static LevelManager instance;
-
+        
         private void Awake()
         {
             SetInstance();
