@@ -36,6 +36,10 @@ namespace Wedge
                 {
                     localVel = transform.InverseTransformDirection(rb.velocity).x;
                 }
+                else if (gameObject.name == "AxeWedgeInvertedCollider")
+                {
+                    localVel = -transform.InverseTransformDirection(rb.velocity).x;
+                }
                 else if (gameObject.name == "SpikeWedgeCollider")
                 {
                     localVel = -transform.InverseTransformDirection(rb.velocity).y;

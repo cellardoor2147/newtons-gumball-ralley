@@ -173,11 +173,13 @@ namespace Core
         {
             if (instance.gameState.Equals(GameState.Playing))
             {
-                ResetSceneForPlayMode();
                 instance.StartCoroutine(ResetGumballMachine());
                 instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
                 instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
                 instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
+                instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
+                instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
+                instance.StartCoroutine(FreezeDestructibleObjects(ENVIRONMENT_KEY));
             }
             else if (instance.gameState.Equals(GameState.Editing))
             {
@@ -215,6 +217,17 @@ namespace Core
             instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator FreezeDestructibleObjects(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+               .GetComponentsInChildren<DestructibleObstacleLayerController>(true)
+               .ToList()
+               .ForEach(
+                   layerController => layerController.FreezeRigidbody()
+            );
         }
 
         private static IEnumerator ResetDestructibleObjectLayer(string key)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7819107987771163526}
   - component: {fileID: 7686281347152000183}
   m_Layer: 9
-  m_Name: AxeWedgeCollider
+  m_Name: AxeWedgeInvertedCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4675749860992463911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 0.739, z: 0}
+  m_LocalPosition: {x: -0.51, y: 0.739, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 210489242033077768}
@@ -58,7 +58,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.027778983, y: 0.014339447}
+  m_Offset: {x: -0.05490476, y: 0.014339447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -69,7 +69,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3655579, y: 0.7948421}
+  m_Size: {x: 0.3452927, y: 0.7948421}
   m_EdgeRadius: 0
 --- !u!1 &4694918795534134036
 GameObject:
@@ -81,12 +81,12 @@ GameObject:
   m_Component:
   - component: {fileID: 210489242033077768}
   - component: {fileID: 5870146734736057096}
-  - component: {fileID: 7171102390907172674}
+  - component: {fileID: 4751998621437992026}
   - component: {fileID: 8203884248617717078}
   - component: {fileID: -2652160822440591369}
   - component: {fileID: 6494589377452356334}
   m_Layer: 0
-  m_Name: AxeWedge
+  m_Name: AxeWedge Inverted
   m_TagString: SimpleMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &7171102390907172674
+--- !u!60 &4751998621437992026
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.09, y: 2.3}
+    oldSize: {x: 1.08, y: 2.3}
     newSize: {x: 0.65, y: 1.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -153,48 +153,45 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.114999995, y: -0.45999998}
-      - {x: -0.155, y: -0.16}
-      - {x: -0.175, y: 0.06}
-      - {x: -0.195, y: 0.26999998}
-      - {x: -0.155, y: 0.37}
-      - {x: -0.125, y: 0.39999998}
-      - {x: -0.085, y: 0.45999998}
-      - {x: 0.055, y: 0.5}
-      - {x: 0.225, y: 0.48999998}
-      - {x: 0.385, y: 0.39}
-      - {x: 0.45499998, y: 0.41}
-      - {x: 0.515, y: 0.48}
-      - {x: 0.53499997, y: 0.58}
-      - {x: 0.545, y: 0.61}
-      - {x: 0.545, y: 0.84999996}
-      - {x: 0.525, y: 0.94}
-      - {x: 0.465, y: 1.06}
-      - {x: 0.415, y: 1.12}
-      - {x: 0.405, y: 1.12}
-      - {x: 0.155, y: 1.03}
-      - {x: -0.005, y: 0.98999995}
-      - {x: -0.195, y: 1.05}
-      - {x: -0.285, y: 1.12}
-      - {x: -0.415, y: 1.12}
-      - {x: -0.475, y: 1.0699999}
-      - {x: -0.515, y: 0.97999996}
-      - {x: -0.515, y: 0.93}
-      - {x: -0.48499998, y: 0.5}
-      - {x: -0.465, y: 0.37}
-      - {x: -0.45499998, y: 0.35999998}
-      - {x: -0.415, y: 0.34}
-      - {x: -0.42499998, y: -0.02}
-      - {x: -0.445, y: -0.24}
-      - {x: -0.445, y: -0.61}
-      - {x: -0.45499998, y: -1.02}
-      - {x: -0.45499998, y: -1.13}
-      - {x: -0.405, y: -1.15}
-      - {x: -0.225, y: -1.15}
-      - {x: -0.16499999, y: -1.13}
-      - {x: -0.065, y: -1.04}
-      - {x: -0.035, y: -0.98999995}
-      - {x: -0.095, y: -0.58}
+    - - {x: 0.44, y: -0.61}
+      - {x: 0.44, y: -0.22999999}
+      - {x: 0.42999998, y: -0.02}
+      - {x: 0.42, y: 0.35}
+      - {x: 0.47, y: 0.37}
+      - {x: 0.5, y: 0.5}
+      - {x: 0.52, y: 0.93}
+      - {x: 0.52, y: 0.98999995}
+      - {x: 0.48999998, y: 1.0799999}
+      - {x: 0.42, y: 1.12}
+      - {x: 0.29, y: 1.12}
+      - {x: 0.13, y: 1}
+      - {x: -0.11, y: 1.01}
+      - {x: -0.32, y: 1.0799999}
+      - {x: -0.35999998, y: 1.12}
+      - {x: -0.39, y: 1.12}
+      - {x: -0.48, y: 1.0699999}
+      - {x: -0.51, y: 0.93}
+      - {x: -0.53999996, y: 0.78}
+      - {x: -0.53999996, y: 0.58}
+      - {x: -0.53, y: 0.52}
+      - {x: -0.45, y: 0.41}
+      - {x: -0.38, y: 0.39999998}
+      - {x: -0.19, y: 0.48999998}
+      - {x: -0.049999997, y: 0.5}
+      - {x: 0, y: 0.48}
+      - {x: 0.099999994, y: 0.45999998}
+      - {x: 0.12, y: 0.39}
+      - {x: 0.19999999, y: 0.35}
+      - {x: 0.19999999, y: 0.26999998}
+      - {x: 0.17999999, y: -0.06}
+      - {x: 0.11, y: -0.59}
+      - {x: 0.04, y: -0.98999995}
+      - {x: 0.12, y: -1.1}
+      - {x: 0.22999999, y: -1.15}
+      - {x: 0.42, y: -1.15}
+      - {x: 0.44, y: -1.13}
+      - {x: 0.45, y: -1.02}
+      - {x: 0.45, y: -0.75}
 --- !u!212 &8203884248617717078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -234,7 +231,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0b386e95bc22bad439a0c7e94ff0f41b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 96c60f2f11abd4b4895ef751d4e0648d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
