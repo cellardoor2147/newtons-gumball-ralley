@@ -16,4 +16,4 @@ MonoBehaviour:
   prefab: {fileID: 1430043746231358091, guid: ee9b4aa85425abc4d9493f546480aec2, type: 3}
   canSnap: 0
   isSimpleMachine: 1
-  amountOfScrap: 0.5
+  amountOfScrap: 5

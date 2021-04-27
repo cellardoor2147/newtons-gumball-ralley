@@ -81,6 +81,7 @@ namespace Core
         public static void LoadLevelWithLevelData(LevelData levelData)
         {
             currentLevelData = levelData;
+            ScrapManager.ResetRemainingScrap();
             bool applicationIsNotRunning = Application.isEditor && !Application.isPlaying;
             if (applicationIsNotRunning)
             {
@@ -113,6 +114,11 @@ namespace Core
         public static float GetCurrentLevelScrapConstraint()
         {
             return currentLevelData.starConditions.scrapConstraint;
+        }
+
+        public static float GetCurrentLevelScrapAllotted()
+        {
+            return currentLevelData.placeableScrapLimit;
         }
         
         public static Vector3 GetCurrentLevelGumballMachinePosition()

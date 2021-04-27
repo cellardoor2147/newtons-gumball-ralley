@@ -13,6 +13,7 @@ namespace Core
         private int repeatedBackgroundRows;
         private float timeConstraint;
         private float scrapConstraint;
+        private float placeableScrapLimit;
 
         [MenuItem("Window/Level Editor")]
         private static void Init()
@@ -33,7 +34,8 @@ namespace Core
                     timeConstraint,
                     scrapConstraint,
                     repeatedBackgroundColumns,
-                    repeatedBackgroundRows
+                    repeatedBackgroundRows,
+                    placeableScrapLimit
                 );
             }
             if (GUILayout.Button("Load Level"))
