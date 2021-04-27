@@ -6,6 +6,7 @@ namespace MainCamera
     public class CameraMovement : MonoBehaviour
     {
         [SerializeField] private Sprite scrollDirectionIndicatorSprite;
+        [SerializeField] private float cameraBorderThickness = 20f;
         [SerializeField] private float cameraPanSpeed = 5.0f;
         [SerializeField] private float cameraScrollSpeed = 0.1f;
         [SerializeField] private float cameraMinSize = 2.5f;
@@ -22,13 +23,13 @@ namespace MainCamera
         private void UpdateCameraPositionX()
         {
             bool shouldMoveCameraLeft =
-                Input.mousePosition.x <= -16f;
+                Input.mousePosition.x <= cameraBorderThickness;
             if (shouldMoveCameraLeft)
             {
                 transform.Translate(Vector2.left * cameraPanSpeed * Time.deltaTime);
             }
             bool shouldMoveCameraRight =
-                Input.mousePosition.x >= Screen.width + 16f;
+                Input.mousePosition.x >= Screen.width - cameraBorderThickness - 32f;
             if (shouldMoveCameraRight)
             {
                 transform.Translate(Vector2.right * cameraPanSpeed * Time.deltaTime);
@@ -55,13 +56,13 @@ namespace MainCamera
         private void UpdateCameraPositionY()
         {
             bool shouldMoveCameraDown =
-                Input.mousePosition.y <= -16f;
+                Input.mousePosition.y <= cameraBorderThickness;
             if (shouldMoveCameraDown)
             {
                 transform.Translate(Vector2.down * cameraPanSpeed * Time.deltaTime);
             }
             bool shouldMoveCameraUp =
-                Input.mousePosition.y >= Screen.height + 16f;
+                Input.mousePosition.y >= Screen.height - cameraBorderThickness - 32f;
             if (shouldMoveCameraUp)
             {
                 transform.Translate(Vector2.up * cameraPanSpeed * Time.deltaTime);

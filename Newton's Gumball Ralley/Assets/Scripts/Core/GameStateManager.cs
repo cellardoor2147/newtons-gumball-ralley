@@ -175,7 +175,6 @@ namespace Core
         {
             if (instance.gameState.Equals(GameState.Playing))
             {
-                ResetSceneForPlayMode();
                 instance.StartCoroutine(ResetGumballMachine());
                 instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
                 instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
