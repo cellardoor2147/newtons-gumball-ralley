@@ -3,6 +3,7 @@ using UnityEngine;
 using Core;
 using LevelTimer;
 using Audio;
+using Destructible2D;
 
 namespace Ball
 {
@@ -12,25 +13,25 @@ namespace Ball
         [SerializeField] private float baseMovementSpeed = 1.0f;
         [SerializeField] private float maxRadiusOfPull = 2.0f;
         [SerializeField] private float delayAfterRelease = 0.3f;
-
-        private Rigidbody2D rigidBody;
-        private bool isBeingPulled;
-        private bool hasBeenReleased;
-
         [SerializeField] SoundMetaData BounceSound;
         [SerializeField] SoundMetaData RollingSound;
-
         [SerializeField] private float fadeTime = 0.5f;
         [SerializeField] private float finalVolume = 0f;
         [SerializeField] private float rollingVolume = 0.2f;
+        [SerializeField] private float dieAnimationSpeed = 1f;
 
         private bool isFading;
         private bool isTouching;
+        private Rigidbody2D rigidBody;
+        private bool isBeingPulled;
+        private bool hasBeenReleased;
+        private SpriteRenderer spriteRenderer;
 
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
             rigidBody.gravityScale = 0.0f;
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Start()
@@ -146,20 +147,49 @@ namespace Ball
             GetComponent<SpringJoint2D>().enabled = false;
         }
 
-        public IEnumerator AsyncResetPosition()
+        public IEnumerator AsyncReset()
         {
             yield return new WaitUntil(() => transform != null && rigidBody != null);
-            ResetPosition();
+            Reset();
         }
 
-        private void ResetPosition()
+        private void Reset()
         {
+            StopAllCoroutines();
             transform.position = GetSlingAnchorPosition();
+            rigidBody.constraints = RigidbodyConstraints2D.None;
             rigidBody.velocity = Vector2.zero;
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
             GetComponent<SpringJoint2D>().enabled = true;
             hasBeenReleased = false;
+            spriteRenderer.color = new Color(
+                spriteRenderer.color.r,
+                spriteRenderer.color.g,
+                spriteRenderer.color.b,
+                1f
+            );
+        }
+
+        public void Die()
+        {
+            rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            StartCoroutine(FadeOutThenTriggerGameOverPopup());
+        }
+
+        private IEnumerator FadeOutThenTriggerGameOverPopup()
+        {
+            while (spriteRenderer.color.a > 0f)
+            {
+                spriteRenderer.color = new Color(
+                    spriteRenderer.color.r,
+                    spriteRenderer.color.g,
+                    spriteRenderer.color.b,
+                    spriteRenderer.color.a - Time.deltaTime
+                );
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            GameStateManager.SetGameState(GameState.GameOver);
         }
     }
 }

@@ -202,6 +202,7 @@ namespace Core
             DeleteAllChildren(container);
             foreach (SerializablePreplacedObject serializedPreplacedObject in placedObjects)
             {
+                Debug.Log(serializedPreplacedObject.objectName);
                 GameObject preplacedObjectPrefab =
                     PlacedObjectPrefabDictionary.Get(serializedPreplacedObject.objectName);
                 GameObject preplacedObject = Object.Instantiate(

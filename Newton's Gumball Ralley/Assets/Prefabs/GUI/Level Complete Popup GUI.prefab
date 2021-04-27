@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4189245647992314175}
   - component: {fileID: 949986593635196633}
   - component: {fileID: 4717958208194618456}
+  - component: {fileID: 7585524593485702714}
   m_Layer: 0
   m_Name: Level Complete Popup GUI
   m_TagString: Untagged
@@ -99,6 +100,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef466b519a1b80a4dad63500be101b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7585524593485702714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338900945409832237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.49019608}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5000389126681822605
 GameObject:
   m_ObjectHideFlags: 0

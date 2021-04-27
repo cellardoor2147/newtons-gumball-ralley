@@ -13,7 +13,8 @@ namespace GUI
         PlayMode = 3,
         EditMode = 4,
         SettingsMenu = 5,
-        LevelCompletedPopup = 6
+        LevelCompletedPopup = 6,
+        GameOverPopup = 7
     }
 
     public class GUIManager : MonoBehaviour

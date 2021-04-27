@@ -277,6 +277,27 @@
                     "z": 1.0
                 }
             }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -8.578265190124512,
+                    "y": -9.269286155700684,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
         }
     ],
     "preplacedObjects": [
@@ -410,6 +431,7 @@
     "gumballMachineTransform": {
         "position": {
             "x": -8.800000190734864,
+            "y": 0.0,
             "z": 0.0
         },
         "rotation": {
@@ -424,7 +446,7 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 50.0,
+    "placeableScrapLimit": 0.0,
     "starConditions": {
         "timeConstraint": 10.0,
         "scrapConstraint": 50.0
