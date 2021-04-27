@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using GUI;
 
 namespace MainCamera
 {
@@ -43,6 +44,13 @@ namespace MainCamera
         public static IEnumerator AsyncSetVisibleArrow(ArrowDirection arrowDirection)
         {
             yield return new WaitUntil(() => instance != null);
+            if (
+                !GUIManager.GetActiveGUIType().Equals(GUIType.PlayMode) 
+                && !GUIManager.GetActiveGUIType().Equals(GUIType.EditMode)
+            )
+            {
+                yield break;
+            }
             foreach (DirectionalArrowController arrowController in instance.arrowControllers)
             {
                 Image arrowImage = arrowController.GetComponent<Image>();
