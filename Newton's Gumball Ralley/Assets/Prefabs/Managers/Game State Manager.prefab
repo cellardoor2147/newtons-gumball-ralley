@@ -43,12 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acff4a572bcb241428eaac385e8e985d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exampleConversation: {fileID: 11400000, guid: 48627f4eaae7440408624a3bfe710f93,
-    type: 2}
   CutsceneMusicSound: {fileID: 11400000, guid: d3bac1f6c7e964303a4af4393a648781, type: 2}
   MenuMusicSound: {fileID: 11400000, guid: ed1aea29dcf2f4aa1b27bf1e72b9e496, type: 2}
   Level1MusicSound: {fileID: 11400000, guid: 4e1c36c47e9b4488eb71a52f60dec7a7, type: 2}
   Level2MusicSound: {fileID: 11400000, guid: 22c6e5c18b90744f4805d74f00109053, type: 2}
   DialogueMusicSound: {fileID: 11400000, guid: 7fab56f8fa53f4b82af6aa461328dcf9, type: 2}
+  LevelCompleteSound: {fileID: 11400000, guid: c1c43e2fd25d84d9faef4daa2907d396, type: 2}
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}

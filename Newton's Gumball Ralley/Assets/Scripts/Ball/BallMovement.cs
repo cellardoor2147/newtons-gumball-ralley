@@ -83,13 +83,14 @@ namespace Ball
                     }
                 }
             }
-            if (hasBeenReleased && rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) && isTouching && !enteredPlatform) 
+            if (hasBeenReleased && rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) 
+                && isTouching && !enteredPlatform) 
             {
                 AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 AudioManager.instance.PlaySound(RollingSound.name);
                 isFading = false;
             } 
-            else if (rigidBody.velocity.magnitude < 0.01f || !isTouching) 
+            else if (rigidBody.velocity.magnitude < 0.01f || !isTouching || !GameStateManager.GetGameState().Equals(GameState.Playing)) 
             {
                 if (AudioManager.instance.isPlaying(RollingSound.name) && !isFading) 
                 {
@@ -156,7 +157,7 @@ namespace Ball
 
         private void OnCollisionEnter2D(Collision2D other) 
         {
-            if (hasBeenReleased) 
+            if (hasBeenReleased && GameStateManager.GetGameState().Equals(GameState.Playing)) 
             {
                 isTouching = true;
                 AudioManager.instance.PlaySound(BounceSound.name);
@@ -173,8 +174,7 @@ namespace Ball
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.transform.parent.parent.gameObject != null 
-                && other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>() != null)
+            if (other.gameObject.name.Contains("FlatPlatform"))
             {
                 if (other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(simplePulleyMetaData)
                     || other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(compoundPulleyMetaData))

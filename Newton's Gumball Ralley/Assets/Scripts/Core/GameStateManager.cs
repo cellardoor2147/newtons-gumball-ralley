@@ -41,6 +41,7 @@ namespace Core
         [SerializeField] SoundMetaData Level1MusicSound;
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
+        [SerializeField] SoundMetaData LevelCompleteSound;
         
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
         private GameState previousGameState;
@@ -150,7 +151,12 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
-                    // TODO: play victory sound
+                    AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
+                    AudioManager.instance.PauseSound(instance.DialogueMusicSound.name);
+                    if (!AudioManager.instance.isPlaying(instance.LevelCompleteSound.name))
+                    {
+                        AudioManager.instance.PlaySound(instance.LevelCompleteSound.name);
+                    }
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
