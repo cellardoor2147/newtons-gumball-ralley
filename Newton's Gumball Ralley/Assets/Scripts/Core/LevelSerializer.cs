@@ -59,12 +59,12 @@ namespace Core
         public static void Serialize(
             int worldIndex,
             int levelIndex,
-            string customLevelName, 
+            string customLevelName,
             float timeConstraint,
             float scrapConstraint,
-            float placeableScrapLimit,
             int repeatedBackgroundColumns,
-            int repeatedBackgroundRows
+            int repeatedBackgroundRows,
+            float placeableScrapLimit
         )
         {
             LevelData levelData = GetLevelData(

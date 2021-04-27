@@ -41,7 +41,7 @@ namespace GUI.MainMenu
             Vector2 gumballContainerSize =
                 gumballContainer.GetComponent<RectTransform>().rect.size;
             spawnedGumballStartX = -gumballContainerSize.x;
-            spawnedGumballEndX = -spawnedGumballStartX;
+            spawnedGumballEndX = gumballContainerSize.x;
             spawnedGumballStartY = (gumballContainerSize.y / 2) + (gumballImageSize / 2);
             spawnedGumballEndY = -spawnedGumballStartY;
             maxTransform = transform.Find(MAX_BODY_KEY).GetComponent<RectTransform>();
@@ -56,7 +56,6 @@ namespace GUI.MainMenu
 
         private void OnEnable()
         {
-            DeleteAllRandomlySpawnedGumballs();
             StartCoroutine(RandomlySpawnGumballsInBackground());
             StartCoroutine(RaiseMaxAndQuinnTransforms());
         }
@@ -67,18 +66,20 @@ namespace GUI.MainMenu
             ResetMaxAndQuinnTransforms();
         }
 
-        private void Update()
-        {
-            LowerRandomlySpawnedGumballs();
-            DeleteOffScreenRandomlySpawnedGumballs();
-        }
-
         private IEnumerator RandomlySpawnGumballsInBackground()
         {
+            float timer = gumballSpawnDelay;
             while (true)
             {
-                RandomlySpawnGumball();
-                yield return new WaitForSeconds(gumballSpawnDelay);
+                if (timer >= gumballSpawnDelay)
+                {
+                    RandomlySpawnGumball();
+                    timer = 0f;
+                }
+                LowerRandomlySpawnedGumballs();
+                DeleteOffScreenRandomlySpawnedGumballs();
+                timer += Time.deltaTime;
+                yield return new WaitForSeconds(Time.deltaTime);
             }
         }
 
@@ -92,8 +93,7 @@ namespace GUI.MainMenu
                 spawnedGumballStartY
             );
             GameObject randomlySpawnedGumball = Instantiate(guiGumballPrefab, gumballContainer.transform);
-            randomlySpawnedGumball.GetComponent<RectTransform>().localPosition =
-                chosenGumballPosition;
+            randomlySpawnedGumball.transform.localPosition = chosenGumballPosition;
             randomlySpawnedGumball.GetComponent<Image>().sprite = chosenGumballSprite;
         }
 
@@ -101,8 +101,7 @@ namespace GUI.MainMenu
         {
             foreach (Transform childTransform in gumballContainer.transform)
             {
-                childTransform.GetComponent<RectTransform>().anchoredPosition +=
-                    Vector2.down * Time.deltaTime * gumballFallSpeed;
+                childTransform.Translate(Vector2.down * Time.deltaTime * gumballFallSpeed);
             }
         }
 
@@ -110,22 +109,14 @@ namespace GUI.MainMenu
         {
             for (int i = gumballContainer.transform.childCount - 1; i >= 0; i--)
             {
-                RectTransform randomlySpawnedGumballTransform =
-                    gumballContainer.transform.GetChild(i).GetComponent<RectTransform>();
+                Transform randomlySpawnedGumballTransform =
+                    gumballContainer.transform.GetChild(i).transform;
                 bool randomlySpawnedGumballIsOffScreen =
-                    randomlySpawnedGumballTransform.anchoredPosition.y < spawnedGumballEndY;
+                    randomlySpawnedGumballTransform.localPosition.y < spawnedGumballEndY;
                 if (randomlySpawnedGumballIsOffScreen)
                 {
                     Destroy(randomlySpawnedGumballTransform.gameObject);
                 }
-            }
-        }
-
-        private void DeleteAllRandomlySpawnedGumballs()
-        {
-            for (int i = gumballContainer.transform.childCount - 1; i >= 0; i--)
-            {
-                Destroy(gumballContainer.transform.GetChild(i).gameObject);
             }
         }
 
@@ -156,9 +147,8 @@ namespace GUI.MainMenu
             {
                 MoveRectTransformUp(maxTransform);
                 MoveRectTransformUp(quinnTransform);
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSeconds(Time.deltaTime);
             }
-
             yield return RotateMaxAndQuinArmTransforms();
         }
 
@@ -166,7 +156,7 @@ namespace GUI.MainMenu
         {
             rectTransform.anchoredPosition = new Vector2(
                 rectTransform.anchoredPosition.x,
-                rectTransform.anchoredPosition.y + (Time.fixedDeltaTime * 350f)
+                rectTransform.anchoredPosition.y + (Time.deltaTime * 350f)
             );
         }
 
@@ -184,7 +174,7 @@ namespace GUI.MainMenu
                     quinnArmTransform,
                     quinnArmRotationDirection
                 );
-                yield return new WaitForFixedUpdate();
+                yield return new WaitForSeconds(Time.deltaTime);
             }
         }
 
@@ -197,7 +187,7 @@ namespace GUI.MainMenu
                 armTransform.localEulerAngles.x,
                 armTransform.localEulerAngles.y,
                 armTransform.localEulerAngles.z
-                    + (armRotationDirection * armRotationSpeed * Time.fixedDeltaTime)
+                    + (armRotationDirection * armRotationSpeed * Time.deltaTime)
             );
             if (armTransform.localEulerAngles.z > 360f - armRotationLimit)
             {
