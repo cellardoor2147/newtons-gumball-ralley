@@ -51,5 +51,10 @@ namespace DestructibleObject
         {
             return impactThreshold;
         }
+
+        public void FreezeRigidbody()
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
     }
 }
