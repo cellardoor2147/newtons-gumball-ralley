@@ -11,7 +11,7 @@ namespace GUI
         private readonly static string CUTSCENE_VIEW_KEY = "Cutscene View";
         private readonly static string VIDEO_PLAYER_KEY = "Video Player";
         private readonly static string VIDEO_PLAYER_URL =
-            Application.streamingAssetsPath + "/Videos/Opening Cutscene.mp4";
+            Application.streamingAssetsPath + "/Videos/OpeningCutscene.mp4";
 
         private RawImage cutsceneTexture;
 
@@ -41,9 +41,8 @@ namespace GUI
                     cutsceneTexture.color.b,
                     cutsceneTexture.color.a - Time.deltaTime
                 );
-                yield return new WaitForSeconds(Time.deltaTime);
+                yield return new WaitForSeconds(Time.deltaTime * 2f);
             }
-            yield return new WaitForSeconds(3);
             GameStateManager.SetGameState(GameState.MainMenu);
             yield return null;
         }

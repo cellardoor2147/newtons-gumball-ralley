@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using GUI.EditMode;
 using UnityEngine;
+using GUI.EditMode;
 
 namespace Core
 {
@@ -12,7 +12,7 @@ namespace Core
         private static List<LevelData> levelsData = new List<LevelData>();
         private static LevelData currentLevelData;
         private static LevelManager instance;
-
+        
         private void Awake()
         {
             SetInstance();
