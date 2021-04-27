@@ -3,7 +3,7 @@
 namespace SimpleMachine {
     public class SpinningController : MonoBehaviour
     {
-        [SerializeField] private float spinDirection;
+        [SerializeField] private int spinDirection;
 
         private GameObject objectToSpin;
         private GearBehavior gearBehavior;
@@ -21,11 +21,11 @@ namespace SimpleMachine {
 
         private void OnMouseDown()
         {
-            if (spinDirection == -1f && gearBehavior.shouldSpinRight) 
+            if (spinDirection == -1 && gearBehavior.shouldSpinRight) 
             {
                gearBehavior.spinState = GearBehavior.SpinState.SpinningRight;
             }
-            if (spinDirection == 1f && gearBehavior.shouldSpinLeft)
+            if (spinDirection == 1 && gearBehavior.shouldSpinLeft)
             {
                 gearBehavior.spinState = GearBehavior.SpinState.SpinningLeft;
             }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Core;
+using LevelTimer;
 using Audio;
 using SimpleMachine;
 
@@ -213,6 +214,7 @@ namespace Ball
         private IEnumerator ReleaseAfterDelay()
         {
             yield return new WaitForSeconds(delayAfterRelease);
+            Timer.StartTimer();
             GetComponent<SpringJoint2D>().enabled = false;
         }
 

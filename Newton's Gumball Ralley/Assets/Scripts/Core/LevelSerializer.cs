@@ -23,6 +23,13 @@ namespace Core
     }
 
     [System.Serializable]
+    public struct StarConditions
+    {
+        public float timeConstraint;
+        public float scrapConstraint;
+    }
+
+    [System.Serializable]
     public struct LevelData
     {
         public int worldIndex;
@@ -33,6 +40,8 @@ namespace Core
         public List<SerializablePreplacedObject> environmentObjects;
         public List<SerializablePreplacedObject> preplacedObjects;
         public SerializableTransform gumballMachineTransform;
+        public float placeableScrapLimit;
+        public StarConditions starConditions;
     }
 
     public static class LevelSerializer
@@ -46,9 +55,13 @@ namespace Core
         private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string GAME_SCENE_KEY = "Game";
 
-        public static void Serialize(int worldIndex, int levelIndex, string customLevelName)
+        public static void Serialize(int worldIndex, int levelIndex, string customLevelName, 
+            float timeConstraint, float scrapConstraint, float placeableScrapLimit)
         {
             LevelData levelData = GetLevelData(worldIndex, levelIndex, customLevelName);
+            levelData.starConditions.timeConstraint = timeConstraint;
+            levelData.starConditions.scrapConstraint = scrapConstraint;
+            levelData.placeableScrapLimit = placeableScrapLimit;
             string serializedLevelData = JsonUtility.ToJson(levelData, true);
             string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))

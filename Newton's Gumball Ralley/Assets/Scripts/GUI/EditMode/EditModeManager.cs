@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace GUI.EditMode
@@ -12,21 +13,25 @@ namespace GUI.EditMode
         Lever = 2,
         Pulley = 3,
         Wheel = 4,
-        Wedge = 5,
-        Miscellaneous = 6
+        Wedge = 5
     }
 
     public class EditModeManager : MonoBehaviour
     {
         private static readonly string PLACEABLE_OBJECTS_MENU_KEY =
             "Placeable Objects Menu";
-        private static readonly string TABS_CONTAINER_KEY = "Tabs Container";
-        private static readonly string CONTENT_CONTAINER_KEY = "Content Container";
+        private static readonly string INACTIVE_TABS_CONTAINER_KEY = "Inactive Tabs Container";
+        private static readonly string ACTIVE_TABS_CONTAINER_KEY = "Active Tabs Container";
+        private static readonly string TOOLBAR_KEY = "Toolbar";
+        private static readonly string TOOLBAR_CONTENT_CONTAINER_KEY = "Toolbar Content Container";
 
         private static EditModeManager instance;
+        public static ContentController ActiveContentController { get; private set; }
 
-        private List<TabController> tabControllers;
+        private List<TabController> inactiveTabControllers;
+        private List<TabController> activeTabControllers;
         private List<ContentController> contentControllers;
+        private ToolbarManager toolbarManager;
         private RectTransform placeableObjectsMenuTransform;
         private float placeableObjectsMenuMaxYPosition;
         private float placeableObjectsMenuMinYPosition;
@@ -38,14 +43,24 @@ namespace GUI.EditMode
         private void Awake()
         {
             SetInstance();
-            tabControllers = transform
+            inactiveTabControllers = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
-                .Find(TABS_CONTAINER_KEY)
+                .Find(INACTIVE_TABS_CONTAINER_KEY)
+                .GetComponentsInChildren<TabController>(true).ToList();
+            activeTabControllers = transform
+                .Find(PLACEABLE_OBJECTS_MENU_KEY)
+                .Find(ACTIVE_TABS_CONTAINER_KEY)
                 .GetComponentsInChildren<TabController>(true).ToList();
             contentControllers = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
-                .Find(CONTENT_CONTAINER_KEY)
+                .Find(TOOLBAR_KEY)
+                .Find(TOOLBAR_CONTENT_CONTAINER_KEY)
                 .GetComponentsInChildren<ContentController>(true).ToList();
+            toolbarManager = transform
+                .Find(PLACEABLE_OBJECTS_MENU_KEY)
+                .Find(TOOLBAR_KEY)
+                .Find(TOOLBAR_CONTENT_CONTAINER_KEY)
+                .GetComponent<ToolbarManager>();
             placeableObjectsMenuTransform = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
                 .GetComponent<RectTransform>();
@@ -67,7 +82,7 @@ namespace GUI.EditMode
         private void SetPlaceableObjectsMenuPositionConstraints()
         {
             float tabsContainerHeight = placeableObjectsMenuTransform
-                .Find(TABS_CONTAINER_KEY)
+                .Find(INACTIVE_TABS_CONTAINER_KEY)
                 .GetComponent<RectTransform>()
                 .sizeDelta.y;
             placeableObjectsMenuMaxYPosition =
@@ -81,45 +96,57 @@ namespace GUI.EditMode
             SetActiveTab(PlaceableObjectType.InclinePlane);
         }
 
-        private void SetAllTabsToInactive()
-        {
-            tabControllers.ForEach(
-                tabController => tabController.SetTabColorToInactive()
-            );
-            contentControllers.ForEach(
-                contentController => contentController.gameObject.SetActive(false)
-            );
-        }
-
         public static void SetActiveTab(PlaceableObjectType objectType)
         {
-            instance.SetAllTabsToInactive();
-            TabController tabControllerToActivate = instance.tabControllers.Find(
-                tabController => tabController.objectType.Equals(objectType)
-            );
-            if (tabControllerToActivate != null)
+            foreach (TabController inactiveTab in instance.inactiveTabControllers)
             {
-                tabControllerToActivate.SetTabColorToActive();
-                instance.ActivateContent(objectType);
+                if (inactiveTab.objectType.Equals(objectType))
+                {
+                    inactiveTab.Hide();
+                }
+                else
+                {
+                    inactiveTab.Show();
+                }
             }
-            else
+            foreach (TabController activeTab in instance.activeTabControllers)
             {
-                Debug.LogError($"Tried setting invalid placeable object type: {objectType}");
+                if (activeTab.objectType.Equals(objectType))
+                {
+                    activeTab.Show();
+                }
+                else
+                {
+                    activeTab.Hide();
+                }
             }
+            instance.ActivateContent(objectType);
         }
 
         private void ActivateContent(PlaceableObjectType objectType)
         {
-            ContentController contentControllerToActivate = contentControllers.Find(
-                contentController => contentController.objectType.Equals(objectType)
-            );
-            if (contentControllerToActivate != null)
+            foreach (ContentController contentController in instance.contentControllers)
             {
-                contentControllerToActivate.gameObject.SetActive(true);
+                bool contentControllerGameObjectShouldBeActivated =
+                    contentController.objectType.Equals(objectType);
+                contentController.gameObject.SetActive(
+                    contentControllerGameObjectShouldBeActivated
+                );
+                if (contentControllerGameObjectShouldBeActivated)
+                {
+                    ActiveContentController = contentController;
+                    ToggleButtonsBasedOnAvailableScrap();
+                    toolbarManager.SetContent(contentController.gameObject);
+                }
             }
-            else
+        }
+
+        public static void ToggleButtonsBasedOnAvailableScrap()
+        {
+            foreach (Transform button in ActiveContentController.transform)
             {
-                Debug.LogError($"Tried activating invalid placeable object type: {objectType}");
+                PlaceableObjectManager placeableObject = button.GetComponent<PlaceableObjectManager>();
+                placeableObject.ToggleBasedOnAvailableScrap();
             }
         }
 

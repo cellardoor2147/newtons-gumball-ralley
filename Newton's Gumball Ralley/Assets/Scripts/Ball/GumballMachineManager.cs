@@ -32,6 +32,9 @@ namespace Ball
         private GameObject slingAnchor;
         private BallMovement ballMovement;
         private SpriteRenderer ballSpriteRenderer;
+        private Vector3 originalPosition;
+        private Quaternion originalRotation;
+        private Vector3 originalScale;
 
         private void Awake()
         {
@@ -42,10 +45,10 @@ namespace Ball
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<SpriteRenderer>();
-            ResetTransform();
+            SetOriginalTransformAndResetTransform();
         }
 
-        private void ResetTransform()
+        private void SetOriginalTransformAndResetTransform()
         {
             /*
              * If the level was loaded in the game scene from the unity editor,
@@ -58,10 +61,24 @@ namespace Ball
                 LevelManager.GetCurrentLevelGumballMachineScale().x == 0f;
             if (!levelWasLoadedInGameSceneFromUnityEditor)
             {
-                transform.position = LevelManager.GetCurrentLevelGumballMachinePosition();
-                transform.rotation = LevelManager.GetCurrentLevelGumballMachineRotation();
-                transform.localScale = LevelManager.GetCurrentLevelGumballMachineScale();
+                originalPosition = LevelManager.GetCurrentLevelGumballMachinePosition();
+                originalRotation = LevelManager.GetCurrentLevelGumballMachineRotation();
+                originalScale = LevelManager.GetCurrentLevelGumballMachineScale();
             }
+            else
+            {
+                originalPosition = transform.position;
+                originalRotation = transform.rotation;
+                originalScale = transform.localScale;
+            }
+            ResetTransformToOriginalState();
+        }
+
+        private void ResetTransformToOriginalState()
+        {
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
+            transform.localScale = originalScale;
         }
 
         public void SetGumballMachineState(GumballMachineState gumballMachineState)
@@ -94,7 +111,7 @@ namespace Ball
         private IEnumerator ResetBallPositionAndGumballMachineTransform()
         {
             yield return ballMovement.AsyncResetPosition();
-            ResetTransform();
+            SetOriginalTransformAndResetTransform();
         }
 
         private void SetClickability(bool isClickable)
@@ -120,7 +137,7 @@ namespace Ball
         private IEnumerator ShakeThenResetTransform()
         {
             yield return Shake();
-            ResetTransform();
+            ResetTransformToOriginalState();
             SetGumballMachineState(GumballMachineState.Open);
         }
 
@@ -141,11 +158,11 @@ namespace Ball
             return new Vector3(
                 GetClampedRandomShakePositionOnAxis(
                     transform.position.x,
-                    LevelManager.GetCurrentLevelGumballMachinePosition().x
+                    originalPosition.x
                 ),
                 GetClampedRandomShakePositionOnAxis(
                     transform.position.y,
-                    LevelManager.GetCurrentLevelGumballMachinePosition().y
+                    originalPosition.y
                 ),
                 transform.position.z
             );
@@ -178,19 +195,23 @@ namespace Ball
         private IEnumerator DispenseGumballThenResetItsScaleAndColor()
         {
             ballMovement.enabled = false;
-            Vector3 originalScale = slingAnchor.transform.localScale;
-            yield return DispenseGumball(originalScale);
-            slingAnchor.transform.localScale = originalScale;
+            Vector3 slingAnchorScale = slingAnchor.transform.localScale;
+            yield return DispenseGumball(slingAnchorScale);
+            slingAnchor.transform.localScale = slingAnchorScale;
             ballSpriteRenderer.color = Color.white;
             ballMovement.enabled = true;
         }
 
-        private IEnumerator DispenseGumball(Vector3 originalScale)
+        private IEnumerator DispenseGumball(Vector3 slingAnchorScale)
         {
             slingAnchor.transform.localScale = Vector3.zero;
             ballSpriteRenderer.enabled = true;
             ballSpriteRenderer.color = Color.black;
-            while (slingAnchor.transform.localScale.x < originalScale.x)
+            while
+            (
+                slingAnchor.transform.localScale.x 
+                < slingAnchorScale.x
+            )
             {
                 slingAnchor.transform.localScale = new Vector3(
                     slingAnchor.transform.localScale.x + Time.deltaTime,
@@ -198,7 +219,8 @@ namespace Ball
                     slingAnchor.transform.localScale.z
                 );
                 float ballSpriteRendererColorMultiplier =
-                    slingAnchor.transform.localScale.x / originalScale.x;
+                    slingAnchor.transform.localScale.x 
+                    / slingAnchorScale.x;
                 ballSpriteRenderer.color = new Color(
                     ballSpriteRendererColorMultiplier,
                     ballSpriteRendererColorMultiplier,
