@@ -14,7 +14,6 @@ namespace Ball
         [SerializeField] private float delayAfterRelease = 0.3f;
 
         private Rigidbody2D rigidBody;
-        private CircleCollider2D circleCollider;
         private bool isBeingPulled;
         private bool hasBeenReleased;
 
@@ -32,13 +31,10 @@ namespace Ball
         private Vector2 pullForce;
         private Vector2 pushForce;
         private Vector2 holdForce;
-        private Vector2 downForce;
-
-        private float bounciness;
-
         private Vector2 pulleyPosition;
         private bool pulledToMiddle;
         private bool enteredPlatform;
+        private Transform parent;
 
         private PulleyBehavior pulleyBehavior;
 
@@ -48,14 +44,11 @@ namespace Ball
         private void Awake()
         {
             rigidBody = GetComponent<Rigidbody2D>();
-            circleCollider = GetComponent<CircleCollider2D>();
-            bounciness = 0.5f;
-            circleCollider.sharedMaterial.bounciness = bounciness;
             rigidBody.gravityScale = 0.0f;
             pullForce = new Vector2(1, 0);
             holdForce = new Vector2(100, 0);
             pushForce = new Vector2(25, 0);
-            downForce = new Vector2(0, -500);
+            parent = transform.parent;
         }
 
         private void Start()
@@ -72,27 +65,15 @@ namespace Ball
             {
                 AudioManager.instance.StopSound(RollingSound.name);
                 UpdateBallPositionRelativeToSling();
-                circleCollider.sharedMaterial.bounciness = bounciness;
             }
             else if (enteredPlatform) {
                 if (pulledToMiddle && pulleyBehavior.grounded)
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x / 2, rigidBody.velocity.y);
-                    circleCollider.sharedMaterial.bounciness = 0;
-                    rigidBody.AddForce(downForce);
-                    if (transform.position.x < pulleyPosition.x)
-                    {
-                        rigidBody.AddForce(holdForce);
-
-                    }
-                    else if (transform.position.x > pulleyPosition.x)
-                    {
-                        rigidBody.AddForce(-1 * holdForce);
-                    }
                 }
                 else if (!pulleyBehavior.grounded)
                 {
-                    circleCollider.sharedMaterial.bounciness = bounciness;
+                    transform.parent = parent;
                     if (pulleyBehavior.ballRollDirection.Equals(PulleyBehavior.BallRollDirection.Right)){
                         rigidBody.AddForce(pushForce);
                     }
@@ -102,7 +83,7 @@ namespace Ball
                     }
                 }
             }
-            if (rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) && isTouching && !enteredPlatform) 
+            if (hasBeenReleased && rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) && isTouching && !enteredPlatform) 
             {
                 AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 AudioManager.instance.PlaySound(RollingSound.name);
@@ -167,7 +148,6 @@ namespace Ball
             {
                 isBeingPulled = false;
                 hasBeenReleased = true;
-                circleCollider.sharedMaterial.bounciness = bounciness;
                 rigidBody.gravityScale = 1.0f;
                 AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 StartCoroutine(ReleaseAfterDelay());
@@ -193,7 +173,8 @@ namespace Ball
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.transform.parent.parent.gameObject.CompareTag("SimpleMachine"))
+            if (other.transform.parent.parent.gameObject != null 
+                && other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>() != null)
             {
                 if (other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(simplePulleyMetaData)
                     || other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(compoundPulleyMetaData))
@@ -204,11 +185,11 @@ namespace Ball
                     pulleyPosition = other.transform.position;
                     if (other.offset.x > 0 && rigidBody.velocity.x < 0)
                     {
-                        StartCoroutine(PulltoMiddle(-1 * pullForce));
+                        StartCoroutine(PulltoMiddle(-1 * pullForce, other.gameObject));
                     }
                     else if (other.offset.x < 0 && rigidBody.velocity.x > 0)
                     {
-                        StartCoroutine(PulltoMiddle(pullForce));
+                        StartCoroutine(PulltoMiddle(pullForce, other.gameObject));
                     }
                     else
                     {
@@ -218,7 +199,7 @@ namespace Ball
             }
         }
 
-        private IEnumerator PulltoMiddle(Vector2 force)
+        private IEnumerator PulltoMiddle(Vector2 force, GameObject pulleyPlatform)
         {
             while (transform.position.x < (pulleyPosition.x - 0.1f)
                     || transform.position.x > (pulleyPosition.x + 0.1f))
@@ -226,6 +207,7 @@ namespace Ball
                 rigidBody.AddForce(force);
                 yield return new WaitForFixedUpdate();
             }
+            SetAsChild(pulleyPlatform);
             pulledToMiddle = true;
         }
         private IEnumerator ReleaseAfterDelay()
@@ -243,12 +225,20 @@ namespace Ball
         private void ResetPosition()
         {
             transform.position = GetSlingAnchorPosition();
+            transform.parent = parent;
             rigidBody.velocity = Vector2.zero;
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
             GetComponent<SpringJoint2D>().enabled = true;
             hasBeenReleased = false;
             enteredPlatform = false;
+            isTouching = false;
+            AudioManager.instance.StopSound(RollingSound.name);
+        }
+
+        private void SetAsChild(GameObject pulleyPlatform)
+        {
+            transform.parent = pulleyPlatform.transform;
         }
     }
 }

@@ -21,7 +21,6 @@ namespace Core
             }
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
-            Debug.Log(gameObject.name + ", " + lastValidPosition);
         }
 
         public void UnfreezeRigidbody()

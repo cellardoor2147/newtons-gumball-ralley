@@ -249,7 +249,7 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<PlacedObjectManager>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(false)
                 .ToList()
                 .ForEach(
                     placedObjectManager => placedObjectManager.ResetTransform()
