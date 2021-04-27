@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.1
+  m_fontSize: 58
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2674,8 +2674,8 @@ MonoBehaviour:
   - {fileID: -5402116881699823172, guid: f53430bdc296f984e804605fb0621209, type: 3}
   - {fileID: -6226405025219134633, guid: f53430bdc296f984e804605fb0621209, type: 3}
   - {fileID: 5673037427034892069, guid: f53430bdc296f984e804605fb0621209, type: 3}
-  armRotationLimit: 0.1
-  armRotationSpeed: 50
+  armRotationLimit: 5
+  armRotationSpeed: 10
 --- !u!1 &8934398808620852187
 GameObject:
   m_ObjectHideFlags: 0
