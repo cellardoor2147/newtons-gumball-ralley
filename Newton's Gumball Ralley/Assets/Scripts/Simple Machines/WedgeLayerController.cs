@@ -1,5 +1,6 @@
 ﻿using Core;
 using UnityEngine;
+using Audio;
 
 namespace Wedge
 {
@@ -8,6 +9,8 @@ namespace Wedge
         [SerializeField] private GameObject targetWedge;
         private LayerMask defaultLayer;
         private LayerMask wedgeLayer;
+        [SerializeField] SoundMetaData BreakSound;
+        [SerializeField] SoundMetaData BounceSound;
 
         private void Awake()
         {
@@ -24,7 +27,13 @@ namespace Wedge
         private void OnTriggerStay2D(Collider2D collision)
         {
             if (collision.CompareTag("Destructible") && GameStateManager.GetGameState().Equals(GameState.Playing))
+            {
                 targetWedge.layer = wedgeLayer;
+            }
+            else
+            {
+                AudioManager.instance.PlaySound(BounceSound.name);
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)

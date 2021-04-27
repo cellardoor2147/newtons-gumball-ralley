@@ -297,6 +297,7 @@ namespace SimpleMachine {
         private void ResetSpikeWedge()
         {
             pulleyPlatforms.GetChild(1).GetChild(2).localPosition = pulleyPlatforms.GetChild(1).GetChild(1).localPosition;
+            pulleyPlatforms.GetChild(1).GetChild(2).rotation = Quaternion.identity;
             pulleyPlatforms.GetChild(1).GetChild(2).gameObject.SetActive(false);
             pulleyPlatforms.GetChild(1).GetChild(1).gameObject.SetActive(true);
         }
