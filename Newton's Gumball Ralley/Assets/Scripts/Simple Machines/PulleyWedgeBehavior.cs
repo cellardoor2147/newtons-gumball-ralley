@@ -21,7 +21,7 @@ namespace SimpleMachine
         {
             if (GameStateManager.GetGameState().Equals(GameState.Playing) 
                 && pulleyBehavior.platformState.Equals(PulleyBehavior.PlatformState.SpikeWedge)
-                && !pulleyBehavior.shouldFall && !pulleyBehavior.shouldFall && !shouldDrop)
+                && !pulleyBehavior.shouldFall && !pulleyBehavior.shouldRise && !shouldDrop)
             {
                 boxCollider.isTrigger = true;
                 shouldDrop = true;
@@ -38,7 +38,7 @@ namespace SimpleMachine
             {
                 shouldDrop = false;
             }
-            if (!shouldDrop && boxCollider.isTrigger)
+            if (!shouldDrop && boxCollider.isTrigger && !GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 boxCollider.isTrigger = false;
             }

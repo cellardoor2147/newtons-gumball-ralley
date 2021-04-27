@@ -30,10 +30,6 @@ namespace Wedge
             {
                 targetWedge.layer = wedgeLayer;
             }
-            else
-            {
-                AudioManager.instance.PlaySound(BounceSound.name);
-            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
