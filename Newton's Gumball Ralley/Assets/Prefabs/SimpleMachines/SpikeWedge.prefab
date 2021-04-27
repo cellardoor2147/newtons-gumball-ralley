@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 5870146734736057096}
   - component: {fileID: 8203884248617717078}
   - component: {fileID: 9070396111062351118}
-  - component: {fileID: 3975391859514392428}
   - component: {fileID: -1159403889986449632}
   m_Layer: 0
   m_Name: SpikeWedge
@@ -213,24 +212,6 @@ PolygonCollider2D:
       - {x: -0.26845133, y: 0.4182744}
       - {x: -0.24845125, y: 0.34827426}
       - {x: 0.03960237, y: -0.6849993}
---- !u!114 &3975391859514392428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4694918795534134036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f19a003527c2b4298e2686445f55a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationArrowsPrefab: {fileID: 0}
-  leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
-    type: 2}
-  leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
-    type: 2}
-  ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &-1159403889986449632
 MonoBehaviour:
   m_ObjectHideFlags: 0

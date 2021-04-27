@@ -197,7 +197,6 @@ namespace Core
             instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
             instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
-            instance.StartCoroutine(EnableObjects(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
         }

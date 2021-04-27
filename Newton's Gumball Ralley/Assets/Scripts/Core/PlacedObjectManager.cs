@@ -18,9 +18,10 @@ namespace Core
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 defaultColor = spriteRenderer.color;
-            }               
+            }
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
+            Debug.Log(gameObject.name + ", " + lastValidPosition);
         }
 
         public void UnfreezeRigidbody()
@@ -60,14 +61,16 @@ namespace Core
         }
         public void GrayOut()
         {
-            if (gameObject.activeSelf && !metaData.objectName.Contains("Pulley")) {
+            if (gameObject.activeSelf && !metaData.objectName.Contains("Pulley")
+                                      && !metaData.objectName.Contains("SpikeWedge")) {
                 spriteRenderer.color = Color.gray;
             }    
         }
 
         public void RevertFromGray()
         {
-            if (gameObject.activeSelf && !metaData.objectName.Contains("Pulley")) {
+            if (gameObject.activeSelf && !metaData.objectName.Contains("Pulley") 
+                                      && !metaData.objectName.Contains("SpikeWedge")) {
                 spriteRenderer.color = defaultColor;
             }
         }
