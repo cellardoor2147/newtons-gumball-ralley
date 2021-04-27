@@ -58,7 +58,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.035951585, y: -0.36371082}
+  m_Offset: {x: -0.035951585, y: 0.028938286}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -69,7 +69,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9595179, y: 1.0384189}
+  m_Size: {x: 0.9595179, y: 0.25312066}
   m_EdgeRadius: 0
 --- !u!1 &4694918795534134036
 GameObject:
@@ -230,6 +230,14 @@ MonoBehaviour:
     type: 2}
   leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
     type: 2}
+  screwMetaData: {fileID: 0}
+  gear1MetaData: {fileID: 0}
+  gear2MetaData: {fileID: 0}
+  gear3MetaData: {fileID: 0}
+  gearBackgroundMetaData: {fileID: 0}
+  wheelMetaData: {fileID: 0}
+  smallAxleMetaData: {fileID: 0}
+  largeAxleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &-1159403889986449632
 MonoBehaviour:
