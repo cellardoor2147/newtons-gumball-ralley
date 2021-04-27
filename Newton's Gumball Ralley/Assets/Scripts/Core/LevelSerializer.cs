@@ -142,15 +142,19 @@ namespace Core
             return serializedTransform;
         }
 
-        public static LevelData Deserialize(string readFilePath)
+        public static LevelData DeserializeFromReadFilePath(string readFilePath)
         {
             string serializedLevelData = "";
             using (StreamReader streamReader = new StreamReader(readFilePath))
             {
                 serializedLevelData = streamReader.ReadToEnd();
             }
-            LevelData levelData = JsonUtility.FromJson<LevelData>(serializedLevelData);
-            return levelData;
+            return JsonUtility.FromJson<LevelData>(serializedLevelData);
+        }
+
+        public static LevelData DeserializeFromTextAsset(TextAsset textAsset)
+        {
+            return JsonUtility.FromJson<LevelData>(textAsset.text);
         }
 
         public static void SetSceneWithLevelData(LevelData levelData)

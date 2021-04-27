@@ -1,30 +1,50 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections;
+using System.Collections.Generic;
 using GUI.EditMode;
 using UnityEngine;
 
 namespace Core
 {
-    public static class LevelManager
+    public class LevelManager : MonoBehaviour
     {
-        private static readonly List<LevelData> levelsData = GetLevelsData();
+        [SerializeField] private List<TextAsset> serializedLevelsData;
 
+        private static List<LevelData> levelsData = new List<LevelData>();
         private static LevelData currentLevelData;
+        private static LevelManager instance;
 
-        private static List<LevelData> GetLevelsData()
+        private void Awake()
         {
-            List<LevelData> levelsData = new List<LevelData>();
-            DirectoryInfo directoryInfo =
-                new DirectoryInfo(LevelSerializer.WRITE_DIRECTORY_PATH);
-            FileInfo[] filesInfo = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
-            foreach (FileInfo fileInfo in filesInfo) 
+            SetInstance();
+            StartCoroutine(AsyncSetLevelsData());
+        }
+
+        private void SetInstance()
+        {
+            if (instance != null)
             {
-                LevelData levelData = LevelSerializer.Deserialize(
-                    LevelSerializer.WRITE_DIRECTORY_PATH + fileInfo.Name
-                );
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
+        }
+
+        private static IEnumerator AsyncSetLevelsData()
+        {
+            yield return new WaitUntil(() => instance != null);
+            SetLevelsData();
+        }
+
+        private static void SetLevelsData()
+        {
+            foreach (TextAsset serializedLevelData in instance.serializedLevelsData) 
+            {
+                LevelData levelData =
+                    LevelSerializer.DeserializeFromTextAsset(serializedLevelData);
                 levelsData.Add(levelData);
             }
-            return levelsData;
         }
 
         public static void LoadLevelWithIndices(int worldIndex, int levelIndex)

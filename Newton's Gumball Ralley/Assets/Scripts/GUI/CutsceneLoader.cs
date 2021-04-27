@@ -10,6 +10,8 @@ namespace GUI
     {
         private readonly static string CUTSCENE_VIEW_KEY = "Cutscene View";
         private readonly static string VIDEO_PLAYER_KEY = "Video Player";
+        private readonly static string VIDEO_PLAYER_URL =
+            Application.streamingAssetsPath + "/Videos/Opening Cutscene.mp4";
 
         private RawImage cutsceneTexture;
 
@@ -17,9 +19,10 @@ namespace GUI
         {
             cutsceneTexture = transform.Find(CUTSCENE_VIEW_KEY)
                 .GetComponent<RawImage>();
-            transform.Find(VIDEO_PLAYER_KEY)
-                .GetComponent<VideoPlayer>()
-                .loopPointReached += HandleOpeningCutsceneFinished;
+            VideoPlayer videoPlayer = transform.Find(VIDEO_PLAYER_KEY)
+                .GetComponent<VideoPlayer>();
+            videoPlayer.url = VIDEO_PLAYER_URL;
+            videoPlayer.loopPointReached += HandleOpeningCutsceneFinished;
         }
 
         private void HandleOpeningCutsceneFinished(VideoPlayer videoPlayer)
