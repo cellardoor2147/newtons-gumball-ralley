@@ -78,5 +78,17 @@ namespace GUI
                 guiController => guiController.gameObject.SetActive(false)
             );
         }
+
+        public static GUIType GetActiveGUIType()
+        {
+            foreach (GUIController guiController in instance.guiControllers)
+            {
+                if (guiController.gameObject.activeSelf)
+                {
+                    return guiController.guiType;
+                }
+            }
+            return GUIType.Cutscene;
+        }
     }
 }
