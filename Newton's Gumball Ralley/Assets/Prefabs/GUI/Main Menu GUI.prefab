@@ -2003,7 +2003,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 58
+  m_fontSize: 55.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2155,7 +2155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 60, y: -200}
+  m_AnchoredPosition: {x: 55, y: -200}
   m_SizeDelta: {x: 150, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8921654207226535673
@@ -2665,7 +2665,7 @@ MonoBehaviour:
   guiGumballPrefab: {fileID: 4244623209037090180, guid: a31f04a8b47b03143a07e6022de3e13a,
     type: 3}
   gumballSpawnDelay: 0.25
-  gumballFallSpeed: 5
+  gumballFallSpeed: 100
   gumballImageSize: 50
   gumballSprites:
   - {fileID: -2290193954979453500, guid: f53430bdc296f984e804605fb0621209, type: 3}
