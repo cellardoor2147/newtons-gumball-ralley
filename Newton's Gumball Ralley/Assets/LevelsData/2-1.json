@@ -1,9 +1,9 @@
 {
     "worldIndex": 2,
-    "levelIndex": 2,
+    "levelIndex": 1,
     "customLevelName": "",
     "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundColumns": 15,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -219,19 +219,19 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -0.029999732971191407,
-                    "y": 6.100000381469727,
+                    "x": -2.2200000286102297,
+                    "y": 5.5,
                     "z": 0.0
                 },
                 "rotation": {
-                    "x": 0.0,
+                    "x": 0.004421602468937635,
                     "y": 0.0,
                     "z": 0.0,
-                    "w": 1.0
+                    "w": 0.9999902844429016
                 },
                 "scale": {
                     "x": 0.09999999403953552,
-                    "y": 10.0,
+                    "y": 22.0,
                     "z": 1.0
                 }
             }
@@ -240,60 +240,18 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -4.34999942779541,
-                    "y": 3.1200003623962404,
+                    "x": -3.130000114440918,
+                    "y": 7.789999961853027,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
+                    "z": 0.42127448320388796,
+                    "w": 0.9069331884384155
                 },
                 "scale": {
-                    "x": 0.09999999403953552,
-                    "y": 10.0,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -2.089999198913574,
-                    "y": 4.610000133514404,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 2.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -2.2799999713897707,
-                    "y": 7.440000057220459,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 2.0,
+                    "x": 1.1842600107192994,
                     "y": 1.0,
                     "z": 1.0
                 }
@@ -410,8 +368,8 @@
             "objectName": "Ralph",
             "transform": {
                 "position": {
-                    "x": -6.8520917892456059,
-                    "y": -8.354562759399414,
+                    "x": -11.372092247009278,
+                    "y": -3.2845630645751955,
                     "z": -5.791015625
                 },
                 "rotation": {
@@ -451,8 +409,7 @@
     ],
     "gumballMachineTransform": {
         "position": {
-            "x": -15.5600004196167,
-            "y": -6.650000095367432,
+            "x": -8.800000190734864,
             "z": 0.0
         },
         "rotation": {
@@ -466,5 +423,10 @@
             "y": 1.0,
             "z": 1.0
         }
+    },
+    "placeableScrapLimit": 8.0,
+    "starConditions": {
+        "timeConstraint": 10.0,
+        "scrapConstraint": 50.0
     }
 }

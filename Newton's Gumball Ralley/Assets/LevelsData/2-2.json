@@ -1,9 +1,9 @@
 {
     "worldIndex": 2,
-    "levelIndex": 3,
+    "levelIndex": 2,
     "customLevelName": "",
     "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundColumns": 15,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -240,7 +240,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -0.03999999910593033,
+                    "x": -4.34999942779541,
                     "y": 3.1200003623962404,
                     "z": 0.0
                 },
@@ -323,11 +323,95 @@
     ],
     "preplacedObjects": [
         {
+            "objectName": "Screw",
+            "transform": {
+                "position": {
+                    "x": -9.272686004638672,
+                    "y": -5.05132532119751,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "AxeWedge",
+            "transform": {
+                "position": {
+                    "x": -3.341984272003174,
+                    "y": -4.5543389320373539,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "Screw",
+            "transform": {
+                "position": {
+                    "x": -3.6401758193969728,
+                    "y": -5.415781497955322,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "InclinePlane1",
+            "transform": {
+                "position": {
+                    "x": -5.296796798706055,
+                    "y": -0.7772443890571594,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
             "objectName": "Ralph",
             "transform": {
                 "position": {
-                    "x": -4.163832664489746,
-                    "y": -4.897261619567871,
+                    "x": -6.8520917892456059,
+                    "y": -8.354562759399414,
                     "z": -5.791015625
                 },
                 "rotation": {
@@ -347,8 +431,8 @@
             "objectName": "InclinePlane2",
             "transform": {
                 "position": {
-                    "x": -6.743832588195801,
-                    "y": -7.907261371612549,
+                    "x": -8.592092514038086,
+                    "y": -4.314563274383545,
                     "z": 0.0
                 },
                 "rotation": {
@@ -363,33 +447,12 @@
                     "z": 1.0
                 }
             }
-        },
-        {
-            "objectName": "Screw",
-            "transform": {
-                "position": {
-                    "x": -6.832091808319092,
-                    "y": -7.974563121795654,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 0.20000000298023225,
-                    "y": 0.20000000298023225,
-                    "z": 1.0
-                }
-            }
         }
     ],
     "gumballMachineTransform": {
         "position": {
-            "x": 6.460000038146973,
-            "y": -6.289999961853027,
+            "x": -15.5600004196167,
+            "y": -6.650000095367432,
             "z": 0.0
         },
         "rotation": {
@@ -403,5 +466,9 @@
             "y": 1.0,
             "z": 1.0
         }
+    },
+    "starConditions": {
+        "timeConstraint": 10.0,
+        "scrapConstraint": 50.0
     }
 }

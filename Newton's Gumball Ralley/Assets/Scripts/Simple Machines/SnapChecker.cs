@@ -42,24 +42,10 @@ namespace SnapCheck
                         }
                     }
                     break;
-                case "LargeAxle":
-                    if (collision.gameObject.name.Equals("Gear3SnapPoint"))
-                    {
-                        bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
-                        if (mouseInSnappingRange)
-                        {
-                            ShouldSnap = true;
-                            SnapPointHolder = collision.gameObject;
-                        }
-                        else
-                        {
-                            ShouldSnap = false;
-                            SnapPointHolder = null;
-                        }
-                    }
-                    break;
-                case "SmallAxle":
-                    if (collision.gameObject.name.Equals("Gear1SnapPoint") || collision.gameObject.name.Equals("WheelSnapPoint"))
+                case "Axle":
+                    if (collision.gameObject.name.Equals("Gear3SnapPoint") 
+                    || collision.gameObject.name.Equals("Gear1SnapPoint") 
+                    || collision.gameObject.name.Equals("WheelSnapPoint"))
                     {
                         bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
                         if (mouseInSnappingRange)
