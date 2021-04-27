@@ -490,6 +490,8 @@ namespace Destructible2D
 				splitDestructible = Instantiate(this, transform.localPosition, transform.localRotation);
 
 				splitDestructible.transform.SetParent(transform.parent, false);
+
+				splitDestructible.tag = "Debris";
 			}
 
 			splitDestructibles.Add(splitDestructible);

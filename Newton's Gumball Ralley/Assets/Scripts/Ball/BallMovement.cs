@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Core;
+using LevelTimer;
 using Audio;
 
 namespace Ball
@@ -47,7 +48,8 @@ namespace Ball
                 AudioManager.instance.StopSound(RollingSound.name);
                 UpdateBallPositionRelativeToSling();
             }
-            else {
+            else 
+            {
                 if (rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) && isTouching) 
                 {
                     AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
@@ -140,6 +142,7 @@ namespace Ball
         private IEnumerator ReleaseAfterDelay()
         {
             yield return new WaitForSeconds(delayAfterRelease);
+            Timer.StartTimer();
             GetComponent<SpringJoint2D>().enabled = false;
         }
 

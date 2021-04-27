@@ -132,6 +132,11 @@ namespace SimpleMachine
             }
             else
             {
+                if (!hasBeenPlaced)
+                {
+                    ScrapManager.ChangeScrapRemaining(-objectMetaData.amountOfScrap);
+                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
+                }
                 hasBeenPlaced = true;
                 objectManager.SetLastValidPosition(transform.position);
                 objectManager.SetLastValidRotation(transform.rotation);
@@ -164,6 +169,11 @@ namespace SimpleMachine
             {
                 RemoveRotationArrows();
                 EditModeManager.ShowEditModeGUI();
+                if (hasBeenPlaced)
+                {
+                    ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
+                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
+                }
                 Destroy(gameObject);
             }
         }

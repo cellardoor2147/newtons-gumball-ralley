@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectName: InclinePlane2
   prefab: {fileID: 2848766991811229147, guid: a26a7b0302706474394d236151be7589, type: 3}
+  canSnap: 0
+  isSimpleMachine: 1
+  amountOfScrap: 15
