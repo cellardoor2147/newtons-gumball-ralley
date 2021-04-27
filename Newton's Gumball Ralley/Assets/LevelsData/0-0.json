@@ -108,5 +108,10 @@
             "y": 1.0,
             "z": 1.0
         }
+    },
+    "placeableScrapLimit": 10.0,
+    "starConditions": {
+        "timeConstraint": 0.0,
+        "scrapConstraint": 0.0
     }
 }

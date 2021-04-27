@@ -15,3 +15,5 @@ MonoBehaviour:
   objectName: Gear2
   prefab: {fileID: 1393190835938677185, guid: b09e85f1cb9ec4009b00232bccb1860d, type: 3}
   canSnap: 1
+  isSimpleMachine: 1
+  amountOfScrap: 8
