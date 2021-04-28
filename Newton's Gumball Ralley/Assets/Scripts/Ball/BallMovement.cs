@@ -230,6 +230,7 @@ namespace Ball
             rigidBody.velocity = Vector2.zero;
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
+            rigidBody.constraints = RigidbodyConstraints2D.None;
             GetComponent<SpringJoint2D>().enabled = true;
             hasBeenReleased = false;
             enteredPlatform = false;
