@@ -12,19 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
   m_Name: 1-2
   m_EditorClassIdentifier: 
-  worldIndex: 2
-  levelIndex: 3
+  worldIndex: 1
+  levelIndex: 2
   leftSpeaker: {fileID: 11400000, guid: febd22800eba4634a8c1a00180c7e04f, type: 2}
   rightSpeaker: {fileID: 11400000, guid: 93d3541048601684c819da10aa6d6d34, type: 2}
   linesAtBeginningOfLevel:
-  - secondDelayBetweenTypingEachChar: 0
+  - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
+    leftSpeakerExpression: 1
+    rightSpeakerExpression: 1
+    content: Nice job on finishing the first challenge! Remember to use this handy
+      machine to help you complete the next levels.
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
     leftSpeakerExpression: 0
-    rightSpeakerExpression: 0
-    content: aaa
-  linesAtEndOfLevel:
-  - secondDelayBetweenTypingEachChar: 0
+    rightSpeakerExpression: 3
+    content: "Hmmm\u2026 it looks as though the inclined plane we used last time
+      won\u2019t be tall enough to provide enough speed to make it up the ramp to
+      Ralph. We\u2019ll have to use a higher inclined plane. "
+  - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 3
+    content: "You\u2019re right! Good thing we have more choices in our toolbelt."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
     leftSpeakerExpression: 0
-    rightSpeakerExpression: 0
-    content: bbbb
+    rightSpeakerExpression: 4
+    content: Keep in mind, the steeper the slope, the harder it is to move the gumball
+      upward. But if you apply more force, the gumball will launch off that steep
+      slope and really fly! Give it a try.
+  linesAtEndOfLevel: []
