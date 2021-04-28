@@ -45,8 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedLevelsData:
   - {fileID: 4900000, guid: 471876a87c2fd4c9ab234584a4530622, type: 3}
-  - {fileID: 4900000, guid: 0244ea8cc1512284d8933a96a13dedf7, type: 3}
-  - {fileID: 4900000, guid: a9de5dc2ca9068d4e97611b25976a305, type: 3}
+  - {fileID: 4900000, guid: 172da03e31a90407bb287e9fa8427d5b, type: 3}
   - {fileID: 4900000, guid: 3d01634f9e667524b8ce157ca04b40a3, type: 3}
   - {fileID: 4900000, guid: 0244ea8cc1512284d8933a96a13dedf7, type: 3}
   - {fileID: 4900000, guid: a9de5dc2ca9068d4e97611b25976a305, type: 3}
