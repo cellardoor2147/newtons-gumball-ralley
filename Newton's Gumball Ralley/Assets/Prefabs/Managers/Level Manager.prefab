@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3175605165659759069}
   - component: {fileID: 6378088547463403223}
   m_Layer: 0
-  m_Name: Level Manager 1
+  m_Name: Level Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedLevelsData:
+  - {fileID: 4900000, guid: 471876a87c2fd4c9ab234584a4530622, type: 3}
+  - {fileID: 4900000, guid: 0244ea8cc1512284d8933a96a13dedf7, type: 3}
+  - {fileID: 4900000, guid: a9de5dc2ca9068d4e97611b25976a305, type: 3}
   - {fileID: 4900000, guid: 3d01634f9e667524b8ce157ca04b40a3, type: 3}
   - {fileID: 4900000, guid: 0244ea8cc1512284d8933a96a13dedf7, type: 3}
   - {fileID: 4900000, guid: a9de5dc2ca9068d4e97611b25976a305, type: 3}
