@@ -2,8 +2,8 @@
     "worldIndex": 2,
     "levelIndex": 1,
     "customLevelName": "",
-    "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundRows": 2,
+    "repeatedBackgroundColumns": 4,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -319,7 +319,7 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 60.0,
+    "placeableScrapLimit": 65.0,
     "starConditions": {
         "timeConstraint": 0.0,
         "scrapConstraint": 0.0
