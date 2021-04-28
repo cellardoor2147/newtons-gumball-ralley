@@ -80,12 +80,7 @@ namespace Core
             scrapConstraint =
                 EditorGUI.FloatField(new Rect(0, 30, position.width, 15), "Scrap Constraint", scrapConstraint);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 240, position.width, 30));
-            GUILayout.Label("Scrap Limit", EditorStyles.boldLabel);
-            placeableScrapLimit =
-                EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Scrap Limit", placeableScrapLimit);
-            GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 285, position.width, 1000));
+            GUILayout.BeginArea(new Rect(0, 240, position.width, 1000));
             GUILayout.Label("How To Use", EditorStyles.boldLabel);
             GUILayout.Label(GetHowToUseText(), EditorStyles.helpBox);
             GUILayout.EndArea();

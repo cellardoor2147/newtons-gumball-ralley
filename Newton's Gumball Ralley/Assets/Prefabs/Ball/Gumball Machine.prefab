@@ -127,7 +127,6 @@ MonoBehaviour:
   maxShakeDistance: 0.05
   maxShakeRotationEulerAngles: 5
   ballDispenseTimeMultiplier: 0.1
-  ShakeSound: {fileID: 11400000, guid: 64ca3793d1f57492880c52fda3169a7f, type: 2}
 --- !u!61 &4624836419428695572
 BoxCollider2D:
   m_ObjectHideFlags: 0

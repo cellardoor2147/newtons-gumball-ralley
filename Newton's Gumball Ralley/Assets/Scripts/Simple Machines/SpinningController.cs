@@ -21,11 +21,11 @@ namespace SimpleMachine {
 
         private void OnMouseDown()
         {
-            if (spinDirection == -1 && gearBehavior.shouldSpinRight) 
+            if (spinDirection == -1) 
             {
                gearBehavior.spinState = GearBehavior.SpinState.SpinningRight;
             }
-            if (spinDirection == 1 && gearBehavior.shouldSpinLeft)
+            if (spinDirection == 1)
             {
                 gearBehavior.spinState = GearBehavior.SpinState.SpinningLeft;
             }

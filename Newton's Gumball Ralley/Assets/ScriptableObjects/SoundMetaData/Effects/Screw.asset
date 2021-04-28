@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Screw
   clip: {fileID: 8300000, guid: 0e66ad7b020e84aeea44efc50442ebeb, type: 3}
-  volume: 0.1
+  volume: 0.15
   pitch: 1
   loop: 0

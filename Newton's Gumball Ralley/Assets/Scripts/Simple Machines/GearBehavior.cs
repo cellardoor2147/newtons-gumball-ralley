@@ -19,9 +19,8 @@ namespace SimpleMachine {
         private bool hasSpawned;
         private float torque;
         private float spinSpeed;
-        [HideInInspector] public SpinState spinState;
-        [HideInInspector] public bool shouldSpinLeft;
-        [HideInInspector] public bool shouldSpinRight;
+
+        public SpinState spinState;
 
         [SerializeField] SoundMetaData GearSound;
         [SerializeField] private GameObject gearUIPrefab;
@@ -35,8 +34,6 @@ namespace SimpleMachine {
             torque = 5000f;
             spinSpeed = 100f;
             spinState = SpinState.NotSpinning;
-            shouldSpinLeft = true;
-            shouldSpinRight = true;
         }
 
         void Update()
@@ -93,7 +90,7 @@ namespace SimpleMachine {
             rigidbody2D.position = transform.position = ConstrainedPosition;
             }
             if (GameStateManager.GetGameState().Equals(GameState.Playing) &&
-            spinState.Equals(SpinState.SpinningRight) && rigidbody2D.angularVelocity < spinSpeed)
+                spinState.Equals(SpinState.SpinningRight) && rigidbody2D.angularVelocity < spinSpeed)
             {
                 rigidbody2D.AddTorque(torque);
             }
@@ -106,7 +103,7 @@ namespace SimpleMachine {
             {
                 AudioManager.instance.StopSound(GearSound.name);
                 spinState = SpinState.NotSpinning;
-            } 
+            }
         }
 
         public void RemoveGearUI()

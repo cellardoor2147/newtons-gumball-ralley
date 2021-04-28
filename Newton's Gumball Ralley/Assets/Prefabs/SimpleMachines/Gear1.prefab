@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7026563859862279242}
   - component: {fileID: 1873718688760848271}
   - component: {fileID: 2903396123927331631}
-  - component: {fileID: -5782975829369966259}
   m_Layer: 0
   m_Name: Gear1
   m_TagString: SimpleMachine
@@ -370,19 +369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
---- !u!114 &-5782975829369966259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370933668024926976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1634471169d14e45afa46ba5c6cf3b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
 --- !u!1 &5761812476416768397
 GameObject:
   m_ObjectHideFlags: 0
