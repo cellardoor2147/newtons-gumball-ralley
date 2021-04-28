@@ -47,18 +47,33 @@ namespace Core
     public static class LevelSerializer
     {
         public static readonly string WRITE_DIRECTORY_PATH =
-            Application.streamingAssetsPath + "/LevelsData/";
+            Path.Combine(Application.dataPath, "LevelsData");
 
-        private static readonly string BACKGROUND_KEY = "Background";
+        private static readonly string MANAGERS_KEY = "Managers";
+        private static readonly string BACKGROUND_MANAGER_KEY = "Background Manager";
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
         private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string GAME_SCENE_KEY = "Game";
 
-        public static void Serialize(int worldIndex, int levelIndex, string customLevelName, 
-            float timeConstraint, float scrapConstraint, float placeableScrapLimit)
+        public static void Serialize(
+            int worldIndex,
+            int levelIndex,
+            string customLevelName,
+            float timeConstraint,
+            float scrapConstraint,
+            int repeatedBackgroundColumns,
+            int repeatedBackgroundRows,
+            float placeableScrapLimit
+        )
         {
-            LevelData levelData = GetLevelData(worldIndex, levelIndex, customLevelName);
+            LevelData levelData = GetLevelData(
+                worldIndex,
+                levelIndex,
+                customLevelName
+            );
+            levelData.repeatedBackgroundColumns = repeatedBackgroundColumns;
+            levelData.repeatedBackgroundRows = repeatedBackgroundRows;
             levelData.starConditions.timeConstraint = timeConstraint;
             levelData.starConditions.scrapConstraint = scrapConstraint;
             levelData.placeableScrapLimit = placeableScrapLimit;
@@ -66,11 +81,14 @@ namespace Core
             string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))
             {
-                writeFilePath += worldIndex.ToString() + "-" + levelIndex.ToString();
+                writeFilePath = Path.Combine(
+                    writeFilePath,
+                    worldIndex.ToString() + "-" + levelIndex.ToString()
+                );
             }
             else
             {
-                writeFilePath += customLevelName;
+                writeFilePath = Path.Combine(writeFilePath, customLevelName);
             }
             writeFilePath += ".json";
             Directory.CreateDirectory(WRITE_DIRECTORY_PATH);
@@ -80,7 +98,11 @@ namespace Core
             }
         }
 
-        private static LevelData GetLevelData(int worldIndex, int levelIndex, string customLevelName)
+        private static LevelData GetLevelData(
+            int worldIndex,
+            int levelIndex,
+            string customLevelName
+        )
         {
             LevelData levelData = new LevelData();
             levelData.worldIndex = worldIndex;
@@ -90,16 +112,7 @@ namespace Core
             SceneManager.GetActiveScene().GetRootGameObjects(rootGameObjects);
             foreach (GameObject gameObject in rootGameObjects)
             {
-                if (gameObject.name.Equals(BACKGROUND_KEY))
-                {
-                    RepeatedBackgroundManager backgroundManager =
-                        gameObject.GetComponentInChildren<RepeatedBackgroundManager>();
-                    levelData.repeatedBackgroundColumns =
-                        backgroundManager.desiredNumberOfColumns;
-                    levelData.repeatedBackgroundRows =
-                        backgroundManager.desiredNumberOfRows;
-                }
-                else if (gameObject.name.Equals(ENVIRONMENT_KEY))
+                if (gameObject.name.Equals(ENVIRONMENT_KEY))
                 {
                     List<SerializablePreplacedObject> environmentObjects = GetObjectsInContainer(gameObject);
                     levelData.environmentObjects = environmentObjects;
@@ -142,31 +155,35 @@ namespace Core
             return serializedTransform;
         }
 
-        public static LevelData Deserialize(string readFilePath)
+        public static LevelData DeserializeFromReadFilePath(string readFilePath)
         {
             string serializedLevelData = "";
             using (StreamReader streamReader = new StreamReader(readFilePath))
             {
                 serializedLevelData = streamReader.ReadToEnd();
             }
-            LevelData levelData = JsonUtility.FromJson<LevelData>(serializedLevelData);
-            return levelData;
+            return JsonUtility.FromJson<LevelData>(serializedLevelData);
+        }
+
+        public static LevelData DeserializeFromTextAsset(TextAsset textAsset)
+        {
+            return JsonUtility.FromJson<LevelData>(textAsset.text);
         }
 
         public static void SetSceneWithLevelData(LevelData levelData)
         {
+            if (Application.isPlaying)
+            {
+                RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(
+                    levelData.repeatedBackgroundColumns,
+                    levelData.repeatedBackgroundRows
+                );
+            }
             List<GameObject> rootGameObjects = new List<GameObject>();
             SceneManager.GetActiveScene().GetRootGameObjects(rootGameObjects);
             foreach (GameObject gameObject in rootGameObjects)
             {
-                if (gameObject.name.Equals(BACKGROUND_KEY))
-                {
-                    RepeatedBackgroundManager backgroundManager =
-                        gameObject.GetComponentInChildren<RepeatedBackgroundManager>();
-                    backgroundManager.desiredNumberOfColumns = levelData.repeatedBackgroundColumns;
-                    backgroundManager.desiredNumberOfRows = levelData.repeatedBackgroundRows;
-                }
-                else if (gameObject.name.Equals(ENVIRONMENT_KEY))
+                if (gameObject.name.Equals(ENVIRONMENT_KEY))
                 {
                     PopulateContainer(gameObject, levelData.environmentObjects);
                 }

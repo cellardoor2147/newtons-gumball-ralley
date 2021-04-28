@@ -9,6 +9,8 @@ namespace Core
         private int worldIndex;
         private int levelIndex;
         private string customLevelName = "";
+        private int repeatedBackgroundColumns;
+        private int repeatedBackgroundRows;
         private float timeConstraint;
         private float scrapConstraint;
         private float placeableScrapLimit;
@@ -25,8 +27,16 @@ namespace Core
         {
             if (GUILayout.Button("Save Level"))
             {
-                LevelSerializer.Serialize(worldIndex, levelIndex, customLevelName, 
-                    timeConstraint, scrapConstraint, placeableScrapLimit);
+                LevelSerializer.Serialize(
+                    worldIndex,
+                    levelIndex,
+                    customLevelName,
+                    timeConstraint,
+                    scrapConstraint,
+                    repeatedBackgroundColumns,
+                    repeatedBackgroundRows,
+                    placeableScrapLimit
+                );
             }
             if (GUILayout.Button("Load Level"))
             {
@@ -35,11 +45,16 @@ namespace Core
                     LevelSerializer.WRITE_DIRECTORY_PATH,
                     "json"
                 );
-                LevelData levelData = LevelSerializer.Deserialize(readFilePath);
+                LevelData levelData =
+                    LevelSerializer.DeserializeFromReadFilePath(readFilePath);
                 LevelManager.LoadLevelWithLevelData(levelData);
                 worldIndex = levelData.worldIndex;
                 levelIndex = levelData.levelIndex;
                 customLevelName = levelData.customLevelName;
+                repeatedBackgroundColumns = levelData.repeatedBackgroundColumns;
+                repeatedBackgroundRows = levelData.repeatedBackgroundRows;
+                timeConstraint = levelData.starConditions.timeConstraint;
+                scrapConstraint = levelData.starConditions.scrapConstraint;
             }
 
             GUILayout.BeginArea(new Rect(0, 45, position.width, 60));
@@ -52,18 +67,20 @@ namespace Core
                 EditorGUI.TextField(new Rect(0, 45, position.width, 15), "Custom Level Name", customLevelName);
             GUILayout.EndArea();
             GUILayout.BeginArea(new Rect(0, 120, position.width, 60));
+            GUILayout.Label("Background Settings", EditorStyles.boldLabel);
+            repeatedBackgroundColumns =
+                EditorGUI.IntField(new Rect(0, 15, position.width, 15), "# of Columns", repeatedBackgroundColumns);
+            repeatedBackgroundRows =
+                EditorGUI.IntField(new Rect(0, 30, position.width, 15), "# of Rows", repeatedBackgroundRows);
+            GUILayout.EndArea();
+            GUILayout.BeginArea(new Rect(0, 180, position.width, 60));
             GUILayout.Label("Star Constraints", EditorStyles.boldLabel);
             timeConstraint = 
                 EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Time Constraint", timeConstraint);
             scrapConstraint =
                 EditorGUI.FloatField(new Rect(0, 30, position.width, 15), "Scrap Constraint", scrapConstraint);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 180, position.width, 60));
-            GUILayout.Label("Scrap Allotted to Player", EditorStyles.boldLabel);
-            placeableScrapLimit = 
-                EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Placeable Scrap Limit", placeableScrapLimit);
-            GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 220, position.width, 1000));
+            GUILayout.BeginArea(new Rect(0, 240, position.width, 1000));
             GUILayout.Label("How To Use", EditorStyles.boldLabel);
             GUILayout.Label(GetHowToUseText(), EditorStyles.helpBox);
             GUILayout.EndArea();
@@ -72,14 +89,13 @@ namespace Core
         private string GetHowToUseText()
         {
             return "---Saving a level---"
-                + "\n1. In the hierarchy, go to the 'Background' game object, then to its child game object. Set the desired number of rows/columns for the repeated background here"
-                + "\n2. Place environment blocks in the 'Environment' game object in the scene hierarchy"
-                + "\n3. Place preplaced simple machines in the 'Preplaced Objects' game object in the scene hierarchy"
-                + "\n4. Move the sling anchor (ball slingshot) object wherever you want to it be for this level"
-                + "\n5. Add desired world/level indices above for the resulting level"
-                + "\n6. [Optional] Add custom level name above to save w/ a custom name (don't do this if you're saving an official level)"
-                + "\n7. Press 'Save Level' button above (it should save automatically)"
-                + "\nNOTE: 'Background', 'Environment', 'Preplaced Objects', and 'Sling Anchor' should be at the highest level in the hierarchy"
+                + "\n1. Place environment blocks in the 'Environment' game object in the scene hierarchy"
+                + "\n2. Place preplaced simple machines in the 'Preplaced Objects' game object in the scene hierarchy"
+                + "\n3. Move the Gumnall Machine (ball spawn point) object wherever you want to it be for this level"
+                + "\n4. Add desired world/level indices, background settings, and star constraints for the resulting level"
+                + "\n5. [Optional] Add custom level name above to save w/ a custom name (don't do this if you're saving an official level)"
+                + "\n6. Press 'Save Level' button above (it should save automatically)"
+                + "\nNOTE: 'Environment', 'Preplaced Objects', and 'Gumball Machine' should be at the highest level in the hierarchy"
                 + "\n\n---Loading a level---"
                 + "\n1. Press 'Load Level' button above"
                 + "\n2. Select the level to load (should be a .json file)"

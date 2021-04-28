@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using GUI;
-using GUI.Dialogue;
 using GUI.EditMode;
 using SimpleMachine;
 using Ball;
@@ -11,6 +10,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Audio;
 using System.Collections;
+using Background;
 
 namespace Core
 {
@@ -110,12 +110,14 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
                     AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
-                    Time.timeScale = 0.0f;
+                    Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
                     AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;
@@ -186,11 +188,13 @@ namespace Core
         {
             if (instance.gameState.Equals(GameState.Playing))
             {
-                ResetSceneForPlayMode();
                 instance.StartCoroutine(ResetGumballMachine());
                 instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
                 instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
                 instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
+                instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
+                instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
+                instance.StartCoroutine(FreezeDestructibleObjects(ENVIRONMENT_KEY));
             }
             else if (instance.gameState.Equals(GameState.Editing))
             {
@@ -230,6 +234,17 @@ namespace Core
             instance.StartCoroutine(SetObjectsActive(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData, true));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator FreezeDestructibleObjects(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+               .GetComponentsInChildren<DestructibleObstacleLayerController>(true)
+               .ToList()
+               .ForEach(
+                   layerController => layerController.FreezeRigidbody()
+            );
         }
 
         private static IEnumerator ResetDestructibleObjectLayer(string key)

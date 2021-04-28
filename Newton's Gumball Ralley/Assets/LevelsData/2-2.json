@@ -3,7 +3,7 @@
     "levelIndex": 2,
     "customLevelName": "",
     "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundColumns": 15,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -466,5 +466,9 @@
             "y": 1.0,
             "z": 1.0
         }
+    },
+    "starConditions": {
+        "timeConstraint": 10.0,
+        "scrapConstraint": 50.0
     }
 }

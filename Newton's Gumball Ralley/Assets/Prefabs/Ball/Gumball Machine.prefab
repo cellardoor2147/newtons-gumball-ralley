@@ -122,7 +122,7 @@ MonoBehaviour:
     type: 3}
   gumballMachineOpenSprite: {fileID: 21300000, guid: bce41c74e05b6f84c83f22d6246a1bfc,
     type: 3}
-  shakeTime: 0.15
+  shakeTime: 0.05
   delayBetweenShakes: 0.1
   maxShakeDistance: 0.05
   maxShakeRotationEulerAngles: 5

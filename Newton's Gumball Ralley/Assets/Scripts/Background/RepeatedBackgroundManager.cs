@@ -5,32 +5,43 @@ namespace Background
     public class RepeatedBackgroundManager : MonoBehaviour
     {
         [SerializeField] private GameObject backgroundTexture;
-        [SerializeField] public int desiredNumberOfRows = 5;
-        [SerializeField] public int desiredNumberOfColumns = 5;
+
+        private static RepeatedBackgroundManager instance;
 
         private float backgroundTextureWidth;
         private float backgroundTextureHeight;
+        private int desiredNumberOfRows = 8;
+        private int desiredNumberOfColumns = 15;
+
+        private RepeatedBackgroundManager() { } // prevent instantiation outside this class
 
         private void Awake()
         {
+            SetInstance();
             backgroundTextureWidth =
                 backgroundTexture.GetComponent<SpriteRenderer>().size.x *
                 backgroundTexture.transform.localScale.x;
             backgroundTextureHeight =
                 backgroundTexture.GetComponent<SpriteRenderer>().size.y *
                 backgroundTexture.transform.localScale.y;
-            
             RenderRepeatedBackground();
+        }
+
+        private void SetInstance()
+        {
+            if (instance != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                instance = this;
+            }
         }
 
         private void RenderRepeatedBackground()
         {
-            bool shouldNotRenderAnything =
-                desiredNumberOfRows == 0 || desiredNumberOfColumns == 0;
-            if (shouldNotRenderAnything)
-            {
-                return;
-            }
+            ClearPreviouslyRenderedBackground();
             float nextRenderPositionX = GetStartingRenderPositionX();
             for (int currCol = 0; currCol < desiredNumberOfColumns; currCol++)
             {
@@ -44,6 +55,14 @@ namespace Background
                     nextRenderPositionY += backgroundTextureHeight;
                 }
                 nextRenderPositionX += backgroundTextureWidth;
+            }
+        }
+
+        private void ClearPreviouslyRenderedBackground()
+        {
+            for (int i = gameObject.transform.childCount - 1; i >= 0; i--)
+            {
+                Destroy(gameObject.transform.GetChild(i).gameObject);
             }
         }
 
@@ -81,6 +100,39 @@ namespace Background
                 offsetAmount = backgroundTextureHeight / 2;
             }
             return -((numberOfRowsToDrawToBelow * backgroundTextureHeight) + offsetAmount);
+        }
+
+        public static void SetDesiredNumberOfColumnsAndRows(
+            int desiredNumberOfColumns,
+            int desiredNumberOfRows
+        )
+        {
+            instance.desiredNumberOfColumns = desiredNumberOfColumns;
+            instance.desiredNumberOfRows = desiredNumberOfRows;
+            instance.RenderRepeatedBackground();
+        }
+
+        public static float GetBorderLeftPositionX()
+        {
+            float halfScreenWidth = Camera.main.orthographicSize * Camera.main.aspect;
+            return instance.GetStartingRenderPositionX()
+                + halfScreenWidth
+                - instance.backgroundTextureWidth / 2;
+        }
+
+        public static float GetBorderRightPositionX()
+        {
+            return -GetBorderLeftPositionX();
+        }
+
+        public static float GetBorderUpPositionY()
+        {
+            return instance.GetStartingRenderPositionY();
+        }
+
+        public static float GetBorderDownPositionY()
+        {
+            return -GetBorderUpPositionY();
         }
     }
 }
