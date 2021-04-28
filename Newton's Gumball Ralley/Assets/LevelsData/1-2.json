@@ -258,50 +258,7 @@
             }
         }
     ],
-    "preplacedObjects": [
-        {
-            "objectName": "",
-            "transform": {
-                "position": {
-                    "x": -0.9320920705795288,
-                    "y": -8.46456241607666,
-                    "z": -5.791015625
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "InclinePlane1",
-            "transform": {
-                "position": {
-                    "x": -1.2620919942855836,
-                    "y": -8.324563026428223,
-                    "z": -5.791015625
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        }
-    ],
+    "preplacedObjects": [],
     "gumballMachineTransform": {
         "position": {
             "x": -6.150000095367432,
@@ -320,7 +277,7 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 30.0,
+    "placeableScrapLimit": 15.0,
     "starConditions": {
         "timeConstraint": 10.0,
         "scrapConstraint": 15.0
