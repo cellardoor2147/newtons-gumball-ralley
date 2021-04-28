@@ -22,7 +22,8 @@ namespace Core
         Playing = 3,
         Editing = 4,
         Paused = 5,
-        LevelCompleted = 6
+        LevelCompleted = 6,
+        GameOver = 7
     }
 
     public class GameStateManager : MonoBehaviour
@@ -167,6 +168,11 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.LevelCompleteSound.name);
                     }
                     break;
+                case GameState.GameOver:
+                    Time.timeScale = 1.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.GameOverPopup));
+                    break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
                     break;
@@ -201,6 +207,11 @@ namespace Core
                 DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
                 ScrapManager.ResetRemainingScrap();
                 EditModeManager.ToggleButtonsBasedOnAvailableScrap();
+            }
+            else if (instance.gameState.Equals(GameState.GameOver))
+            {
+                SetGameState(GameState.Playing);
+                ResetLevel();
             }
         }
 

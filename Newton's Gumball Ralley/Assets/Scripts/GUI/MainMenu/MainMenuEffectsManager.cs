@@ -54,6 +54,12 @@ namespace GUI.MainMenu
             quinnTransformEndY = quinnTransform.rect.height / 2.6f;
         }
 
+        private void Update()
+        {
+            LowerRandomlySpawnedGumballs();
+            DeleteOffScreenRandomlySpawnedGumballs();
+        }
+
         private void OnEnable()
         {
             StartCoroutine(RandomlySpawnGumballsInBackground());
@@ -68,18 +74,10 @@ namespace GUI.MainMenu
 
         private IEnumerator RandomlySpawnGumballsInBackground()
         {
-            float timer = gumballSpawnDelay;
             while (true)
             {
-                if (timer >= gumballSpawnDelay)
-                {
-                    RandomlySpawnGumball();
-                    timer = 0f;
-                }
-                LowerRandomlySpawnedGumballs();
-                DeleteOffScreenRandomlySpawnedGumballs();
-                timer += Time.deltaTime;
-                yield return new WaitForSeconds(Time.deltaTime);
+                RandomlySpawnGumball();
+                yield return new WaitForSeconds(gumballSpawnDelay);
             }
         }
 
@@ -101,7 +99,8 @@ namespace GUI.MainMenu
         {
             foreach (Transform childTransform in gumballContainer.transform)
             {
-                childTransform.Translate(Vector2.down * Time.deltaTime * gumballFallSpeed);
+                childTransform.GetComponent<RectTransform>().anchoredPosition +=
+                    Vector2.down * Time.deltaTime * gumballFallSpeed;
             }
         }
 

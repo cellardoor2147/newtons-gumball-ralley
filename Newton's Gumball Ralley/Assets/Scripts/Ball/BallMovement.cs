@@ -13,21 +13,14 @@ namespace Ball
         [SerializeField] private float baseMovementSpeed = 1.0f;
         [SerializeField] private float maxRadiusOfPull = 2.0f;
         [SerializeField] private float delayAfterRelease = 0.3f;
-
-        private Rigidbody2D rigidBody;
-        private bool isBeingPulled;
-        private bool hasBeenReleased;
-
         [SerializeField] SoundMetaData BounceSound;
         [SerializeField] SoundMetaData RollingSound;
-
         [SerializeField] PlacedObjectMetaData simplePulleyMetaData;
         [SerializeField] PlacedObjectMetaData compoundPulleyMetaData;
-
-
         [SerializeField] private float fadeTime = 0.5f;
         [SerializeField] private float finalVolume = 0f;
         [SerializeField] private float rollingVolume = 0.2f;
+        [SerializeField] private float dieAnimationSpeed = 1f;
 
         private Vector2 pullForce;
         private Vector2 pushForce;
@@ -41,6 +34,10 @@ namespace Ball
 
         private bool isFading;
         private bool isTouching;
+        private Rigidbody2D rigidBody;
+        private bool isBeingPulled;
+        private bool hasBeenReleased;
+        private SpriteRenderer spriteRenderer;
 
         private void Awake()
         {
@@ -50,6 +47,7 @@ namespace Ball
             holdForce = new Vector2(100, 0);
             pushForce = new Vector2(25, 0);
             parent = transform.parent;
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         private void Start()
@@ -218,26 +216,54 @@ namespace Ball
             GetComponent<SpringJoint2D>().enabled = false;
         }
 
-        public IEnumerator AsyncResetPosition()
+        public IEnumerator AsyncReset()
         {
             yield return new WaitUntil(() => transform != null && rigidBody != null);
-            ResetPosition();
+            Reset();
         }
 
-        private void ResetPosition()
+        private void Reset()
         {
+            StopAllCoroutines();
             transform.position = GetSlingAnchorPosition();
             transform.parent = parent;
             rigidBody.velocity = Vector2.zero;
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
+            rigidBody.constraints = RigidbodyConstraints2D.None;
             GetComponent<SpringJoint2D>().enabled = true;
             hasBeenReleased = false;
             enteredPlatform = false;
             isTouching = false;
             AudioManager.instance.StopSound(RollingSound.name);
+            spriteRenderer.color = new Color(
+                spriteRenderer.color.r,
+                spriteRenderer.color.g,
+                spriteRenderer.color.b,
+                1f
+            );
         }
 
+        public void Die()
+        {
+            rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+            StartCoroutine(FadeOutThenTriggerGameOverPopup());
+        }
+
+        private IEnumerator FadeOutThenTriggerGameOverPopup()
+        {
+            while (spriteRenderer.color.a > 0f)
+            {
+                spriteRenderer.color = new Color(
+                    spriteRenderer.color.r,
+                    spriteRenderer.color.g,
+                    spriteRenderer.color.b,
+                    spriteRenderer.color.a - Time.deltaTime
+                );
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            GameStateManager.SetGameState(GameState.GameOver);
+        }
         private void SetAsChild(GameObject pulleyPlatform)
         {
             transform.parent = pulleyPlatform.transform;
