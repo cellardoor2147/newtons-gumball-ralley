@@ -22,7 +22,8 @@ namespace Core
         Playing = 3,
         Editing = 4,
         Paused = 5,
-        LevelCompleted = 6
+        LevelCompleted = 6,
+        GameOver = 7
     }
 
     public class GameStateManager : MonoBehaviour
@@ -42,13 +43,15 @@ namespace Core
         [SerializeField] SoundMetaData Level1MusicSound;
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
-
+        [SerializeField] SoundMetaData LevelCompleteSound;
+        [SerializeField] SoundMetaData BallRollingSound;
+        
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] PlacedObjectMetaData axleMetaData;
         [SerializeField] PlacedObjectMetaData gear1MetaData;
         [SerializeField] PlacedObjectMetaData gear3MetaData;
-        [SerializeField] PlacedObjectMetaData wheelMetaData;
         [SerializeField] PlacedObjectMetaData screwMetaData;
+        [SerializeField] PlacedObjectMetaData wheelMetaData;
 
         private GameState previousGameState;
         private GameState gameState;
@@ -122,8 +125,13 @@ namespace Core
                     break;
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
+                    AudioManager.instance.StopSound(instance.BallRollingSound.name);
                     AudioManager.instance.StopSound(instance.MenuMusicSound.name);
-                    AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
+                    AudioManager.instance.StopSound(instance.Level2MusicSound.name);
+                    if (!AudioManager.instance.isPlaying(instance.DialogueMusicSound.name))
+                    {
+                        AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
+                    }
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
@@ -159,7 +167,17 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
-                    // TODO: play victory sound
+                    AudioManager.instance.StopSound(instance.Level2MusicSound.name);
+                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
+                    if (!AudioManager.instance.isPlaying(instance.LevelCompleteSound.name))
+                    {
+                        AudioManager.instance.PlaySound(instance.LevelCompleteSound.name);
+                    }
+                    break;
+                case GameState.GameOver:
+                    Time.timeScale = 1.0f;
+                    LoadScene(GAME_SCENE_KEY);
+                    instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.GameOverPopup));
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
@@ -195,6 +213,11 @@ namespace Core
                 DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
                 ScrapManager.ResetRemainingScrap();
                 EditModeManager.ToggleButtonsBasedOnAvailableScrap();
+            }
+            else if (instance.gameState.Equals(GameState.GameOver))
+            {
+                SetGameState(GameState.Playing);
+                ResetLevel();
             }
         }
 
@@ -289,7 +312,7 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<PlacedObjectManager>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(false)
                 .ToList()
                 .ForEach(
                     placedObjectManager => placedObjectManager.ResetTransform()
@@ -425,22 +448,22 @@ namespace Core
         private static IEnumerator RevertObjectsFromGray(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                GameObject.Find(key)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.RevertFromGray()
+                    placedObjectManager => placedObjectManager.RevertFromGray()
             );
         }
 
         private static IEnumerator GrayOutObjects(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                GameObject.Find(key)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.GrayOut()
+                    placedObjectManager => placedObjectManager.GrayOut()
             );
         }
 

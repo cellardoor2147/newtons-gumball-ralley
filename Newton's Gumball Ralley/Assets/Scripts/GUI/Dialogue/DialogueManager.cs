@@ -17,7 +17,11 @@ namespace GUI.Dialogue
         private readonly static string RIGHT_SPEAKER_NAME_KEY = "Right Speaker Name";
         private readonly static string SPEAKER_NAME_TEXT_KEY = "Speaker Name Text";
         private readonly static string DIALOGUE_BOX_TEXT_KEY = "Dialogue Box Content";
+        private readonly static string TUTORIAL_BOX_KEY = "Tutorial Box";
+        private readonly static string TUTORIAL_BOX_IMAGE_KEY = "Tutorial Box Image";
+        private readonly static string TUTORIAL_BOX_TEXT_KEY = "Tutorial Box Conetent";
 
+        [SerializeField] private float dialogueSpeedMultiplier;
         [SerializeField] private List<Conversation> conversations;
 
         private Transform leftSpeakerTransform;
@@ -29,6 +33,9 @@ namespace GUI.Dialogue
         private TextMeshProUGUI leftSpeakerNameText;
         private TextMeshProUGUI rightSpeakerNameText;
         private TextMeshProUGUI dialogueBoxContent;
+        private GameObject tutorialBox;
+        private Image tutorialBoxImage;
+        private TextMeshProUGUI tutorialBoxText;
 
         private void Awake()
         {
@@ -49,10 +56,19 @@ namespace GUI.Dialogue
             dialogueBoxContent = transform.Find(DIALOGUE_BOX_KEY)
                 .transform.Find(DIALOGUE_BOX_TEXT_KEY)
                 .GetComponent<TextMeshProUGUI>();
+            /*
+             * TODO: implement tutorial box properly
+            tutorialBox = transform.Find(TUTORIAL_BOX_KEY).gameObject;
+            tutorialBoxImage = tutorialBox.transform.Find(TUTORIAL_BOX_TEXT_KEY)
+                .GetComponent<Image>();
+            tutorialBoxText = tutorialBox.transform.Find(TUTORIAL_BOX_TEXT_KEY)
+                .GetComponent<TextMeshProUGUI>();
+            */
         }
 
         private void OnEnable()
         {
+            bool shouldPlayBeginningDialogue = !LevelManager.GetCurrentLevelIsComplete();
             foreach (Conversation conversation in conversations)
             {
                 bool conversationShouldPlay =
@@ -60,21 +76,28 @@ namespace GUI.Dialogue
                     && conversation.levelIndex == LevelManager.GetCurrentLevelIndex();
                 if (conversationShouldPlay)
                 {
-                    StartConversation(conversation);
+                    StartConversation(conversation, shouldPlayBeginningDialogue);
                     return;
                 }
             }
-            GameStateManager.SetGameState(GameState.Editing); // Couldn't find a conversation to play
+            GameStateManager.SetGameState(
+                shouldPlayBeginningDialogue
+                ? GameState.Editing
+                : GameState.LevelCompleted
+            ); // Couldn't find a conversation to play
         }
 
-        public void StartConversation(Conversation conversation)
+        public void StartConversation(Conversation conversation, bool shouldPlayBeginningDialogue)
         {
-            StartCoroutine(TypeEachDialogueBoxContent(conversation));
+            StartCoroutine(TypeEachDialogueBoxContent(conversation, shouldPlayBeginningDialogue));
         }
 
-        private IEnumerator TypeEachDialogueBoxContent(Conversation conversation)
+        private IEnumerator TypeEachDialogueBoxContent(Conversation conversation, bool shouldPlayBeginningDialogue)
         {
-            foreach (Line line in conversation.lines)
+            Line[] lines = shouldPlayBeginningDialogue
+                ? conversation.linesAtBeginningOfLevel
+                : conversation.linesAtEndOfLevel;
+            foreach (Line line in lines)
             {
                 SetSpeakerImage(SpeakerDirection.Left, conversation.leftSpeaker, line);
                 SetSpeakerImage(SpeakerDirection.Right, conversation.rightSpeaker, line);
@@ -103,7 +126,10 @@ namespace GUI.Dialogue
                 yield return TypeDialogueBoxContent(line);
                 yield return new WaitUntil(() => Input.anyKeyDown);
             }
-            GameStateManager.SetGameState(GameState.Editing);
+            GameStateManager.SetGameState(shouldPlayBeginningDialogue
+                ? GameState.Editing
+                : GameState.LevelCompleted
+            );
         }
 
         private void SetSpeakerImage(SpeakerDirection direction, CharacterMetaData character, Line line)
@@ -197,7 +223,9 @@ namespace GUI.Dialogue
             dialogueBoxContent.text = "";
             foreach (char character in line.content)
             {
-                yield return new WaitForSecondsRealtime(line.secondDelayBetweenTypingEachChar);
+                yield return new WaitForSecondsRealtime(
+                    line.secondDelayBetweenTypingEachChar * (1 / dialogueSpeedMultiplier)
+                );
                 dialogueBoxContent.text += character;
             }
             dialogueBoxContent.text = line.content;

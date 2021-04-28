@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Core;
+using Audio;
 
 namespace Ball
 {
@@ -23,11 +24,11 @@ namespace Ball
         [SerializeField] private float maxShakeDistance;
         [SerializeField] private float maxShakeRotationEulerAngles;
         [SerializeField] private float ballDispenseTimeMultiplier;
+        [SerializeField] SoundMetaData ShakeSound;
 
         private SpriteRenderer spriteRender;
         private Collider2D collider2D;
         private GumballMachineState gumballMachineState;
-        private GameObject slingAnchor;
         private BallMovement ballMovement;
         private SpriteRenderer ballSpriteRenderer;
         private Vector3 originalPosition;
@@ -38,7 +39,7 @@ namespace Ball
         {
             spriteRender = GetComponent<SpriteRenderer>();
             collider2D = GetComponent<Collider2D>();
-            slingAnchor = transform.Find(SLING_ANCHOR_KEY).gameObject;
+            GameObject slingAnchor = transform.Find(SLING_ANCHOR_KEY).gameObject;
             ballMovement =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
@@ -86,13 +87,14 @@ namespace Ball
             {
                 case GumballMachineState.Closed:
                     ballSpriteRenderer.enabled = false;
-                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
+                    AudioManager.instance.StopSound(ShakeSound.name);
+                    StartCoroutine(ResetBallAndGumballMachine());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     SetClickability(true);
                     break;
                 case GumballMachineState.Shaking:
                     SetClickability(false);
-                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
+                    StartCoroutine(ResetBallAndGumballMachine());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     StartCoroutine(ShakeThenResetTransform());
                     break;
@@ -105,9 +107,9 @@ namespace Ball
             this.gumballMachineState = gumballMachineState;
         }
 
-        private IEnumerator ResetBallPositionAndGumballMachineTransform()
+        private IEnumerator ResetBallAndGumballMachine()
         {
-            yield return ballMovement.AsyncResetPosition();
+            yield return ballMovement.AsyncReset();
             SetOriginalTransformAndResetTransform();
         }
 
@@ -124,6 +126,10 @@ namespace Ball
             if (shouldShakeGumballMachine)
             {
                 SetGumballMachineState(GumballMachineState.Shaking);
+                if (!AudioManager.instance.isPlaying(ShakeSound.name))
+                {
+                    AudioManager.instance.PlaySound(ShakeSound.name);
+                }
             }
         }
 
@@ -187,33 +193,32 @@ namespace Ball
 
         private IEnumerator DispenseGumballThenResetItsScaleAndColor()
         {
-            ballMovement.enabled = false;
-            Vector3 slingAnchorScale = slingAnchor.transform.localScale;
-            yield return DispenseGumball(slingAnchorScale);
-            slingAnchor.transform.localScale = slingAnchorScale;
+            Vector3 ballScale = ballMovement.originalScale;
+            yield return DispenseGumball(ballScale);
+            ballMovement.transform.localScale = ballMovement.originalScale;
             ballSpriteRenderer.color = Color.white;
-            ballMovement.enabled = true;
+            ballMovement.hasBeenDispensed = true;
         }
 
-        private IEnumerator DispenseGumball(Vector3 slingAnchorScale)
+        private IEnumerator DispenseGumball(Vector3 ballScale)
         {
-            slingAnchor.transform.localScale = Vector3.zero;
+            ballMovement.transform.localScale = Vector3.zero;
             ballSpriteRenderer.enabled = true;
             ballSpriteRenderer.color = Color.black;
             while
             (
-                slingAnchor.transform.localScale.x 
-                < slingAnchorScale.x
+                ballMovement.transform.localScale.x 
+                < ballScale.x
             )
             {
-                slingAnchor.transform.localScale = new Vector3(
-                    slingAnchor.transform.localScale.x + Time.deltaTime,
-                    slingAnchor.transform.localScale.y + Time.deltaTime,
-                    slingAnchor.transform.localScale.z
+                ballMovement.transform.localScale = new Vector3(
+                    ballMovement.transform.localScale.x + Time.deltaTime,
+                    ballMovement.transform.localScale.y + Time.deltaTime,
+                    ballMovement.transform.localScale.z
                 );
                 float ballSpriteRendererColorMultiplier =
-                    slingAnchor.transform.localScale.x 
-                    / slingAnchorScale.x;
+                    ballMovement.transform.localScale.x 
+                    / ballScale.x;
                 ballSpriteRenderer.color = new Color(
                     ballSpriteRendererColorMultiplier,
                     ballSpriteRendererColorMultiplier,

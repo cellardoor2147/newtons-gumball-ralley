@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
+  m_Name: 1-1
+  m_EditorClassIdentifier: 
+  worldIndex: 1
+  levelIndex: 1
+  leftSpeaker: {fileID: 11400000, guid: febd22800eba4634a8c1a00180c7e04f, type: 2}
+  rightSpeaker: {fileID: 11400000, guid: 93d3541048601684c819da10aa6d6d34, type: 2}
+  linesAtBeginningOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 0
+    content: "Hello! Welcome to Newton\u2019s Gumball Rally! I see you\u2019ve found
+      the first gumball machine."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "But that\u2019s only the first step. Now you have to get a gumball
+      to our friend, Ralph. Click on the gumball machine to get your gumball. Then
+      you can pull back on the gumball and slingshot it to Ralph."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 3
+    rightSpeakerExpression: 0
+    content: "Ralph is a little far though\u2026 you might need to use an inclined
+      plane to help. To find the inclined plane, press the pause button at the top
+      of the screen to bring up your toolbelt. Then press the play button to go back
+      to the level."
+  linesAtEndOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 3
+    content: "You did it! But why doesn\u2019t it work without the inclined plane?"
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 3
+    content: "I\u2019m glad you asked. That\u2019s because gravity brought the ball
+      to the ground too fast. Gravity is an invisible force that pulls objects together. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 3
+    content: So gravity is what pulls us to the ground and keeps us from floating
+      off into space?
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: Exactly!
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: Using the inclined plane to move the gumball towards Ralph gives the
+      gumball more momentum, or strength that pushes something forward.

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetWedge: {fileID: 4694918795534134036}
+  BreakSound: {fileID: 11400000, guid: 46b18198535524489bfa6ea30e53651d, type: 2}
+  BounceSound: {fileID: 11400000, guid: a0c9167fd322d477296fbbdb70272fa7, type: 2}
 --- !u!61 &7686281347152000183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -265,8 +267,7 @@ MonoBehaviour:
   gear3MetaData: {fileID: 0}
   gearBackgroundMetaData: {fileID: 0}
   wheelMetaData: {fileID: 0}
-  smallAxleMetaData: {fileID: 0}
-  largeAxleMetaData: {fileID: 0}
+  axleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &6494589377452356334
 MonoBehaviour:
@@ -280,4 +281,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  metaData: {fileID: 11400000, guid: baccd2f2ce7240c4ea8fdfe2413929f6, type: 2}
+  metaData: {fileID: 11400000, guid: 8cd1540b3d630ff4693730004ab8dc43, type: 2}

@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
+  m_Name: 2-1
+  m_EditorClassIdentifier: 
+  worldIndex: 2
+  levelIndex: 1
+  leftSpeaker: {fileID: 11400000, guid: febd22800eba4634a8c1a00180c7e04f, type: 2}
+  rightSpeaker: {fileID: 11400000, guid: 93d3541048601684c819da10aa6d6d34, type: 2}
+  linesAtBeginningOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 1
+    rightSpeakerExpression: 1
+    content: "You finished those levels so fast! I\u2019m impressed!"
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 3
+    content: 'Wait, what are those spikey things? '
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 3
+    content: "You\u2019ll want to stay away from those. If you hit it your gumball
+      will break!"
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "I think they\u2019re ready to make an adjustable inclined plane. Check
+      your toolbelt for a long rectangle and drag it into the scene. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: "This surface isn\u2019t sloped yet. You\u2019ll need to use the arrows
+      on each side of it to raise and lower each side until the incline is just how
+      you want it. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "But remember gravity will pull the inclined plane to the ground\u2026
+      you might need to use a screw to help keep it in place. "
+  linesAtEndOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 1
+    rightSpeakerExpression: 1
+    content: "You figured it out! A screw is another simple machine that can be used
+      to keep objects in place by pinning them to a surface that doesn\u2019t move,
+      like a wall or floor."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "Right! Unlike a nail which you need to hit really hard to push into
+      a wall, a screw\u2019s spiral shape makes it easier. Instead of banging on
+      a nail with a hammer, you can twist a screw so that it goes in a little at
+      a time with less force."

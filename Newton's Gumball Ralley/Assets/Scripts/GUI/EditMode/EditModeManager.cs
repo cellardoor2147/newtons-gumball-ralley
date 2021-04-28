@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using Core;
 using UnityEngine;
 
 namespace GUI.EditMode
@@ -101,6 +102,12 @@ namespace GUI.EditMode
             SetActiveTab(PlaceableObjectType.InclinePlane);
         }
 
+        public static IEnumerator AsyncSetActiveTab(PlaceableObjectType objectType)
+        {
+            yield return new WaitUntil(() => ActiveContentController != null);
+            SetActiveTab(objectType);
+        }
+
         public static void SetActiveTab(PlaceableObjectType objectType)
         {
             foreach (TabController inactiveTab in instance.inactiveTabControllers)
@@ -128,6 +135,61 @@ namespace GUI.EditMode
             instance.ActivateContent(objectType);
         }
 
+        public static IEnumerator DisableFutureTabs()
+        {
+            yield return new WaitUntil(() => instance != null);
+            EnableAllTabs();
+            int worldIndex = LevelManager.GetCurrentWorldIndex();
+
+            switch (worldIndex)
+            {
+                case 1:
+                    foreach (TabController inactiveTab in instance.inactiveTabControllers)
+                    {
+                        bool shouldNotBeDisabled = inactiveTab.objectType.Equals(PlaceableObjectType.InclinePlane);
+                        if (!shouldNotBeDisabled)
+                            inactiveTab.ReddenAndDisable();
+                    }
+                    foreach (TabController activeTab in instance.activeTabControllers)
+                    {
+                        bool shouldNotBeDisabled = activeTab.objectType.Equals(PlaceableObjectType.InclinePlane);
+                        if (!shouldNotBeDisabled)
+                            activeTab.Disable();
+                    }
+                    break;
+                case 2:
+                    foreach (TabController inactiveTab in instance.inactiveTabControllers)
+                    {
+                        bool shouldNotBeDisabled =
+                            inactiveTab.objectType.Equals(PlaceableObjectType.InclinePlane)
+                            || inactiveTab.objectType.Equals(PlaceableObjectType.Screw);
+                        if (!shouldNotBeDisabled)
+                            inactiveTab.ReddenAndDisable();
+                    }
+                    foreach (TabController activeTab in instance.activeTabControllers)
+                    {
+                        bool shouldNotBeDisabled =
+                            activeTab.objectType.Equals(PlaceableObjectType.InclinePlane)
+                            || activeTab.objectType.Equals(PlaceableObjectType.Screw);
+                        if (!shouldNotBeDisabled)
+                            activeTab.Disable();
+                    }
+                    break;
+            }
+        }
+
+        public static void EnableAllTabs()
+        {
+            foreach (TabController inactiveTab in instance.inactiveTabControllers)
+            {                
+                inactiveTab.RevertToOriginalColorsAndEnable();
+            }
+            foreach (TabController activeTab in instance.activeTabControllers)
+            {
+                activeTab.Enable();
+            }
+        }
+
         private void ActivateContent(PlaceableObjectType objectType)
         {
             foreach (ContentController contentController in instance.contentControllers)
@@ -140,6 +202,7 @@ namespace GUI.EditMode
                 if (contentControllerGameObjectShouldBeActivated)
                 {
                     ActiveContentController = contentController;
+                    ToggleButtonsBasedOnCurrentLevel();
                     ToggleButtonsBasedOnAvailableScrap();
                     toolbarManager.SetContent(contentController.gameObject);
                 }
@@ -158,6 +221,21 @@ namespace GUI.EditMode
             {
                 PlaceableObjectManager placeableObject = button.GetComponent<PlaceableObjectManager>();
                 placeableObject.ToggleBasedOnAvailableScrap();
+            }
+        }
+
+        public static IEnumerator AsyncToggleButtonsBasedOnCurrentLevel()
+        {
+            yield return new WaitUntil(() => ActiveContentController != null);
+            ToggleButtonsBasedOnCurrentLevel();
+        }
+
+        public static void ToggleButtonsBasedOnCurrentLevel()
+        {
+            foreach (Transform button in ActiveContentController.transform)
+            {
+                PlaceableObjectManager placeableObject = button.GetComponent<PlaceableObjectManager>();
+                placeableObject.ToggleBasedOnCurrentLevel();
             }
         }
 
