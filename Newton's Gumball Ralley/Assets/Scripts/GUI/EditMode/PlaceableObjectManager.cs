@@ -88,24 +88,24 @@ namespace GUI.EditMode
                 if (ObjectMetaData.name.Equals("InclinePlane2")
                     || isLevel1AndObjectShouldBeDisabled)
                 {
-                    objectImage.color = Color.red;
+                    gameObject.SetActive(false);
                     shouldDisableDragging = true;
                     isDisabledBasedOnCurrentLevel = true;
                 }
-                else if (objectImage.color == Color.red)
+                else if (!gameObject.activeSelf)
                 {
-                    RevertColorAndEnableDragging(objectImage);
+                    EnableObject(this.gameObject);
                 }
             }
-            else if (objectImage.color == Color.red)
+            else if (!gameObject.activeSelf)
             {
-                RevertColorAndEnableDragging(objectImage);
+                EnableObject(this.gameObject);
             }
         }
 
-        private void RevertColorAndEnableDragging(Image objectImage)
+        private void EnableObject(GameObject machine)
         {
-            objectImage.color = DefaultColor;
+            machine.SetActive(true);
             shouldDisableDragging = false;
             isDisabledBasedOnCurrentLevel = false;
         }
