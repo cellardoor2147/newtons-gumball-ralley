@@ -19,6 +19,7 @@ namespace Core
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 defaultColor = spriteRenderer.color;
             }
+            placedObjectRB = GetComponent<Rigidbody2D>();
             lastValidPosition = transform.position;
             lastValidRotation = transform.rotation;
         }
