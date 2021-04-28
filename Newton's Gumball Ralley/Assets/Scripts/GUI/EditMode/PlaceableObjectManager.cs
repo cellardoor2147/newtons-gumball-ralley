@@ -3,12 +3,15 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Core;
 using SimpleMachine;
+using TMPro;
 
 namespace GUI.EditMode
 {
     public class PlaceableObjectManager : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        [SerializeField] private float maxSpriteHeightInToolbar;
+        private static readonly string COST_TEXT_KEY = "Cost Text";
+
+        [Range(0f, 50f)] [SerializeField] private float maxSpriteHeightInToolbar;
         [SerializeField] private GameObject placeableObjectPrefab;
 
         private GameObject placeableObjectsContainer;
@@ -28,6 +31,7 @@ namespace GUI.EditMode
             ObjectMetaData = placeableObjectPrefab.GetComponent<PlacedObjectManager>().metaData;
             objectImage = GetComponent<Image>();
             DefaultColor = objectImage.color;
+            SetCostText();
         }
 
         private Vector2 GetSizeDelta()
@@ -42,6 +46,12 @@ namespace GUI.EditMode
                 spriteHeight = maxSpriteHeightInToolbar;
             }
             return new Vector2(spriteWidth, spriteHeight);
+        }
+
+        private void SetCostText()
+        {
+            transform.Find(COST_TEXT_KEY).GetComponent<TextMeshProUGUI>().text =
+                ObjectMetaData.amountOfScrap.ToString();
         }
 
         public void ToggleBasedOnAvailableScrap()

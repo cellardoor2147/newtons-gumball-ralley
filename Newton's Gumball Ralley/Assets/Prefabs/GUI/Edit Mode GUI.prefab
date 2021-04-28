@@ -1052,7 +1052,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -150, y: -60}
+  m_SizeDelta: {x: -150, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3249118790562793129
 CanvasRenderer:
@@ -1896,7 +1896,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 44.85
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -2061,7 +2061,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 44.5
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -2241,7 +2241,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 44.5
+      value: 69.95
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -2428,7 +2428,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 42.9
+      value: 67.4
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -2600,7 +2600,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -2772,7 +2772,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 44.85
+      value: 70.5
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -2944,7 +2944,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -3116,7 +3116,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -3307,7 +3307,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 40.7
+      value: 45.95
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -3474,7 +3474,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -3631,7 +3631,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -3951,7 +3951,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4259,7 +4259,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4416,7 +4416,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4573,7 +4573,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4730,7 +4730,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4887,7 +4887,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 42.9
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -5214,7 +5214,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 40.65
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -5381,7 +5381,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 45.65
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -5548,7 +5548,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -5720,7 +5720,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 45.65
+      value: 71.75
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -5907,7 +5907,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 40.65
+      value: 63.85
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -6079,7 +6079,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 75
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
