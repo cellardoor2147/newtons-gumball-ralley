@@ -108,9 +108,11 @@ namespace GUI.Dialogue
                         SpeakerDirection.Left,
                         conversation.leftSpeaker.fullName
                     );
+                    /* TODO: fix sound for dialogue system
                     AudioManager.instance.PlaySound(
                         GetSpeakerSoundNameByExpression(conversation.leftSpeaker, line.leftSpeakerExpression)
                     );
+                    */
                 }
                 else
                 {
@@ -118,9 +120,11 @@ namespace GUI.Dialogue
                         SpeakerDirection.Right,
                         conversation.rightSpeaker.fullName
                     );
+                    /* TODO: fix sound for dialogue system
                     AudioManager.instance.PlaySound(
                         GetSpeakerSoundNameByExpression(conversation.rightSpeaker, line.rightSpeakerExpression)
                     );
+                    */
                 }
                 yield return TypeDialogueBoxContent(line);
                 yield return new WaitUntil(() => Input.anyKeyDown);
