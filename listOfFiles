@@ -1,0 +1,877 @@
+.gitignore
+Newton's Gumball Ralley/.vscode/settings.json
+Newton's Gumball Ralley/.vsconfig
+Newton's Gumball Ralley/Assets/.DS_Store
+Newton's Gumball Ralley/Assets/Audio.meta
+Newton's Gumball Ralley/Assets/Audio/Characters.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-happy.mp3
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-happy.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-neutral.mp3
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-neutral.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-skeptical.mp3
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-skeptical.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-surprised.mp3
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-surprised.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-teaching.mp3
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-teaching.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-worried.mp3
+Newton's Gumball Ralley/Assets/Audio/Characters/_Deprecated/example-character-worried.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Ball Rolling.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Ball Rolling/Blend.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/Ball Rolling/Blend.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Bouncing.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Bouncing/metal_ball_hit_wall.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Bouncing/metal_ball_hit_wall.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/ButtonHover.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/ButtonHover.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/ButtonPress.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/ButtonPress.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/Click.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/Click.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/Whoosh.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/Whoosh.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/button_click_fast.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/GUI/button_click_fast.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Lever.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Lever/larder_door_creak.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Lever/larder_door_creak.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Pulley.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Pulley/sewing_machine_crank.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Pulley/sewing_machine_crank.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Ramp.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Screw.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Screw/ShortScrew.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Screw/ShortScrew.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/Bonus.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/Bonus.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/Jingle_Win.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/Jingle_Win.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/Jingle_Win_05.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/Jingle_Win_05.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/retro_win.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Victory/retro_win.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Wedge.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Wedge/axe_chop_wood_3.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Wedge/axe_chop_wood_3.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Wheel.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Wheel/WheelBlend.wav
+Newton's Gumball Ralley/Assets/Audio/Effects/Wheel/WheelBlend.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Effects/Wheel/wheel_turn_2.mp3
+Newton's Gumball Ralley/Assets/Audio/Effects/Wheel/wheel_turn_2.mp3.meta
+Newton's Gumball Ralley/Assets/Audio/Music.meta
+Newton's Gumball Ralley/Assets/Audio/Music/Main Menu Theme.wav
+Newton's Gumball Ralley/Assets/Audio/Music/Main Menu Theme.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Music/cutscene soundtrack first half.wav
+Newton's Gumball Ralley/Assets/Audio/Music/cutscene soundtrack first half.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Music/cutscene soundtrack.wav
+Newton's Gumball Ralley/Assets/Audio/Music/cutscene soundtrack.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Music/level soundtrack 2.wav
+Newton's Gumball Ralley/Assets/Audio/Music/level soundtrack 2.wav.meta
+Newton's Gumball Ralley/Assets/Audio/Music/level soundtrack.wav
+Newton's Gumball Ralley/Assets/Audio/Music/level soundtrack.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Destructible2D.asmdef
+Newton's Gumball Ralley/Assets/Destructible 2D/Destructible2D.asmdef.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Documentation.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Documentation/D2dGuide.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Documentation/D2dGuide.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Documentation/Documentation.html
+Newton's Gumball Ralley/Assets/Destructible 2D/Documentation/Documentation.html.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Additive.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Additive.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Debris Star.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Debris Star.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Debris.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Debris.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Red Explosion.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Red Explosion.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Snowball Explosion.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/Snowball Explosion.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/White Blob.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/White Blob.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/White Pixel.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Materials/White Pixel.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole.png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole.png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole_Shape (Alpha).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole_Shape (Alpha).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole_Shape (Color).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole_Shape (Color).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole_Shape.asset
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/BulletHole_Shape.asset.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Char_Shape (Alpha).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Char_Shape (Alpha).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Char_Shape (Color).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Char_Shape (Color).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Char_Shape.asset
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Char_Shape.asset.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow.png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow.png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow_Shape (Alpha).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow_Shape (Alpha).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow_Shape (Color).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow_Shape (Color).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow_Shape.asset
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Glow_Shape.asset.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump.png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump.png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump_Shape (Alpha).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump_Shape (Alpha).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump_Shape (Color).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump_Shape (Color).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump_Shape.asset
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Jump_Shape.asset.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark.png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark.png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark_Shape (Alpha).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark_Shape (Alpha).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark_Shape (Color).png
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark_Shape (Color).png.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark_Shape.asset
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Shapes/Spark_Shape.asset.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Egg Crack.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Egg Crack.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Engine Idle.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Engine Idle.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Glass Smash 1.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Glass Smash 1.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Glass Smash 2.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Glass Smash 2.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Glass Smash 3.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Glass Smash 3.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Ice Smash.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Ice Smash.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Impact 1.ogg
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Impact 1.ogg.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Impact 2.ogg
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Impact 2.ogg.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Spaceship Jump.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Spaceship Jump.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Spaceship Laser.mp3
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Spaceship Laser.mp3.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Wood Split 1.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Wood Split 1.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Wood Split 2.wav
+Newton's Gumball Ralley/Assets/Destructible 2D/Examples/Sounds/Wood Split 2.wav.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/GUIDE.asset
+Newton's Gumball Ralley/Assets/Destructible 2D/GUIDE.asset.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/D2dRenderingPipeline.txt
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/D2dRenderingPipeline.txt.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Default + Color.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Default + Color.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Default.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Default.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Diffuse.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Diffuse.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Keep Alpha.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Keep Alpha.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Outline.mat
+Newton's Gumball Ralley/Assets/Destructible 2D/Resources/Destructible 2D/Outline.mat.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dBlur.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dBlur.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCache.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCache.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCalculateMass.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCalculateMass.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCollider.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCollider.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCollisionHandler.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dCollisionHandler.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dContext.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dContext.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDamage.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDamage.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestroyer.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestroyer.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestructible.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestructible.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestructibleSprite.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestructibleSprite.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestructible_Paint.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDestructible_Paint.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDistanceField.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dDistanceField.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dEdgeCollider.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dEdgeCollider.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dEdgeSquares.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dEdgeSquares.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dEditor.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dEditor.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFixture.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFixture.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFixtureGroup.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFixtureGroup.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFixtureJoint.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFixtureJoint.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFracturer.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dFracturer.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dHalve.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dHalve.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dHelper.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dHelper.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dImpactDamage.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dImpactDamage.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dImpactFissure.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dImpactFissure.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dImpactSpawner.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dImpactSpawner.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dLinkedBehaviour.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dLinkedBehaviour.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dOverlapDamage.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dOverlapDamage.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dPolygonCollider.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dPolygonCollider.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dPolygonSquares.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dPolygonSquares.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dRect.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dRect.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dRequirements.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dRequirements.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dRetainVelocity.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dRetainVelocity.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dShapeBuilder.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dShapeBuilder.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSlice.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSlice.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSnapshot.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSnapshot.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSnapshotData.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSnapshotData.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSpawner.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSpawner.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSplitter.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dSplitter.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dStamp.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dStamp.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dTrim.cs
+Newton's Gumball Ralley/Assets/Destructible 2D/Scripts/D2dTrim.cs.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Default + Color.shader
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Default + Color.shader.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Default.shader
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Default.shader.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Diffuse.shader
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Diffuse.shader.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Keep Alpha + Color.shader
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Keep Alpha + Color.shader.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Keep Alpha.shader
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Keep Alpha.shader.meta
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Outline.shader
+Newton's Gumball Ralley/Assets/Destructible 2D/Shaders/Outline.shader.meta
+Newton's Gumball Ralley/Assets/Fonts.meta
+Newton's Gumball Ralley/Assets/Fonts/Stripes_and_bubbles SDF.asset
+Newton's Gumball Ralley/Assets/Fonts/Stripes_and_bubbles SDF.asset.meta
+Newton's Gumball Ralley/Assets/Fonts/Stripes_and_bubbles.ttf
+Newton's Gumball Ralley/Assets/Fonts/Stripes_and_bubbles.ttf.meta
+Newton's Gumball Ralley/Assets/Fonts/_Deprecated.meta
+Newton's Gumball Ralley/Assets/Fonts/_Deprecated/BubbleBoba-YzlZj SDF.asset
+Newton's Gumball Ralley/Assets/Fonts/_Deprecated/BubbleBoba-YzlZj SDF.asset.meta
+Newton's Gumball Ralley/Assets/Fonts/_Deprecated/BubbleBoba-YzlZj.ttf
+Newton's Gumball Ralley/Assets/Fonts/_Deprecated/BubbleBoba-YzlZj.ttf.meta
+Newton's Gumball Ralley/Assets/Fonts/font bubble SDF.asset
+Newton's Gumball Ralley/Assets/Fonts/font bubble SDF.asset.meta
+Newton's Gumball Ralley/Assets/Fonts/font bubble.ttf
+Newton's Gumball Ralley/Assets/Fonts/font bubble.ttf.meta
+Newton's Gumball Ralley/Assets/Imports.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Documentation.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Fonts.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Fonts/LiberationSans - OFL.txt
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Fonts/LiberationSans - OFL.txt.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Fonts/LiberationSans.ttf
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Fonts/LiberationSans.ttf.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Drop Shadow.mat.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Outline.mat.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/LineBreaking Following Characters.txt
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/LineBreaking Following Characters.txt.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/LineBreaking Leading Characters.txt
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/LineBreaking Leading Characters.txt.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Sprite Assets.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Sprite Assets/EmojiOne.asset.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Style Sheets.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/Style Sheets/Default Style Sheet.asset.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/TMP Settings.asset
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Resources/TMP Settings.asset.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Bitmap-Custom-Atlas.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Bitmap-Mobile.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Bitmap.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Bitmap.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF Overlay.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF SSD.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile Overlay.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile SSD.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Surface-Mobile.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Surface.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF-Surface.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_SDF.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Sprite.shader
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMP_Sprite.shader.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro.cginc
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro.cginc.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro_Mobile.cginc
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro_Mobile.cginc.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro_Properties.cginc
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro_Properties.cginc.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro_Surface.cginc
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Shaders/TMPro_Surface.cginc.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites/EmojiOne Attribution.txt
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites/EmojiOne Attribution.txt.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites/EmojiOne.json
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites/EmojiOne.json.meta
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites/EmojiOne.png
+Newton's Gumball Ralley/Assets/Imports/TextMesh Pro/Sprites/EmojiOne.png.meta
+Newton's Gumball Ralley/Assets/PhysicsMaterial.meta
+Newton's Gumball Ralley/Assets/PhysicsMaterial/Bouncy.physicsMaterial2D
+Newton's Gumball Ralley/Assets/PhysicsMaterial/Bouncy.physicsMaterial2D.meta
+Newton's Gumball Ralley/Assets/Prefabs.meta
+Newton's Gumball Ralley/Assets/Prefabs/.DS_Store
+Newton's Gumball Ralley/Assets/Prefabs/Audio.meta
+Newton's Gumball Ralley/Assets/Prefabs/Audio/AudioManager.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Audio/AudioManager.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Audio/GUIAudioManager.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Audio/GUIAudioManager.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Background.meta
+Newton's Gumball Ralley/Assets/Prefabs/Background/Graphing Paper Texture.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Background/Graphing Paper Texture.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Ball.meta
+Newton's Gumball Ralley/Assets/Prefabs/Ball/Ball.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Ball/Ball.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Ball/Gumball Machine.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Ball/Gumball Machine.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Environment Block.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Environment Block.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Back Button Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Back Button Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Button Template.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Button Template.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Play Button Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Play Button Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Quit Button.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Quit Button.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Sandbox Button Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Sandbox Button Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Settings Button Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Settings Button Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Story Button Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Story Button Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Tab Template Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Buttons/Tab Template Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Cutscene GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Cutscene GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Dialogue GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Dialogue GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Edit Mode GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Edit Mode GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Edit Mode.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Edit Mode/Placeable Object Button.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Edit Mode/Placeable Object Button.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Complete Popup GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Complete Popup GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Given Machine Star Container Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Given Machine Star Container Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Level Beat Star Container Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Level Beat Star Container Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Star Container.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Star Container.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Time Star Container Variant.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Level Completed Popup/Time Star Container Variant.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Main Menu GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Main Menu GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Main Menu.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Main Menu/Level Selection Container.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Main Menu/Level Selection Container.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Play Mode GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Play Mode GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Settings Menu GUI.prefab
+Newton's Gumball Ralley/Assets/Prefabs/GUI/Settings Menu GUI.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Managers.meta
+Newton's Gumball Ralley/Assets/Prefabs/Managers/GUI Manager.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Managers/GUI Manager.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Managers/Game State Manager.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Managers/Game State Manager.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Managers/Level Manager.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Managers/Level Manager.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Managers/Managers.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Managers/Managers.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/MenuManager.prefab
+Newton's Gumball Ralley/Assets/Prefabs/MenuManager.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Obstacles.meta
+Newton's Gumball Ralley/Assets/Prefabs/Obstacles/DestructibleObject.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Obstacles/DestructibleObject.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Obstacles/Kill Obstacle.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Obstacles/Kill Obstacle.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/Ralph.prefab
+Newton's Gumball Ralley/Assets/Prefabs/Ralph.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/AxeWedge.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/AxeWedge.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/FulcrumScrew.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/FulcrumScrew.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear Background.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear Background.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear1.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear1.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear2.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear2.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear3.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Gear3.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Inclined Plane 1.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Inclined Plane 1.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Inclined Plane 2.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Inclined Plane 2.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/LargeAxle.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/LargeAxle.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/LeverFulcrum.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/LeverFulcrum.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/LeverPlatform.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/LeverPlatform.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Pulley.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Pulley.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Rotation.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Rotation/Rotation Arrows.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Rotation/Rotation Arrows.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Screw.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Screw.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/SmallAxle.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/SmallAxle.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/SpikeWedge.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/SpikeWedge.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Wheel.prefab
+Newton's Gumball Ralley/Assets/Prefabs/SimpleMachines/Wheel.prefab.meta
+Newton's Gumball Ralley/Assets/Prefabs/_Deprecated.meta
+Newton's Gumball Ralley/Assets/Prefabs/_Deprecated/Start Point.prefab
+Newton's Gumball Ralley/Assets/Prefabs/_Deprecated/Start Point.prefab.meta
+Newton's Gumball Ralley/Assets/PulleyBehavior.cs
+Newton's Gumball Ralley/Assets/PulleyBehavior.cs.meta
+Newton's Gumball Ralley/Assets/Resources.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/AxeWedge.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/AxeWedge.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/DestructibleObject.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/DestructibleObject.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/EnvironmentBlock.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/EnvironmentBlock.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Gear1.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Gear1.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Gear2.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Gear2.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Gear3.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Gear3.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/GearBackground.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/GearBackground.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/InclinePlane1.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/InclinePlane1.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/InclinePlane2.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/InclinePlane2.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/LargeAxle.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/LargeAxle.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/LeverFulcrum.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/LeverFulcrum.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/LeverPlatform.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/LeverPlatform.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Ralph.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Ralph.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Screw.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Screw.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/SmallAxle.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/SmallAxle.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/SpikeWedge.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/SpikeWedge.asset.meta
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Wheel.asset
+Newton's Gumball Ralley/Assets/Resources/PlacedObjectMetaData/Wheel.asset.meta
+Newton's Gumball Ralley/Assets/Scenes.meta
+Newton's Gumball Ralley/Assets/Scenes/Game.unity
+Newton's Gumball Ralley/Assets/Scenes/Game.unity.meta
+Newton's Gumball Ralley/Assets/Scenes/Main Menu.unity
+Newton's Gumball Ralley/Assets/Scenes/Main Menu.unity.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/CharacterMetaData.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/CharacterMetaData/Max.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/CharacterMetaData/Max.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/CharacterMetaData/Quinn.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/CharacterMetaData/Quinn.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/Conversation.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/Conversation/World2Level2Conversation.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/Conversation/World2Level2Conversation.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/BallBounce.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/BallBounce.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/BallRolling.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/BallRolling.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/ButtonClick.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/ButtonClick.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/ButtonHover.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/ButtonHover.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/Screw.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/Screw.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/Wheel.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Effects/Wheel.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/CutsceneMusic.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/CutsceneMusic.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/DialogueMusic.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/DialogueMusic.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/Level1Music.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/Level1Music.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/Level2Music.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/Level2Music.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/MenuMusic.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/Music/MenuMusic.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-explaining-sound-metadata.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-explaining-sound-metadata.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-happy-sound-metadata.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-happy-sound-metadata.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-neutral-sound-metadata.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-neutral-sound-metadata.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-oops-sound-metadata.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-oops-sound-metadata.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-surprised-sound-metadata.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-surprised-sound-metadata.asset.meta
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-thinking-sound-metadata.asset
+Newton's Gumball Ralley/Assets/ScriptableObjects/SoundMetaData/_Deprecated/example-character-thinking-sound-metadata.asset.meta
+Newton's Gumball Ralley/Assets/Scripts.meta
+Newton's Gumball Ralley/Assets/Scripts/.DS_Store
+Newton's Gumball Ralley/Assets/Scripts/Audio.meta
+Newton's Gumball Ralley/Assets/Scripts/Audio/AudioManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Audio/AudioManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Audio/GUIAudioManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Audio/GUIAudioManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Audio/SoundMetaData.cs
+Newton's Gumball Ralley/Assets/Scripts/Audio/SoundMetaData.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Background.meta
+Newton's Gumball Ralley/Assets/Scripts/Background/RepeatedBackgroundManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Background/RepeatedBackgroundManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Ball.meta
+Newton's Gumball Ralley/Assets/Scripts/Ball/BallMovement.cs
+Newton's Gumball Ralley/Assets/Scripts/Ball/BallMovement.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Ball/GumballMachineManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Ball/GumballMachineManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Camera.meta
+Newton's Gumball Ralley/Assets/Scripts/Camera/CameraMovement.cs
+Newton's Gumball Ralley/Assets/Scripts/Camera/CameraMovement.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Core.meta
+Newton's Gumball Ralley/Assets/Scripts/Core/GameStateManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Core/GameStateManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Core/LevelEditorWindow.cs
+Newton's Gumball Ralley/Assets/Scripts/Core/LevelEditorWindow.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Core/LevelManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Core/LevelManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Core/LevelSerializer.cs
+Newton's Gumball Ralley/Assets/Scripts/Core/LevelSerializer.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Core/PlacedObjectManager.cs
+Newton's Gumball Ralley/Assets/Scripts/Core/PlacedObjectManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Core/PlacedObjectMetaData.cs
+Newton's Gumball Ralley/Assets/Scripts/Core/PlacedObjectMetaData.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Destructible.cs
+Newton's Gumball Ralley/Assets/Scripts/Destructible.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/EndPointManager.cs
+Newton's Gumball Ralley/Assets/Scripts/EndPointManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/CutsceneLoader.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/CutsceneLoader.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue/CharacterMetaData.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue/CharacterMetaData.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue/Conversation.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue/Conversation.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue/DialogueManager.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/Dialogue/DialogueManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/ContentController.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/ContentController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/EditModeManager.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/EditModeManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/PlaceableObjectManager.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/PlaceableObjectManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/TabController.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/EditMode/TabController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/GUIController.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/GUIController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/GUIManager.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/GUIManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/LevelCompletedPopup.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/LevelCompletedPopup/RandomImageRotator.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/LevelCompletedPopup/RandomImageRotator.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/MainMenu.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/MainMenu/LevelSelectionButtonManager.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/MainMenu/LevelSelectionButtonManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/GUI/MainMenu/LevelSelectionManager.cs
+Newton's Gumball Ralley/Assets/Scripts/GUI/MainMenu/LevelSelectionManager.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Obstacle.meta
+Newton's Gumball Ralley/Assets/Scripts/Obstacle/DestructibleObstacle.cs
+Newton's Gumball Ralley/Assets/Scripts/Obstacle/DestructibleObstacle.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Obstacle/DestructibleObstacleLayerController.cs
+Newton's Gumball Ralley/Assets/Scripts/Obstacle/DestructibleObstacleLayerController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Obstacle/KillObstacle.cs
+Newton's Gumball Ralley/Assets/Scripts/Obstacle/KillObstacle.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/DraggingController.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/DraggingController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/FulcrumScrewBehavior.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/FulcrumScrewBehavior.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/GearBehavior.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/GearBehavior.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/RotatingController.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/RotatingController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/ScrewBehavior.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/ScrewBehavior.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/SnapChecker.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/SnapChecker.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/WedgeLayerController.cs
+Newton's Gumball Ralley/Assets/Scripts/Simple Machines/WedgeLayerController.cs.meta
+Newton's Gumball Ralley/Assets/Scripts/StartPointManager.cs
+Newton's Gumball Ralley/Assets/Scripts/StartPointManager.cs.meta
+Newton's Gumball Ralley/Assets/SpriteShapeProfile.meta
+Newton's Gumball Ralley/Assets/SpriteShapeProfile/DefaultSpriteShapeProfile.asset
+Newton's Gumball Ralley/Assets/SpriteShapeProfile/DefaultSpriteShapeProfile.asset.meta
+Newton's Gumball Ralley/Assets/StreamingAssets.meta
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData.meta
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/0-0.json
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/0-0.json.meta
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/2-1.json
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/2-1.json.meta
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/2-2.json
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/2-2.json.meta
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/2-3.json
+Newton's Gumball Ralley/Assets/StreamingAssets/LevelsData/2-3.json.meta
+Newton's Gumball Ralley/Assets/Textures.meta
+Newton's Gumball Ralley/Assets/Textures/AxeWedge.png
+Newton's Gumball Ralley/Assets/Textures/AxeWedge.png.meta
+Newton's Gumball Ralley/Assets/Textures/Background.meta
+Newton's Gumball Ralley/Assets/Textures/Background/background.jpg
+Newton's Gumball Ralley/Assets/Textures/Background/background.jpg.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/BackgroundImages.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/BackgroundImages/BackgroundImage1.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/BackgroundImages/BackgroundImage1.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/BackgroundImages/BackgroundImage2.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/BackgroundImages/BackgroundImage2.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/BlankLogo.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/BlankLogo.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/de-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/de-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/eng-04.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/eng-04.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/fr-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/fr-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/gb-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/gb-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/it-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/it-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/port-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/port-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/ru-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/ru-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/spain-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/Languages/spain-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/LogoUI.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/LogoUI.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/backButton.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/backButton.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/easyButton-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/easyButton-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/exitButton 1.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/exitButton 1.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/forwardButton-01.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/forwardButton-01.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/hardButton-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/hardButton-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/info-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/info-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/logo.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/logo.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/mediumButton-03.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/mediumButton-03.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/menuButton.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/menuButton.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/nextButton-01.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/nextButton-01.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/pauseButton-01.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/pauseButton-01.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/playButton-01.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/playButton-01.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/playButtonBlack-01.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/playButtonBlack-01.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/restartButton-01.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/restartButton-01.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/soundButton.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/soundButton.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/soundButtonOff.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Buttons/soundButtonOff.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/star.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/star.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/starDoodle-02.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/starDoodle-02.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/starDoodle.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/starDoodle.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/starDoodleGrey-02.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/starDoodleGrey-02.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/stickPaper-04.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Extra/stickPaper-04.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Fonts.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Fonts/Fantazyor.ttf
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Fonts/Fantazyor.ttf.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Fonts/neucha.otf
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Fonts/neucha.otf.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BlankBigGreenPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BlankBigGreenPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BlankPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BlankPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BlueSmallBlankPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BlueSmallBlankPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BrawnBlankPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/BrawnBlankPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/GameOverPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/GameOverPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/GreenBlankPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/GreenBlankPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/LevelClearedPanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/LevelClearedPanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/PausePanel.png
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/Panels/PausePanel.png.meta
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/README.txt
+Newton's Gumball Ralley/Assets/Textures/Doodle UI Pack/README.txt.meta
+Newton's Gumball Ralley/Assets/Textures/GUI.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Explaining.png
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Explaining.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Happy.png
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Happy.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Neutral.png
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Neutral.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Oops.png
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Oops.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Thinking.png
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/Thinking.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/dialogue-background.png
+Newton's Gumball Ralley/Assets/Textures/GUI/Dialogue/dialogue-background.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/bg.png
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/bg.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/pause.png
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/pause.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/play.png
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/play.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/restart.png
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/restart.png.meta
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/star_1.png
+Newton's Gumball Ralley/Assets/Textures/GUI/_Deprecated/star_1.png.meta
+Newton's Gumball Ralley/Assets/Textures/Gumballs.meta
+Newton's Gumball Ralley/Assets/Textures/Gumballs/GumballMachineClosed.png
+Newton's Gumball Ralley/Assets/Textures/Gumballs/GumballMachineClosed.png.meta
+Newton's Gumball Ralley/Assets/Textures/Gumballs/GumballMachineOpen.png
+Newton's Gumball Ralley/Assets/Textures/Gumballs/GumballMachineOpen.png.meta
+Newton's Gumball Ralley/Assets/Textures/Gumballs/Gumballs.png
+Newton's Gumball Ralley/Assets/Textures/Gumballs/Gumballs.png.meta
+Newton's Gumball Ralley/Assets/Textures/Obstacles.meta
+Newton's Gumball Ralley/Assets/Textures/Obstacles/DestructibleObject.png
+Newton's Gumball Ralley/Assets/Textures/Obstacles/DestructibleObject.png.meta
+Newton's Gumball Ralley/Assets/Textures/Obstacles/DestructibleObjectLeft.png
+Newton's Gumball Ralley/Assets/Textures/Obstacles/DestructibleObjectLeft.png.meta
+Newton's Gumball Ralley/Assets/Textures/Obstacles/DestructibleObjectRight.png
+Newton's Gumball Ralley/Assets/Textures/Obstacles/DestructibleObjectRight.png.meta
+Newton's Gumball Ralley/Assets/Textures/Ralph.png
+Newton's Gumball Ralley/Assets/Textures/Ralph.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Axels.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Axels.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/InclinedPlanes.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/InclinedPlanes.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/LeverFulcrum.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/LeverFulcrum.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/LeverPlatform.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/LeverPlatform.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/NewGear1.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/NewGear1.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/NewGear2.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/NewGear2.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/PulleyComplex.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/PulleyComplex.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/PulleyPlatform.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/PulleyPlatform.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Screw.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Screw.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/SimplePulley.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/SimplePulley.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/WedgePulley.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/WedgePulley.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Wheels.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Wheels.png.meta
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Wheels2.png
+Newton's Gumball Ralley/Assets/Textures/SimpleMachines/Wheels2.png.meta
+Newton's Gumball Ralley/Assets/Textures/SpikeWedge.png
+Newton's Gumball Ralley/Assets/Textures/SpikeWedge.png.meta
+Newton's Gumball Ralley/Assets/Videos.meta
+Newton's Gumball Ralley/Assets/Videos/Cutscene Texture.renderTexture
+Newton's Gumball Ralley/Assets/Videos/Cutscene Texture.renderTexture.meta
+Newton's Gumball Ralley/Assets/Videos/Opening Cutscene.mp4
+Newton's Gumball Ralley/Assets/Videos/Opening Cutscene.mp4.meta
+Newton's Gumball Ralley/Packages/manifest.json
+Newton's Gumball Ralley/Packages/packages-lock.json
+Newton's Gumball Ralley/ProjectSettings/AudioManager.asset
+Newton's Gumball Ralley/ProjectSettings/ClusterInputManager.asset
+Newton's Gumball Ralley/ProjectSettings/DynamicsManager.asset
+Newton's Gumball Ralley/ProjectSettings/EditorBuildSettings.asset
+Newton's Gumball Ralley/ProjectSettings/EditorSettings.asset
+Newton's Gumball Ralley/ProjectSettings/GraphicsSettings.asset
+Newton's Gumball Ralley/ProjectSettings/InputManager.asset
+Newton's Gumball Ralley/ProjectSettings/NavMeshAreas.asset
+Newton's Gumball Ralley/ProjectSettings/NetworkManager.asset
+Newton's Gumball Ralley/ProjectSettings/PackageManagerSettings.asset
+Newton's Gumball Ralley/ProjectSettings/Physics2DSettings.asset
+Newton's Gumball Ralley/ProjectSettings/PresetManager.asset
+Newton's Gumball Ralley/ProjectSettings/ProjectSettings.asset
+Newton's Gumball Ralley/ProjectSettings/ProjectVersion.txt
+Newton's Gumball Ralley/ProjectSettings/QualitySettings.asset
+Newton's Gumball Ralley/ProjectSettings/TagManager.asset
+Newton's Gumball Ralley/ProjectSettings/TimeManager.asset
+Newton's Gumball Ralley/ProjectSettings/UnityConnectSettings.asset
+Newton's Gumball Ralley/ProjectSettings/VFXManager.asset
+Newton's Gumball Ralley/ProjectSettings/XRSettings.asset
+README.md

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3404477755399522254}
   - component: {fileID: 3669100821831615375}
   - component: {fileID: 6768288585375491447}
+  - component: {fileID: -5243119659995341327}
   m_Layer: 0
   m_Name: Gear3
   m_TagString: SimpleMachine
@@ -342,6 +343,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!114 &-5243119659995341327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4168943314005634181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1634471169d14e45afa46ba5c6cf3b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
 --- !u!1 &6048876460171187094
 GameObject:
   m_ObjectHideFlags: 0
