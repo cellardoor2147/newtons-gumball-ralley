@@ -160,8 +160,8 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
-                    AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
-                    AudioManager.instance.PauseSound(instance.DialogueMusicSound.name);
+                    AudioManager.instance.StopSound(instance.Level2MusicSound.name);
+                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
                     if (!AudioManager.instance.isPlaying(instance.LevelCompleteSound.name))
                     {
                         AudioManager.instance.PlaySound(instance.LevelCompleteSound.name);

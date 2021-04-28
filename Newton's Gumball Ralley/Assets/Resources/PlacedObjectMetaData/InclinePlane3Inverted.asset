@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
   m_Name: InclinePlane3Inverted
   m_EditorClassIdentifier: 
-  objectName: 
-  prefab: {fileID: 0}
+  objectName: InclinePlane3Inverted
+  prefab: {fileID: 1893343710313732763, guid: 7c4c9d4ceb19643efa495a453b8320ac, type: 3}
   canSnap: 0
-  isSimpleMachine: 0
-  amountOfScrap: 0
+  isSimpleMachine: 1
+  amountOfScrap: 8
