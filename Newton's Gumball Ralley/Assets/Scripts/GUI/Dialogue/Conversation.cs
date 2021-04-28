@@ -35,6 +35,7 @@ namespace GUI.Dialogue
         public int levelIndex;
         public CharacterMetaData leftSpeaker;
         public CharacterMetaData rightSpeaker;
-        public Line[] lines;
+        public Line[] linesAtBeginningOfLevel;
+        public Line[] linesAtEndOfLevel;
     }
 }
