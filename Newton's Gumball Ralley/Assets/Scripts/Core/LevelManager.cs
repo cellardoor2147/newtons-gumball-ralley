@@ -84,7 +84,6 @@ namespace Core
         {
             currentLevelData = levelData;
             currentLevelIsComplete = false;
-            ScrapManager.ResetRemainingScrap();
             bool applicationIsNotRunning = Application.isEditor && !Application.isPlaying;
             if (applicationIsNotRunning)
             {
@@ -96,6 +95,10 @@ namespace Core
                 GameStateManager.StartStaticCoroutine(
                     LevelSerializer.AsyncSetSceneWithLevelData(levelData)
                 );
+                ScrapManager.ResetRemainingScrap();
+                GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.InclinePlane));
+                GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
+                GameStateManager.StartStaticCoroutine(EditModeManager.DisableFutureTabs());
             }
 
         }

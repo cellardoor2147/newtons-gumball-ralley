@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cbf80084a5a13054eb70adb2ed08d07c, type: 3}
-  m_Name: InclinePlane1Inverted
+  m_Name: InclinePlane3Inverted
   m_EditorClassIdentifier: 
-  objectName: InclinePlane1Inverted
-  prefab: {fileID: 8747652431741421954, guid: 7bb130da7b560fd4ab6e4bb066d464ac, type: 3}
+  objectName: InclinePlane3Inverted
+  prefab: {fileID: 1893343710313732763, guid: 7c4c9d4ceb19643efa495a453b8320ac, type: 3}
   canSnap: 0
   isSimpleMachine: 1
-  amountOfScrap: 15
+  amountOfScrap: 8

@@ -12,6 +12,7 @@ namespace GUI.EditMode
         private Image backgroundImage;
         private Color originalBackgroundImageColor;
         private TextMeshProUGUI labelText;
+        private bool isDisabled;
 
         public PlaceableObjectType objectType;
 
@@ -23,7 +24,7 @@ namespace GUI.EditMode
         }
         public void OnPointerClick(PointerEventData pointerEventData)
         {
-            if (isClickable)
+            if (isDisabled)
             {
                 return;
             }
@@ -38,8 +39,35 @@ namespace GUI.EditMode
 
         public void Show()
         {
+            if (!isDisabled)
+            {
+                backgroundImage.color = originalBackgroundImageColor;
+                labelText.color = Color.black;
+            }
+        }
+
+        public void ReddenAndDisable()
+        {
+            backgroundImage.color = new Color(.25f, 0, 0, 1);
+            labelText.color = new Color(.5f, 0, 0, 1);
+            isDisabled = true;
+        }
+
+        public void Disable()
+        {
+            isDisabled = true;
+        }
+
+        public void RevertToOriginalColorsAndEnable()
+        {
             backgroundImage.color = originalBackgroundImageColor;
             labelText.color = Color.black;
+            isDisabled = false;
+        }
+
+        public void Enable()
+        {
+            isDisabled = false;
         }
     }
 }

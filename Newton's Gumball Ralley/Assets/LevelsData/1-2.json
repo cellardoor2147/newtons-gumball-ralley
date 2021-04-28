@@ -1,0 +1,328 @@
+{
+    "worldIndex": 1,
+    "levelIndex": 2,
+    "customLevelName": "",
+    "repeatedBackgroundRows": 4,
+    "repeatedBackgroundColumns": 8,
+    "environmentObjects": [
+        {
+            "objectName": "Ralph",
+            "transform": {
+                "position": {
+                    "x": 3.927907943725586,
+                    "y": -7.004563331604004,
+                    "z": -5.791015625
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 10.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 30.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": -10.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 30.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -35.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.09999999403953552,
+                    "y": 60.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 35.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.09999999403953552,
+                    "y": 60.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -7.480000019073486,
+                    "y": -5.420000076293945,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -1.9600000381469727,
+                    "y": -9.109999656677246,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -9.470000267028809,
+                    "y": 0.5099999904632568,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 4.5,
+                    "y": 2.5999999046325685,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -3.2100000381469728,
+                    "y": -6.739999771118164,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.3826834261417389,
+                    "w": 0.9238795638084412
+                },
+                "scale": {
+                    "x": 1.2999999523162842,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -4.739999771118164,
+                    "y": -7.260000228881836,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.7000000476837159,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 5.050000190734863,
+                    "y": -8.229999542236329,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 2.0,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 1.4800000190734864,
+                    "y": -8.489999771118164,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.2588191032409668,
+                    "w": 0.9659258127212524
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
+        }
+    ],
+    "preplacedObjects": [
+        {
+            "objectName": "",
+            "transform": {
+                "position": {
+                    "x": -0.9320920705795288,
+                    "y": -8.46456241607666,
+                    "z": -5.791015625
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "InclinePlane1",
+            "transform": {
+                "position": {
+                    "x": -1.2620919942855836,
+                    "y": -8.324563026428223,
+                    "z": -5.791015625
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        }
+    ],
+    "gumballMachineTransform": {
+        "position": {
+            "x": -6.150000095367432,
+            "y": -2.4800000190734865,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+        },
+        "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "placeableScrapLimit": 30.0,
+    "starConditions": {
+        "timeConstraint": 10.0,
+        "scrapConstraint": 15.0
+    }
+}
