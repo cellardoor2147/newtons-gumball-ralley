@@ -10,7 +10,8 @@ public class EndPointManager : MonoBehaviour
             && GameStateManager.GetGameState().Equals(GameState.Playing))
         {
             Timer.StopTimer();
-            GameStateManager.SetGameState(GameState.LevelCompleted);
+            LevelManager.SetCurrentLevelIsComplete(true);
+            GameStateManager.SetGameState(GameState.Dialogue);
         }
     }
 }

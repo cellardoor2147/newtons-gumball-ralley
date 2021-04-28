@@ -12,7 +12,8 @@ namespace Core
         private static List<LevelData> levelsData = new List<LevelData>();
         private static LevelData currentLevelData;
         private static LevelManager instance;
-        
+        private static bool currentLevelIsComplete;
+
         private void Awake()
         {
             SetInstance();
@@ -81,7 +82,8 @@ namespace Core
 
         public static void LoadLevelWithLevelData(LevelData levelData)
         {
-            currentLevelData = levelData;           
+            currentLevelData = levelData;
+            currentLevelIsComplete = false;
             bool applicationIsNotRunning = Application.isEditor && !Application.isPlaying;
             if (applicationIsNotRunning)
             {
@@ -89,7 +91,7 @@ namespace Core
             }
             else
             {
-                GameStateManager.SetGameState(GameState.Editing);
+                GameStateManager.SetGameState(GameState.Dialogue);
                 GameStateManager.StartStaticCoroutine(
                     LevelSerializer.AsyncSetSceneWithLevelData(levelData)
                 );
@@ -98,6 +100,7 @@ namespace Core
                 GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
                 GameStateManager.StartStaticCoroutine(EditModeManager.DisableFutureTabs());
             }
+
         }
 
         public static int GetCurrentWorldIndex()
@@ -138,6 +141,16 @@ namespace Core
         public static Vector3 GetCurrentLevelGumballMachineScale()
         {
             return currentLevelData.gumballMachineTransform.scale;
+        }
+
+        public static bool GetCurrentLevelIsComplete()
+        {
+            return currentLevelIsComplete;
+        }
+
+        public static void SetCurrentLevelIsComplete(bool isComplete)
+        {
+            currentLevelIsComplete = isComplete;
         }
     }
 }
