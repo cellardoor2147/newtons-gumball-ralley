@@ -89,13 +89,13 @@ namespace Ball
                 case GumballMachineState.Closed:
                     ballSpriteRenderer.enabled = false;
                     AudioManager.instance.StopSound(ShakeSound.name);
-                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
+                    StartCoroutine(ResetBallAndGumballMachine());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     SetClickability(true);
                     break;
                 case GumballMachineState.Shaking:
                     SetClickability(false);
-                    StartCoroutine(ResetBallPositionAndGumballMachineTransform());
+                    StartCoroutine(ResetBallAndGumballMachine());
                     spriteRender.sprite = gumballMachineClosedSprite;
                     StartCoroutine(ShakeThenResetTransform());
                     break;
@@ -108,9 +108,9 @@ namespace Ball
             this.gumballMachineState = gumballMachineState;
         }
 
-        private IEnumerator ResetBallPositionAndGumballMachineTransform()
+        private IEnumerator ResetBallAndGumballMachine()
         {
-            yield return ballMovement.AsyncResetPosition();
+            yield return ballMovement.AsyncReset();
             SetOriginalTransformAndResetTransform();
         }
 

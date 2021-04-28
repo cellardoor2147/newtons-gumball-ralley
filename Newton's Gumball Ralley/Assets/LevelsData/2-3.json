@@ -6,6 +6,48 @@
     "repeatedBackgroundColumns": 15,
     "environmentObjects": [
         {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": 1.3585877418518067,
+                    "y": -9.307801246643067,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -12.429742813110352,
+                    "y": -9.423345565795899,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
@@ -404,6 +446,7 @@
             "z": 1.0
         }
     },
+    "placeableScrapLimit": 0.0,
     "starConditions": {
         "timeConstraint": 10.0,
         "scrapConstraint": 50.0
