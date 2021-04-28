@@ -44,6 +44,7 @@ namespace Core
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
         [SerializeField] SoundMetaData LevelCompleteSound;
+        [SerializeField] SoundMetaData BallRollingSound;
         
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] PlacedObjectMetaData axleMetaData;
@@ -124,6 +125,7 @@ namespace Core
                     break;
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
+                    AudioManager.instance.StopSound(instance.BallRollingSound.name);
                     AudioManager.instance.StopSound(instance.MenuMusicSound.name);
                     AudioManager.instance.StopSound(instance.Level2MusicSound.name);
                     if (!AudioManager.instance.isPlaying(instance.DialogueMusicSound.name))
