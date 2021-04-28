@@ -42,13 +42,14 @@ namespace Core
         [SerializeField] SoundMetaData Level1MusicSound;
         [SerializeField] SoundMetaData Level2MusicSound;
         [SerializeField] SoundMetaData DialogueMusicSound;
-
+        [SerializeField] SoundMetaData LevelCompleteSound;
+        
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] PlacedObjectMetaData axleMetaData;
         [SerializeField] PlacedObjectMetaData gear1MetaData;
         [SerializeField] PlacedObjectMetaData gear3MetaData;
-        [SerializeField] PlacedObjectMetaData wheelMetaData;
         [SerializeField] PlacedObjectMetaData screwMetaData;
+        [SerializeField] PlacedObjectMetaData wheelMetaData;
 
         private GameState previousGameState;
         private GameState gameState;
@@ -159,7 +160,12 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
-                    // TODO: play victory sound
+                    AudioManager.instance.PauseSound(instance.Level2MusicSound.name);
+                    AudioManager.instance.PauseSound(instance.DialogueMusicSound.name);
+                    if (!AudioManager.instance.isPlaying(instance.LevelCompleteSound.name))
+                    {
+                        AudioManager.instance.PlaySound(instance.LevelCompleteSound.name);
+                    }
                     break;
                 default:
                     Debug.Log($"Tried setting invalid game state: {gameState}");
@@ -289,7 +295,7 @@ namespace Core
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
-                .GetComponentsInChildren<PlacedObjectManager>(true)
+                .GetComponentsInChildren<PlacedObjectManager>(false)
                 .ToList()
                 .ForEach(
                     placedObjectManager => placedObjectManager.ResetTransform()
@@ -425,22 +431,22 @@ namespace Core
         private static IEnumerator RevertObjectsFromGray(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                GameObject.Find(key)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.RevertFromGray()
+                    placedObjectManager => placedObjectManager.RevertFromGray()
             );
         }
 
         private static IEnumerator GrayOutObjects(string key)
         {
             yield return new WaitUntil(() => GameObject.Find(key) != null);
-            GameObject.Find(key)
-                .GetComponentsInChildren<DraggingController>(true)
+                GameObject.Find(key)
+                .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
                 .ForEach(
-                    draggingController => draggingController.GrayOut()
+                    placedObjectManager => placedObjectManager.GrayOut()
             );
         }
 

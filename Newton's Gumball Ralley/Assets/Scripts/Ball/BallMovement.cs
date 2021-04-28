@@ -3,6 +3,7 @@ using UnityEngine;
 using Core;
 using LevelTimer;
 using Audio;
+using SimpleMachine;
 
 namespace Ball
 {
@@ -20,9 +21,23 @@ namespace Ball
         [SerializeField] SoundMetaData BounceSound;
         [SerializeField] SoundMetaData RollingSound;
 
+        [SerializeField] PlacedObjectMetaData simplePulleyMetaData;
+        [SerializeField] PlacedObjectMetaData compoundPulleyMetaData;
+
+
         [SerializeField] private float fadeTime = 0.5f;
         [SerializeField] private float finalVolume = 0f;
         [SerializeField] private float rollingVolume = 0.2f;
+
+        private Vector2 pullForce;
+        private Vector2 pushForce;
+        private Vector2 holdForce;
+        private Vector2 pulleyPosition;
+        private bool pulledToMiddle;
+        private bool enteredPlatform;
+        private Transform parent;
+
+        private PulleyBehavior pulleyBehavior;
 
         private bool isFading;
         private bool isTouching;
@@ -31,6 +46,10 @@ namespace Ball
         {
             rigidBody = GetComponent<Rigidbody2D>();
             rigidBody.gravityScale = 0.0f;
+            pullForce = new Vector2(1, 0);
+            holdForce = new Vector2(100, 0);
+            pushForce = new Vector2(25, 0);
+            parent = transform.parent;
         }
 
         private void Start()
@@ -48,23 +67,38 @@ namespace Ball
                 AudioManager.instance.StopSound(RollingSound.name);
                 UpdateBallPositionRelativeToSling();
             }
-            else 
-            {
-                if (rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) && isTouching) 
+            else if (enteredPlatform) {
+                if (pulledToMiddle && pulleyBehavior.grounded)
                 {
-                    AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
-                    AudioManager.instance.PlaySound(RollingSound.name);
-                    isFading = false;
-                } 
-                else if (rigidBody.velocity.magnitude < 0.01f || !isTouching) 
+                    rigidBody.velocity = new Vector2(rigidBody.velocity.x / 2, rigidBody.velocity.y);
+                }
+                else if (!pulleyBehavior.grounded)
                 {
-                    if (AudioManager.instance.isPlaying(RollingSound.name) && !isFading) 
-                    {
-                        AudioManager.instance.FadeSound(RollingSound.name, fadeTime, finalVolume);
-                        AudioManager.instance.StopSound(RollingSound.name);
-                        AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
-                        isFading = true;
+                    transform.parent = parent;
+                    if (pulleyBehavior.ballRollDirection.Equals(PulleyBehavior.BallRollDirection.Right)){
+                        rigidBody.AddForce(pushForce);
                     }
+                    else 
+                    {
+                        rigidBody.AddForce(-1 * pushForce);
+                    }
+                }
+            }
+            if (hasBeenReleased && rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) 
+                && isTouching && !enteredPlatform) 
+            {
+                AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
+                AudioManager.instance.PlaySound(RollingSound.name);
+                isFading = false;
+            } 
+            else if (rigidBody.velocity.magnitude < 0.01f || !isTouching || !GameStateManager.GetGameState().Equals(GameState.Playing)) 
+            {
+                if (AudioManager.instance.isPlaying(RollingSound.name) && !isFading) 
+                {
+                    AudioManager.instance.FadeSound(RollingSound.name, fadeTime, finalVolume);
+                    AudioManager.instance.StopSound(RollingSound.name);
+                    AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
+                    isFading = true;
                 }
             }
         }
@@ -124,7 +158,7 @@ namespace Ball
 
         private void OnCollisionEnter2D(Collision2D other) 
         {
-            if (hasBeenReleased) 
+            if (hasBeenReleased && GameStateManager.GetGameState().Equals(GameState.Playing)) 
             {
                 isTouching = true;
                 AudioManager.instance.PlaySound(BounceSound.name);
@@ -139,6 +173,44 @@ namespace Ball
             } 
         }
 
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.name.Contains("FlatPlatform"))
+            {
+                if (other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(simplePulleyMetaData)
+                    || other.transform.parent.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(compoundPulleyMetaData))
+                {
+                    pulledToMiddle = false;
+                    enteredPlatform = !enteredPlatform;
+                    pulleyBehavior = other.transform.parent.parent.gameObject.GetComponent<PulleyBehavior>();
+                    pulleyPosition = other.transform.position;
+                    if (other.offset.x > 0 && rigidBody.velocity.x < 0)
+                    {
+                        StartCoroutine(PulltoMiddle(-1 * pullForce, other.gameObject));
+                    }
+                    else if (other.offset.x < 0 && rigidBody.velocity.x > 0)
+                    {
+                        StartCoroutine(PulltoMiddle(pullForce, other.gameObject));
+                    }
+                    else
+                    {
+                        enteredPlatform = false;
+                    }
+                }
+            }
+        }
+
+        private IEnumerator PulltoMiddle(Vector2 force, GameObject pulleyPlatform)
+        {
+            while (transform.position.x < (pulleyPosition.x - 0.1f)
+                    || transform.position.x > (pulleyPosition.x + 0.1f))
+            {
+                rigidBody.AddForce(force);
+                yield return new WaitForFixedUpdate();
+            }
+            SetAsChild(pulleyPlatform);
+            pulledToMiddle = true;
+        }
         private IEnumerator ReleaseAfterDelay()
         {
             yield return new WaitForSeconds(delayAfterRelease);
@@ -155,11 +227,20 @@ namespace Ball
         private void ResetPosition()
         {
             transform.position = GetSlingAnchorPosition();
+            transform.parent = parent;
             rigidBody.velocity = Vector2.zero;
             rigidBody.angularVelocity = 0f;
             rigidBody.gravityScale = 0f;
             GetComponent<SpringJoint2D>().enabled = true;
             hasBeenReleased = false;
+            enteredPlatform = false;
+            isTouching = false;
+            AudioManager.instance.StopSound(RollingSound.name);
+        }
+
+        private void SetAsChild(GameObject pulleyPlatform)
+        {
+            transform.parent = pulleyPlatform.transform;
         }
     }
 }

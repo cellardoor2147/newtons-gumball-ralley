@@ -445,6 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654875e9986284c7ca183bc92c7184d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldRise: 0
   spinState: 0
   GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
   gearUIPrefab: {fileID: 8872308249849845105, guid: 670ed790a28b1444ea6f80aabfdbc435,
