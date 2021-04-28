@@ -376,7 +376,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -406,8 +406,7 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  smallAxleMetaData: {fileID: 0}
-  largeAxleMetaData: {fileID: 0}
+  axleMetaData: {fileID: 11400000, guid: 2699ab06bb5e34bf59fcefaf2bf9572b, type: 2}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &3901163314908294279
 MonoBehaviour:
@@ -446,5 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654875e9986284c7ca183bc92c7184d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  torque: 0
+  shouldRise: 0
+  spinState: 0
   GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
+  gearUIPrefab: {fileID: 8872308249849845105, guid: 670ed790a28b1444ea6f80aabfdbc435,
+    type: 3}

@@ -79,6 +79,11 @@ namespace GUI.EditMode
             }
         }
 
+        private void OnEnable()
+        {
+            StartCoroutine(AsyncToggleButtonsBasedOnAvailableScrap());
+        }
+
         private void SetPlaceableObjectsMenuPositionConstraints()
         {
             float tabsContainerHeight = placeableObjectsMenuTransform
@@ -139,6 +144,12 @@ namespace GUI.EditMode
                     toolbarManager.SetContent(contentController.gameObject);
                 }
             }
+        }
+
+        private IEnumerator AsyncToggleButtonsBasedOnAvailableScrap()
+        {
+            yield return new WaitUntil(() => ActiveContentController != null);
+            ToggleButtonsBasedOnAvailableScrap();
         }
 
         public static void ToggleButtonsBasedOnAvailableScrap()
