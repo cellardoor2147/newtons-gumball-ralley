@@ -20,7 +20,6 @@ namespace Ball
         [SerializeField] private float fadeTime = 0.5f;
         [SerializeField] private float finalVolume = 0f;
         [SerializeField] private float rollingVolume = 0.2f;
-        [SerializeField] private float dieAnimationSpeed = 1f;
 
         private Vector2 pullForce;
         private Vector2 pushForce;
@@ -29,15 +28,16 @@ namespace Ball
         private bool pulledToMiddle;
         private bool enteredPlatform;
         private Transform parent;
-
         private PulleyBehavior pulleyBehavior;
-
         private bool isFading;
         private bool isTouching;
         private Rigidbody2D rigidBody;
         private bool isBeingPulled;
         private bool hasBeenReleased;
         private SpriteRenderer spriteRenderer;
+
+        public Vector3 originalScale;
+        public bool hasBeenDispensed;
 
         private void Awake()
         {
@@ -48,6 +48,7 @@ namespace Ball
             pushForce = new Vector2(25, 0);
             parent = transform.parent;
             spriteRenderer = GetComponent<SpriteRenderer>();
+            originalScale = transform.localScale;
         }
 
         private void Start()
@@ -128,7 +129,7 @@ namespace Ball
 
         private void OnMouseDown()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Playing))
+            if (!GameStateManager.GetGameState().Equals(GameState.Playing) || !hasBeenDispensed)
             {
                 return;
             }
@@ -140,7 +141,7 @@ namespace Ball
 
         private void OnMouseUp()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Playing))
+            if (!GameStateManager.GetGameState().Equals(GameState.Playing) || !hasBeenDispensed)
             {
                 return;
             }
@@ -234,6 +235,7 @@ namespace Ball
         {
             StopAllCoroutines();
             transform.position = GetSlingAnchorPosition();
+            transform.localScale = originalScale;
             transform.parent = parent;
             rigidBody.velocity = Vector2.zero;
             rigidBody.angularVelocity = 0f;
@@ -250,6 +252,7 @@ namespace Ball
                 spriteRenderer.color.b,
                 1f
             );
+            hasBeenDispensed = false;
         }
 
         public void Die()

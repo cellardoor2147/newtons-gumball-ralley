@@ -254,8 +254,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: -25}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchoredPosition: {x: 150, y: -137.5}
+  m_SizeDelta: {x: 300, y: -125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3753480613233340877
 CanvasRenderer:
@@ -628,6 +628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebcc73147862074e81249e4ab5a1109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueSpeedMultiplier: 3
   conversations:
   - {fileID: 11400000, guid: 48627f4eaae7440408624a3bfe710f93, type: 2}
   - {fileID: 11400000, guid: 3e63164febf5e8a4b93e43bca12c81b3, type: 2}
@@ -666,8 +667,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -150, y: -25}
-  m_SizeDelta: {x: 450, y: 50}
+  m_AnchoredPosition: {x: -150, y: -137.5}
+  m_SizeDelta: {x: 300, y: -125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4809282989593633239
 CanvasRenderer:
