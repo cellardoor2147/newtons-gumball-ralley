@@ -859,10 +859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a175a20885d9714bbaab9f08729fd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraBorderThickness: 20
   cameraPanSpeed: 5
-  cameraPanBorderThickness: 20
-  cameraPanLimitX: 10
-  cameraPanLimitY: 5
   cameraScrollSpeed: 0.1
   cameraMinSize: 2.5
   cameraMaxSize: 7
@@ -1365,8 +1363,7 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  smallAxleMetaData: {fileID: 0}
-  largeAxleMetaData: {fileID: 0}
+  axleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!61 &752070052
 BoxCollider2D:
@@ -3020,8 +3017,7 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  smallAxleMetaData: {fileID: 0}
-  largeAxleMetaData: {fileID: 0}
+  axleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!58 &1427393276
 CircleCollider2D:
