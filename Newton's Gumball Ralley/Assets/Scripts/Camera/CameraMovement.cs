@@ -8,8 +8,8 @@ namespace MainCamera
         [SerializeField] private float cameraBorderThickness = 20f;
         [SerializeField] private float cameraPanSpeed = 5.0f;
         [SerializeField] private float cameraScrollSpeed = 0.1f;
-        [SerializeField] private float cameraMinSize = 2.5f;
-        [SerializeField] private float cameraMaxSize = 7.0f;
+        [SerializeField] private float cameraMinSize = 7f;
+        [SerializeField] private float cameraMaxSize = 10f;
 
         private void Awake()
         {
