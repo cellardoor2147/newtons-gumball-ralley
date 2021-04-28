@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
-  m_Name: World2Level3Conversation
+  m_Name: 1-2
   m_EditorClassIdentifier: 
   worldIndex: 2
   levelIndex: 3
