@@ -16,6 +16,7 @@ namespace GUI.EditMode
         public Color DefaultColor { get; private set; }
         private Image objectImage;
         private bool shouldDisableDragging = false;
+        private bool isDisabledBasedOnCurrentLevel = false;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
@@ -49,7 +50,8 @@ namespace GUI.EditMode
             Image objectImage = gameObject.GetComponent<Image>();
 
             if (ObjectMetaData != null
-                && ObjectMetaData.amountOfScrap > ScrapManager.ScrapRemaining)
+                && ObjectMetaData.amountOfScrap > ScrapManager.ScrapRemaining
+                && !isDisabledBasedOnCurrentLevel)
             {
                 objectImage.color = Color.gray;
                 shouldDisableDragging = true;
@@ -58,6 +60,27 @@ namespace GUI.EditMode
             {
                 objectImage.color = DefaultColor;
                 shouldDisableDragging = false;
+            }
+        }
+
+        public void ToggleBasedOnCurrentLevel()
+        {
+            Image objectImage = gameObject.GetComponent<Image>();
+            int worldIndex = LevelManager.GetCurrentWorldIndex();
+
+            if (ObjectMetaData != null
+                && ObjectMetaData.name.Equals("InclinePlane2")
+                && worldIndex == 1)
+            {
+                objectImage.color = Color.red;
+                shouldDisableDragging = true;
+                isDisabledBasedOnCurrentLevel = true;
+            }
+            else if (objectImage.color == Color.red)
+            {
+                objectImage.color = DefaultColor;
+                shouldDisableDragging = false;
+                isDisabledBasedOnCurrentLevel = false;
             }
         }
 

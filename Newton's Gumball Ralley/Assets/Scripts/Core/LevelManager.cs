@@ -83,6 +83,8 @@ namespace Core
         {
             currentLevelData = levelData;
             ScrapManager.ResetRemainingScrap();
+            GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
+            GameStateManager.StartStaticCoroutine(EditModeManager.DisableFutureTabs());
             bool applicationIsNotRunning = Application.isEditor && !Application.isPlaying;
             if (applicationIsNotRunning)
             {
