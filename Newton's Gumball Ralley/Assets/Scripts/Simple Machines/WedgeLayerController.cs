@@ -1,6 +1,7 @@
 ﻿using Core;
 using DestructibleObject;
 using UnityEngine;
+using Audio;
 
 namespace Wedge
 {
@@ -10,6 +11,10 @@ namespace Wedge
         private LayerMask defaultLayer;
         private LayerMask wedgeLayer;
         private Rigidbody2D rb;
+
+        [SerializeField] SoundMetaData BreakSound; 
+        [SerializeField] SoundMetaData BounceSound; 
+        private bool bounced;
 
         private void Awake()
         {
@@ -26,6 +31,7 @@ namespace Wedge
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            bounced = false;
             DestructibleObstacleLayerController destructible
                 = collision.GetComponentInParent<DestructibleObstacleLayerController>();
             if (destructible && GameStateManager.GetGameState().Equals(GameState.Playing))
@@ -49,7 +55,20 @@ namespace Wedge
                 {
                     targetWedge.layer = wedgeLayer;
                     collision.attachedRigidbody.constraints = RigidbodyConstraints2D.None;
+                    if (!AudioManager.instance.isPlaying(BreakSound.name))
+                    {
+                        AudioManager.instance.PlaySound(BreakSound.name);
+                    }
                 }
+                else
+                {
+                    AudioManager.instance.PlaySound(BounceSound.name);
+                    bounced = true;
+                }
+            }
+            if (!bounced)
+            {
+                AudioManager.instance.PlaySound(BounceSound.name);
             }
         }
 
