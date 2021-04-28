@@ -16,6 +16,7 @@ namespace GUI.EditMode
         public Color DefaultColor { get; private set; }
         private Image objectImage;
         private bool shouldDisableDragging = false;
+        private bool isDisabledBasedOnCurrentLevel = false;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
@@ -49,7 +50,8 @@ namespace GUI.EditMode
             Image objectImage = gameObject.GetComponent<Image>();
 
             if (ObjectMetaData != null
-                && ObjectMetaData.amountOfScrap > ScrapManager.ScrapRemaining)
+                && ObjectMetaData.amountOfScrap > ScrapManager.ScrapRemaining
+                && !isDisabledBasedOnCurrentLevel)
             {
                 objectImage.color = Color.gray;
                 shouldDisableDragging = true;
@@ -59,6 +61,43 @@ namespace GUI.EditMode
                 objectImage.color = DefaultColor;
                 shouldDisableDragging = false;
             }
+        }
+
+        public void ToggleBasedOnCurrentLevel()
+        {
+            Image objectImage = gameObject.GetComponent<Image>();
+            int worldIndex = LevelManager.GetCurrentWorldIndex();
+            int levelIndex = LevelManager.GetCurrentLevelIndex();
+
+            if (ObjectMetaData != null && worldIndex == 1)
+            {
+                bool isLevel1AndObjectShouldBeDisabled =
+                    levelIndex == 1
+                    && (ObjectMetaData.name.Equals("InclinePlane1")
+                    || ObjectMetaData.name.Equals("InclinePlane1Inverted"));
+                if (ObjectMetaData.name.Equals("InclinePlane2")
+                    || isLevel1AndObjectShouldBeDisabled)
+                {
+                    objectImage.color = Color.red;
+                    shouldDisableDragging = true;
+                    isDisabledBasedOnCurrentLevel = true;
+                }
+                else if (objectImage.color == Color.red)
+                {
+                    RevertColorAndEnableDragging(objectImage);
+                }
+            }
+            else if (objectImage.color == Color.red)
+            {
+                RevertColorAndEnableDragging(objectImage);
+            }
+        }
+
+        private void RevertColorAndEnableDragging(Image objectImage)
+        {
+            objectImage.color = DefaultColor;
+            shouldDisableDragging = false;
+            isDisabledBasedOnCurrentLevel = false;
         }
 
         public void OnBeginDrag(PointerEventData pointerEventData)

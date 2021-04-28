@@ -125,7 +125,11 @@ namespace Core
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
                     AudioManager.instance.StopSound(instance.MenuMusicSound.name);
-                    AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
+                    AudioManager.instance.StopSound(instance.Level2MusicSound.name);
+                    if (!AudioManager.instance.isPlaying(instance.DialogueMusicSound.name))
+                    {
+                        AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
+                    }
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
