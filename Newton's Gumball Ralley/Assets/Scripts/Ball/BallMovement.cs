@@ -60,7 +60,7 @@ namespace Ball
 
         private void FixedUpdate()
         {
-            if (!hasBeenReleased)
+            if (!hasBeenReleased || !GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 AudioManager.instance.StopSound(RollingSound.name);
                 UpdateBallPositionRelativeToSling();
@@ -83,13 +83,13 @@ namespace Ball
                 }
             }
             if (hasBeenReleased && rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) 
-                && isTouching && !enteredPlatform) 
+                && isTouching && !enteredPlatform && GameStateManager.GetGameState().Equals(GameState.Playing)) 
             {
                 AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 AudioManager.instance.PlaySound(RollingSound.name);
                 isFading = false;
             } 
-            else if (rigidBody.velocity.magnitude < 0.01f || !isTouching || !GameStateManager.GetGameState().Equals(GameState.Playing)) 
+            else if (rigidBody.velocity.magnitude < 0.01f || !isTouching) 
             {
                 if (AudioManager.instance.isPlaying(RollingSound.name) && !isFading) 
                 {
@@ -160,6 +160,14 @@ namespace Ball
             {
                 isTouching = true;
                 AudioManager.instance.PlaySound(BounceSound.name);
+            }
+        }
+
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            if (hasBeenReleased && GameStateManager.GetGameState().Equals(GameState.Playing))
+            {
+                isTouching = true;
             }
         }
 
