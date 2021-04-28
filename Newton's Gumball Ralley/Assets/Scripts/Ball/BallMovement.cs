@@ -236,11 +236,11 @@ namespace Ball
             isTouching = false;
             AudioManager.instance.StopSound(RollingSound.name);
             spriteRenderer.color = new Color(
-        spriteRenderer.color.r,
-        spriteRenderer.color.g,
-        spriteRenderer.color.b,
-        1f
-    );
+                spriteRenderer.color.r,
+                spriteRenderer.color.g,
+                spriteRenderer.color.b,
+                1f
+            );
         }
 
         public void Die()
@@ -262,6 +262,10 @@ namespace Ball
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             GameStateManager.SetGameState(GameState.GameOver);
+        }
+        private void SetAsChild(GameObject pulleyPlatform)
+        {
+            transform.parent = pulleyPlatform.transform;
         }
     }
 }
