@@ -48,6 +48,7 @@ MonoBehaviour:
   Level1MusicSound: {fileID: 11400000, guid: 4e1c36c47e9b4488eb71a52f60dec7a7, type: 2}
   Level2MusicSound: {fileID: 11400000, guid: 22c6e5c18b90744f4805d74f00109053, type: 2}
   DialogueMusicSound: {fileID: 11400000, guid: 7fab56f8fa53f4b82af6aa461328dcf9, type: 2}
+  LevelCompleteSound: {fileID: 11400000, guid: c1c43e2fd25d84d9faef4daa2907d396, type: 2}
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   axleMetaData: {fileID: 11400000, guid: 2699ab06bb5e34bf59fcefaf2bf9572b, type: 2}

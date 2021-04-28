@@ -47,7 +47,7 @@ namespace Core
     public static class LevelSerializer
     {
         public static readonly string WRITE_DIRECTORY_PATH =
-            Application.dataPath + "/LevelsData/";
+            Path.Combine(Application.dataPath, "LevelsData");
 
         private static readonly string MANAGERS_KEY = "Managers";
         private static readonly string BACKGROUND_MANAGER_KEY = "Background Manager";
@@ -81,11 +81,14 @@ namespace Core
             string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))
             {
-                writeFilePath += worldIndex.ToString() + "-" + levelIndex.ToString();
+                writeFilePath = Path.Combine(
+                    writeFilePath,
+                    worldIndex.ToString() + "-" + levelIndex.ToString()
+                );
             }
             else
             {
-                writeFilePath += customLevelName;
+                writeFilePath = Path.Combine(writeFilePath, customLevelName);
             }
             writeFilePath += ".json";
             Directory.CreateDirectory(WRITE_DIRECTORY_PATH);

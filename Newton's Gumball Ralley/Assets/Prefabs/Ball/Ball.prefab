@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseMovementSpeed: 1
-  maxRadiusOfPull: 1.5
+  maxRadiusOfPull: 1
   delayAfterRelease: 0.1
   BounceSound: {fileID: 11400000, guid: cfd74200c87a7490aaa928733d77a408, type: 2}
   RollingSound: {fileID: 11400000, guid: 5b19837bd08884f39b0fde5f5234a6b2, type: 2}
