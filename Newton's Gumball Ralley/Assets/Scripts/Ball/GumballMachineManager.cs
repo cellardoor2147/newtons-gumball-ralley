@@ -135,7 +135,6 @@ namespace Ball
 
         private IEnumerator ShakeThenResetTransform()
         {
-            ballMovement.beingDispensed = true;
             yield return Shake();
             ResetTransformToOriginalState();
             SetGumballMachineState(GumballMachineState.Open);
@@ -198,7 +197,7 @@ namespace Ball
             yield return DispenseGumball(ballScale);
             ballMovement.transform.localScale = ballMovement.originalScale;
             ballSpriteRenderer.color = Color.white;
-            ballMovement.beingDispensed = false;
+            ballMovement.hasBeenDispensed = true;
         }
 
         private IEnumerator DispenseGumball(Vector3 ballScale)

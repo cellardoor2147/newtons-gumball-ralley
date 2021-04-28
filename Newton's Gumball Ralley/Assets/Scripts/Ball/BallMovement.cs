@@ -37,7 +37,7 @@ namespace Ball
         private SpriteRenderer spriteRenderer;
 
         public Vector3 originalScale;
-        public bool beingDispensed;
+        public bool hasBeenDispensed;
 
         private void Awake()
         {
@@ -129,7 +129,7 @@ namespace Ball
 
         private void OnMouseDown()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Playing) || beingDispensed)
+            if (!GameStateManager.GetGameState().Equals(GameState.Playing) || !hasBeenDispensed)
             {
                 return;
             }
@@ -141,7 +141,7 @@ namespace Ball
 
         private void OnMouseUp()
         {
-            if (!GameStateManager.GetGameState().Equals(GameState.Playing) || beingDispensed)
+            if (!GameStateManager.GetGameState().Equals(GameState.Playing) || !hasBeenDispensed)
             {
                 return;
             }
@@ -252,6 +252,7 @@ namespace Ball
                 spriteRenderer.color.b,
                 1f
             );
+            hasBeenDispensed = false;
         }
 
         public void Die()
