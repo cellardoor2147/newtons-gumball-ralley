@@ -2,8 +2,8 @@
     "worldIndex": 2,
     "levelIndex": 2,
     "customLevelName": "",
-    "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundRows": 2,
+    "repeatedBackgroundColumns": 4,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",

@@ -102,6 +102,12 @@ namespace GUI.EditMode
             SetActiveTab(PlaceableObjectType.InclinePlane);
         }
 
+        public static IEnumerator AsyncSetActiveTab(PlaceableObjectType objectType)
+        {
+            yield return new WaitUntil(() => ActiveContentController != null);
+            SetActiveTab(objectType);
+        }
+
         public static void SetActiveTab(PlaceableObjectType objectType)
         {
             foreach (TabController inactiveTab in instance.inactiveTabControllers)

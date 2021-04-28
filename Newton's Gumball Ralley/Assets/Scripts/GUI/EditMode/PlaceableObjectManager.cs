@@ -67,21 +67,37 @@ namespace GUI.EditMode
         {
             Image objectImage = gameObject.GetComponent<Image>();
             int worldIndex = LevelManager.GetCurrentWorldIndex();
+            int levelIndex = LevelManager.GetCurrentLevelIndex();
 
-            if (ObjectMetaData != null
-                && ObjectMetaData.name.Equals("InclinePlane2")
-                && worldIndex == 1)
+            if (ObjectMetaData != null && worldIndex == 1)
             {
-                objectImage.color = Color.red;
-                shouldDisableDragging = true;
-                isDisabledBasedOnCurrentLevel = true;
+                bool isLevel1AndObjectShouldBeDisabled =
+                    levelIndex == 1
+                    && (ObjectMetaData.name.Equals("InclinePlane1")
+                    || ObjectMetaData.name.Equals("InclinePlane1Inverted"));
+                if (ObjectMetaData.name.Equals("InclinePlane2")
+                    || isLevel1AndObjectShouldBeDisabled)
+                {
+                    objectImage.color = Color.red;
+                    shouldDisableDragging = true;
+                    isDisabledBasedOnCurrentLevel = true;
+                }
+                else if (objectImage.color == Color.red)
+                {
+                    RevertColorAndEnableDragging(objectImage);
+                }
             }
             else if (objectImage.color == Color.red)
             {
-                objectImage.color = DefaultColor;
-                shouldDisableDragging = false;
-                isDisabledBasedOnCurrentLevel = false;
+                RevertColorAndEnableDragging(objectImage);
             }
+        }
+
+        private void RevertColorAndEnableDragging(Image objectImage)
+        {
+            objectImage.color = DefaultColor;
+            shouldDisableDragging = false;
+            isDisabledBasedOnCurrentLevel = false;
         }
 
         public void OnBeginDrag(PointerEventData pointerEventData)

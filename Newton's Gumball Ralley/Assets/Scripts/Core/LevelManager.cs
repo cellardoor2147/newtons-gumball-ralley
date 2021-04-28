@@ -81,10 +81,7 @@ namespace Core
 
         public static void LoadLevelWithLevelData(LevelData levelData)
         {
-            currentLevelData = levelData;
-            ScrapManager.ResetRemainingScrap();
-            GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
-            GameStateManager.StartStaticCoroutine(EditModeManager.DisableFutureTabs());
+            currentLevelData = levelData;           
             bool applicationIsNotRunning = Application.isEditor && !Application.isPlaying;
             if (applicationIsNotRunning)
             {
@@ -96,6 +93,10 @@ namespace Core
                 GameStateManager.StartStaticCoroutine(
                     LevelSerializer.AsyncSetSceneWithLevelData(levelData)
                 );
+                ScrapManager.ResetRemainingScrap();
+                GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.InclinePlane));
+                GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
+                GameStateManager.StartStaticCoroutine(EditModeManager.DisableFutureTabs());
             }
         }
 

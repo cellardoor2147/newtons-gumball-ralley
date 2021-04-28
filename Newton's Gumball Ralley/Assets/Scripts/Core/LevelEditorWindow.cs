@@ -55,6 +55,7 @@ namespace Core
                 repeatedBackgroundRows = levelData.repeatedBackgroundRows;
                 timeConstraint = levelData.starConditions.timeConstraint;
                 scrapConstraint = levelData.starConditions.scrapConstraint;
+                placeableScrapLimit = levelData.placeableScrapLimit;
             }
 
             GUILayout.BeginArea(new Rect(0, 45, position.width, 60));
