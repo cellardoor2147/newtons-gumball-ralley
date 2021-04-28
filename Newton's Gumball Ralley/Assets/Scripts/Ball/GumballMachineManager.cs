@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Core;
+using Audio;
 
 namespace Ball
 {
@@ -23,6 +24,7 @@ namespace Ball
         [SerializeField] private float maxShakeDistance;
         [SerializeField] private float maxShakeRotationEulerAngles;
         [SerializeField] private float ballDispenseTimeMultiplier;
+        [SerializeField] SoundMetaData ShakeSound;
 
         private SpriteRenderer spriteRender;
         private Collider2D collider2D;
@@ -87,6 +89,7 @@ namespace Ball
                 case GumballMachineState.Closed:
                     ballSpriteRenderer.enabled = false;
                     StartCoroutine(ResetBallAndGumballMachine());
+                    AudioManager.instance.StopSound(ShakeSound.name);
                     spriteRender.sprite = gumballMachineClosedSprite;
                     SetClickability(true);
                     break;
@@ -124,6 +127,10 @@ namespace Ball
             if (shouldShakeGumballMachine)
             {
                 SetGumballMachineState(GumballMachineState.Shaking);
+                if (!AudioManager.instance.isPlaying(ShakeSound.name))
+                {
+                    AudioManager.instance.PlaySound(ShakeSound.name);
+                }
             }
         }
 

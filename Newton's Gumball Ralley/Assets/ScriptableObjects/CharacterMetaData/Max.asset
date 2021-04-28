@@ -23,8 +23,8 @@ MonoBehaviour:
     type: 3}
   explainingPortrait: {fileID: 9095174931793314820, guid: 2239d77079d997941a6c84472f78ac62,
     type: 3}
-  neutralSound: {fileID: 11400000, guid: d0dc28693f1373f48b0346b51d14a36e, type: 2}
-  happySound: {fileID: 11400000, guid: acf16722f7ba7dd44b75759ece2d6588, type: 2}
-  oopsSound: {fileID: 11400000, guid: 0ca2e0a055fcf6548923789dd8f27d1d, type: 2}
-  thinkingSound: {fileID: 11400000, guid: 15f1b4292d838c94aba43b675bc0696d, type: 2}
-  explainingSound: {fileID: 11400000, guid: 572ea644a77477c4e8c77bef2369b7d9, type: 2}
+  neutralSound: {fileID: 11400000, guid: a604c86ff669b4292bf57d039f0e04ab, type: 2}
+  happySound: {fileID: 11400000, guid: 6bbe4b0c260b44120840b12820d78e2d, type: 2}
+  oopsSound: {fileID: 11400000, guid: 6d71800c8af9c472894914c2799c7ea8, type: 2}
+  thinkingSound: {fileID: 11400000, guid: 285792d5b1dce432880ba1502c100d71, type: 2}
+  explainingSound: {fileID: 11400000, guid: 9480f08f942a440f9aed503a3613caca, type: 2}
