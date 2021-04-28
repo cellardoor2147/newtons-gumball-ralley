@@ -172,9 +172,7 @@
                     "z": 1.0
                 }
             }
-        }
-    ],
-    "preplacedObjects": [
+        },
         {
             "objectName": "Ralph",
             "transform": {
@@ -195,29 +193,9 @@
                     "z": 1.0
                 }
             }
-        },
-        {
-            "objectName": "InclinePlane1",
-            "transform": {
-                "position": {
-                    "x": -6.482091903686523,
-                    "y": -4.504563331604004,
-                    "z": -5.791015625
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
         }
     ],
+    "preplacedObjects": [],
     "gumballMachineTransform": {
         "position": {
             "x": -8.979999542236329,
@@ -236,7 +214,7 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 20.0,
+    "placeableScrapLimit": 8.0,
     "starConditions": {
         "timeConstraint": 10.0,
         "scrapConstraint": 10.0
