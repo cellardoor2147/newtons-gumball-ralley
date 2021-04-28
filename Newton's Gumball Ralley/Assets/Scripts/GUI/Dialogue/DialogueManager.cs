@@ -21,6 +21,7 @@ namespace GUI.Dialogue
         private readonly static string TUTORIAL_BOX_IMAGE_KEY = "Tutorial Box Image";
         private readonly static string TUTORIAL_BOX_TEXT_KEY = "Tutorial Box Conetent";
 
+        [SerializeField] private float dialogueSpeedMultiplier;
         [SerializeField] private List<Conversation> conversations;
 
         private Transform leftSpeakerTransform;
@@ -222,7 +223,9 @@ namespace GUI.Dialogue
             dialogueBoxContent.text = "";
             foreach (char character in line.content)
             {
-                yield return new WaitForSecondsRealtime(line.secondDelayBetweenTypingEachChar);
+                yield return new WaitForSecondsRealtime(
+                    line.secondDelayBetweenTypingEachChar * (1 / dialogueSpeedMultiplier)
+                );
                 dialogueBoxContent.text += character;
             }
             dialogueBoxContent.text = line.content;
