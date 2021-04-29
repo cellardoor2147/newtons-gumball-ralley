@@ -228,7 +228,7 @@ namespace Core
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
             instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(SetObjectsActive(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData, false));
+            instance.StartCoroutine(SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, false));
             instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
             Physics2D.gravity = instance.defaultGravity;
         }
@@ -248,7 +248,7 @@ namespace Core
             instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
             instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
             instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
-            instance.StartCoroutine(SetObjectsActive(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData, true));
+            instance.StartCoroutine(SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, true));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
         }

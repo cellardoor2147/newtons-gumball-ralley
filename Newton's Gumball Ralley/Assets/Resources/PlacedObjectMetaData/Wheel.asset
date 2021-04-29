@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wheel
   m_EditorClassIdentifier: 
   objectName: Wheel
-  prefab: {fileID: 4678277429543256414, guid: 189286962d007457fbad60df9a535ac8, type: 3}
-  canSnap: 0
+  prefab: {fileID: 7695583799297489893, guid: 308e0d144ecd4443eba1f6bbe770c9df, type: 3}
+  canSnap: 1
   isSimpleMachine: 1
   amountOfScrap: 8

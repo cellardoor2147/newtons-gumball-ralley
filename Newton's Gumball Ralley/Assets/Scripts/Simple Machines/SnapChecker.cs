@@ -76,6 +76,40 @@ namespace SnapCheck
                         }
                     }
                     break;
+                case "Gear1":
+                    if (collision.gameObject.name.Equals("Gear1SelfSnapPoints")
+                    || collision.gameObject.name.Equals("Gear2SnapPoints"))
+                    {
+                        bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
+                        if (mouseInSnappingRange)
+                        {
+                            ShouldSnap = true;
+                            SnapPointHolder = collision.gameObject;
+                        }
+                        else
+                        {
+                            ShouldSnap = false;
+                            SnapPointHolder = null;
+                        }
+                    }
+                    break;
+                case "Wheel":
+                    if (collision.gameObject.name.Equals("Gear1SnapPoints")
+                    || collision.gameObject.name.Equals("WheelSnapPoints"))
+                    {
+                        bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
+                        if (mouseInSnappingRange)
+                        {
+                            ShouldSnap = true;
+                            SnapPointHolder = collision.gameObject;
+                        }
+                        else
+                        {
+                            ShouldSnap = false;
+                            SnapPointHolder = null;
+                        }
+                    }
+                    break;
                 default:
                     break;
             }
