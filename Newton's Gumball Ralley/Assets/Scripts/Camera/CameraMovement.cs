@@ -1,96 +1,43 @@
 ﻿using UnityEngine;
 using Background;
+using Core;
 
 namespace MainCamera
 {
     public class CameraMovement : MonoBehaviour
     {
-        [SerializeField] private float cameraBorderThickness = 20f;
-        [SerializeField] private float cameraPanSpeed = 5.0f;
+        public static bool shouldPreventDragging;
+
+        [SerializeField] private float cameraDragSpeed = 0.1f;
         [SerializeField] private float cameraScrollSpeed = 0.1f;
         [SerializeField] private float cameraMinSize = 7f;
         [SerializeField] private float cameraMaxSize = 10f;
 
-        private void Awake()
-        {
-            Cursor.lockState = CursorLockMode.Confined;
-        }
-
         private void Update()
         {
-            UpdateCameraPositionAndDrawDirectionalArrows();
+            bool cameraShouldNotMove =
+                !(GameStateManager.GetGameState().Equals(GameState.Playing)
+                || GameStateManager.GetGameState().Equals(GameState.Editing));
+            if (cameraShouldNotMove)
+            {
+                return;
+            }
+            UpdateCameraPosition();
             LimitCameraPosition();
             UpdateCameraZoom();
         }
 
-        private void UpdateCameraPositionAndDrawDirectionalArrows()
+        private void UpdateCameraPosition()
         {
-            bool shouldMoveCameraLeft =
-                Input.mousePosition.x <= cameraBorderThickness;
-            if (shouldMoveCameraLeft)
+            bool playerIsDragging = Input.GetMouseButton(0);
+            if (playerIsDragging && !shouldPreventDragging)
             {
-                transform.Translate(Vector2.left * cameraPanSpeed * Time.deltaTime);
+                Camera.main.transform.position -= new Vector3(
+                    Input.GetAxis("Mouse X") * cameraDragSpeed,
+                    Input.GetAxis("Mouse Y") * cameraDragSpeed,
+                    0f
+                );
             }
-            bool shouldMoveCameraRight =
-                Input.mousePosition.x >= Screen.width - cameraBorderThickness - 32f;
-            if (shouldMoveCameraRight)
-            {
-                transform.Translate(Vector2.right * cameraPanSpeed * Time.deltaTime);
-            }
-            bool shouldMoveCameraDown =
-                Input.mousePosition.y <= cameraBorderThickness + 32f;
-            if (shouldMoveCameraDown)
-            {
-                transform.Translate(Vector2.down * cameraPanSpeed * Time.deltaTime);
-            }
-            bool shouldMoveCameraUp =
-                Input.mousePosition.y >= Screen.height - cameraBorderThickness;
-            if (shouldMoveCameraUp)
-            {
-                transform.Translate(Vector2.up * cameraPanSpeed * Time.deltaTime);
-            }
-
-            if (shouldMoveCameraLeft && shouldMoveCameraUp)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.UpperLeft);
-            }
-            else if (shouldMoveCameraLeft && shouldMoveCameraDown)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.LowerLeft);
-            }
-            else if (shouldMoveCameraRight && shouldMoveCameraUp)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.UpperRight);
-            }
-            else if (shouldMoveCameraRight && shouldMoveCameraDown)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.LowerRight);
-            }
-            else if (shouldMoveCameraLeft)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.Left);
-            }
-            else if (shouldMoveCameraUp)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.Up);
-            }
-            else if (shouldMoveCameraRight)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.Right);
-            }
-            else if (shouldMoveCameraDown)
-            {
-                AsyncSetVisibleArrow(ArrowDirection.Down);
-            }
-            else
-            {
-                AsyncSetVisibleArrow(ArrowDirection.None);
-            }
-        }
-
-        private void AsyncSetVisibleArrow(ArrowDirection arrowDirection)
-        {
-            StartCoroutine(DirectionalArrowManager.AsyncSetVisibleArrow(arrowDirection));
         }
 
         private void LimitCameraPosition()
