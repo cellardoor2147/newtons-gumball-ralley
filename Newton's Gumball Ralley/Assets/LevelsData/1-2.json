@@ -2,30 +2,9 @@
     "worldIndex": 1,
     "levelIndex": 2,
     "customLevelName": "",
-    "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundRows": 2,
+    "repeatedBackgroundColumns": 4,
     "environmentObjects": [
-        {
-            "objectName": "Ralph",
-            "transform": {
-                "position": {
-                    "x": 3.927907943725586,
-                    "y": -7.004563331604004,
-                    "z": -5.791015625
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 0.5,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            }
-        },
         {
             "objectName": "EnvironmentBlock",
             "transform": {
@@ -114,7 +93,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -7.480000019073486,
+                    "x": -7.349999904632568,
                     "y": -5.420000076293945,
                     "z": 0.0
                 },
@@ -177,8 +156,8 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -3.2100000381469728,
-                    "y": -6.739999771118164,
+                    "x": -3.1600000858306886,
+                    "y": -6.699999809265137,
                     "z": 0.0
                 },
                 "rotation": {
@@ -198,8 +177,8 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -4.739999771118164,
-                    "y": -7.260000228881836,
+                    "x": -4.679999828338623,
+                    "y": -7.300000190734863,
                     "z": 0.0
                 },
                 "rotation": {
@@ -220,7 +199,7 @@
             "transform": {
                 "position": {
                     "x": 5.050000190734863,
-                    "y": -8.229999542236329,
+                    "y": -7.909999847412109,
                     "z": 0.0
                 },
                 "rotation": {
@@ -240,8 +219,8 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": 1.4800000190734864,
-                    "y": -8.399999618530274,
+                    "x": 1.5099999904632569,
+                    "y": -8.3100004196167,
                     "z": 0.0
                 },
                 "rotation": {
@@ -256,12 +235,33 @@
                     "z": 1.0
                 }
             }
+        },
+        {
+            "objectName": "Ralph",
+            "transform": {
+                "position": {
+                    "x": 4.139999866485596,
+                    "y": -6.070000171661377,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.800000011920929,
+                    "y": 0.800000011920929,
+                    "z": 1.0
+                }
+            }
         }
     ],
     "preplacedObjects": [],
     "gumballMachineTransform": {
         "position": {
-            "x": -6.150000095367432,
+            "x": -6.21999979019165,
             "y": -2.4800000190734865,
             "z": 0.0
         },

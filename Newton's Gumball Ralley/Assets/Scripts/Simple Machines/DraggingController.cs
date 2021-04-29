@@ -31,7 +31,6 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData screwMetaData;
         [SerializeField] private PlacedObjectMetaData gear1MetaData;
         [SerializeField] private PlacedObjectMetaData gear2MetaData;
-        [SerializeField] private PlacedObjectMetaData gear3MetaData;
         [SerializeField] private PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] private PlacedObjectMetaData wheelMetaData;
         [SerializeField] private PlacedObjectMetaData axleMetaData;
@@ -239,8 +238,7 @@ namespace SimpleMachine
                         {
                             closestDistance = distanceToSnapPoint;
                             Transform closestSnapPoint = gearSnapObject.transform;
-                            desiredSnapLocation = closestSnapPoint.position - new Vector3(0, 0f, 0);
-                            // 0f offset is required to get gear1/wheel in correct place
+                            desiredSnapLocation = closestSnapPoint.position;
                         }
                     }
                 }
@@ -251,9 +249,7 @@ namespace SimpleMachine
                 List<GameObject> screwSnapObjects = GetSnapObjects();
                 Vector3 desiredSnapLocation = new Vector3();
 
-                desiredSnapLocation = screwSnapObjects[0].transform.position - new Vector3(0, 0, 0);
-                // 0f offset is required to get axle/gear2 in correct place
-
+                desiredSnapLocation = screwSnapObjects[0].transform.position;
                 return desiredSnapLocation;
             }
             return Vector3.zero;
@@ -290,7 +286,6 @@ namespace SimpleMachine
                 {
                     PlacedObjectManager placedObjectManager = placedObject.GetComponent<PlacedObjectManager>();
                     if (placedObjectManager != null && (placedObjectManager.metaData.Equals(gear1MetaData)
-                                                        || placedObjectManager.metaData.Equals(gear3MetaData)
                                                         || placedObjectManager.metaData.Equals(wheelMetaData))) {
                         placedObject.GetChild(0).gameObject.SetActive(activeState);
                     }
@@ -366,15 +361,12 @@ namespace SimpleMachine
                 {
                     if (collider.transform.parent != null && collider.transform.parent.GetComponent<PlacedObjectManager>() != null)
                     {
-                        if (collider.transform.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear1MetaData)
-                        && collider.transform.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear2MetaData)
-                        && collider.isTrigger)
+                        objectHasCollided = !(collider.transform.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear1MetaData)
+                                            && collider.transform.parent.gameObject.GetComponent<PlacedObjectManager>().metaData.Equals(gear2MetaData)
+                                            && collider.isTrigger);
+                        if (objectHasCollided) 
                         {
-                            objectHasCollided = false;
-                        }
-                        else
-                        {
-                            objectHasCollided = true;
+                            return !objectIsScrew;
                         }
                     }
                     else

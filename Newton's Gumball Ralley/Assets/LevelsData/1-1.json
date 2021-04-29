@@ -2,8 +2,8 @@
     "worldIndex": 1,
     "levelIndex": 1,
     "customLevelName": "",
-    "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundRows": 2,
+    "repeatedBackgroundColumns": 4,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -177,9 +177,9 @@
             "objectName": "Ralph",
             "transform": {
                 "position": {
-                    "x": 4.767908096313477,
-                    "y": -3.92456316947937,
-                    "z": -5.791015625
+                    "x": 4.730000019073486,
+                    "y": -3.3399999141693117,
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -188,8 +188,8 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 0.5,
-                    "y": 0.5,
+                    "x": 0.800000011920929,
+                    "y": 0.800000011920929,
                     "z": 1.0
                 }
             }
