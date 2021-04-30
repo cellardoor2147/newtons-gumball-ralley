@@ -59,17 +59,19 @@ namespace GUI
 
         public void LoadPlayMode()
         {
+            Timer.Reset();
             GameStateManager.SetGameState(GameState.Playing);
         }
 
         public void LoadEditMode()
         {
-            Timer.StopTimer();
+            Timer.Reset();
             GameStateManager.SetGameState(GameState.Editing);
         }
 
         public void ResetLevel()
         {
+            Timer.Reset();
             GameStateManager.ResetLevel();
         }
 
@@ -95,6 +97,7 @@ namespace GUI
 
         public void LoadNextLevel()
         {
+            Timer.Reset();
             StartCoroutine(GameStateManager.LoadNextLevel());
         }
 

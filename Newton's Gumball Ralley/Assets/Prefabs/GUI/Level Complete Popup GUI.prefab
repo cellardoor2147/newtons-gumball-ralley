@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef466b519a1b80a4dad63500be101b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  starGetSound: {fileID: 11400000, guid: 50c7c4729c8f4784190224c22ea7e908, type: 2}
 --- !u!114 &7585524593485702714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,6 +707,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5921995417777992543}
     m_Modifications:
+    - target: {fileID: 743562284758538847, guid: 91b533e3d3e3a14429991b1860d4ec28,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 743562284758538847, guid: 91b533e3d3e3a14429991b1860d4ec28,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 743562284758538847, guid: 91b533e3d3e3a14429991b1860d4ec28,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 743562284758538847, guid: 91b533e3d3e3a14429991b1860d4ec28,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6044732126625047159, guid: 91b533e3d3e3a14429991b1860d4ec28,
         type: 3}
       propertyPath: m_Pivot.x
@@ -934,7 +955,27 @@ PrefabInstance:
     - target: {fileID: 4335699784549196567, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
       propertyPath: m_Name
-      value: Time Star Container Variant
+      value: Time Star Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428795232429066554, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428795232429066554, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428795232429066554, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428795232429066554, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd, type: 3}
@@ -1064,7 +1105,27 @@ PrefabInstance:
     - target: {fileID: 3538803750364701994, guid: d12a14041f07dd64f9e4055652754fb1,
         type: 3}
       propertyPath: m_Name
-      value: Given Machine Star Container Variant
+      value: Scrap Star Container
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071563599898529543, guid: d12a14041f07dd64f9e4055652754fb1,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071563599898529543, guid: d12a14041f07dd64f9e4055652754fb1,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071563599898529543, guid: d12a14041f07dd64f9e4055652754fb1,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071563599898529543, guid: d12a14041f07dd64f9e4055652754fb1,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d12a14041f07dd64f9e4055652754fb1, type: 3}

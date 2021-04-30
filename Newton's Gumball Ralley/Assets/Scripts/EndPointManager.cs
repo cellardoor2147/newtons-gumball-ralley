@@ -9,7 +9,7 @@ public class EndPointManager : MonoBehaviour
         if (otherObjectCollider.CompareTag("Player")
             && GameStateManager.GetGameState().Equals(GameState.Playing))
         {
-            Timer.StopTimer();
+            Timer.Stop();
             LevelManager.SetCurrentLevelIsComplete(true);
             GameStateManager.SetGameState(GameState.Dialogue);
         }

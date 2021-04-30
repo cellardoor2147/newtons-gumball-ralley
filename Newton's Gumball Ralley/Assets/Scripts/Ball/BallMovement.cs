@@ -221,7 +221,7 @@ namespace Ball
         private IEnumerator ReleaseAfterDelay()
         {
             yield return new WaitForSeconds(delayAfterRelease);
-            Timer.StartTimer();
+            Timer.Start();
             GetComponent<SpringJoint2D>().enabled = false;
         }
 

@@ -12,19 +12,29 @@ namespace Core
             if (GameStateManager.GetGameState().Equals(GameState.LevelCompleted))
             {
                 starsEarned = 1;
-                if (Timer.CompletionTime < LevelManager.GetCurrentLevelTimeConstraint()
-                    || ScrapManager.ScrapRemaining >= LevelManager.GetCurrentLevelScrapConstraint())
+                if (PlayerGotTimeStar())
                 {
-                    starsEarned = 2;
+                    starsEarned++;
                 }
-                if (Timer.CompletionTime < LevelManager.GetCurrentLevelTimeConstraint()
-                    && ScrapManager.ScrapRemaining >= LevelManager.GetCurrentLevelScrapConstraint())
+                if (PlayerGotScrapStar())
                 {
-                    starsEarned = 3;
+                    starsEarned++;
                 }
             }
 
             return starsEarned;
+        }
+
+        public static bool PlayerGotTimeStar()
+        {
+            return Timer.CompletionTime < LevelManager.GetCurrentLevelTimeConstraint();
+        }
+
+        public static bool PlayerGotScrapStar()
+        {
+            Debug.Log($"Scrap Remaining: {ScrapManager.ScrapRemaining}");
+            Debug.Log($"Scrap Constraint: {LevelManager.GetCurrentLevelScrapConstraint()}");
+            return ScrapManager.ScrapRemaining >= LevelManager.GetCurrentLevelScrapConstraint();
         }
     }
 }
