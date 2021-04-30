@@ -4,6 +4,7 @@ using SnapCheck;
 using GUI.EditMode;
 using System.Collections.Generic;
 using Audio;
+using MainCamera;
 
 namespace SimpleMachine
 {
@@ -74,6 +75,7 @@ namespace SimpleMachine
                 ToggleSnapLocations(true);
                 DisableThisSnapLocation();
             }
+            CameraMovement.shouldPreventDragging = true;
             EditModeManager.HideEditModeGUI();
             objectManager.SetLastValidPosition(transform.position);
             objectManager.SetLastValidRotation(transform.rotation);
@@ -119,7 +121,7 @@ namespace SimpleMachine
             }
 
             ToggleSnapLocations(false);
-
+            CameraMovement.shouldPreventDragging = false;
             if (ShouldPreventObjectFromBeingPlaced())
             {
                 if (!hasBeenPlaced)
@@ -167,6 +169,7 @@ namespace SimpleMachine
             bool playerRightClickedThisObject = Input.GetMouseButtonDown(1);
             if (playerRightClickedThisObject)
             {
+                CameraMovement.shouldPreventDragging = false;
                 RemoveRotationArrows();
                 EditModeManager.ShowEditModeGUI();
                 if (hasBeenPlaced)
