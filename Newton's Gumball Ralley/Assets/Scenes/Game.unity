@@ -505,8 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a175a20885d9714bbaab9f08729fd6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraBorderThickness: 20
-  cameraPanSpeed: 5
+  cameraDragSpeed: 0.1
   cameraScrollSpeed: 0.1
   cameraMinSize: 7
   cameraMaxSize: 10

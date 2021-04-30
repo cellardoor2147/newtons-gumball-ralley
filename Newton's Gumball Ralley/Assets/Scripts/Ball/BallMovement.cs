@@ -4,6 +4,7 @@ using Core;
 using LevelTimer;
 using Audio;
 using SimpleMachine;
+using MainCamera;
 
 namespace Ball
 {
@@ -138,6 +139,7 @@ namespace Ball
             }
             if (!hasBeenReleased)
             {
+                CameraMovement.shouldPreventDragging = true;
                 isBeingPulled = true;
             }
         }
@@ -150,6 +152,7 @@ namespace Ball
             }
             if (!hasBeenReleased)
             {
+                CameraMovement.shouldPreventDragging = false;
                 isBeingPulled = false;
                 hasBeenReleased = true;
                 rigidBody.gravityScale = 1.0f;
