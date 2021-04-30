@@ -61,6 +61,10 @@ namespace Ball
 
         private void FixedUpdate()
         {
+            if (!isFading)
+            {
+                AudioManager.instance.SetVolume(RollingSound.name, Mathf.Clamp(rigidBody.velocity.magnitude / 20, 0, rollingVolume));
+            }
             if (!hasBeenReleased || !GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 AudioManager.instance.StopSound(RollingSound.name);
@@ -86,7 +90,6 @@ namespace Ball
             if (hasBeenReleased && rigidBody.velocity.magnitude > 0.01f && !AudioManager.instance.isPlaying(RollingSound.name) 
                 && isTouching && !enteredPlatform && GameStateManager.GetGameState().Equals(GameState.Playing)) 
             {
-                AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
                 AudioManager.instance.PlaySound(RollingSound.name);
                 isFading = false;
             } 
