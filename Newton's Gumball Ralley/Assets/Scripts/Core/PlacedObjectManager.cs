@@ -14,7 +14,8 @@ namespace Core
 
         private void Awake()
         {
-            if (!metaData.objectName.Contains("Pulley"))
+            if (!metaData.objectName.Contains("Pulley")
+                && !metaData.objectName.Equals("LeverWeightContraption"))
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 defaultColor = spriteRenderer.color;

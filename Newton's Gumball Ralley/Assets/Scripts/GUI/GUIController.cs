@@ -102,7 +102,7 @@ namespace GUI
         {
             if (GameStateManager.GetGameState().Equals(GameState.Paused))
             {
-                GameStateManager.SetGameState(GameState.Playing);
+                GameStateManager.SetGameState(GameStateManager.GetPreviousGameState());
             }
             else
             {

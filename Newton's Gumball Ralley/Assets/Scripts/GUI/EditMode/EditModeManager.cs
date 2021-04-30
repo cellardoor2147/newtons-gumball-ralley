@@ -140,42 +140,90 @@ namespace GUI.EditMode
             yield return new WaitUntil(() => instance != null);
             EnableAllTabs();
             int worldIndex = LevelManager.GetCurrentWorldIndex();
+            List<PlaceableObjectType> desiredObjectTypes = new List<PlaceableObjectType>();
 
             switch (worldIndex)
             {
                 case 1:
+                    desiredObjectTypes.Add(PlaceableObjectType.InclinePlane);
                     foreach (TabController inactiveTab in instance.inactiveTabControllers)
                     {
-                        bool shouldNotBeDisabled = inactiveTab.objectType.Equals(PlaceableObjectType.InclinePlane);
-                        if (!shouldNotBeDisabled)
-                            inactiveTab.ReddenAndDisable();
+                        EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);
                     }
                     foreach (TabController activeTab in instance.activeTabControllers)
                     {
-                        bool shouldNotBeDisabled = activeTab.objectType.Equals(PlaceableObjectType.InclinePlane);
-                        if (!shouldNotBeDisabled)
-                            activeTab.Disable();
+                        EnableDesiredTabs(desiredObjectTypes, activeTab, true);
                     }
                     break;
                 case 2:
+                    desiredObjectTypes.Add(PlaceableObjectType.InclinePlane);
+                    desiredObjectTypes.Add(PlaceableObjectType.Screw);
                     foreach (TabController inactiveTab in instance.inactiveTabControllers)
                     {
-                        bool shouldNotBeDisabled =
-                            inactiveTab.objectType.Equals(PlaceableObjectType.InclinePlane)
-                            || inactiveTab.objectType.Equals(PlaceableObjectType.Screw);
-                        if (!shouldNotBeDisabled)
-                            inactiveTab.ReddenAndDisable();
+                        EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);
                     }
                     foreach (TabController activeTab in instance.activeTabControllers)
                     {
-                        bool shouldNotBeDisabled =
-                            activeTab.objectType.Equals(PlaceableObjectType.InclinePlane)
-                            || activeTab.objectType.Equals(PlaceableObjectType.Screw);
-                        if (!shouldNotBeDisabled)
-                            activeTab.Disable();
+                        EnableDesiredTabs(desiredObjectTypes, activeTab, true);
+                    }
+                    break;
+                case 3:
+                    desiredObjectTypes.Add(PlaceableObjectType.InclinePlane);
+                    desiredObjectTypes.Add(PlaceableObjectType.Screw);
+                    desiredObjectTypes.Add(PlaceableObjectType.Lever);
+                    foreach (TabController inactiveTab in instance.inactiveTabControllers)
+                    {
+                        EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);
+                    }
+                    foreach (TabController activeTab in instance.activeTabControllers)
+                    {
+                        EnableDesiredTabs(desiredObjectTypes, activeTab, true);
+                    }
+                    break;
+                case 4:
+                    desiredObjectTypes.Add(PlaceableObjectType.InclinePlane);
+                    desiredObjectTypes.Add(PlaceableObjectType.Screw);
+                    desiredObjectTypes.Add(PlaceableObjectType.Lever);
+                    desiredObjectTypes.Add(PlaceableObjectType.Wedge);
+                    foreach (TabController inactiveTab in instance.inactiveTabControllers)
+                    {
+                        EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);
+                    }
+                    foreach (TabController activeTab in instance.activeTabControllers)
+                    {
+                        EnableDesiredTabs(desiredObjectTypes, activeTab, true);
+                    }
+                    break;
+                case 5:
+                    desiredObjectTypes.Add(PlaceableObjectType.InclinePlane);
+                    desiredObjectTypes.Add(PlaceableObjectType.Screw);
+                    desiredObjectTypes.Add(PlaceableObjectType.Lever);
+                    desiredObjectTypes.Add(PlaceableObjectType.Wedge);
+                    desiredObjectTypes.Add(PlaceableObjectType.Wheel);
+                    foreach (TabController inactiveTab in instance.inactiveTabControllers)
+                    {
+                        EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);
+                    }
+                    foreach (TabController activeTab in instance.activeTabControllers)
+                    {
+                        EnableDesiredTabs(desiredObjectTypes, activeTab, true);
                     }
                     break;
             }
+        }
+
+        private static void EnableDesiredTabs(List<PlaceableObjectType> desiredObjectTypes, TabController tab, bool isActiveTab)
+        {
+            bool shouldNotBeDisabled = desiredObjectTypes.Contains(tab.objectType);
+            if (!shouldNotBeDisabled && !isActiveTab)
+            {
+                tab.ReddenAndDisable();
+            }
+            else if (!shouldNotBeDisabled && isActiveTab)
+            {
+                tab.Disable();
+            }
+
         }
 
         public static void EnableAllTabs()

@@ -217,8 +217,8 @@ namespace SimpleMachine
                     {
                         closestDistance = distanceToSnapPoint;
                         Transform closestSnapPoint = fulcrumSnapObject.transform;
-                        desiredSnapLocation = closestSnapPoint.position - new Vector3(0, 0.091f, 0);
-                        // .091f offset is required to get fulcrum screw in correct place
+                        desiredSnapLocation = closestSnapPoint.position - new Vector3(0, 0.155f, 0);
+                        // .155f offset is required to get fulcrum screw in correct place
                     }
                 }
                 return desiredSnapLocation;

@@ -49,7 +49,6 @@ namespace Core
         [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] PlacedObjectMetaData axleMetaData;
         [SerializeField] PlacedObjectMetaData gear1MetaData;
-        [SerializeField] PlacedObjectMetaData gear3MetaData;
         [SerializeField] PlacedObjectMetaData screwMetaData;
         [SerializeField] PlacedObjectMetaData wheelMetaData;
 
@@ -99,6 +98,11 @@ namespace Core
             }
         }
 
+        public static GameState GetPreviousGameState()
+        {
+            return instance.previousGameState;
+        }
+
         public static GameState GetGameState()
         {
             return instance.gameState;
@@ -143,7 +147,11 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     } 
                     LoadScene(GAME_SCENE_KEY);
-                    ResetSceneForPlayMode();
+                    if (instance.gameState != GameState.Paused
+                        && instance.gameState != GameState.GameOver)
+                    {
+                        ResetSceneForPlayMode();
+                    }
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.PlayMode));
                     break;
                 case GameState.Editing:
@@ -154,7 +162,10 @@ namespace Core
                     if (!AudioManager.instance.isPlaying(instance.Level2MusicSound.name)) {
                         AudioManager.instance.PlaySound(instance.Level2MusicSound.name);
                     }
-                    ResetSceneForEditMode();
+                    if (instance.gameState != GameState.Paused)
+                    {
+                        ResetSceneForEditMode();
+                    }
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.EditMode));
                     break;
                 case GameState.Paused:
@@ -207,6 +218,7 @@ namespace Core
                 instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
                 instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
                 instance.StartCoroutine(FreezeDestructibleObjects(ENVIRONMENT_KEY));
+                instance.StartCoroutine(FreezeLeverWeights(ENVIRONMENT_KEY));
             }
             else if (instance.gameState.Equals(GameState.Editing))
             {
@@ -251,6 +263,17 @@ namespace Core
             instance.StartCoroutine(SetObjectsActive(PREPLACED_OBJECTS_KEY, instance.gearBackgroundMetaData, true));
             instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator FreezeLeverWeights(string key)
+        {
+            yield return new WaitUntil(() => GameObject.Find(key) != null);
+            GameObject.Find(key)
+                .GetComponentsInChildren<LeverWeightBehavior>(true)
+                .ToList()
+                .ForEach(
+                    leverWeight => leverWeight.FreezeRigidbody()
+            );
         }
 
         private static IEnumerator FreezeDestructibleObjects(string key)
@@ -379,22 +402,24 @@ namespace Core
                         if (!fulcrumScrew.FulcrumJointShouldBeCreated)
                             continue;
                     }
-                    PlacedObjectMetaData collider2MetaData = collider2.gameObject.GetComponent<PlacedObjectManager>().metaData;
-                    PlacedObjectMetaData collider1MetaData = collider1.gameObject.GetComponent<PlacedObjectManager>().metaData;
-                    bool collider2IsAxle =
-                        collider2MetaData.Equals(instance.axleMetaData);
-                    bool collider1IsGearorWheel =
-                        collider1MetaData.Equals(instance.gear1MetaData)
-                        || collider1MetaData.Equals(instance.wheelMetaData)
-                        || collider1MetaData.Equals(instance.gear3MetaData);
-                    if (collider2IsAxle && !collider1IsGearorWheel)
+                    else
                     {
-                        continue;
-                    }
-                    bool collider2IsScrew = collider1MetaData.Equals(instance.screwMetaData);
-                    if (collider2IsScrew && collider1IsGearorWheel)
-                    {
-                        continue;
+                        PlacedObjectMetaData collider2MetaData = collider2.gameObject.GetComponent<PlacedObjectManager>().metaData;
+                        PlacedObjectMetaData collider1MetaData = collider1.gameObject.GetComponent<PlacedObjectManager>().metaData;
+                        bool collider2IsAxle =
+                            collider2MetaData.Equals(instance.axleMetaData);
+                        bool collider1IsGearorWheel =
+                            collider1MetaData.Equals(instance.gear1MetaData)
+                            || collider1MetaData.Equals(instance.wheelMetaData);
+                        if (collider2IsAxle && !collider1IsGearorWheel)
+                        {
+                            continue;
+                        }
+                        bool collider2IsScrew = collider1MetaData.Equals(instance.screwMetaData);
+                        if (collider2IsScrew && collider1IsGearorWheel)
+                        {
+                            continue;
+                        }
                     }
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }

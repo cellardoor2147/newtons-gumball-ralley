@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3894201689709608813}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.180891, y: 2.180891, z: 1}
   m_Children:
   - {fileID: 3140926660470339576}
   - {fileID: 57334929099349873}
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.007810414, y: -0.13119853}
+  m_Offset: {x: 0.007810414, y: -0.16290766}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -133,7 +133,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.19688922, y: 0.18318665}
+  m_Size: {x: 0.19688922, y: 0.11976839}
   m_EdgeRadius: 0
 --- !u!114 &2711743973641093751
 MonoBehaviour:
@@ -159,6 +159,7 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
+  axleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &-9186538021647538262
 MonoBehaviour:
