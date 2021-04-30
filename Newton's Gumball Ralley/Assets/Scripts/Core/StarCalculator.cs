@@ -32,8 +32,6 @@ namespace Core
 
         public static bool PlayerGotScrapStar()
         {
-            Debug.Log($"Scrap Remaining: {ScrapManager.ScrapRemaining}");
-            Debug.Log($"Scrap Constraint: {LevelManager.GetCurrentLevelScrapConstraint()}");
             return ScrapManager.ScrapRemaining >= LevelManager.GetCurrentLevelScrapConstraint();
         }
     }

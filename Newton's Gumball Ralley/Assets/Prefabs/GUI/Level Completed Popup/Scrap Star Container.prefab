@@ -90,12 +90,7 @@ PrefabInstance:
     - target: {fileID: 1639237393231499791, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}
       propertyPath: m_text
-      value: Scrap
-      objectReference: {fileID: 0}
-    - target: {fileID: 1639237393231499791, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 18
+      value: Over ? Remaining Scrap
       objectReference: {fileID: 0}
     - target: {fileID: 4335699784549196567, guid: 1d0dff87a0d97ea48bc4fb4ceb78f5cd,
         type: 3}

@@ -23,7 +23,7 @@ namespace GUI.EditMode
 
         private void Update()
         {
-            scrapRemainingText.text = ScrapRemaining.ToString();
+            scrapRemainingText.text = $"Scrap\n{ScrapRemaining}";
         }
 
         public static void ChangeScrapRemaining(float value)
