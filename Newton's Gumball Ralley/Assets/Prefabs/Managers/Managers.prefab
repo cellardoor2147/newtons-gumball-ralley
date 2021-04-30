@@ -36,54 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7929015404896422535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8767711968094847099}
-  - component: {fileID: 953824394037999473}
-  m_Layer: 0
-  m_Name: Level Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8767711968094847099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929015404896422535}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4355835408925120100}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &953824394037999473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7929015404896422535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09596eb2e89a4148a09142db550f4f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializedLevelsData:
-  - {fileID: 4900000, guid: 395f9304ecfe1b243ad19e3771cd658c, type: 3}
-  - {fileID: 4900000, guid: 3d01634f9e667524b8ce157ca04b40a3, type: 3}
-  - {fileID: 4900000, guid: 0244ea8cc1512284d8933a96a13dedf7, type: 3}
-  - {fileID: 4900000, guid: a9de5dc2ca9068d4e97611b25976a305, type: 3}
 --- !u!1001 &2036172946721963272
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,15 +1,11 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 namespace Core
 {
     public static class PlayerProgressManager
     {
-        public static readonly string WRITE_DIRECTORY_PATH =
-            Application.persistentDataPath + '/';
-
         [System.Serializable]
         private struct LevelProgress
         {
@@ -25,9 +21,11 @@ namespace Core
             int worldIndex = levelProgress.worldIndex;
             int levelIndex = levelProgress.levelIndex;
             string serializedLevelProgress = JsonUtility.ToJson(levelProgress, true);
-            string writeFilePath = WRITE_DIRECTORY_PATH;
-            writeFilePath += worldIndex.ToString() + "-" + levelIndex.ToString() + ".json";
-            Directory.CreateDirectory(WRITE_DIRECTORY_PATH);
+            string writeFilePath = Application.persistentDataPath;
+            writeFilePath = Path.Combine(
+                writeFilePath,
+                worldIndex.ToString() + "-" + levelIndex.ToString() + ".json"
+            );
             using (StreamWriter streamWriter = new StreamWriter(writeFilePath))
             {
                 streamWriter.Write(serializedLevelProgress);
@@ -64,14 +62,30 @@ namespace Core
         private static List<LevelProgress> GetLevelProgresses()
         {
             List<LevelProgress> levelProgresses = new List<LevelProgress>();
-            DirectoryInfo directoryInfo = new DirectoryInfo(WRITE_DIRECTORY_PATH);
-            FileInfo[] fileInfos = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
-            foreach (FileInfo fileInfo in fileInfos)
+            if (Application.platform.Equals(RuntimePlatform.WebGLPlayer))
             {
-                LevelProgress levelProgress = Deserialize(WRITE_DIRECTORY_PATH + fileInfo.Name);
-                levelProgresses.Add(levelProgress);
+                for (int worldIndex = 1; worldIndex <= 6; worldIndex++)
+                {
+                    for (int levelIndex = 1; levelIndex <= 6; levelIndex++)
+                    {
+                        LevelProgress levelProgress = new LevelProgress();
+                        levelProgress.worldIndex = worldIndex;
+                        levelProgress.levelIndex = levelIndex;
+                        levelProgresses.Add(levelProgress);
+                    }
+                }
             }
-
+            else
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(Application.persistentDataPath);
+                FileInfo[] fileInfos = directoryInfo.GetFiles("*.json", SearchOption.AllDirectories);
+                foreach (FileInfo fileInfo in fileInfos)
+                {
+                    LevelProgress levelProgress =
+                        Deserialize(Path.Combine(Application.persistentDataPath, fileInfo.Name));
+                    levelProgresses.Add(levelProgress);
+                }
+            }
             return levelProgresses;
         }
 
@@ -93,18 +107,29 @@ namespace Core
                         newLevelProgress.levelIndex = currentLevelIndex;
                         newLevelProgress.bestStarsEarned = starsEarned;
                         levelProgresses[i] = newLevelProgress;
-                        Serialize(levelProgresses[i]);
+                        if (!Application.platform.Equals(RuntimePlatform.WebGLPlayer))
+                        {
+                            Serialize(levelProgresses[i]);
+                        }
                         return;
                     }
                     return;
                 }
             }
-            LevelProgress levelProgress = new LevelProgress();
-            levelProgress.worldIndex = currentWorldIndex;
-            levelProgress.levelIndex = currentLevelIndex;
-            levelProgress.bestStarsEarned = starsEarned;
-            levelProgresses.Add(levelProgress);
-            Serialize(levelProgress);
+            if (!Application.platform.Equals(RuntimePlatform.WebGLPlayer))
+            {
+                LevelProgress levelProgress = new LevelProgress();
+                levelProgress.worldIndex = currentWorldIndex;
+                levelProgress.levelIndex = currentLevelIndex;
+                levelProgress.bestStarsEarned = starsEarned;
+                levelProgresses.Add(levelProgress);
+                Serialize(levelProgress);
+            }
+        }
+
+        public static int GetBestStarsEarnedForLevel(int worldIndex, int levelIndex)
+        {
+            return GetLevelProgress(worldIndex, levelIndex).bestStarsEarned;
         }
     }
 }

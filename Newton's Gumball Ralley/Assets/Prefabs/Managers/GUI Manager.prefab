@@ -1915,10 +1915,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7830830053062081222, guid: dc367c2ad4dd7084f9e0638436e57ced,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8618801999942072723, guid: dc367c2ad4dd7084f9e0638436e57ced,
         type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8868127019511315651, guid: dc367c2ad4dd7084f9e0638436e57ced,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9172206890503331806, guid: dc367c2ad4dd7084f9e0638436e57ced,
         type: 3}

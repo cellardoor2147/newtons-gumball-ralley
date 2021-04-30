@@ -28,15 +28,21 @@ namespace LevelTimer
             }
         }
 
-        public static void StartTimer()
+        public static void Start()
         {
             shouldIncrementTimer = true;
             completionTimeIsSet = false;
         }
 
-        public static void StopTimer()
+        public static void Stop()
         {
             shouldIncrementTimer = false;
+        }
+
+        public static void Reset()
+        {
+            Stop();
+            CurrentTime = 0f;
         }
     }
 }

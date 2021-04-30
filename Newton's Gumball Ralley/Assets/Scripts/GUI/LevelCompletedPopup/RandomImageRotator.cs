@@ -6,14 +6,19 @@ namespace GUI.LevelCompletedPopup
     {
         [SerializeField] private float rotationSpeed;
 
-        private void Awake()
-        {
-            transform.Rotate(new Vector3(0f, 0f, Random.Range(0f, 360f)));
-        }
+        private bool shouldRotate;
 
         private void Update()
         {
-            transform.Rotate(new Vector3(0f, 0f, rotationSpeed * Time.deltaTime));
+            if (shouldRotate)
+            {
+                transform.Rotate(new Vector3(0f, 0f, rotationSpeed * Time.deltaTime));
+            }
+        }
+
+        public void SetShouldRotate(bool shouldRotate)
+        {
+            this.shouldRotate = shouldRotate;
         }
     }
 }

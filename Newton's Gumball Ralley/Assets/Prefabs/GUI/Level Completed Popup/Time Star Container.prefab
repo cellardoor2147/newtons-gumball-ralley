@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d489c29e30d418a478c320055e73de0e,
+      objectReference: {fileID: 21300000, guid: bb1e4a8381461be4f911302e62ae5cf4,
         type: 3}
     - target: {fileID: 4828834251935907139, guid: fb6ebb2c855765a4c8cc4158142261fc,
         type: 3}
@@ -111,12 +111,12 @@ PrefabInstance:
     - target: {fileID: 5141039505107869278, guid: fb6ebb2c855765a4c8cc4158142261fc,
         type: 3}
       propertyPath: m_text
-      value: Time
+      value: Under ? Seconds
       objectReference: {fileID: 0}
     - target: {fileID: 7911811293230100294, guid: fb6ebb2c855765a4c8cc4158142261fc,
         type: 3}
       propertyPath: m_Name
-      value: Time Star Container Variant
+      value: Time Star Container
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb6ebb2c855765a4c8cc4158142261fc, type: 3}
