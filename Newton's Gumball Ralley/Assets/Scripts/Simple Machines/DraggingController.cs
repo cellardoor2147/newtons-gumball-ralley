@@ -13,6 +13,8 @@ namespace SimpleMachine
         private static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         private static readonly string SIMPLE_MACHINE_TAG = "SimpleMachine";
         private static readonly string BALL_TAG = "Player";
+        private static readonly string GUMBALL_MACHINE_TAG = "GumballMachine";
+        private static readonly string ENVIRONMENT_BLOCK_TAG = "EnvironmentBlock";
 
         [SerializeField] private GameObject rotationArrowsPrefab;
 
@@ -460,7 +462,9 @@ namespace SimpleMachine
                 if (
                     hit.collider.gameObject != gameObject 
                     && (hit.collider.gameObject.CompareTag(SIMPLE_MACHINE_TAG)
-                    || hit.collider.gameObject.CompareTag(BALL_TAG))
+                    || hit.collider.gameObject.CompareTag(BALL_TAG)
+                    || hit.collider.gameObject.CompareTag(GUMBALL_MACHINE_TAG)
+                    || hit.collider.gameObject.CompareTag(ENVIRONMENT_BLOCK_TAG))
                 )
                 {
                     return true;
