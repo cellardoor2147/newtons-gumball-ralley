@@ -150,7 +150,7 @@ namespace Core
                     if (instance.gameState != GameState.Paused
                         && instance.gameState != GameState.GameOver)
                     {
-                        ResetSceneForPlayMode();
+                        instance.StartCoroutine(ResetSceneForPlayMode());
                     }
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.PlayMode));
                     break;
@@ -164,7 +164,7 @@ namespace Core
                     }
                     if (instance.gameState != GameState.Paused)
                     {
-                        ResetSceneForEditMode();
+                        instance.StartCoroutine(ResetSceneForEditMode());
                     }
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.EditMode));
                     break;
@@ -207,18 +207,21 @@ namespace Core
             SceneManager.LoadScene(sceneName);
         }
 
-        public static void ResetLevel()
+        public static IEnumerator ResetLevel()
         {
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
             if (instance.gameState.Equals(GameState.Playing))
             {
-                instance.StartCoroutine(ResetGumballMachine());
-                instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
-                instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
-                instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
-                instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
-                instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
-                instance.StartCoroutine(FreezeDestructibleObjects(ENVIRONMENT_KEY));
-                instance.StartCoroutine(FreezeLeverWeights(ENVIRONMENT_KEY));
+                ResetGumballMachine();
+                ResetObjectsTransforms(PLACED_OBJECTS_KEY);
+                ResetObjectsTransforms(PREPLACED_OBJECTS_KEY);
+                ResetObjectsTransforms(ENVIRONMENT_KEY);
+                DestroyDebris(ENVIRONMENT_KEY);
+                RepairDestructibleObjects(ENVIRONMENT_KEY);
+                FreezeDestructibleObjects(ENVIRONMENT_KEY);
+                FreezeLeverWeights(ENVIRONMENT_KEY);
             }
             else if (instance.gameState.Equals(GameState.Editing))
             {
@@ -229,45 +232,50 @@ namespace Core
             else if (instance.gameState.Equals(GameState.GameOver))
             {
                 SetGameState(GameState.Playing);
-                ResetLevel();
+                instance.StartCoroutine(ResetLevel());
             }
         }
 
-        private static void ResetSceneForPlayMode()
+        private static IEnumerator ResetSceneForPlayMode()
         {
-            instance.StartCoroutine(TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(RevertObjectsFromGray(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, false));
-            instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY);
+            TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY);
+            UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY);
+            UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY);
+            RevertObjectsFromGray(PREPLACED_OBJECTS_KEY);
+            SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, false);
+            RemoveAllRotationArrows(PLACED_OBJECTS_KEY);
             Physics2D.gravity = instance.defaultGravity;
         }
 
-        private static void ResetSceneForEditMode()
+        private static IEnumerator ResetSceneForEditMode()
         {
-            instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(ResetGumballMachine());
-            instance.StartCoroutine(ResetObjectsTransforms(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(ResetObjectsTransforms(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(ResetObjectsTransforms(ENVIRONMENT_KEY));
-            instance.StartCoroutine(FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(FreezeObjectsRigidbodies(ENVIRONMENT_KEY));
-            instance.StartCoroutine(GrayOutObjects(PREPLACED_OBJECTS_KEY));
-            instance.StartCoroutine(AddAllRotationArrows(PLACED_OBJECTS_KEY));
-            instance.StartCoroutine(DestroyDebris(ENVIRONMENT_KEY));
-            instance.StartCoroutine(RepairDestructibleObjects(ENVIRONMENT_KEY));
-            instance.StartCoroutine(SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, true));
-            instance.StartCoroutine(ResetDestructibleObjectLayer(ENVIRONMENT_KEY));
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY);
+            UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY);
+            ResetGumballMachine();
+            ResetObjectsTransforms(PLACED_OBJECTS_KEY);
+            ResetObjectsTransforms(PREPLACED_OBJECTS_KEY);
+            ResetObjectsTransforms(ENVIRONMENT_KEY);
+            FreezeObjectsRigidbodies(PLACED_OBJECTS_KEY);
+            FreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY);
+            FreezeObjectsRigidbodies(ENVIRONMENT_KEY);
+            GrayOutObjects(PREPLACED_OBJECTS_KEY);
+            AddAllRotationArrows(PLACED_OBJECTS_KEY);
+            DestroyDebris(ENVIRONMENT_KEY);
+            RepairDestructibleObjects(ENVIRONMENT_KEY);
+            SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, true);
+            ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
             Physics2D.gravity = Vector2.zero;
         }
 
-        private static IEnumerator FreezeLeverWeights(string key)
+        private static void FreezeLeverWeights(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                 .GetComponentsInChildren<LeverWeightBehavior>(true)
                 .ToList()
@@ -276,9 +284,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator FreezeDestructibleObjects(string key)
+        private static void FreezeDestructibleObjects(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                .GetComponentsInChildren<DestructibleObstacleLayerController>(true)
                .ToList()
@@ -287,9 +294,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator ResetDestructibleObjectLayer(string key)
+        private static void ResetDestructibleObjectLayer(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                .GetComponentsInChildren<DestructibleObstacleLayerController>(true)
                .ToList()
@@ -298,9 +304,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator RepairDestructibleObjects(string key)
+        private static void RepairDestructibleObjects(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                .GetComponentsInChildren<D2dDestructibleSprite>(true)
                .ToList()
@@ -309,9 +314,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator DestroyDebris(string key)
+        private static void DestroyDebris(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject objectContainer = GameObject.Find(key);
             foreach (Transform objectTransform in objectContainer.transform)
             {
@@ -322,18 +326,16 @@ namespace Core
             }
         }
 
-        private static IEnumerator ResetGumballMachine()
+        private static void ResetGumballMachine()
         {
-            yield return new WaitUntil(() => GameObject.Find(GUMBALL_MACHINE_KEY) != null);
             GameObject gumballMachine = GameObject.Find(GUMBALL_MACHINE_KEY);
             GumballMachineManager gumballMachineManager =
                 gumballMachine.GetComponent<GumballMachineManager>();
             gumballMachineManager.SetGumballMachineState(GumballMachineState.Closed);
         }
 
-        private static IEnumerator ResetObjectsTransforms(string key)
+        private static void ResetObjectsTransforms(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                 .GetComponentsInChildren<PlacedObjectManager>(false)
                 .ToList()
@@ -342,9 +344,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator UnfreezeObjectsRigidbodies(string key)
+        private static void UnfreezeObjectsRigidbodies(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                 .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
@@ -353,9 +354,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator FreezeObjectsRigidbodies(string key)
+        private static void FreezeObjectsRigidbodies(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                 .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
@@ -364,9 +364,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator TetherObjectsToPlacedScrews(string key)
+        private static void TetherObjectsToPlacedScrews(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject objectContainer = GameObject.Find(key);
             List<Collider2D> objectColliders =
                 objectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
@@ -424,7 +423,6 @@ namespace Core
                     TetherObjectToScrew(collider1.gameObject, collider2.gameObject);
                 }
             }
-            yield return null;
         }
 
         private static void TetherObjectToScrew(GameObject otherObject, GameObject screw)
@@ -438,12 +436,14 @@ namespace Core
                                                               * e.g. with FulcrumScrew, it needs to be a child
                                                               * of LeverFulcrum, so this line sets the parent of
                                                               * FulcrumScrew back to LeverFulcrum */
-            otherObject.GetComponent<HingeJoint2D>().enableCollision = true;
+            foreach (HingeJoint2D hingeJoint in otherObject.GetComponents<HingeJoint2D>())
+            {
+                hingeJoint.enableCollision = true;
+            }
         }
 
-        private static IEnumerator UntetherObjectsFromPlacedScrews(string key)
+        private static void UntetherObjectsFromPlacedScrews(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject objectContainer = GameObject.Find(key);
             List<Collider2D> objectColliders =
                 objectContainer.GetComponentsInChildren<Collider2D>(true).ToList();
@@ -454,7 +454,6 @@ namespace Core
                     Destroy(joint);
                 }
             }
-            yield return null;
         }
 
         private static IEnumerator SetObjectsActive(string key, PlacedObjectMetaData metaData, bool setActive)
@@ -470,9 +469,8 @@ namespace Core
             }
         }
 
-        private static IEnumerator RevertObjectsFromGray(string key)
+        private static void RevertObjectsFromGray(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
                 GameObject.Find(key)
                 .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
@@ -481,9 +479,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator GrayOutObjects(string key)
+        private static void GrayOutObjects(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
                 GameObject.Find(key)
                 .GetComponentsInChildren<PlacedObjectManager>(true)
                 .ToList()
@@ -492,9 +489,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator RemoveAllRotationArrows(string key)
+        private static void RemoveAllRotationArrows(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                 .GetComponentsInChildren<DraggingController>(true)
                 .ToList()
@@ -503,9 +499,8 @@ namespace Core
             );
         }
 
-        private static IEnumerator AddAllRotationArrows(string key)
+        private static void AddAllRotationArrows(string key)
         {
-            yield return new WaitUntil(() => GameObject.Find(key) != null);
             GameObject.Find(key)
                 .GetComponentsInChildren<DraggingController>(true)
                 .ToList()
@@ -514,9 +509,8 @@ namespace Core
             );
         }
 
-        public static IEnumerator LoadNextLevel()
+        public static void LoadNextLevel()
         {
-            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
             DeleteAllChildren(GameObject.Find(PLACED_OBJECTS_KEY));
             LevelManager.LoadNextLevel();
         }
