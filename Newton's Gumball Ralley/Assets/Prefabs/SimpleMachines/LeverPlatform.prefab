@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1430043746231358091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.180891, y: 2.180891, z: 1}
   m_Children:
   - {fileID: 7329697692763924857}
   m_Father: {fileID: 0}
@@ -238,8 +238,7 @@ MonoBehaviour:
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  smallAxleMetaData: {fileID: 0}
-  largeAxleMetaData: {fileID: 0}
+  axleMetaData: {fileID: 0}
   ScrewSound: {fileID: 11400000, guid: 33cbcd5a99e5648ddb707928741b38c4, type: 2}
 --- !u!114 &4576237729642667566
 MonoBehaviour:

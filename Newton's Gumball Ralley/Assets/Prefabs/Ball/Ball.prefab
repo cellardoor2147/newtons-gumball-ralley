@@ -139,6 +139,10 @@ MonoBehaviour:
   delayAfterRelease: 0.1
   BounceSound: {fileID: 11400000, guid: cfd74200c87a7490aaa928733d77a408, type: 2}
   RollingSound: {fileID: 11400000, guid: 5b19837bd08884f39b0fde5f5234a6b2, type: 2}
+  simplePulleyMetaData: {fileID: 0}
+  compoundPulleyMetaData: {fileID: 0}
   fadeTime: 0.5
   finalVolume: 0
   rollingVolume: 0.2
+  originalScale: {x: 0, y: 0, z: 0}
+  hasBeenDispensed: 0
