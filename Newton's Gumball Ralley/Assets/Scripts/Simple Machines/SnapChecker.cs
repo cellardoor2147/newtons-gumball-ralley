@@ -43,8 +43,7 @@ namespace SnapCheck
                     }
                     break;
                 case "Axle":
-                    if (collision.gameObject.name.Equals("Gear3SnapPoint") 
-                    || collision.gameObject.name.Equals("Gear1SnapPoint") 
+                    if (collision.gameObject.name.Equals("Gear1SnapPoint") 
                     || collision.gameObject.name.Equals("WheelSnapPoint"))
                     {
                         bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
@@ -62,6 +61,40 @@ namespace SnapCheck
                     break;
                 case "Gear2":
                     if (collision.gameObject.name.Equals("GearBackgroundSnapPoint"))
+                    {
+                        bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
+                        if (mouseInSnappingRange)
+                        {
+                            ShouldSnap = true;
+                            SnapPointHolder = collision.gameObject;
+                        }
+                        else
+                        {
+                            ShouldSnap = false;
+                            SnapPointHolder = null;
+                        }
+                    }
+                    break;
+                case "Gear1":
+                    if (collision.gameObject.name.Equals("Gear1SelfSnapPoints")
+                    || collision.gameObject.name.Equals("Gear2SnapPoints"))
+                    {
+                        bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
+                        if (mouseInSnappingRange)
+                        {
+                            ShouldSnap = true;
+                            SnapPointHolder = collision.gameObject;
+                        }
+                        else
+                        {
+                            ShouldSnap = false;
+                            SnapPointHolder = null;
+                        }
+                    }
+                    break;
+                case "Wheel":
+                    if (collision.gameObject.name.Equals("Gear1SnapPoints")
+                    || collision.gameObject.name.Equals("WheelSnapPoints"))
                     {
                         bool mouseInSnappingRange = collision.OverlapPoint(mousePosition);
                         if (mouseInSnappingRange)

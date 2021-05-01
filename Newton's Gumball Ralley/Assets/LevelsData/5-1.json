@@ -1,9 +1,9 @@
 {
-    "worldIndex": 1,
+    "worldIndex": 5,
     "levelIndex": 1,
     "customLevelName": "",
-    "repeatedBackgroundRows": 2,
-    "repeatedBackgroundColumns": 4,
+    "repeatedBackgroundRows": 4,
+    "repeatedBackgroundColumns": 8,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -90,11 +90,11 @@
             }
         },
         {
-            "objectName": "EnvironmentBlock",
+            "objectName": "GearBackground",
             "transform": {
                 "position": {
-                    "x": -5.489999771118164,
-                    "y": -5.275722026824951,
+                    "x": -4.710000038146973,
+                    "y": -0.6899999976158142,
                     "z": 0.0
                 },
                 "rotation": {
@@ -104,92 +104,8 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 4.5,
-                    "y": 2.5999999046325685,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": 5.670000076293945,
-                    "y": -5.275722026824951,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 4.5,
-                    "y": 2.5999999046325685,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": 11.569999694824219,
-                    "y": 0.5099999904632568,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.7071068286895752,
-                    "w": 0.7071068286895752
-                },
-                "scale": {
-                    "x": 4.5,
-                    "y": 2.5999999046325685,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -11.479999542236329,
-                    "y": 0.5099999904632568,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.7071068286895752,
-                    "w": 0.7071068286895752
-                },
-                "scale": {
-                    "x": 4.5,
-                    "y": 2.5999999046325685,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "Ralph",
-            "transform": {
-                "position": {
-                    "x": 4.730000019073486,
-                    "y": -3.3399999141693117,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 0.800000011920929,
-                    "y": 0.800000011920929,
+                    "x": 0.699999988079071,
+                    "y": 0.699999988079071,
                     "z": 1.0
                 }
             }
@@ -198,8 +114,8 @@
     "preplacedObjects": [],
     "gumballMachineTransform": {
         "position": {
-            "x": -8.979999542236329,
-            "y": -2.2200000286102297,
+            "x": 0.0,
+            "y": 0.0,
             "z": 0.0
         },
         "rotation": {
@@ -214,9 +130,9 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 10.0,
+    "placeableScrapLimit": 100.0,
     "starConditions": {
         "timeConstraint": 10.0,
-        "scrapConstraint": 10.0
+        "scrapConstraint": 100.0
     }
 }

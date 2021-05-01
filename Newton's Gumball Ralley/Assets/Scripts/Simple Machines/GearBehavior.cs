@@ -17,8 +17,8 @@ namespace SimpleMachine {
         private Vector3 ConstrainedPosition;
         private bool hasSet;
         private bool hasSpawned;
-        private float torque;
-        private float spinSpeed;
+        [SerializeField] private float torque;
+        [SerializeField] private float spinSpeed;
         [HideInInspector] public SpinState spinState;
         [HideInInspector] public bool shouldSpinLeft;
         [HideInInspector] public bool shouldSpinRight;
@@ -32,8 +32,6 @@ namespace SimpleMachine {
         private void Awake()
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
-            torque = 5000f;
-            spinSpeed = 100f;
             spinState = SpinState.NotSpinning;
             shouldSpinLeft = true;
             shouldSpinRight = true;

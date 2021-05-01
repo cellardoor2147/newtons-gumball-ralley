@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 4161818804681175105}
   - component: {fileID: 1984303412973035137}
   - component: {fileID: -1371792158040996120}
+  - component: {fileID: 1456354476081785673}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -243,7 +244,7 @@ Transform:
   m_GameObject: {fileID: 7695583799297489893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.5}
   m_Children:
   - {fileID: 7719547902272002298}
   - {fileID: 180217446271065230}
@@ -263,9 +264,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 25
   m_LinearDrag: 0
-  m_AngularDrag: 0.25
+  m_AngularDrag: 0.1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -621,6 +622,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GearSound: {fileID: 11400000, guid: cfedd3ff9bb374bf097cfeb7fabf2b0a, type: 2}
+--- !u!114 &1456354476081785673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7695583799297489893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c703c1d9c062248b754d9c2b94616f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9068970185567359828
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3175605165659759069}
-  - component: {fileID: 6378088547463403223}
+  - component: {fileID: 2782208720046738972}
   m_Layer: 0
   m_Name: Level Manager
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6378088547463403223
+--- !u!114 &2782208720046738972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,14 +40,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4302813437052070689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09596eb2e89a4148a09142db550f4f3, type: 3}
+  m_Script: {fileID: 11500000, guid: ad93aca90e1b1406687f735fcfa743c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializedLevelsData:
   - {fileID: 4900000, guid: 471876a87c2fd4c9ab234584a4530622, type: 3}
   - {fileID: 4900000, guid: 172da03e31a90407bb287e9fa8427d5b, type: 3}
+  - {fileID: 4900000, guid: e4581e07f90814d23b05d181bb174c37, type: 3}
   - {fileID: 4900000, guid: 3d01634f9e667524b8ce157ca04b40a3, type: 3}
   - {fileID: 4900000, guid: 0244ea8cc1512284d8933a96a13dedf7, type: 3}
-  - {fileID: 4900000, guid: 498590633b1d1f745b2294d4cf39789c, type: 3}
-  - {fileID: 4900000, guid: 2b352b5abba6652468c3407373fdc4ca, type: 3}
-  - {fileID: 4900000, guid: d8dad61de02b5674d889836d0ec3875e, type: 3}
+  - {fileID: 4900000, guid: 1b7b351d42c6842ca88dea58aaba192a, type: 3}

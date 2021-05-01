@@ -43,9 +43,8 @@ MonoBehaviour:
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
-    content: "This surface isn\u2019t sloped yet. You\u2019ll need to use the arrows
-      on each side of it to raise and lower each side until the incline is just how
-      you want it. "
+    content: "You\u2019ll need to use the arrows on each side of it to raise and
+      lower each side until the incline is just how you want it. "
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
