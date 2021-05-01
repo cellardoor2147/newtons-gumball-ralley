@@ -45,6 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backgroundTexture: {fileID: 6767857159710695678, guid: 78010fa997cc7c24c9ed0a395d13be9c,
     type: 3}
+  backgroundTintForWorld1: {r: 0.759434, g: 0.93724364, b: 1, a: 1}
+  backgroundTintForWorld2: {r: 1, g: 0.999444, b: 0.75, a: 1}
+  backgroundTintForWorld3: {r: 1, g: 0.8462027, b: 0.5424528, a: 1}
+  backgroundTintForWorld4: {r: 1, g: 0.7028302, b: 0.7028302, a: 1}
+  backgroundTintForWorld5: {r: 0.974807, g: 0.7783019, b: 1, a: 1}
+  backgroundTintForWorld6: {r: 0.7311321, g: 1, b: 0.868658, a: 0}
 --- !u!1 &4302677713385360097
 GameObject:
   m_ObjectHideFlags: 0

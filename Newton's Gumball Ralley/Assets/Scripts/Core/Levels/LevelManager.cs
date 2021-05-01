@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GUI.EditMode;
 
-namespace Core
+namespace Core.Levels
 {
     public class LevelManager : MonoBehaviour
     {

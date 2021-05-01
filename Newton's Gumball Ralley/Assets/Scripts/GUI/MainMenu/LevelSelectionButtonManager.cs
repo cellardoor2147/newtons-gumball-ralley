@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Core;
+using Core.Levels;
 using TMPro;
 
 namespace GUI.MainMenu

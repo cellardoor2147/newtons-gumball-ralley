@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.UI;
-using Core;
+using Core.Levels;
 using UnityEngine;
 
 namespace GUI.EditMode

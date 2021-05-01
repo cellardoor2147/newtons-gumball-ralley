@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using Core;
+using Core.Levels;
 using Audio;
 
 namespace GUI.Dialogue

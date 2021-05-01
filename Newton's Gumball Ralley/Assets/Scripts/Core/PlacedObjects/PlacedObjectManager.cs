@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace Core
+namespace Core.PlacedObjects
 {
     public class PlacedObjectManager : MonoBehaviour
     {

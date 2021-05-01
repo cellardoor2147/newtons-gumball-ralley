@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-namespace Core
+namespace Core.Levels
 {
 #if(UNITY_EDITOR)
     public class LevelEditorWindow : EditorWindow
