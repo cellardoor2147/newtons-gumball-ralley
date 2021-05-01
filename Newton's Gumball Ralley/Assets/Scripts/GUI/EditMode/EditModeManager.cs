@@ -99,7 +99,28 @@ namespace GUI.EditMode
 
         private void Start()
         {
-            SetActiveTab(PlaceableObjectType.InclinePlane);
+            int worldIndex = LevelManager.GetCurrentWorldIndex();
+            switch (worldIndex)
+            {
+                case 1:
+                    SetActiveTab(PlaceableObjectType.InclinePlane);
+                    break;
+                case 2:
+                    SetActiveTab(PlaceableObjectType.Screw);
+                    break;
+                case 3:
+                    SetActiveTab(PlaceableObjectType.Lever);
+                    break;
+                case 4:
+                    SetActiveTab(PlaceableObjectType.Wedge);
+                    break;
+                case 5:
+                    SetActiveTab(PlaceableObjectType.Wheel);
+                    break;
+                case 6:
+                    SetActiveTab(PlaceableObjectType.InclinePlane);
+                    break;
+            }
         }
 
         public static IEnumerator AsyncSetActiveTab(PlaceableObjectType objectType)
@@ -135,11 +156,12 @@ namespace GUI.EditMode
             instance.ActivateContent(objectType);
         }
 
-        public static IEnumerator DisableFutureTabs()
+        public static IEnumerator DisableTabs()
         {
             yield return new WaitUntil(() => instance != null);
             EnableAllTabs();
             int worldIndex = LevelManager.GetCurrentWorldIndex();
+            int levelIndex = LevelManager.GetCurrentLevelIndex();
             List<PlaceableObjectType> desiredObjectTypes = new List<PlaceableObjectType>();
 
             switch (worldIndex)
@@ -200,6 +222,11 @@ namespace GUI.EditMode
                     desiredObjectTypes.Add(PlaceableObjectType.Lever);
                     desiredObjectTypes.Add(PlaceableObjectType.Wedge);
                     desiredObjectTypes.Add(PlaceableObjectType.Wheel);
+                    if (levelIndex == 1 || levelIndex == 2)
+                    {
+                        desiredObjectTypes.Remove(PlaceableObjectType.InclinePlane);
+                        desiredObjectTypes.Remove(PlaceableObjectType.Lever);
+                    }
                     foreach (TabController inactiveTab in instance.inactiveTabControllers)
                     {
                         EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);

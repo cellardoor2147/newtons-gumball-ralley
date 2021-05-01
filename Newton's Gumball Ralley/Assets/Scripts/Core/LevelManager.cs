@@ -96,9 +96,29 @@ namespace Core
                     LevelSerializer.AsyncSetSceneWithLevelData(levelData)
                 );
                 ScrapManager.ResetRemainingScrap();
-                GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.InclinePlane));
+                switch (currentLevelData.worldIndex)
+                {
+                    case 1:
+                        GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.InclinePlane));
+                        break;
+                    case 2:
+                        GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.Screw));
+                        break;
+                    case 3:
+                        GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.Lever));
+                        break;
+                    case 4:
+                        GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.Wedge));
+                        break;
+                    case 5:
+                        GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.Wheel));
+                        break;
+                    case 6:
+                        GameStateManager.StartStaticCoroutine(EditModeManager.AsyncSetActiveTab(PlaceableObjectType.InclinePlane));
+                        break;
+                }               
                 GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
-                GameStateManager.StartStaticCoroutine(EditModeManager.DisableFutureTabs());
+                GameStateManager.StartStaticCoroutine(EditModeManager.DisableTabs());
             }
 
         }
