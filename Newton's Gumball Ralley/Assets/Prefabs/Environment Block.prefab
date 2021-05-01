@@ -138,6 +138,6 @@ MonoBehaviour:
   spriteColorForWorld1: {r: 0.003070495, g: 0.47724774, b: 0.6509434, a: 1}
   spriteColorForWorld2: {r: 0.9150943, g: 0.8670189, b: 0.11654504, a: 1}
   spriteColorForWorld3: {r: 0.6698113, g: 0.36888158, b: 0, a: 1}
-  spriteColorForWorld4: {r: 0.5566038, g: 0.002625496, b: 0.002625496, a: 1}
-  spriteColorForWorld5: {r: 0.51326704, g: 0.19335172, b: 0.5188679, a: 1}
-  spriteColorForWorld6: {r: 0.17475079, g: 0.4811321, b: 0.18137732, a: 1}
+  spriteColorForWorld4: {r: 0.1764706, g: 0.48235297, b: 0.18039216, a: 1}
+  spriteColorForWorld5: {r: 0.5568628, g: 0.003921569, b: 0.003921569, a: 1}
+  spriteColorForWorld6: {r: 0.5137255, g: 0.19215688, b: 0.5176471, a: 1}
