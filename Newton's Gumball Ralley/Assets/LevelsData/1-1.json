@@ -93,7 +93,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -5.489999771118164,
+                    "x": -5.406000137329102,
                     "y": -5.275722026824951,
                     "z": 0.0
                 },
@@ -104,7 +104,7 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 4.5,
+                    "x": 4.567661762237549,
                     "y": 2.5999999046325685,
                     "z": 1.0
                 }
@@ -214,9 +214,9 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 10.0,
+    "placeableScrapLimit": 16.0,
     "starConditions": {
         "timeConstraint": 10.0,
-        "scrapConstraint": 10.0
+        "scrapConstraint": 8.0
     }
 }

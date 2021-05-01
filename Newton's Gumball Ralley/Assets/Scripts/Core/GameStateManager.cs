@@ -117,6 +117,7 @@ namespace Core
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
                     RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
+                    StopAllMusic();
                     AudioManager.instance.PlaySound(instance.CutsceneMusicSound.name);
                     break;
                 case GameState.MainMenu:
@@ -124,14 +125,13 @@ namespace Core
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
                     RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
-                    AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
+                    StopAllMusic();
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;
                 case GameState.Dialogue:
                     Time.timeScale = 0.0f;
                     AudioManager.instance.StopSound(instance.BallRollingSound.name);
-                    AudioManager.instance.StopSound(instance.MenuMusicSound.name);
-                    AudioManager.instance.StopSound(instance.Level2MusicSound.name);
+                    StopAllMusic();
                     if (!AudioManager.instance.isPlaying(instance.DialogueMusicSound.name))
                     {
                         AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
@@ -178,8 +178,7 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(GAME_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.LevelCompletedPopup));
-                    AudioManager.instance.StopSound(instance.Level2MusicSound.name);
-                    AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
+                    StopAllMusic();
                     if (!AudioManager.instance.isPlaying(instance.LevelCompleteSound.name))
                     {
                         AudioManager.instance.PlaySound(instance.LevelCompleteSound.name);
@@ -243,6 +242,15 @@ namespace Core
             instance.StartCoroutine(SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, false));
             instance.StartCoroutine(RemoveAllRotationArrows(PLACED_OBJECTS_KEY));
             Physics2D.gravity = instance.defaultGravity;
+        }
+
+        private static void StopAllMusic()
+        {
+            AudioManager.instance.StopSound(instance.DialogueMusicSound.name);
+            AudioManager.instance.StopSound(instance.CutsceneMusicSound.name);
+            AudioManager.instance.StopSound(instance.MenuMusicSound.name);
+            AudioManager.instance.StopSound(instance.Level1MusicSound.name);
+            AudioManager.instance.StopSound(instance.Level2MusicSound.name);
         }
 
         private static void ResetSceneForEditMode()
