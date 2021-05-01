@@ -20,8 +20,8 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 30.0,
-                    "y": 1.0,
+                    "x": 15.0,
+                    "y": 4.0,
                     "z": 1.0
                 }
             }
@@ -41,50 +41,8 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 30.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -35.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 0.09999999403953552,
-                    "y": 60.0,
-                    "z": 1.0
-                }
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": 35.0,
-                    "y": 0.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 0.09999999403953552,
-                    "y": 60.0,
+                    "x": 15.0,
+                    "y": 4.0,
                     "z": 1.0
                 }
             }
@@ -361,6 +319,69 @@
                     "z": 1.0
                 }
             }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 18.600000381469728,
+                    "y": -0.20000000298023225,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 8.5,
+                    "y": 4.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -18.600000381469728,
+                    "y": -0.20000000298023225,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 8.5,
+                    "y": 4.0,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.7099999785423279,
+                    "y": -5.079999923706055,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.04361940547823906,
+                    "w": 0.9990482926368713
+                },
+                "scale": {
+                    "x": 3.299999952316284,
+                    "y": 1.5,
+                    "z": 1.0
+                }
+            }
         }
     ],
     "preplacedObjects": [],
@@ -382,9 +403,9 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 60.0,
+    "placeableScrapLimit": 45.0,
     "starConditions": {
         "timeConstraint": 10.0,
-        "scrapConstraint": 30.0
+        "scrapConstraint": 14.0
     }
 }
