@@ -136,7 +136,10 @@ namespace Background
 
         public static float GetBorderUpPositionY()
         {
-            return instance.GetStartingRenderPositionY();
+            float halfScreenHeight = Camera.main.orthographicSize;
+            return instance.GetStartingRenderPositionY()
+                + halfScreenHeight
+                - instance.backgroundTextureHeight / 2;
         }
 
         public static float GetBorderDownPositionY()
