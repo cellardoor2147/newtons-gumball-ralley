@@ -156,7 +156,7 @@
             "objectName": "Ralph",
             "transform": {
                 "position": {
-                    "x": 16.950000762939454,
+                    "x": 17.739999771118165,
                     "y": -8.329999923706055,
                     "z": 0.0
                 },
@@ -552,7 +552,7 @@
     },
     "placeableScrapLimit": 140.0,
     "starConditions": {
-        "timeConstraint": 0.0,
+        "timeConstraint": 11.0,
         "scrapConstraint": 60.0
     }
 }

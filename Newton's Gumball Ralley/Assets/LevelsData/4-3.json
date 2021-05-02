@@ -268,8 +268,8 @@
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": -0.1355084478855133,
-                    "w": 0.9907761812210083
+                    "z": -0.1355084627866745,
+                    "w": 0.9907762408256531
                 },
                 "scale": {
                     "x": 5.455432415008545,
@@ -972,7 +972,7 @@
     },
     "placeableScrapLimit": 140.0,
     "starConditions": {
-        "timeConstraint": 0.0,
-        "scrapConstraint": 0.0
+        "timeConstraint": 11.0,
+        "scrapConstraint": 70.0
     }
 }
