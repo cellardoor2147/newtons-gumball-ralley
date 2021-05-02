@@ -277,7 +277,7 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 23.0,
+    "placeableScrapLimit": 30.0,
     "starConditions": {
         "timeConstraint": 10.0,
         "scrapConstraint": 15.0
