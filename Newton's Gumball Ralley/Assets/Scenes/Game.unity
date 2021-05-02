@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraDragSpeed: 0.5
-  cameraScrollSpeed: 0.3
+  cameraScrollSpeed: 0.1
   cameraMinSize: 5
   cameraMaxSize: 10
 --- !u!20 &519420031
