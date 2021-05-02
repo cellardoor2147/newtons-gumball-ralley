@@ -220,7 +220,10 @@ namespace Core
                 DestroyDebris(ENVIRONMENT_KEY);
                 RepairDestructibleObjects(ENVIRONMENT_KEY);
                 FreezeDestructibleObjects(ENVIRONMENT_KEY);
+                ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
                 FreezeLeverWeights(ENVIRONMENT_KEY);
+                ResetRigidbodies(PLACED_OBJECTS_KEY);
+                ResetRigidbodies(PREPLACED_OBJECTS_KEY);
             }
             else if (instance.gameState.Equals(GameState.Editing))
             {
@@ -290,6 +293,22 @@ namespace Core
                 .ForEach(
                     leverWeight => leverWeight.FreezeRigidbody()
             );
+        }
+
+        private static void ResetRigidbodies(string key)
+        {
+            GameObject.Find(key)
+                .GetComponentsInChildren<Rigidbody2D>()
+                .ToList()
+                .ForEach(
+                    rigidbody => ResetRigidbody(rigidbody)
+            );
+        }
+
+        private static void ResetRigidbody(Rigidbody2D rigidbody)
+        {
+            rigidbody.velocity = Vector2.zero;
+            rigidbody.angularVelocity = 0f;
         }
 
         private static void FreezeDestructibleObjects(string key)
