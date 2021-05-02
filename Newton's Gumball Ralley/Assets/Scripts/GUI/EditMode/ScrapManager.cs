@@ -1,8 +1,5 @@
 ﻿using TMPro;
-using Core;
-using System.Linq;
-using System.Collections.Generic;
-using UnityEngine.UI;
+using Core.Levels;
 using UnityEngine;
 
 namespace GUI.EditMode

@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Background;
 using System.Collections;
+using Core.PlacedObjects;
 
-namespace Core
+namespace Core.Levels
 {
     [System.Serializable]
     public struct SerializableTransform

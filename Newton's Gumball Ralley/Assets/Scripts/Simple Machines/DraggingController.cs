@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Core.PlacedObjects;
 using Core;
 using SnapCheck;
 using GUI.EditMode;

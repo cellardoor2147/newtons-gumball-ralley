@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Core;
+using Core.Levels;
 using LevelTimer;
 
 public class EndPointManager : MonoBehaviour

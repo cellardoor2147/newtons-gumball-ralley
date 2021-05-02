@@ -1,6 +1,7 @@
 ﻿using LevelTimer;
 using GUI.EditMode;
 using UnityEngine;
+using Core.Levels;
 
 namespace Core
 {

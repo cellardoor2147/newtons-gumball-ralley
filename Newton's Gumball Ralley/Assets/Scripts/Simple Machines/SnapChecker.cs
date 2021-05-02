@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.PlacedObjects;
 using UnityEngine;
 
 namespace SnapCheck
