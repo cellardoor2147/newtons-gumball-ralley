@@ -72,6 +72,34 @@ namespace Wedge
             }
         }
 
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            DestructibleObstacleLayerController destructible
+                = collision.GetComponentInParent<DestructibleObstacleLayerController>();
+            if (destructible && GameStateManager.GetGameState().Equals(GameState.Playing))
+            {
+                float localVel = 0f;
+
+                if (gameObject.name == "AxeWedgeCollider")
+                {
+                    localVel = transform.InverseTransformDirection(rb.velocity).x;
+                }
+                else if (gameObject.name == "AxeWedgeInvertedCollider")
+                {
+                    localVel = -transform.InverseTransformDirection(rb.velocity).x;
+                }
+                else if (gameObject.name == "SpikeWedgeCollider")
+                {
+                    localVel = -transform.InverseTransformDirection(rb.velocity).y;
+                }
+
+                if (localVel > destructible.GetImpactThreshold())
+                {
+                    targetWedge.layer = wedgeLayer;
+                }
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D collision)
         {
             targetWedge.layer = defaultLayer;

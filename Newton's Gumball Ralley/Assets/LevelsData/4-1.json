@@ -2,8 +2,8 @@
     "worldIndex": 4,
     "levelIndex": 1,
     "customLevelName": "",
-    "repeatedBackgroundRows": 4,
-    "repeatedBackgroundColumns": 8,
+    "repeatedBackgroundRows": 2,
+    "repeatedBackgroundColumns": 4,
     "environmentObjects": [
         {
             "objectName": "EnvironmentBlock",
@@ -93,7 +93,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -10.984000205993653,
+                    "x": 1.13100004196167,
                     "y": -3.0199999809265138,
                     "z": 0.0
                 },
@@ -104,7 +104,7 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 8.861992835998536,
+                    "x": 3.9711852073669435,
                     "y": 3.4353580474853517,
                     "z": 1.0
                 }
@@ -114,7 +114,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -28.100000381469728,
+                    "x": -7.070000171661377,
                     "y": -3.0199999809265138,
                     "z": 0.0
                 },
@@ -125,7 +125,7 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 5.588560104370117,
+                    "x": 3.058525800704956,
                     "y": 3.4353578090667726,
                     "z": 1.0
                 }
@@ -135,7 +135,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -7.940000057220459,
+                    "x": 8.593999862670899,
                     "y": 5.660999774932861,
                     "z": 0.0
                 },
@@ -156,7 +156,7 @@
             "objectName": "DestructibleObject",
             "transform": {
                 "position": {
-                    "x": -8.07699966430664,
+                    "x": 8.457000732421875,
                     "y": -0.6439999938011169,
                     "z": 0.0
                 },
@@ -177,7 +177,7 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -0.8299999833106995,
+                    "x": 15.704000473022461,
                     "y": 3.739000082015991,
                     "z": 0.0
                 },
@@ -193,15 +193,13 @@
                     "z": 1.0
                 }
             }
-        }
-    ],
-    "preplacedObjects": [
+        },
         {
-            "objectName": "Ralph",
+            "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -4.362092018127441,
-                    "y": -1.7545630931854249,
+                    "x": 10.979999542236329,
+                    "y": -3.0199999809265138,
                     "z": 0.0
                 },
                 "rotation": {
@@ -211,16 +209,59 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 0.5,
-                    "y": 0.5,
+                    "x": 4.350997447967529,
+                    "y": 3.4353580474853517,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -10.3100004196167,
+                    "y": 3.6730000972747804,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 5.865732669830322,
+                    "y": 3.4353580474853517,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "Ralph",
+            "transform": {
+                "position": {
+                    "x": 12.171910285949707,
+                    "y": -1.2000000476837159,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.800000011920929,
+                    "y": 0.800000011920929,
                     "z": 1.0
                 }
             }
         }
     ],
+    "preplacedObjects": [],
     "gumballMachineTransform": {
         "position": {
-            "x": -16.299999237060548,
+            "x": 0.23400163650512696,
             "y": 0.0,
             "z": 0.0
         },
