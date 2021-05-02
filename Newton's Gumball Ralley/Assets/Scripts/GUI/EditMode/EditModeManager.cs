@@ -35,8 +35,8 @@ namespace GUI.EditMode
         private RectTransform placeableObjectsMenuTransform;
         private float placeableObjectsMenuMaxYPosition;
         private float placeableObjectsMenuMinYPosition;
-        private bool isLowering;
-        private bool isRaising;
+        private IEnumerator hideGUICoroutine;
+        private IEnumerator showGUICoroutine;
 
         private EditModeManager() { } // Prevents instantiation outside of this class
 
@@ -286,15 +286,30 @@ namespace GUI.EditMode
             }
         }
 
+        private void ResetCoroutines()
+        {
+            if (hideGUICoroutine != null)
+            {
+                StopCoroutine(hideGUICoroutine);
+                hideGUICoroutine = null;
+            }
+            if (showGUICoroutine != null)
+            {
+                StopCoroutine(showGUICoroutine);
+                showGUICoroutine = null;
+            }
+        }
+
         public static void HideEditModeGUI()
         {
-            instance.StartCoroutine(instance.AsyncHideEditModeGUI());
+            instance.ResetCoroutines();
+            instance.hideGUICoroutine = instance.AsyncHideEditModeGUI();
+            instance.StartCoroutine(instance.hideGUICoroutine);
         }
 
         private IEnumerator AsyncHideEditModeGUI()
         {
-            yield return new WaitUntil(() => !(isLowering || isRaising));
-            isLowering = true;
+
             while (
                 placeableObjectsMenuTransform.anchoredPosition.y 
                 > placeableObjectsMenuMinYPosition
@@ -306,19 +321,18 @@ namespace GUI.EditMode
                 );
                 yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
-            isLowering = false;
             yield return null;
         }
 
         public static void ShowEditModeGUI()
         {
-            instance.StartCoroutine(instance.AsyncShowEditModeGUI());
+            instance.ResetCoroutines();
+            instance.showGUICoroutine = instance.AsyncShowEditModeGUI();
+            instance.StartCoroutine(instance.showGUICoroutine);
         }
 
         private IEnumerator AsyncShowEditModeGUI()
         {
-            yield return new WaitUntil(() => !(isLowering || isRaising));
-            isRaising = true;
             while (
                 placeableObjectsMenuTransform.anchoredPosition.y
                 < placeableObjectsMenuMaxYPosition
@@ -330,7 +344,6 @@ namespace GUI.EditMode
                 );
                 yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
-            isRaising = false;
             yield return null;
         }
     }
