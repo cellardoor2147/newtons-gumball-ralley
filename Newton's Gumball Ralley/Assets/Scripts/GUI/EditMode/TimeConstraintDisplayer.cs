@@ -6,12 +6,16 @@ namespace GUI.EditMode
 {
     public class TimeConstraintDisplayer : MonoBehaviour
     {
-        private static TextMeshProUGUI timeConstraintText;
+        private TextMeshProUGUI timeConstraintText;
         private static float timeConstraint;
 
-        private void Update()
+        private void Awake()
         {
             timeConstraintText = GetComponent<TextMeshProUGUI>();
+        }
+
+        private void Update()
+        {           
             timeConstraint = LevelManager.GetCurrentLevelTimeConstraint();
             timeConstraintText.text = $"Time Constraint\n{timeConstraint}";
         }
