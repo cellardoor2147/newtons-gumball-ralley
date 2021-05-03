@@ -56,5 +56,5 @@ MonoBehaviour:
   gear1MetaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
   screwMetaData: {fileID: 11400000, guid: a060d4b5ca3f6a74eb82eceb500a2177, type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
-  gumballSprite: {fileID: -6226405025219134633, guid: f53430bdc296f984e804605fb0621209,
+  gumballSprite: {fileID: -2290193954979453500, guid: f53430bdc296f984e804605fb0621209,
     type: 3}
