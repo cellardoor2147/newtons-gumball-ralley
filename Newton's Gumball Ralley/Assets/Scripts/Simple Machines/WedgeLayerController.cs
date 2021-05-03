@@ -54,6 +54,7 @@ namespace Wedge
                 if (localVel > destructible.GetImpactThreshold())
                 {
                     targetWedge.layer = wedgeLayer;
+                    collision.gameObject.layer = DestructibleObstacleLayerController.debrisLayer;
                     collision.attachedRigidbody.constraints = RigidbodyConstraints2D.None;
                     if (!AudioManager.instance.isPlaying(BreakSound.name))
                     {
@@ -96,6 +97,7 @@ namespace Wedge
                 if (localVel > destructible.GetImpactThreshold())
                 {
                     targetWedge.layer = wedgeLayer;
+                    collision.gameObject.layer = DestructibleObstacleLayerController.debrisLayer;
                 }
             }
         }
