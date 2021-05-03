@@ -19,7 +19,7 @@ namespace Ball
         [SerializeField] SoundMetaData RollingSound;
         [SerializeField] PlacedObjectMetaData simplePulleyMetaData;
         [SerializeField] PlacedObjectMetaData compoundPulleyMetaData;
-        [SerializeField] private float fadeTime = 0.5f;
+        [SerializeField] private float fadeTime = 0.25f;
         [SerializeField] private float finalVolume = 0f;
         [SerializeField] private float rollingVolume = 0.2f;
 
@@ -31,7 +31,6 @@ namespace Ball
         private bool enteredPlatform;
         private Transform parent;
         private PulleyBehavior pulleyBehavior;
-        private bool isFading;
         private bool isTouching;
         private Rigidbody2D rigidBody;
         private bool isBeingPulled;
@@ -63,9 +62,9 @@ namespace Ball
 
         private void FixedUpdate()
         {
-            if (!isFading)
+            if (AudioManager.instance.isPlaying(RollingSound.name))
             {
-                AudioManager.instance.SetVolume(RollingSound.name, Mathf.Clamp(rigidBody.velocity.magnitude / 20, 0, rollingVolume));
+                AudioManager.instance.SetVolume(RollingSound.name, Mathf.Clamp(rigidBody.velocity.magnitude / 15, 0.05f, rollingVolume));
             }
             if (!hasBeenReleased || !GameStateManager.GetGameState().Equals(GameState.Playing))
             {
@@ -93,16 +92,12 @@ namespace Ball
                 && isTouching && !enteredPlatform && GameStateManager.GetGameState().Equals(GameState.Playing)) 
             {
                 AudioManager.instance.PlaySound(RollingSound.name);
-                isFading = false;
             } 
-            else if (rigidBody.velocity.magnitude < 0.01f || !isTouching) 
+            else if (rigidBody.velocity.magnitude < 0.1f || !isTouching) 
             {
-                if (AudioManager.instance.isPlaying(RollingSound.name) && !isFading) 
+                if (AudioManager.instance.isPlaying(RollingSound.name)) 
                 {
-                    AudioManager.instance.FadeSound(RollingSound.name, fadeTime, finalVolume);
                     AudioManager.instance.StopSound(RollingSound.name);
-                    AudioManager.instance.SetVolume(RollingSound.name, rollingVolume);
-                    isFading = true;
                 }
             }
         }

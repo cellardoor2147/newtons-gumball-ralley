@@ -188,12 +188,17 @@ namespace Core.Levels
         {
             if (preplacedObject.GetComponent<PulleyBehavior>() != null) 
             {
-                preplacedObject.GetComponent<PulleyBehavior>().platformState =
-                    serializedPreplacedObject.pulleyState.platformState;
-                preplacedObject.GetComponent<PulleyBehavior>().platformPosition =
-                    serializedPreplacedObject.pulleyState.platformPosition;
-                preplacedObject.GetComponent<PulleyBehavior>().ballRollDirection =
-                    serializedPreplacedObject.pulleyState.ballRollDirection;
+                PulleyBehavior pulleyBehavior = preplacedObject.GetComponent<PulleyBehavior>();
+                pulleyBehavior.platformState = serializedPreplacedObject.pulleyState.platformState;
+                pulleyBehavior.platformPosition = serializedPreplacedObject.pulleyState.platformPosition;
+                
+                pulleyBehavior.SwitchPlatformState(serializedPreplacedObject.pulleyState.platformState);
+                pulleyBehavior.SwitchPlatformPosition(serializedPreplacedObject.pulleyState.platformPosition);
+                pulleyBehavior.ballRollDirection = serializedPreplacedObject.pulleyState.ballRollDirection;
+                pulleyBehavior.SetOrginalPosition();
+                pulleyBehavior.ResetPlatformHeight();
+
+                
             }
             return;
         }

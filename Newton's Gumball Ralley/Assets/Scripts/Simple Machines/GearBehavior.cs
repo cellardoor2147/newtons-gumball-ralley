@@ -17,6 +17,7 @@ namespace SimpleMachine {
         private Vector3 ConstrainedPosition;
         private bool hasSet;
         private bool hasSpawned;
+        private bool stopped;
         [SerializeField] private float torque;
         [SerializeField] private float spinSpeed;
         [HideInInspector] public SpinState spinState;
@@ -67,6 +68,7 @@ namespace SimpleMachine {
                 case SpinState.SpinningRight:
                     rigidbody2D.angularVelocity = 0f;
                     rigidbody2D.freezeRotation = false;
+                    stopped = false;
                     if (!AudioManager.instance.isPlaying(GearSound.name))
                     {
                         AudioManager.instance.PlaySound(GearSound.name);
@@ -75,6 +77,7 @@ namespace SimpleMachine {
                 case SpinState.SpinningLeft:
                     rigidbody2D.angularVelocity = 0f;
                     rigidbody2D.freezeRotation = false;
+                    stopped = false;
                     if (!AudioManager.instance.isPlaying(GearSound.name))
                     {
                         AudioManager.instance.PlaySound(GearSound.name);
@@ -102,7 +105,11 @@ namespace SimpleMachine {
             }
             else if (spinState.Equals(SpinState.NotSpinning) || !GameStateManager.GetGameState().Equals(GameState.Playing))
             {
-                AudioManager.instance.StopSound(GearSound.name);
+                if (!stopped) 
+                {
+                    AudioManager.instance.StopSound(GearSound.name);
+                    stopped = true;
+                }
                 spinState = SpinState.NotSpinning;
             } 
         }

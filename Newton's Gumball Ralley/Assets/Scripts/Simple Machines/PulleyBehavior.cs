@@ -2,6 +2,7 @@
 using Audio;
 using Core.PlacedObjects;
 using Core;
+using GUI.EditMode;
 
 namespace SimpleMachine {
 
@@ -50,6 +51,7 @@ namespace SimpleMachine {
         [HideInInspector] public bool shouldFall;
         private bool hasReset;
         private bool canSpin;
+        private bool stopped;
 
         private float minSpeed;
         private Vector3 orginalPosition;
@@ -70,17 +72,23 @@ namespace SimpleMachine {
         {
             pulleyFulcrums = transform.GetChild(0);
             pulleyPlatforms = transform.GetChild(1);
-            SwitchPlatformState(platformState);
             raiseDistance = 3.5f;
             minSpeed = 20f;  
             platformSpeed = 0.5f;
             grounded = true;
             pulleyWedgeBehavior = pulleyPlatforms.GetChild(1).gameObject.GetComponent<PulleyWedgeBehavior>();
+            SwitchPlatformState(platformState);
             SwitchPlatformPosition(platformPosition);
-            orginalPosition = pulleyPlatforms.GetChild(currPlatform).localPosition;
+            SetOrginalPosition();
+            ResetPlatformHeight();
         }
 
-        private void SwitchPlatformPosition(PlatformPosition platformPosition)
+        public void SetOrginalPosition()
+        {
+            orginalPosition = pulleyPlatforms.GetChild(currPlatform).localPosition;
+        }
+        
+        public void SwitchPlatformPosition(PlatformPosition platformPosition)
         {
             switch (platformPosition)
             {
@@ -98,7 +106,7 @@ namespace SimpleMachine {
             }
         }
 
-        private void SwitchPlatformState(PlatformState platformState)
+        public void SwitchPlatformState(PlatformState platformState)
         {
             switch (platformState)
             {
@@ -206,6 +214,7 @@ namespace SimpleMachine {
                 if (!AudioManager.instance.isPlaying(PulleySound.name))
                 {
                     AudioManager.instance.PlaySound(PulleySound.name);
+                    stopped = false;
                 }
             }
             else if (shouldFall && GameStateManager.GetGameState().Equals(GameState.Playing))
@@ -214,11 +223,16 @@ namespace SimpleMachine {
                 if (!AudioManager.instance.isPlaying(PulleySound.name))
                 {
                     AudioManager.instance.PlaySound(PulleySound.name);
+                    stopped = false;
                 }
             }
             else if (!shouldRise && !shouldFall)
             {
-                AudioManager.instance.StopSound(PulleySound.name);
+                if (!stopped)
+                {
+                    AudioManager.instance.StopSound(PulleySound.name);
+                    stopped = true;
+                }
                 if (currPlatform == 1 && activePlatform.position.y >= minHeight && pulleyWedgeBehavior.shouldDrop)
                 {
                     DropWedge();
@@ -276,13 +290,16 @@ namespace SimpleMachine {
 
         public void OnMouseDown()
         {
-            if (pulleyState.Equals(PulleyState.SimplePulley) && GameStateManager.GetGameState().Equals(GameState.Editing)) 
+            if (pulleyState.Equals(PulleyState.SimplePulley) && GameStateManager.GetGameState().Equals(GameState.Editing) 
+                && ScrapManager.ScrapRemaining > 30) 
             {
                 pulleyState = PulleyState.CompoundPulley;
+                ScrapManager.ChangeScrapRemaining(-30);
             }
             else if (pulleyState.Equals(PulleyState.CompoundPulley) && GameStateManager.GetGameState().Equals(GameState.Editing)) 
             {
                 pulleyState = PulleyState.SimplePulley;
+                ScrapManager.ChangeScrapRemaining(30);
             }
         }
 
@@ -300,7 +317,7 @@ namespace SimpleMachine {
             pulleyPlatforms.GetChild(1).GetChild(1).gameObject.SetActive(true);
         }
 
-        private void ResetPlatformHeight()
+        public void ResetPlatformHeight()
         {
             pulleyPlatforms.GetChild(currPlatform).localPosition = orginalPosition;
         }
