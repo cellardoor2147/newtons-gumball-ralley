@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Background;
 using System.Collections;
 using Core.PlacedObjects;
+using SimpleMachine;
 
 namespace Core.Levels
 {
@@ -17,10 +18,19 @@ namespace Core.Levels
     }
 
     [System.Serializable]
+    public struct SerializablePulleyState
+    {
+        public PlatformState platformState;
+        public PlatformPosition platformPosition;
+        public BallRollDirection ballRollDirection;
+    }
+
+    [System.Serializable]
     public struct SerializablePreplacedObject
     {
         public string objectName;
         public SerializableTransform transform;
+        public SerializablePulleyState pulleyState;
     }
 
     [System.Serializable]
@@ -56,6 +66,9 @@ namespace Core.Levels
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
         private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string GAME_SCENE_KEY = "Game";
+
+        private static readonly string SIMPLE_PULLEY_SCENE_KEY = "SimplePulley";
+        private static readonly string COMPOUND_PULLEY_SCENE_KEY = "CompoundPulley";
 
         public static void Serialize(
             int worldIndex,
@@ -141,6 +154,7 @@ namespace Core.Levels
                     .GetComponent<PlacedObjectManager>()
                     .metaData.objectName;
                 preplacedObject.transform = SerializeTransform(objectTransform);
+                preplacedObject.pulleyState = GetPulleyState(objectTransform);
                 preplacedObjects.Add(preplacedObject);
             }
 
@@ -154,6 +168,39 @@ namespace Core.Levels
             serializedTransform.rotation = transform.rotation;
             serializedTransform.scale = transform.localScale;
             return serializedTransform;
+        }
+
+        private static SerializablePulleyState GetPulleyState(Transform transform)
+        {
+            SerializablePulleyState serializablePulleyState = new SerializablePulleyState();
+            if (transform.GetComponent<PulleyBehavior>() != null)
+            {
+                serializablePulleyState.platformState = transform.GetComponent<PulleyBehavior>().platformState;
+                serializablePulleyState.platformPosition = transform.GetComponent<PulleyBehavior>().platformPosition;
+                serializablePulleyState.ballRollDirection = transform.GetComponent<PulleyBehavior>().ballRollDirection;
+            }
+            return serializablePulleyState;
+        }
+
+        private static void SetPulleyState(
+            GameObject preplacedObject, 
+            SerializablePreplacedObject serializedPreplacedObject)
+        {
+            if (preplacedObject.GetComponent<PulleyBehavior>() != null) 
+            {
+                PulleyBehavior pulleyBehavior = preplacedObject.GetComponent<PulleyBehavior>();
+                pulleyBehavior.platformState = serializedPreplacedObject.pulleyState.platformState;
+                pulleyBehavior.platformPosition = serializedPreplacedObject.pulleyState.platformPosition;
+                
+                pulleyBehavior.SwitchPlatformState(serializedPreplacedObject.pulleyState.platformState);
+                pulleyBehavior.SwitchPlatformPosition(serializedPreplacedObject.pulleyState.platformPosition);
+                pulleyBehavior.ballRollDirection = serializedPreplacedObject.pulleyState.ballRollDirection;
+                pulleyBehavior.SetOrginalPosition();
+                pulleyBehavior.ResetPlatformHeight();
+
+                
+            }
+            return;
         }
 
         public static LevelData DeserializeFromReadFilePath(string readFilePath)
@@ -216,6 +263,7 @@ namespace Core.Levels
                 );
                 preplacedObject.transform.localScale =
                     serializedPreplacedObject.transform.scale;
+                SetPulleyState(preplacedObject, serializedPreplacedObject);
             }
         }
 

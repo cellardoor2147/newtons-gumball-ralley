@@ -54,6 +54,8 @@ namespace Core
         [SerializeField] PlacedObjectMetaData screwMetaData;
         [SerializeField] PlacedObjectMetaData wheelMetaData;
 
+        [SerializeField] private Sprite gumballSprite;
+
         private GameState previousGameState;
         private GameState gameState;
         private Vector2 defaultGravity;
@@ -558,6 +560,16 @@ namespace Core
         public static bool GameSceneSceneIsRunning()
         {
             return SceneManager.GetActiveScene().name.Equals(GAME_SCENE_KEY);
+        }
+
+        public static void SetGumballSprite(Sprite gumballSprite)
+        {
+            instance.gumballSprite = gumballSprite;
+        }
+
+        public static Sprite GetGumballSprite()
+        {
+            return instance.gumballSprite;
         }
 
         private void Update()

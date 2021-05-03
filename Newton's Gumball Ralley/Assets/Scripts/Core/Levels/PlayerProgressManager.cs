@@ -131,5 +131,15 @@ namespace Core.Levels
         {
             return GetLevelProgress(worldIndex, levelIndex).bestStarsEarned;
         }
+
+        public static int GetTotalEarnedStars()
+        {
+            int totalEarnedStars = 0;
+            foreach (LevelProgress levelProgress in levelProgresses)
+            {
+                totalEarnedStars += levelProgress.bestStarsEarned;
+            }
+            return totalEarnedStars;
+        }
     }
 }

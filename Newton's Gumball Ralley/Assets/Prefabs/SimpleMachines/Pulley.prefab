@@ -97,7 +97,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -141,11 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d391c40913a244844bc8016d6129ecb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pulleyState: 0
   platformState: 0
+  platformPosition: 0
   ballRollDirection: 0
-  defaultPulleyState: 0
-  defaultPlatformState: 0
-  defaultPlatformPosition: 0
   shouldRise: 0
   shouldFall: 0
   grounded: 0
@@ -372,7 +371,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.658402, y: 0.6736212}
+  m_Offset: {x: -1.658402, y: 0.6766611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.50968975, y: 0.1091732}
@@ -383,7 +382,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.103621006, y: 0.96733665}
+  m_Size: {x: 0.103621006, y: 0.97341645}
   m_EdgeRadius: 0
 --- !u!61 &6716903314764072103
 BoxCollider2D:
@@ -398,7 +397,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.750501, y: 0.6736212}
+  m_Offset: {x: 1.750501, y: 0.68908364}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.50968975, y: 0.1091732}
@@ -409,7 +408,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.103621244, y: 0.96733665}
+  m_Size: {x: 0.103621244, y: 0.9982616}
   m_EdgeRadius: 0
 --- !u!1 &1508423151872526060
 GameObject:
