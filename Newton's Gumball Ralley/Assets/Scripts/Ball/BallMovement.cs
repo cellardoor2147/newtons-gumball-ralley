@@ -62,6 +62,16 @@ namespace Ball
             }            
         }
 
+        private void OnEnable()
+        {
+            SetSprite();
+        }
+
+        private void SetSprite()
+        {
+            spriteRenderer.sprite = GameStateManager.GetGumballSprite();
+        }
+
         private void FixedUpdate()
         {
             if (!isFading)
