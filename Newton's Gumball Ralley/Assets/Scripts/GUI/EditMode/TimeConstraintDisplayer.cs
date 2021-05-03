@@ -9,21 +9,11 @@ namespace GUI.EditMode
         private static TextMeshProUGUI timeConstraintText;
         private static float timeConstraint;
 
-        private void Awake()
-        {
-            timeConstraint = LevelManager.GetCurrentLevelTimeConstraint();
-            timeConstraintText = GetComponent<TextMeshProUGUI>();
-            timeConstraintText.text = $"Time Constraint\n{timeConstraint}";
-        }
-
         private void Update()
         {
+            timeConstraintText = GetComponent<TextMeshProUGUI>();
+            timeConstraint = LevelManager.GetCurrentLevelTimeConstraint();
             timeConstraintText.text = $"Time Constraint\n{timeConstraint}";
-        }
-
-        public static void UpdateTimeConstraint()
-        {
-            timeConstraint = LevelManager.GetCurrentLevelTimeConstraint();           
         }
     }
 }

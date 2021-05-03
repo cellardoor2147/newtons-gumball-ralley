@@ -106,8 +106,6 @@ namespace Core.Levels
                     LevelSerializer.AsyncSetSceneWithLevelData(levelData)
                 );
                 ScrapManager.ResetRemainingScrap();
-                ScrapConstraintDisplayer.UpdateScrapConstraint();
-                TimeConstraintDisplayer.UpdateTimeConstraint();
                 switch (currentLevelData.worldIndex)
                 {
                     case 1:

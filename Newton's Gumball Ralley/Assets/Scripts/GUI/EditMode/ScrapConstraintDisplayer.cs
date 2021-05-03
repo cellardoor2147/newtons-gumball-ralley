@@ -11,19 +11,13 @@ namespace GUI.EditMode
 
         private void Awake()
         {
-            scrapConstraint = LevelManager.GetCurrentLevelScrapConstraint();
             scrapConstraintText = GetComponent<TextMeshProUGUI>();
-            scrapConstraintText.text = $"Scrap Constraint\n{scrapConstraint}";
         }
 
         private void Update()
         {
-            scrapConstraintText.text = $"Scrap Constraint\n{scrapConstraint}";
-        }
-
-        public static void UpdateScrapConstraint()
-        {
             scrapConstraint = LevelManager.GetCurrentLevelScrapConstraint();
+            scrapConstraintText.text = $"Scrap Constraint\n{scrapConstraint}";
         }
     }
 }
