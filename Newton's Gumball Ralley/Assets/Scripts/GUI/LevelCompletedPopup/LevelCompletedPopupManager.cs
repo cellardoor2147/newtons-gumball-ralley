@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Audio;
 using Core;
+using Core.Levels;
 using TMPro;
 
 namespace GUI.LevelCompletedPopup

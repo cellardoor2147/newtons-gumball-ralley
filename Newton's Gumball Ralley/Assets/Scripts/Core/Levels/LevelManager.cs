@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GUI.EditMode;
 
-namespace Core
+namespace Core.Levels
 {
     public class LevelManager : MonoBehaviour
     {
@@ -46,6 +46,16 @@ namespace Core
                     LevelSerializer.DeserializeFromTextAsset(serializedLevelData);
                 levelsData.Add(levelData);
             }
+            levelsData.Sort(delegate(LevelData level1, LevelData level2)
+            {
+                int worldComparison = level1.worldIndex.CompareTo(level2.worldIndex);
+                bool levelsHaveSameWorld = worldComparison == 0;
+                if (levelsHaveSameWorld)
+                {
+                    return level1.levelIndex.CompareTo(level2.levelIndex);
+                }
+                return worldComparison;
+            });
         }
 
         public static void LoadLevelWithIndices(int worldIndex, int levelIndex)

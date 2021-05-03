@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Core.PlacedObjects;
 using Core;
 using LevelTimer;
 using Audio;
@@ -14,6 +15,7 @@ namespace Ball
         [SerializeField] private float baseMovementSpeed = 1.0f;
         [SerializeField] private float maxRadiusOfPull = 2.0f;
         [SerializeField] private float delayAfterRelease = 0.3f;
+        [SerializeField] private float maxVelocityOnRelease = 4f;
         [SerializeField] SoundMetaData BounceSound;
         [SerializeField] SoundMetaData RollingSound;
         [SerializeField] PlacedObjectMetaData simplePulleyMetaData;
@@ -226,9 +228,19 @@ namespace Ball
         }
         private IEnumerator ReleaseAfterDelay()
         {
+            ClampVelocityOnRelease();
             yield return new WaitForSeconds(delayAfterRelease);
+            ClampVelocityOnRelease();
             Timer.Start();
             GetComponent<SpringJoint2D>().enabled = false;
+        }
+
+        private void ClampVelocityOnRelease()
+        {
+            rigidBody.velocity = new Vector2(
+                Mathf.Clamp(rigidBody.velocity.x, -maxVelocityOnRelease, maxVelocityOnRelease),
+                Mathf.Clamp(rigidBody.velocity.y, -maxVelocityOnRelease, maxVelocityOnRelease)
+            );
         }
 
         public IEnumerator AsyncReset()

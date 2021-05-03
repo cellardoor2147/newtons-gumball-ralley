@@ -4,6 +4,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using Core;
+using Core.Levels;
 using Audio;
 
 namespace GUI.Dialogue
@@ -36,6 +37,8 @@ namespace GUI.Dialogue
         private GameObject tutorialBox;
         private Image tutorialBoxImage;
         private TextMeshProUGUI tutorialBoxText;
+        private bool shouldSkipCurrentLine;
+        private bool dialogueBoxFinishedTyping;
 
         private void Awake()
         {
@@ -87,6 +90,11 @@ namespace GUI.Dialogue
             ); // Couldn't find a conversation to play
         }
 
+        private void Update()
+        {
+            shouldSkipCurrentLine = Input.anyKey;
+        }
+
         public void StartConversation(Conversation conversation, bool shouldPlayBeginningDialogue)
         {
             StartCoroutine(TypeEachDialogueBoxContent(conversation, shouldPlayBeginningDialogue));
@@ -99,6 +107,7 @@ namespace GUI.Dialogue
                 : conversation.linesAtEndOfLevel;
             foreach (Line line in lines)
             {
+                yield return new WaitWhile(() => Input.anyKey);
                 SetSpeakerImage(SpeakerDirection.Left, conversation.leftSpeaker, line);
                 SetSpeakerImage(SpeakerDirection.Right, conversation.rightSpeaker, line);
                 bool leftSpeakerIsActive =
@@ -123,8 +132,10 @@ namespace GUI.Dialogue
                         GetSpeakerSoundNameByExpression(conversation.rightSpeaker, line.rightSpeakerExpression)
                     );
                 }
-                yield return TypeDialogueBoxContent(line);
-                yield return new WaitUntil(() => Input.anyKeyDown);
+                StartCoroutine(TypeDialogueBoxContent(line));
+                yield return new WaitUntil(() => dialogueBoxFinishedTyping);
+                yield return new WaitWhile(() => Input.anyKey);
+                yield return new WaitUntil(() => Input.anyKey);
             }
             GameStateManager.SetGameState(shouldPlayBeginningDialogue
                 ? GameState.Editing
@@ -221,13 +232,19 @@ namespace GUI.Dialogue
         private IEnumerator TypeDialogueBoxContent(Line line)
         {
             dialogueBoxContent.text = "";
+            dialogueBoxFinishedTyping = false;
             foreach (char character in line.content)
             {
+                if (shouldSkipCurrentLine)
+                {
+                    break;
+                }
                 yield return new WaitForSecondsRealtime(
                     line.secondDelayBetweenTypingEachChar * (1 / dialogueSpeedMultiplier)
                 );
                 dialogueBoxContent.text += character;
             }
+            dialogueBoxFinishedTyping = true;
             dialogueBoxContent.text = line.content;
         }
     }

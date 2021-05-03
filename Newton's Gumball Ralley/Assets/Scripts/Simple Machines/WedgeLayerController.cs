@@ -61,13 +61,13 @@ namespace Wedge
                         AudioManager.instance.PlaySound(BreakSound.name);
                     }
                 }
-                else
+                else if (GameStateManager.GetGameState().Equals(GameState.Playing))
                 {
                     AudioManager.instance.PlaySound(BounceSound.name);
                     bounced = true;
                 }
             }
-            if (!bounced)
+            if (!bounced && GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 AudioManager.instance.PlaySound(BounceSound.name);
             }

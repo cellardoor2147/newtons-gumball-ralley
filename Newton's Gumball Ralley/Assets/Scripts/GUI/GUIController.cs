@@ -72,7 +72,7 @@ namespace GUI
         public void ResetLevel()
         {
             Timer.Reset();
-            GameStateManager.ResetLevel();
+            StartCoroutine(GameStateManager.ResetLevel());
         }
 
         public void SkipDialogue()
@@ -98,7 +98,7 @@ namespace GUI
         public void LoadNextLevel()
         {
             Timer.Reset();
-            StartCoroutine(GameStateManager.LoadNextLevel());
+            GameStateManager.LoadNextLevel();
         }
 
         public void GoBackFromSettingsMenu()

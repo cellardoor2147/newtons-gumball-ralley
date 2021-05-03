@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Core
+namespace Core.PlacedObjects
 {
     [CreateAssetMenu(fileName = "PlacedObjectMetaData", menuName = "ScriptableObjects/PlacedObjectMetaData", order = 4)]
     public class PlacedObjectMetaData : ScriptableObject

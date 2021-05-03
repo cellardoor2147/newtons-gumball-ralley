@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
+using Core.Levels;
 
 namespace Background
 {
     public class RepeatedBackgroundManager : MonoBehaviour
     {
         [SerializeField] private GameObject backgroundTexture;
+        [SerializeField] private Color backgroundTintForWorld1;
+        [SerializeField] private Color backgroundTintForWorld2;
+        [SerializeField] private Color backgroundTintForWorld3;
+        [SerializeField] private Color backgroundTintForWorld4;
+        [SerializeField] private Color backgroundTintForWorld5;
+        [SerializeField] private Color backgroundTintForWorld6;
 
         private static RepeatedBackgroundManager instance;
 
@@ -50,6 +57,8 @@ namespace Background
                 {
                     GameObject nextBackgroundTexture =
                         Instantiate(backgroundTexture, transform);
+                    nextBackgroundTexture.GetComponent<SpriteRenderer>().color =
+                        GetBackgroundColor();
                     nextBackgroundTexture.transform.position =
                         new Vector2(nextRenderPositionX, nextRenderPositionY);
                     nextRenderPositionY += backgroundTextureHeight;
@@ -127,12 +136,36 @@ namespace Background
 
         public static float GetBorderUpPositionY()
         {
-            return instance.GetStartingRenderPositionY();
+            float halfScreenHeight = Camera.main.orthographicSize;
+            return instance.GetStartingRenderPositionY()
+                + halfScreenHeight
+                - instance.backgroundTextureHeight / 2;
         }
 
         public static float GetBorderDownPositionY()
         {
             return -GetBorderUpPositionY();
+        }
+
+        public static Color GetBackgroundColor()
+        {
+            switch(LevelManager.GetCurrentWorldIndex())
+            {
+                case 1:
+                    return instance.backgroundTintForWorld1;
+                case 2:
+                    return instance.backgroundTintForWorld2;
+                case 3:
+                    return instance.backgroundTintForWorld3;
+                case 4:
+                    return instance.backgroundTintForWorld4;
+                case 5:
+                    return instance.backgroundTintForWorld5;
+                case 6:
+                    return instance.backgroundTintForWorld6;
+                default:
+                    return Color.white;
+            }
         }
     }
 }
