@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Core.Levels;
+using Core;
 
 namespace Background
 {
@@ -46,7 +47,7 @@ namespace Background
             }
         }
 
-        private void RenderRepeatedBackground()
+        private void RenderRepeatedBackground(bool shouldOverrideBackgroundColorToBeWhite = false)
         {
             ClearPreviouslyRenderedBackground();
             float nextRenderPositionX = GetStartingRenderPositionX();
@@ -58,7 +59,9 @@ namespace Background
                     GameObject nextBackgroundTexture =
                         Instantiate(backgroundTexture, transform);
                     nextBackgroundTexture.GetComponent<SpriteRenderer>().color =
-                        GetBackgroundColor();
+                        shouldOverrideBackgroundColorToBeWhite
+                        ? Color.white
+                        : GetBackgroundColor();
                     nextBackgroundTexture.transform.position =
                         new Vector2(nextRenderPositionX, nextRenderPositionY);
                     nextRenderPositionY += backgroundTextureHeight;
@@ -113,12 +116,13 @@ namespace Background
 
         public static void SetDesiredNumberOfColumnsAndRows(
             int desiredNumberOfColumns,
-            int desiredNumberOfRows
+            int desiredNumberOfRows,
+            bool shouldOverrideBackgroundColorToBeWhite = false
         )
         {
             instance.desiredNumberOfColumns = desiredNumberOfColumns;
             instance.desiredNumberOfRows = desiredNumberOfRows;
-            instance.RenderRepeatedBackground();
+            instance.RenderRepeatedBackground(shouldOverrideBackgroundColorToBeWhite);
         }
 
         public static float GetBorderLeftPositionX()

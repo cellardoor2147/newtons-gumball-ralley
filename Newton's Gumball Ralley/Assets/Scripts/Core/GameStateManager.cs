@@ -120,13 +120,13 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
-                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5, true);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
-                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5, true);
                     StopAllMusic();
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;

@@ -5639,6 +5639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Settings Button
       objectReference: {fileID: 0}
+    - target: {fileID: 2812951668698281625, guid: cc80384c418084d67a8bbde092ac9db8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5662,7 +5667,7 @@ PrefabInstance:
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
@@ -5672,7 +5677,7 @@ PrefabInstance:
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
@@ -5722,12 +5727,12 @@ PrefabInstance:
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 436.5
       objectReference: {fileID: 0}
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 2918326232861412514, guid: cc80384c418084d67a8bbde092ac9db8,
         type: 3}
