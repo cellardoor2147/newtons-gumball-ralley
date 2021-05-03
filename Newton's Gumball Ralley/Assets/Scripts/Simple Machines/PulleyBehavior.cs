@@ -108,6 +108,8 @@ namespace SimpleMachine {
 
         public void SwitchPlatformState(PlatformState platformState)
         {
+            pulleyFulcrums = transform.GetChild(0);
+            pulleyPlatforms = transform.GetChild(1);
             switch (platformState)
             {
                 case PlatformState.FlatPlatform:

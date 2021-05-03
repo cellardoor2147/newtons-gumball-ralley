@@ -3,7 +3,7 @@
     "levelIndex": 3,
     "customLevelName": "",
     "repeatedBackgroundRows": 3,
-    "repeatedBackgroundColumns": 5,
+    "repeatedBackgroundColumns": 6,
     "environmentObjects": [
         {
             "objectName": "Ralph",
@@ -281,7 +281,7 @@
                 },
                 "scale": {
                     "x": 0.800000011920929,
-                    "y": 1.0,
+                    "y": 3.0,
                     "z": 1.0
                 }
             },
@@ -410,8 +410,8 @@
                     "w": 0.9990482926368713
                 },
                 "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
+                    "x": 1.100000023841858,
+                    "y": 3.0,
                     "z": 1.0
                 }
             },
