@@ -54,6 +54,7 @@ namespace Wedge
                 if (localVel > destructible.GetImpactThreshold())
                 {
                     targetWedge.layer = wedgeLayer;
+                    collision.gameObject.layer = DestructibleObstacleLayerController.debrisLayer;
                     collision.attachedRigidbody.constraints = RigidbodyConstraints2D.None;
                     if (!AudioManager.instance.isPlaying(BreakSound.name))
                     {
@@ -69,6 +70,35 @@ namespace Wedge
             if (!bounced && GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 AudioManager.instance.PlaySound(BounceSound.name);
+            }
+        }
+
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            DestructibleObstacleLayerController destructible
+                = collision.GetComponentInParent<DestructibleObstacleLayerController>();
+            if (destructible && GameStateManager.GetGameState().Equals(GameState.Playing))
+            {
+                float localVel = 0f;
+
+                if (gameObject.name == "AxeWedgeCollider")
+                {
+                    localVel = transform.InverseTransformDirection(rb.velocity).x;
+                }
+                else if (gameObject.name == "AxeWedgeInvertedCollider")
+                {
+                    localVel = -transform.InverseTransformDirection(rb.velocity).x;
+                }
+                else if (gameObject.name == "SpikeWedgeCollider")
+                {
+                    localVel = -transform.InverseTransformDirection(rb.velocity).y;
+                }
+
+                if (localVel > destructible.GetImpactThreshold())
+                {
+                    targetWedge.layer = wedgeLayer;
+                    collision.gameObject.layer = DestructibleObstacleLayerController.debrisLayer;
+                }
             }
         }
 

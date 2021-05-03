@@ -22,6 +22,7 @@ namespace GUI.EditMode
         private Image objectImage;
         private bool shouldDisableDragging = false;
         private bool isDisabledBasedOnCurrentLevel = false;
+        private bool objectShouldBeEnabled = false;
         private DraggingController objectBeingPlacedDraggingController;
 
         private void Awake()
@@ -77,39 +78,62 @@ namespace GUI.EditMode
 
         public void ToggleBasedOnCurrentLevel()
         {
-            Image objectImage = gameObject.GetComponent<Image>();
             int worldIndex = LevelManager.GetCurrentWorldIndex();
             int levelIndex = LevelManager.GetCurrentLevelIndex();
 
             if (ObjectMetaData != null && worldIndex == 1)
             {
-                bool isLevel1AndObjectShouldBeDisabled =
-                    levelIndex == 1
-                    && (ObjectMetaData.name.Equals("InclinePlane1")
-                    || ObjectMetaData.name.Equals("InclinePlane1Inverted"));
-                if (ObjectMetaData.name.Equals("InclinePlane2")
-                    || isLevel1AndObjectShouldBeDisabled)
+                switch (levelIndex)
                 {
-                    gameObject.SetActive(false);
-                    shouldDisableDragging = true;
-                    isDisabledBasedOnCurrentLevel = true;
-                }
-                else if (!gameObject.activeSelf)
-                {
-                    EnableObject(this.gameObject);
+                    case 1:
+                        objectShouldBeEnabled = ObjectMetaData.name.Equals("InclinePlane3");
+                        if (!objectShouldBeEnabled)
+                        {
+                            ToggleObject(this.gameObject, false);
+                        }
+                        else if (!gameObject.activeSelf)
+                        {
+                            ToggleObject(this.gameObject, true);
+                        }
+                        break;
+                    case 2:
+                        objectShouldBeEnabled =
+                            ObjectMetaData.name.Equals("InclinePlane3")
+                            || ObjectMetaData.name.Equals("InclinePlane1")
+                            || ObjectMetaData.name.Equals("InclinePlane1Inverted");
+                        if (!objectShouldBeEnabled)
+                        {
+                            ToggleObject(this.gameObject, false);
+                        }
+                        else if (!gameObject.activeSelf)
+                        {
+                            ToggleObject(this.gameObject, true);
+                        }
+                        break;
+                    default:
+                        Debug.Log("hi");
+                        if (!gameObject.activeSelf)
+                        {
+                            ToggleObject(this.gameObject, true);
+                        }
+                        if (ObjectMetaData.name.Equals("InclinePlane2"))
+                        {
+                            ToggleObject(this.gameObject, false);
+                        }
+                        break;
                 }
             }
             else if (!gameObject.activeSelf)
             {
-                EnableObject(this.gameObject);
+                ToggleObject(this.gameObject, true);
             }
         }
 
-        private void EnableObject(GameObject machine)
+        private void ToggleObject(GameObject machine, bool shouldEnable)
         {
-            machine.SetActive(true);
-            shouldDisableDragging = false;
-            isDisabledBasedOnCurrentLevel = false;
+            machine.SetActive(shouldEnable);
+            shouldDisableDragging = !shouldEnable;
+            isDisabledBasedOnCurrentLevel = !shouldEnable;
         }
 
         public void OnBeginDrag(PointerEventData pointerEventData)
