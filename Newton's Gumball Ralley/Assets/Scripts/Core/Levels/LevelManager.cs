@@ -166,6 +166,24 @@ namespace Core.Levels
         {
             return currentLevelData.placeableScrapLimit;
         }
+
+        public static int GetLevelNumberOfEarnableStars(int worldIndex, int levelIndex)
+        {
+            int numberOfEarnableStars = 1;
+            LevelData levelData = levelsData.Find(
+                currLevelData => currLevelData.worldIndex == worldIndex
+                                 && currLevelData.levelIndex == levelIndex
+            );
+            if (levelData.starConditions.shouldUseTimeConstraint)
+            {
+                numberOfEarnableStars++;
+            }
+            if (levelData.starConditions.shouldUseScrapConstraint)
+            {
+                numberOfEarnableStars++;
+            }
+            return numberOfEarnableStars;
+        }
         
         public static Vector3 GetCurrentLevelGumballMachinePosition()
         {

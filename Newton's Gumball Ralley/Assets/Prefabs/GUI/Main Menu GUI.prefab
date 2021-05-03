@@ -2726,7 +2726,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.3
+  m_fontSize: 53.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6807,7 +6807,7 @@ PrefabInstance:
     - target: {fileID: 162190859869620534, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
       propertyPath: starRequirement
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1530292258852415146, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
@@ -8618,7 +8618,7 @@ PrefabInstance:
     - target: {fileID: 162190859869620534, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
       propertyPath: starRequirement
-      value: 15
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1530292258852415146, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
@@ -9250,7 +9250,7 @@ PrefabInstance:
     - target: {fileID: 162190859869620534, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
       propertyPath: starRequirement
-      value: 20
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1530292258852415146, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
@@ -9726,7 +9726,7 @@ PrefabInstance:
     - target: {fileID: 162190859869620534, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
       propertyPath: starRequirement
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1530292258852415146, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
@@ -10699,7 +10699,7 @@ PrefabInstance:
     - target: {fileID: 162190859869620534, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
       propertyPath: starRequirement
-      value: 30
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1530292258852415146, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
@@ -10915,7 +10915,7 @@ PrefabInstance:
     - target: {fileID: 162190859869620534, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
       propertyPath: starRequirement
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1530292258852415146, guid: aac995227d65a3e46a7eff81448bd3ac,
         type: 3}
