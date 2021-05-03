@@ -17,7 +17,7 @@ namespace SimpleMachine{
         {
             rigidBody = GetComponent<Rigidbody2D>();
 
-            gearVolume = GearSound.volume;
+            gearVolume = 0.15f;
         }
 
         private void FixedUpdate()

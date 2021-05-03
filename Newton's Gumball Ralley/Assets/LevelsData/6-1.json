@@ -1,16 +1,120 @@
 {
-    "worldIndex": 5,
+    "worldIndex": 6,
     "levelIndex": 1,
     "customLevelName": "",
     "repeatedBackgroundRows": 2,
-    "repeatedBackgroundColumns": 5,
+    "repeatedBackgroundColumns": 4,
     "environmentObjects": [
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 8.5,
+                    "z": -10.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 15.0,
+                    "y": 4.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": -8.300000190734864,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 15.0,
+                    "y": 4.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -17.40999984741211,
+                    "y": 0.10000000149011612,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 6.5,
+                    "y": 4.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 17.270000457763673,
+                    "y": 0.019999999552965165,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 6.5,
+                    "y": 4.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
         {
             "objectName": "Ralph",
             "transform": {
                 "position": {
-                    "x": 8.0600004196167,
-                    "y": -3.430000066757202,
+                    "x": 0.0,
+                    "y": -0.5699999928474426,
                     "z": 0.0
                 },
                 "rotation": {
@@ -35,8 +139,8 @@
             "objectName": "GearBackground",
             "transform": {
                 "position": {
-                    "x": 5.449999809265137,
-                    "y": -5.150000095367432,
+                    "x": -4.699999809265137,
+                    "y": -2.4000000953674318,
                     "z": 0.0
                 },
                 "rotation": {
@@ -61,19 +165,45 @@
             "objectName": "Spikes",
             "transform": {
                 "position": {
-                    "x": 8.670000076293946,
-                    "y": -7.2400007247924809,
-                    "z": 0.0
+                    "x": -0.1599999964237213,
+                    "y": -4.931000232696533,
+                    "z": 1.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
                 },
                 "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
+                    "x": 0.6770137548446655,
+                    "y": 0.4000000059604645,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": 0.3999999463558197,
+                    "y": -5.111000061035156,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 0.6770137548446655,
+                    "y": 0.4000000059604645,
                     "z": 1.0
                 }
             },
@@ -87,304 +217,122 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -4.28000020980835,
-                    "y": -0.949999988079071,
+                    "x": 0.10399994254112244,
+                    "y": -5.066999912261963,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": -0.13052624464035035,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 2.2567121982574465,
+                    "y": 1.55318284034729,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": 3.4590001106262209,
+                    "y": 3.9200000762939455,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": 4.078000068664551,
+                    "y": 3.632999897003174,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 3.750999927520752,
+                    "y": 3.703000068664551,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 3.603780746459961,
+                    "y": 1.71628999710083,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 5.380000114440918,
+                    "y": -5.079999923706055,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.13052615523338319,
                     "w": 0.9914448857307434
                 },
                 "scale": {
-                    "x": 7.5,
-                    "y": 3.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -0.5699999928474426,
-                    "y": 0.6800000071525574,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": -0.13052624464035035,
-                    "w": 0.9914448857307434
-                },
-                "scale": {
-                    "x": 5.0,
-                    "y": 3.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -7.619999885559082,
-                    "y": -2.380000114440918,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": -0.13052624464035035,
-                    "w": 0.9914448857307434
-                },
-                "scale": {
-                    "x": 10.0,
-                    "y": 3.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -10.100000381469727,
-                    "y": 6.639999866485596,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.7071068286895752,
-                    "w": 0.7071068286895752
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -4.690000057220459,
-                    "y": 1.2999999523162842,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -0.7699999809265137,
-                    "y": 0.25,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": 3.069999933242798,
-                    "y": -0.7799999713897705,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -11.0600004196167,
-                    "y": 0.3599998950958252,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.6200000047683716,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -6.670000076293945,
-                    "y": -0.8199999928474426,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.6200000047683716,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -2.2699999809265138,
-                    "y": -2.0,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.6200000047683716,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": 2.200000047683716,
-                    "y": -3.200000047683716,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.6200000047683716,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -10.100000381469727,
-                    "y": 4.150000095367432,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.7071068286895752,
-                    "w": 0.7071068286895752
-                },
-                "scale": {
-                    "x": 1.0,
+                    "x": 1.5000001192092896,
                     "y": 1.0,
                     "z": 1.0
                 }
@@ -399,269 +347,9 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -14.630000114440918,
-                    "y": 6.639999866485596,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.7071068286895752,
-                    "w": 0.7071068286895752
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -14.630000114440918,
-                    "y": 4.150000095367432,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.7071068286895752,
-                    "w": 0.7071068286895752
-                },
-                "scale": {
-                    "x": 1.0,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -13.520000457763672,
-                    "y": 9.069999694824219,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.4226182699203491,
-                    "w": 0.9063078761100769
-                },
-                "scale": {
-                    "x": 1.5,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": -11.230000495910645,
-                    "y": 9.109999656677246,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": -0.4226182699203491,
-                    "w": 0.9063078761100769
-                },
-                "scale": {
-                    "x": 1.5,
-                    "y": 1.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -5.940001010894775,
-                    "y": -3.379999876022339,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -2.02000093460083,
-                    "y": -4.430000305175781,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": 1.819999098777771,
-                    "y": -5.460000038146973,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -17.579999923706056,
-                    "y": -0.25999999046325686,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -13.660000801086426,
-                    "y": -1.309999942779541,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "Spikes",
-            "transform": {
-                "position": {
-                    "x": -9.820000648498536,
-                    "y": -2.3399996757507326,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.9914448857307434,
-                    "w": 0.13052625954151154
-                },
-                "scale": {
-                    "x": 0.550000011920929,
-                    "y": 0.5,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": 8.510000228881836,
-                    "y": -7.849999904632568,
-                    "z": 0.0
+                    "x": 0.09000000357627869,
+                    "y": -2.2899999618530275,
+                    "z": -1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -670,8 +358,8 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 3.0999999046325685,
-                    "y": 2.0,
+                    "x": 0.5,
+                    "y": 1.0,
                     "z": 1.0
                 }
             },
@@ -685,8 +373,8 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -25.0,
-                    "y": 0.0,
+                    "x": 0.10399994254112244,
+                    "y": -5.066999912261963,
                     "z": 0.0
                 },
                 "rotation": {
@@ -696,8 +384,112 @@
                     "w": 0.7071068286895752
                 },
                 "scale": {
-                    "x": 10.0,
-                    "y": 3.0,
+                    "x": 2.2567121982574465,
+                    "y": 1.55318284034729,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": 3.4590001106262209,
+                    "y": 3.9200000762939455,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": 4.078000068664551,
+                    "y": 3.632999897003174,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -4.179999828338623,
+                    "y": 3.9200000762939455,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -3.560999870300293,
+                    "y": 3.632999897003174,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
                     "z": 1.0
                 }
             },
@@ -711,8 +503,8 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": 25.0,
-                    "y": 0.0,
+                    "x": -3.888000011444092,
+                    "y": 3.703000068664551,
                     "z": 0.0
                 },
                 "rotation": {
@@ -722,8 +514,60 @@
                     "w": 0.7071068286895752
                 },
                 "scale": {
-                    "x": 10.0,
-                    "y": 3.0,
+                    "x": 3.603780746459961,
+                    "y": 1.71628999710083,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -8.100000381469727,
+                    "y": -4.929999828338623,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 0.6770137548446655,
+                    "y": 0.4000000059604645,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -7.5400004386901859,
+                    "y": -5.109999656677246,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 0.6770137548446655,
+                    "y": 0.4000000059604645,
                     "z": 1.0
                 }
             },
@@ -737,19 +581,71 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -12.069999694824219,
-                    "y": -11.680000305175782,
+                    "x": -7.836000442504883,
+                    "y": -5.065999507904053,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
                 },
                 "scale": {
-                    "x": 10.300000190734864,
-                    "y": 3.0,
+                    "x": 2.2567121982574465,
+                    "y": 1.55318284034729,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -12.031999588012696,
+                    "y": 3.9170000553131105,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -11.413000106811524,
+                    "y": 3.629999876022339,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 1.0811344385147095,
+                    "y": 0.4420059323310852,
                     "z": 1.0
                 }
             },
@@ -763,19 +659,71 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": 12.300000190734864,
-                    "y": -11.680000305175782,
+                    "x": -11.739999771118164,
+                    "y": 3.700000047683716,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
                 },
                 "scale": {
-                    "x": 10.100000381469727,
-                    "y": 3.0,
+                    "x": 3.603780746459961,
+                    "y": 1.71628999710083,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -14.770000457763672,
+                    "y": -4.929999828338623,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 0.6770137548446655,
+                    "y": 0.4000000059604645,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Spikes",
+            "transform": {
+                "position": {
+                    "x": -14.210000991821289,
+                    "y": -5.109999656677246,
+                    "z": 1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 0.6770137548446655,
+                    "y": 0.4000000059604645,
                     "z": 1.0
                 }
             },
@@ -789,45 +737,19 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -12.069999694824219,
-                    "y": 11.799999237060547,
+                    "x": -14.506000518798829,
+                    "y": -5.065999507904053,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
                 },
                 "scale": {
-                    "x": 10.300000190734864,
-                    "y": 3.0,
-                    "z": 1.0
-                }
-            },
-            "pulleyState": {
-                "platformState": 0,
-                "platformPosition": 0,
-                "ballRollDirection": 0
-            }
-        },
-        {
-            "objectName": "EnvironmentBlock",
-            "transform": {
-                "position": {
-                    "x": 12.300000190734864,
-                    "y": 11.800000190734864,
-                    "z": 0.0
-                },
-                "rotation": {
-                    "x": 0.0,
-                    "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
-                },
-                "scale": {
-                    "x": 10.100000381469727,
-                    "y": 3.0,
+                    "x": 2.2567121982574465,
+                    "y": 1.55318284034729,
                     "z": 1.0
                 }
             },
@@ -838,11 +760,38 @@
             }
         }
     ],
-    "preplacedObjects": [],
+    "preplacedObjects": [
+        {
+            "objectName": "SimplePulley",
+            "transform": {
+                "position": {
+                    "x": 0.9399999976158142,
+                    "y": 4.150000095367432,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.75,
+                    "y": 0.75,
+                    "z": 0.75
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        }
+    ],
     "gumballMachineTransform": {
         "position": {
-            "x": -12.109999656677246,
-            "y": 5.75,
+            "x": 10.510000228881836,
+            "y": 0.3799999952316284,
             "z": 0.0
         },
         "rotation": {
@@ -857,9 +806,9 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 40.0,
+    "placeableScrapLimit": 27.0,
     "starConditions": {
         "timeConstraint": 10.0,
-        "scrapConstraint": 20.0
+        "scrapConstraint": 0.0
     }
 }
