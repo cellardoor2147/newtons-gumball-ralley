@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4117390364887765082}
   - component: {fileID: 4054524769888103352}
   m_Layer: 0
-  m_Name: Inclined Plane 3 Inverted
+  m_Name: Inclined Plane 4 Inverted
   m_TagString: SimpleMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,6 @@ MonoBehaviour:
   screwMetaData: {fileID: 11400000, guid: a060d4b5ca3f6a74eb82eceb500a2177, type: 2}
   gear1MetaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
   gear2MetaData: {fileID: 11400000, guid: 275d02e1e0c0d4854aa968a10e9d1e75, type: 2}
-  gear3MetaData: {fileID: 11400000, guid: c61080e63d78e4cdda7c294f915bedba, type: 2}
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
@@ -173,4 +172,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71bac6fc6f8f84499bdebfbed48df14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  metaData: {fileID: 11400000, guid: 05d0716100a96474b9b159f2e69fdf78, type: 2}
+  metaData: {fileID: 11400000, guid: b8b37f86883059f49af44c734cb7f160, type: 2}

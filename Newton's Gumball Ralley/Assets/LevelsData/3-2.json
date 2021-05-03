@@ -514,7 +514,7 @@
             "transform": {
                 "position": {
                     "x": 6.805000305175781,
-                    "y": -14.779999732971192,
+                    "y": -15.430000305175782,
                     "z": 0.0
                 },
                 "rotation": {
@@ -534,15 +534,15 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": 3.619999885559082,
-                    "y": -14.550000190734864,
+                    "x": 3.7200000286102297,
+                    "y": -15.0,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": 0.0,
-                    "w": 1.0
+                    "z": -0.042993735522031787,
+                    "w": 0.9990753531455994
                 },
                 "scale": {
                     "x": 2.209505796432495,
@@ -676,6 +676,27 @@
                     "z": 1.4607000350952149
                 }
             }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -7.809999942779541,
+                    "y": -12.430000305175782,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.06830786168575287,
+                    "w": 0.9976642727851868
+                },
+                "scale": {
+                    "x": 2.9127347469329836,
+                    "y": 3.7889554500579836,
+                    "z": 1.0
+                }
+            }
         }
     ],
     "preplacedObjects": [],
@@ -697,9 +718,9 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 150.0,
+    "placeableScrapLimit": 100.0,
     "starConditions": {
-        "timeConstraint": 0.0,
-        "scrapConstraint": 0.0
+        "timeConstraint": 17.0,
+        "scrapConstraint": 40.0
     }
 }

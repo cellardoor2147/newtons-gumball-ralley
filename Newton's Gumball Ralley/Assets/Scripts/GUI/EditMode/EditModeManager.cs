@@ -35,8 +35,8 @@ namespace GUI.EditMode
         private RectTransform placeableObjectsMenuTransform;
         private float placeableObjectsMenuMaxYPosition;
         private float placeableObjectsMenuMinYPosition;
-        private bool isLowering;
-        private bool isRaising;
+        private IEnumerator hideGUICoroutine;
+        private IEnumerator showGUICoroutine;
 
         private EditModeManager() { } // Prevents instantiation outside of this class
 
@@ -98,7 +98,28 @@ namespace GUI.EditMode
 
         private void Start()
         {
-            SetActiveTab(PlaceableObjectType.InclinePlane);
+            int worldIndex = LevelManager.GetCurrentWorldIndex();
+            switch (worldIndex)
+            {
+                case 1:
+                    SetActiveTab(PlaceableObjectType.InclinePlane);
+                    break;
+                case 2:
+                    SetActiveTab(PlaceableObjectType.Screw);
+                    break;
+                case 3:
+                    SetActiveTab(PlaceableObjectType.Lever);
+                    break;
+                case 4:
+                    SetActiveTab(PlaceableObjectType.Wedge);
+                    break;
+                case 5:
+                    SetActiveTab(PlaceableObjectType.Wheel);
+                    break;
+                case 6:
+                    SetActiveTab(PlaceableObjectType.InclinePlane);
+                    break;
+            }
         }
 
         public static IEnumerator AsyncSetActiveTab(PlaceableObjectType objectType)
@@ -134,11 +155,12 @@ namespace GUI.EditMode
             instance.ActivateContent(objectType);
         }
 
-        public static IEnumerator DisableFutureTabs()
+        public static IEnumerator DisableTabs()
         {
             yield return new WaitUntil(() => instance != null);
             EnableAllTabs();
             int worldIndex = LevelManager.GetCurrentWorldIndex();
+            int levelIndex = LevelManager.GetCurrentLevelIndex();
             List<PlaceableObjectType> desiredObjectTypes = new List<PlaceableObjectType>();
 
             switch (worldIndex)
@@ -199,6 +221,11 @@ namespace GUI.EditMode
                     desiredObjectTypes.Add(PlaceableObjectType.Lever);
                     desiredObjectTypes.Add(PlaceableObjectType.Wedge);
                     desiredObjectTypes.Add(PlaceableObjectType.Wheel);
+                    if (levelIndex == 1 || levelIndex == 2)
+                    {
+                        desiredObjectTypes.Remove(PlaceableObjectType.InclinePlane);
+                        desiredObjectTypes.Remove(PlaceableObjectType.Lever);
+                    }
                     foreach (TabController inactiveTab in instance.inactiveTabControllers)
                     {
                         EnableDesiredTabs(desiredObjectTypes, inactiveTab, false);
@@ -286,15 +313,30 @@ namespace GUI.EditMode
             }
         }
 
+        private void ResetCoroutines()
+        {
+            if (hideGUICoroutine != null)
+            {
+                StopCoroutine(hideGUICoroutine);
+                hideGUICoroutine = null;
+            }
+            if (showGUICoroutine != null)
+            {
+                StopCoroutine(showGUICoroutine);
+                showGUICoroutine = null;
+            }
+        }
+
         public static void HideEditModeGUI()
         {
-            instance.StartCoroutine(instance.AsyncHideEditModeGUI());
+            instance.ResetCoroutines();
+            instance.hideGUICoroutine = instance.AsyncHideEditModeGUI();
+            instance.StartCoroutine(instance.hideGUICoroutine);
         }
 
         private IEnumerator AsyncHideEditModeGUI()
         {
-            yield return new WaitUntil(() => !(isLowering || isRaising));
-            isLowering = true;
+
             while (
                 placeableObjectsMenuTransform.anchoredPosition.y 
                 > placeableObjectsMenuMinYPosition
@@ -306,19 +348,18 @@ namespace GUI.EditMode
                 );
                 yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
-            isLowering = false;
             yield return null;
         }
 
         public static void ShowEditModeGUI()
         {
-            instance.StartCoroutine(instance.AsyncShowEditModeGUI());
+            instance.ResetCoroutines();
+            instance.showGUICoroutine = instance.AsyncShowEditModeGUI();
+            instance.StartCoroutine(instance.showGUICoroutine);
         }
 
         private IEnumerator AsyncShowEditModeGUI()
         {
-            yield return new WaitUntil(() => !(isLowering || isRaising));
-            isRaising = true;
             while (
                 placeableObjectsMenuTransform.anchoredPosition.y
                 < placeableObjectsMenuMaxYPosition
@@ -330,7 +371,6 @@ namespace GUI.EditMode
                 );
                 yield return new WaitForSeconds(Time.fixedDeltaTime);
             }
-            isRaising = false;
             yield return null;
         }
     }

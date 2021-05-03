@@ -14,6 +14,8 @@ namespace SimpleMachine
         private static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         private static readonly string SIMPLE_MACHINE_TAG = "SimpleMachine";
         private static readonly string BALL_TAG = "Player";
+        private static readonly string GUMBALL_MACHINE_TAG = "GumballMachine";
+        private static readonly string ENVIRONMENT_BLOCK_TAG = "EnvironmentBlock";
 
         [SerializeField] private GameObject rotationArrowsPrefab;
 
@@ -426,8 +428,8 @@ namespace SimpleMachine
             float totalRotationMagnitude = 0;
             do
             {
-                totalRotationMagnitude +=
-                    GetNextPotentiallyValidRotation(rotationMagnitude);
+                totalRotationMagnitude =
+                    GetNextPotentiallyValidRotation(totalRotationMagnitude, rotationMagnitude);
                 hits = Physics2D.BoxCastAll(
                     transform.position,
                     ((BoxCollider2D)collider2D).size,
@@ -443,15 +445,20 @@ namespace SimpleMachine
             objectManager.SetLastValidRotation(transform.rotation);
         }
         
-        private float GetNextPotentiallyValidRotation(float rotationMagnitude)
+        private float GetNextPotentiallyValidRotation(
+            float totalRotationMagnitude,
+            float rotationMagnitude
+        )
         {
             bool rotationWouldMakeGameObjectHorizontalOrVertical =
-                (Mathf.RoundToInt(transform.rotation.eulerAngles.z + rotationMagnitude) % 90) == 0;
+                (Mathf.RoundToInt(
+                    transform.rotation.eulerAngles.z + totalRotationMagnitude + rotationMagnitude) % 90
+                ) == 0;
             if (rotationWouldMakeGameObjectHorizontalOrVertical)
             {
                 rotationMagnitude *= 2;
             }
-            return rotationMagnitude;
+            return totalRotationMagnitude + rotationMagnitude;
         }
 
         private bool HitsContainCollisionOtherThanSelf(RaycastHit2D[] hits)
@@ -461,7 +468,9 @@ namespace SimpleMachine
                 if (
                     hit.collider.gameObject != gameObject 
                     && (hit.collider.gameObject.CompareTag(SIMPLE_MACHINE_TAG)
-                    || hit.collider.gameObject.CompareTag(BALL_TAG))
+                    || hit.collider.gameObject.CompareTag(BALL_TAG)
+                    || hit.collider.gameObject.CompareTag(GUMBALL_MACHINE_TAG)
+                    || hit.collider.gameObject.CompareTag(ENVIRONMENT_BLOCK_TAG))
                 )
                 {
                     return true;

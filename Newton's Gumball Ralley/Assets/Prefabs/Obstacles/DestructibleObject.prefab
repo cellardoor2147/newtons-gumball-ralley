@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30ac5ec9ecb419419b3cd9e5613d03e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactThreshold: 8
+  impactThreshold: 7
 --- !u!114 &-2649860210512141947
 MonoBehaviour:
   m_ObjectHideFlags: 0

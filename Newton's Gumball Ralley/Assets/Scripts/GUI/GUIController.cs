@@ -9,6 +9,7 @@ namespace GUI
         private readonly static string PRIMARY_MENU_KEY = "Primary Menu";
         private readonly static string MODE_MENU_KEY = "Mode Menu";
         private readonly static string LEVEL_MENU_KEY = "Level Menu";
+        private readonly static string GUMBALL_COLOR_MENU_KEY = "Gumball Color Menu";
 
         public GUIType guiType;
 
@@ -27,6 +28,7 @@ namespace GUI
             transform.Find(PRIMARY_MENU_KEY).gameObject.SetActive(true);
             transform.Find(MODE_MENU_KEY).gameObject.SetActive(false);
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
         }
 
         public void LoadMainMenuModeMenu()
@@ -38,6 +40,8 @@ namespace GUI
             transform.Find(PRIMARY_MENU_KEY).gameObject.SetActive(false);
             transform.Find(MODE_MENU_KEY).gameObject.SetActive(true);
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
+
         }
 
         public void LoadMainMenuLevelMenu()
@@ -49,6 +53,19 @@ namespace GUI
             transform.Find(PRIMARY_MENU_KEY).gameObject.SetActive(false);
             transform.Find(MODE_MENU_KEY).gameObject.SetActive(false);
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(true);
+            transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
+        }
+
+        public void LoadMainMenuGumballColorMenu()
+        {
+            if (!CanLoadMainMenuSubMenu())
+            {
+                return;
+            }
+            transform.Find(PRIMARY_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(MODE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(true);
         }
 
         private bool CanLoadMainMenuSubMenu()
@@ -72,7 +89,7 @@ namespace GUI
         public void ResetLevel()
         {
             Timer.Reset();
-            GameStateManager.ResetLevel();
+            StartCoroutine(GameStateManager.ResetLevel());
         }
 
         public void SkipDialogue()
@@ -98,7 +115,7 @@ namespace GUI
         public void LoadNextLevel()
         {
             Timer.Reset();
-            StartCoroutine(GameStateManager.LoadNextLevel());
+            GameStateManager.LoadNextLevel();
         }
 
         public void GoBackFromSettingsMenu()
