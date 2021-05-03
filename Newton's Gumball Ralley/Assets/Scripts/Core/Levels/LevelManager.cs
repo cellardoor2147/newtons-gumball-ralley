@@ -143,9 +143,18 @@ namespace Core.Levels
             return currentLevelData.levelIndex;
         }
 
+        public static bool CurrentLevelShouldUseTimeConstraint()
+        {
+            return currentLevelData.starConditions.shouldUseTimeConstraint;
+        }
+
         public static float GetCurrentLevelTimeConstraint()
         {
             return currentLevelData.starConditions.timeConstraint;
+        }
+        public static bool CurrentLevelShouldUseScrapConstraint()
+        {
+            return currentLevelData.starConditions.shouldUseScrapConstraint;
         }
 
         public static float GetCurrentLevelScrapConstraint()

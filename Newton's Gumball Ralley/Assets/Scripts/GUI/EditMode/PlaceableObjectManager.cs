@@ -111,7 +111,6 @@ namespace GUI.EditMode
                         }
                         break;
                     default:
-                        Debug.Log("hi");
                         if (!gameObject.activeSelf)
                         {
                             ToggleObject(this.gameObject, true);
