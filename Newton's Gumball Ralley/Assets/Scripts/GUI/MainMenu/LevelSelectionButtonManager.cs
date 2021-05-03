@@ -18,6 +18,7 @@ namespace GUI.MainMenu
         private void OnEnable()
         {
             SetButtonText();
+            SetClickability();
             SetStars();
         }
 
@@ -27,6 +28,12 @@ namespace GUI.MainMenu
                 .Find(TEXT_KEY)
                 .GetComponent<TextMeshProUGUI>()
                 .text = string.Format("{0}-{1}", worldIndex, levelIndex);
+        }
+
+        private void SetClickability()
+        {
+            transform.Find(BUTTON_KEY).GetComponent<Button>().interactable =
+                PlayerProgressManager.LevelShouldBePlayable(worldIndex, levelIndex);
         }
 
         private void SetStars()
