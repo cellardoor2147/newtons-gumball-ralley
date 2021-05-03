@@ -80,7 +80,7 @@ namespace Ball
                 else if (!pulleyBehavior.grounded)
                 {
                     transform.parent = parent;
-                    if (pulleyBehavior.ballRollDirection.Equals(PulleyBehavior.BallRollDirection.Right)){
+                    if (pulleyBehavior.ballRollDirection.Equals(SimpleMachine.BallRollDirection.Right)){
                         rigidBody.AddForce(pushForce);
                     }
                     else 

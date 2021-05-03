@@ -20,7 +20,7 @@ namespace SimpleMachine
         private void OnMouseDown()
         {
             if (GameStateManager.GetGameState().Equals(GameState.Playing) 
-                && pulleyBehavior.platformState.Equals(PulleyBehavior.PlatformState.SpikeWedge)
+                && pulleyBehavior.platformState.Equals(SimpleMachine.PlatformState.SpikeWedge)
                 && !pulleyBehavior.shouldFall && !pulleyBehavior.shouldRise && !shouldDrop)
             {
                 boxCollider.isTrigger = true;

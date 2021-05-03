@@ -4,38 +4,39 @@ using Core.PlacedObjects;
 using Core;
 
 namespace SimpleMachine {
+
+    public enum PulleyState
+    {
+        SimplePulley = 0,
+        CompoundPulley = 1
+    }
+
+    public enum PlatformState
+    {
+        FlatPlatform = 0,
+        SpikeWedge = 1
+    }
+
+    public enum PlatformPosition
+    {
+        Down = 0,
+        Up = 1
+    }
+
+    public enum BallRollDirection
+    {
+        Left = 0,
+        Right = 1
+    }
+
     public class PulleyBehavior : MonoBehaviour
     {
-        public enum PulleyState
-        {
-            SimplePulley = 0,
-            CompoundPulley = 1
-        }
 
-        public enum PlatformState
-        {
-            FlatPlatform = 0,
-            SpikeWedge = 1
-        }
-
-        public enum PlatformPosition
-        {
-            Down = 0,
-            Up = 1
-        }
-
-        public enum BallRollDirection
-        {
-            Left = 0,
-            Right = 1
-        }
-
-        private PulleyState pulleyState;
-        [HideInInspector] public PlatformState platformState;
-        private PlatformPosition platformPosition;
+        [SerializeField] public PulleyState pulleyState;
+        [SerializeField] public PlatformState platformState;
+        [SerializeField] public PlatformPosition platformPosition;
         [SerializeField] public BallRollDirection ballRollDirection;
 
-        private int currPulley;
         private int currPlatform;
 
         private Transform pulleyFulcrums;
@@ -45,13 +46,10 @@ namespace SimpleMachine {
         private GearBehavior gearBehavior;
         private PulleyWedgeBehavior pulleyWedgeBehavior;
 
-        [SerializeField] PulleyState defaultPulleyState;
-        [SerializeField] PlatformState defaultPlatformState;
-        [SerializeField] PlatformPosition defaultPlatformPosition;
-
         [HideInInspector] public bool shouldRise;
         [HideInInspector] public bool shouldFall;
         private bool hasReset;
+        private bool canSpin;
 
         private float minSpeed;
         private Vector3 orginalPosition;
@@ -72,34 +70,14 @@ namespace SimpleMachine {
         {
             pulleyFulcrums = transform.GetChild(0);
             pulleyPlatforms = transform.GetChild(1);
-            pulleyState = defaultPulleyState;
-            platformState = defaultPlatformState;
-            SwitchPlatformState(defaultPlatformState);
+            SwitchPlatformState(platformState);
             raiseDistance = 3.5f;
-            SwitchPlatformPosition(defaultPlatformPosition);
             minSpeed = 20f;  
             platformSpeed = 0.5f;
             grounded = true;
             pulleyWedgeBehavior = pulleyPlatforms.GetChild(1).gameObject.GetComponent<PulleyWedgeBehavior>();
-            orginalPosition = pulleyPlatforms.GetChild(currPlatform).position;
-            ResetPlatformHeight();
-        }
-
-        private void SwitchPlatformState(PlatformState platformState)
-        {
-            switch (platformState)
-            {
-                case PlatformState.FlatPlatform:
-                    pulleyPlatforms.GetChild(0).gameObject.SetActive(true);
-                    pulleyPlatforms.GetChild(1).gameObject.SetActive(false);
-                    currPlatform = 0;
-                    break;
-                case PlatformState.SpikeWedge:
-                    pulleyPlatforms.GetChild(0).gameObject.SetActive(false);
-                    pulleyPlatforms.GetChild(1).gameObject.SetActive(true);
-                    currPlatform = 1;
-                    break;
-            }
+            SwitchPlatformPosition(platformPosition);
+            orginalPosition = pulleyPlatforms.GetChild(currPlatform).localPosition;
         }
 
         private void SwitchPlatformPosition(PlatformPosition platformPosition)
@@ -120,8 +98,26 @@ namespace SimpleMachine {
             }
         }
 
+        private void SwitchPlatformState(PlatformState platformState)
+        {
+            switch (platformState)
+            {
+                case PlatformState.FlatPlatform:
+                    pulleyPlatforms.GetChild(0).gameObject.SetActive(true);
+                    pulleyPlatforms.GetChild(1).gameObject.SetActive(false);
+                    currPlatform = 0;
+                    break;
+                case PlatformState.SpikeWedge:
+                    pulleyPlatforms.GetChild(0).gameObject.SetActive(false);
+                    pulleyPlatforms.GetChild(1).gameObject.SetActive(true);
+                    currPlatform = 1;
+                    break;
+            }
+        }
+
         private void Update()
-        { 
+        {
+            pulleyPlatforms.GetChild(currPlatform);
             if (pulleyState.Equals(PulleyState.SimplePulley))
             {
                 GetComponent<PlacedObjectManager>().metaData = simplePulleyMetaData;
@@ -135,12 +131,10 @@ namespace SimpleMachine {
                 case PulleyState.SimplePulley:
                     pulleyFulcrums.GetChild(0).gameObject.SetActive(true);
                     pulleyFulcrums.GetChild(1).gameObject.SetActive(false);
-                    currPulley = 0;
                     break;
                 case PulleyState.CompoundPulley:
                     pulleyFulcrums.GetChild(0).gameObject.SetActive(false);
                     pulleyFulcrums.GetChild(1).gameObject.SetActive(true);
-                    currPulley = 1;
                     break;
             }
         }
@@ -166,9 +160,9 @@ namespace SimpleMachine {
 
             if (gearBehavior != null)
             {
-
-                if (activePlatform.position.y <= minHeight)
+                if (activePlatform.position.y <= minHeight && canSpin)
                 {
+                    gearBehavior.shouldSpinLeft = true;
                     gearBehavior.shouldSpinRight = false;
                     if (platformState.Equals(PlatformState.FlatPlatform) 
                         && platformPosition.Equals(PlatformPosition.Up))
@@ -180,8 +174,9 @@ namespace SimpleMachine {
                         grounded = true;
                     }
                 }
-                else if (activePlatform.position.y >= maxHeight)
+                else if (activePlatform.position.y >= maxHeight && canSpin)
                 {
+                    gearBehavior.shouldSpinRight = true;
                     gearBehavior.shouldSpinLeft = false;
                     if (platformState.Equals(PlatformState.FlatPlatform)
                          && platformPosition.Equals(PlatformPosition.Down))
@@ -193,14 +188,19 @@ namespace SimpleMachine {
                         grounded = true;
                     }
                 }
-                else
+                else if (canSpin)
                 {
                     grounded = true;
                     gearBehavior.shouldSpinRight = true;
                     gearBehavior.shouldSpinLeft = true;
                 }
+                else
+                {
+                    gearBehavior.shouldSpinRight = false;
+                    gearBehavior.shouldSpinLeft = false;
+                }
             }
-            if (shouldRise)
+            if (shouldRise && GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 activePlatform.transform.Translate(Vector3.up * platformSpeed * Time.deltaTime);
                 if (!AudioManager.instance.isPlaying(PulleySound.name))
@@ -208,7 +208,7 @@ namespace SimpleMachine {
                     AudioManager.instance.PlaySound(PulleySound.name);
                 }
             }
-            else if (shouldFall)
+            else if (shouldFall && GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 activePlatform.transform.Translate(Vector3.down * platformSpeed * Time.deltaTime);
                 if (!AudioManager.instance.isPlaying(PulleySound.name))
@@ -243,13 +243,11 @@ namespace SimpleMachine {
 
                     if (isSimplePulley && isSpikeWedge)
                     {
-                        gearBehavior.shouldSpinRight = false;
-                        gearBehavior.shouldSpinLeft = false;
+                        canSpin = false;
                     } 
                     else
                     {
-                        gearBehavior.shouldSpinRight = true;
-                        gearBehavior.shouldSpinLeft = true;
+                        canSpin = true;
                     }
 
                     if (gearBehavior.spinState.Equals(GearBehavior.SpinState.SpinningLeft)
@@ -304,7 +302,7 @@ namespace SimpleMachine {
 
         private void ResetPlatformHeight()
         {
-            pulleyPlatforms.GetChild(currPlatform).position = orginalPosition;
+            pulleyPlatforms.GetChild(currPlatform).localPosition = orginalPosition;
         }
     }
 }
