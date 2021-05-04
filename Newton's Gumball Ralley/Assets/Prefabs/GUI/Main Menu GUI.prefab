@@ -2726,7 +2726,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 53.7
+  m_fontSize: 35.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4069,6 +4069,12 @@ MonoBehaviour:
   - {fileID: -5402116881699823172, guid: f53430bdc296f984e804605fb0621209, type: 3}
   - {fileID: -6226405025219134633, guid: f53430bdc296f984e804605fb0621209, type: 3}
   - {fileID: 5673037427034892069, guid: f53430bdc296f984e804605fb0621209, type: 3}
+  - {fileID: 1035358866395130850, guid: b25046dd6996972498c033559e0dc81b, type: 3}
+  - {fileID: -3083952518345895917, guid: b25046dd6996972498c033559e0dc81b, type: 3}
+  - {fileID: 8974751725427781309, guid: b25046dd6996972498c033559e0dc81b, type: 3}
+  - {fileID: -7166423415630008584, guid: b25046dd6996972498c033559e0dc81b, type: 3}
+  - {fileID: -598515995368980632, guid: b25046dd6996972498c033559e0dc81b, type: 3}
+  - {fileID: -7894531217637234575, guid: b25046dd6996972498c033559e0dc81b, type: 3}
   armRotationLimit: 5
   armRotationSpeed: 10
 --- !u!1 &8934398808620852187
