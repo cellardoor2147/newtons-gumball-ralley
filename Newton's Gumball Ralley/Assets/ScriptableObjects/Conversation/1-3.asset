@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
+  m_Name: 1-3
+  m_EditorClassIdentifier: 
+  worldIndex: 1
+  levelIndex: 3
+  leftSpeaker: {fileID: 11400000, guid: febd22800eba4634a8c1a00180c7e04f, type: 2}
+  rightSpeaker: {fileID: 11400000, guid: 93d3541048601684c819da10aa6d6d34, type: 2}
+  linesAtBeginningOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: "Now that you\u2019ve got the hang of it, we\u2019ll let you try this
+      level without our help."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 3
+    content: "Wait, aren\u2019t you forgetting something?"
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: "Oh, right! From now on, you\u2019ll have to buy your machines using
+      Scrap."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "That\u2019s right. Each machine costs different amounts of Scrap. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "At the start of each level, you\u2019ll be given some Scrap to spend. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "If you don\u2019t spend more than a certain amount, you\u2019ll earn
+      a star at the end of the level! "
+  linesAtEndOfLevel: []

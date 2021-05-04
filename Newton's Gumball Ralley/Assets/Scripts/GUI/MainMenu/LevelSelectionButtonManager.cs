@@ -18,7 +18,8 @@ namespace GUI.MainMenu
         private void OnEnable()
         {
             SetButtonText();
-            SetStarsColors();
+            SetClickability();
+            SetStars();
         }
 
         private void SetButtonText()
@@ -29,16 +30,28 @@ namespace GUI.MainMenu
                 .text = string.Format("{0}-{1}", worldIndex, levelIndex);
         }
 
-        private void SetStarsColors()
+        private void SetClickability()
         {
+            transform.Find(BUTTON_KEY).GetComponent<Button>().interactable =
+                PlayerProgressManager.LevelShouldBePlayable(worldIndex, levelIndex);
+        }
+
+        private void SetStars()
+        {
+            int numberOfEarnableStars =
+                LevelManager.GetLevelNumberOfEarnableStars(worldIndex, levelIndex);
             int bestStarsEarned =
                 PlayerProgressManager.GetBestStarsEarnedForLevel(worldIndex, levelIndex);
-            for (int i = 1; i <= bestStarsEarned; i++)
+            for (int i = 1; i <= 3; i++)
             {
                 transform.Find(STAR_COUNTER_KEY)
                     .Find(STAR_PREFIX + i.ToString())
                     .GetComponent<Image>()
-                    .color = Color.white;
+                    .color = (i <= bestStarsEarned) ? Color.white : Color.black;
+                transform.Find(STAR_COUNTER_KEY)
+                    .Find(STAR_PREFIX + i.ToString())
+                    .gameObject
+                    .SetActive(i <= numberOfEarnableStars);
             }
         }
 

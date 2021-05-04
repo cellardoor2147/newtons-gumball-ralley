@@ -59,13 +59,34 @@ namespace GUI.LevelCompletedPopup
 
         private void OnEnable()
         {
-            levelBeatStarImage.color = Color.black;
-            timeStarImage.color = Color.black;
-            scrapStarImage.color = Color.black;
-            timeStarText.text = $"Under {LevelManager.GetCurrentLevelTimeConstraint()} Seconds";
-            scrapStarText.text = $"Over {LevelManager.GetCurrentLevelScrapConstraint()} Remaining Scrap";
+            ToggleStarsBasedOnCurrentLevelConstraints();
             StartCoroutine(RecordProgressWhenLevelComplete());
             StartCoroutine(DisplayAchievedStars());
+        }
+
+        private void ToggleStarsBasedOnCurrentLevelConstraints()
+        {
+            levelBeatStarImage.color = Color.black;
+            if (LevelManager.CurrentLevelShouldUseTimeConstraint())
+            {
+                timeStarImage.transform.parent.gameObject.SetActive(true);
+                timeStarText.text = $"Under {LevelManager.GetCurrentLevelTimeConstraint()} Seconds";
+                timeStarImage.color = Color.black;
+            }
+            else
+            {
+                timeStarImage.transform.parent.gameObject.SetActive(false);
+            }
+            if (LevelManager.CurrentLevelShouldUseScrapConstraint())
+            {
+                scrapStarImage.transform.parent.gameObject.SetActive(true);
+                scrapStarText.text = $"Over {LevelManager.GetCurrentLevelScrapConstraint()} Remaining Scrap";
+                scrapStarImage.color = Color.black;
+            }
+            else
+            {
+                scrapStarImage.transform.parent.gameObject.SetActive(false);
+            }
         }
 
         private IEnumerator RecordProgressWhenLevelComplete()

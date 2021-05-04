@@ -155,9 +155,11 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 16.0,
+    "placeableScrapLimit": 500.0,
     "starConditions": {
+        "shouldUseTimeConstraint": false,
         "timeConstraint": 10.0,
+        "shouldUseScrapConstraint": false,
         "scrapConstraint": 7.0
     }
 }

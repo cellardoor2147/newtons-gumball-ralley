@@ -13,11 +13,11 @@ namespace Core
             if (GameStateManager.GetGameState().Equals(GameState.LevelCompleted))
             {
                 starsEarned = 1;
-                if (PlayerGotTimeStar())
+                if (PlayerGotTimeStar() && LevelManager.CurrentLevelShouldUseTimeConstraint())
                 {
                     starsEarned++;
                 }
-                if (PlayerGotScrapStar())
+                if (PlayerGotScrapStar() && LevelManager.CurrentLevelShouldUseScrapConstraint())
                 {
                     starsEarned++;
                 }

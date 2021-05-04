@@ -49,9 +49,9 @@ namespace GUI.MainMenu
             quinnTransform = transform.Find(QUINN_BODY_KEY).GetComponent<RectTransform>();
             quinnArmTransform = quinnTransform.Find(QUINN_ARM_KEY).GetComponent<RectTransform>();
             maxTransformStartY = -(maxTransform.rect.height / 2f);
-            maxTransfromEndY = maxTransform.rect.height / 2.6f;
+            maxTransfromEndY = maxTransform.rect.height / 3f;
             quinnTransformStartY = -(quinnTransform.rect.height / 2f);
-            quinnTransformEndY = quinnTransform.rect.height / 2.6f;
+            quinnTransformEndY = quinnTransform.rect.height / 3f;
         }
 
         private void Update()

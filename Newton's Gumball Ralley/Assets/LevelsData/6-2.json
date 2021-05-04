@@ -782,7 +782,9 @@
     },
     "placeableScrapLimit": 100.0,
     "starConditions": {
+        "shouldUseTimeConstraint": true,
         "timeConstraint": 25.0,
+        "shouldUseScrapConstraint": true,
         "scrapConstraint": 22.0
     }
 }

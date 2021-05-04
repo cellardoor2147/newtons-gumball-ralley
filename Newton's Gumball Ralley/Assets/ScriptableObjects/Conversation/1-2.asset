@@ -19,27 +19,36 @@ MonoBehaviour:
   linesAtBeginningOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 1
-    rightSpeakerExpression: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
     content: Nice job on finishing the first challenge! Remember to use this handy
       machine to help you complete the next levels.
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
-    content: "Hmmm\u2026 it looks as though the inclined plane we used last time
-      won\u2019t be tall enough to provide enough speed to make it up the ramp to
-      Ralph. We\u2019ll have to use a higher inclined plane. "
+    content: "Hmmm\u2026 it looks like the inclined plane we used last time won\u2019t
+      be tall enough to create enough speed to make it up the ramp to Jessie."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 3
+    content: "We\u2019ll have to use a higher inclined plane. "
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
-    rightSpeakerExpression: 3
+    rightSpeakerExpression: 0
     content: "You\u2019re right! Good thing we have more choices in our toolbelt."
   - secondDelayBetweenTypingEachChar: 0.05
-    activeSpeakerDirection: 1
-    leftSpeakerExpression: 0
-    rightSpeakerExpression: 4
-    content: Keep in mind, the steeper the slope, the harder it is to move the gumball
-      upward. But if you apply more force, the gumball will launch off that steep
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: 'Keep in mind, the steeper the slope, the harder it is to move the gumball
+      upward. '
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: But if you apply more force, the gumball will launch off that steep
       slope and really fly! Give it a try.
   linesAtEndOfLevel: []
