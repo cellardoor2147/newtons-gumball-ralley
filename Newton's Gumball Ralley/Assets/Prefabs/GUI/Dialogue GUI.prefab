@@ -632,7 +632,14 @@ MonoBehaviour:
   conversations:
   - {fileID: 11400000, guid: 48627f4eaae7440408624a3bfe710f93, type: 2}
   - {fileID: 11400000, guid: 3e63164febf5e8a4b93e43bca12c81b3, type: 2}
+  - {fileID: 11400000, guid: 710e90aefee239f4d80aa60088a9d52d, type: 2}
   - {fileID: 11400000, guid: 689df4747e7e1bc48b35785b47e0ef2d, type: 2}
+  - {fileID: 11400000, guid: df33cee92d0516b40807a657c61ceac8, type: 2}
+  - {fileID: 11400000, guid: 1ad556b255294084bb1073814bc0a1a2, type: 2}
+  - {fileID: 11400000, guid: 7562aa710993dc94f810c4224328c663, type: 2}
+  - {fileID: 11400000, guid: dd347447b6af8bd429eea2c8e6d6a543, type: 2}
+  - {fileID: 11400000, guid: d989b402544a95c40a306b975b83e900, type: 2}
+  - {fileID: 11400000, guid: 9a6f3a2da44296b429d4bbc86a2330c4, type: 2}
 --- !u!1 &5561891616572543444
 GameObject:
   m_ObjectHideFlags: 0
