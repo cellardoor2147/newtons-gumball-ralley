@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 35
+  m_Spacing: 40
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1852,7 +1852,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 35
+  m_Spacing: 40
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -2866,7 +2866,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 43.5
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -3053,7 +3053,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 38.55
+      value: 43.5
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -3569,7 +3569,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 40.3
+      value: 43.5
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -3741,7 +3741,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4434,7 +4434,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4591,7 +4591,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -4911,7 +4911,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -5406,7 +5406,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -5563,7 +5563,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -5720,7 +5720,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}
@@ -6543,7 +6543,7 @@ PrefabInstance:
     - target: {fileID: 5326608379520207206, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
       propertyPath: m_fontSize
-      value: 36.55
+      value: 43.5
       objectReference: {fileID: 0}
     - target: {fileID: 8962278057838574352, guid: f89c045cb1e1742bebcb89b3041d3134,
         type: 3}
@@ -6715,7 +6715,7 @@ PrefabInstance:
     - target: {fileID: 9035691846572348633, guid: ecfc1a84df240944db9fe710757aaac1,
         type: 3}
       propertyPath: maxSpriteHeightInToolbar
-      value: 30
+      value: 39
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecfc1a84df240944db9fe710757aaac1, type: 3}

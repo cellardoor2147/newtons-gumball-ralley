@@ -84,7 +84,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.82, y: 2.88}
+  m_Size: {x: 4.32, y: 4.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,9 +127,9 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.51291984, y: 0.5258398}
-    oldSize: {x: 9, y: 9}
-    newSize: {x: 2.82, y: 2.88}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.32, y: 4.24}
+    newSize: {x: 4.32, y: 4.24}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -347,6 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationArrowsPrefab: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
     type: 2}
   leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
@@ -354,7 +356,6 @@ MonoBehaviour:
   screwMetaData: {fileID: 11400000, guid: a060d4b5ca3f6a74eb82eceb500a2177, type: 2}
   gear1MetaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
   gear2MetaData: {fileID: 11400000, guid: 275d02e1e0c0d4854aa968a10e9d1e75, type: 2}
-  gear3MetaData: {fileID: 11400000, guid: c61080e63d78e4cdda7c294f915bedba, type: 2}
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
