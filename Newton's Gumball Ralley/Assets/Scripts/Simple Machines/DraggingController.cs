@@ -97,18 +97,10 @@ namespace SimpleMachine
             transform.position = GetMousePositionInWorldCoordinates();
             if (ShouldPreventObjectFromBeingPlaced())
             {
-                // if (objectMetaData.Equals(wheelMetaData)) 
-                // {
-                //     transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                // }
                 spriteRenderer.color = Color.red;
             }
             else
             {
-                // if (objectMetaData.Equals(wheelMetaData))
-                // {
-                //     transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                // }
                 spriteRenderer.color = Color.green;
             }
             if (ShouldSnap())
@@ -151,10 +143,6 @@ namespace SimpleMachine
                 }
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
-            // if (objectMetaData.Equals(wheelMetaData))
-            // {
-            //     transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
-            // }
             AddRotationArrows();
             EditModeManager.ShowEditModeGUI();
         }
