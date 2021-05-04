@@ -141,5 +141,20 @@ namespace Core.Levels
             }
             return totalEarnedStars;
         }
+
+        public static bool LevelShouldBePlayable(int worldIndex, int levelIndex)
+        {
+            if (worldIndex == 1 && levelIndex == 1)
+            {
+                return true;
+            }
+            int previousWorldIndex = levelIndex == 1 ? worldIndex - 1 : worldIndex;
+            int previousLevelIndex = levelIndex == 1 ? 3 : levelIndex - 1;
+            LevelProgress previousLevelProgress = levelProgresses.Find(
+                levelProgress => levelProgress.worldIndex == previousWorldIndex
+                                 && levelProgress.levelIndex == previousLevelIndex
+            );
+            return previousLevelProgress.bestStarsEarned > 0;
+        }
     }
 }

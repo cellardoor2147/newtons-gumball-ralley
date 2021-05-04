@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
+  m_Name: 4-1
+  m_EditorClassIdentifier: 
+  worldIndex: 4
+  levelIndex: 1
+  leftSpeaker: {fileID: 11400000, guid: febd22800eba4634a8c1a00180c7e04f, type: 2}
+  rightSpeaker: {fileID: 11400000, guid: 93d3541048601684c819da10aa6d6d34, type: 2}
+  linesAtBeginningOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 0
+    content: "I\u2019m so impressed! Now we can try these new levels!"
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "Wait a second. There\u2019s something blocking the path to Jessie."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: "You\u2019re right, we might need to use a machine called a wedge to
+      break the wall."
+  linesAtEndOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 1
+    rightSpeakerExpression: 1
+    content: 'Great work solving that puzzle!
+
+'
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 3
+    rightSpeakerExpression: 0
+    content: But why does the wedge break through the wall?
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: 'Wedges are wide at the back and skinny and sharp at the front. '
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: When it hits the wall, the skinny side makes a small crack that the
+      wide side then forces apart.
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "That\u2019s how it can split the wall in half!"

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7452237640726384680}
   - component: {fileID: 794099549224793573}
   - component: {fileID: 4325991302949499395}
-  - component: {fileID: 8097340273814505602}
   - component: {fileID: 7376171199037588858}
   m_Layer: 0
   m_Name: Game Over Popup GUI
@@ -87,18 +86,6 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!114 &8097340273814505602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265360458781809143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef466b519a1b80a4dad63500be101b52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7376171199037588858
 MonoBehaviour:
   m_ObjectHideFlags: 0

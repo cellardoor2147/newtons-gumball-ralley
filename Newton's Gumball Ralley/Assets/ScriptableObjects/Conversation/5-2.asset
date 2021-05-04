@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20cdb444356ac34ea00f55085b3fa35, type: 3}
+  m_Name: 5-2
+  m_EditorClassIdentifier: 
+  worldIndex: 5
+  levelIndex: 2
+  leftSpeaker: {fileID: 11400000, guid: febd22800eba4634a8c1a00180c7e04f, type: 2}
+  rightSpeaker: {fileID: 11400000, guid: 93d3541048601684c819da10aa6d6d34, type: 2}
+  linesAtBeginningOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: This time the missing piece looks a bit far from where you want it.
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: Perhaps if we add a middle wheel, the spinning wheel will be able to
+      turn a different wheel further away.
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "Just don\u2019t forget the axles!"
+  linesAtEndOfLevel: []

@@ -36,7 +36,9 @@ namespace Core.Levels
     [System.Serializable]
     public struct StarConditions
     {
+        public bool shouldUseTimeConstraint;
         public float timeConstraint;
+        public bool shouldUseScrapConstraint;
         public float scrapConstraint;
     }
 
@@ -74,7 +76,9 @@ namespace Core.Levels
             int worldIndex,
             int levelIndex,
             string customLevelName,
+            bool shouldUseTimeConstraint,
             float timeConstraint,
+            bool shouldUseScrapConstraint,
             float scrapConstraint,
             int repeatedBackgroundColumns,
             int repeatedBackgroundRows,
@@ -88,7 +92,9 @@ namespace Core.Levels
             );
             levelData.repeatedBackgroundColumns = repeatedBackgroundColumns;
             levelData.repeatedBackgroundRows = repeatedBackgroundRows;
+            levelData.starConditions.shouldUseTimeConstraint = shouldUseTimeConstraint;
             levelData.starConditions.timeConstraint = timeConstraint;
+            levelData.starConditions.shouldUseScrapConstraint = shouldUseScrapConstraint;
             levelData.starConditions.scrapConstraint = scrapConstraint;
             levelData.placeableScrapLimit = placeableScrapLimit;
             string serializedLevelData = JsonUtility.ToJson(levelData, true);

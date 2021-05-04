@@ -114,8 +114,8 @@
             "objectName": "Ralph",
             "transform": {
                 "position": {
-                    "x": -16.219999313354493,
-                    "y": -13.010000228881836,
+                    "x": -16.299999237060548,
+                    "y": -12.670000076293946,
                     "z": 0.0
                 },
                 "rotation": {
@@ -125,8 +125,8 @@
                     "w": 1.0
                 },
                 "scale": {
-                    "x": 0.5,
-                    "y": 0.5,
+                    "x": 0.800000011920929,
+                    "y": 0.800000011920929,
                     "z": 1.0
                 }
             }
@@ -636,7 +636,9 @@
     },
     "placeableScrapLimit": 100.0,
     "starConditions": {
+        "shouldUseTimeConstraint": true,
         "timeConstraint": 11.0,
+        "shouldUseScrapConstraint": true,
         "scrapConstraint": 70.0
     }
 }

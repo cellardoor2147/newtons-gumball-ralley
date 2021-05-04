@@ -119,13 +119,13 @@ namespace Core
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Cutscene));
-                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5, true);
                     break;
                 case GameState.MainMenu:
                     Time.timeScale = 1.0f;
                     LoadScene(MAIN_MENU_SCENE_KEY);
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.MainMenu));
-                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5);
+                    RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(5, 5, true);
                     StopAllMusic();
                     AudioManager.instance.PlaySound(instance.MenuMusicSound.name);
                     break;
@@ -138,6 +138,7 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     }
                     LoadScene(GAME_SCENE_KEY);
+                    instance.StartCoroutine(AsyncSetGumballVisibility(false));
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
                 case GameState.Playing:
@@ -214,6 +215,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
             if (instance.gameState.Equals(GameState.Playing))
             {
+                SetGumballGoButtonVisibility(true);
                 ResetGumballMachine();
                 ResetObjectsTransforms(PLACED_OBJECTS_KEY);
                 ResetObjectsTransforms(PREPLACED_OBJECTS_KEY);
@@ -244,6 +246,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            SetGumballGoButtonVisibility(true);
             TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY);
             TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY);
             UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY);
@@ -269,6 +272,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
             UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY);
             UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY);
+            SetGumballGoButtonVisibility(false);
             ResetGumballMachine();
             ResetObjectsTransforms(PLACED_OBJECTS_KEY);
             ResetObjectsTransforms(PREPLACED_OBJECTS_KEY);
@@ -282,6 +286,23 @@ namespace Core
             RepairDestructibleObjects(ENVIRONMENT_KEY);
             ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator AsyncSetGumballVisibility(bool isVisible)
+        {
+            yield return new WaitWhile(() => GameObject.Find(GUMBALL_MACHINE_KEY) == null);
+            GumballMachineManager gumballMachineManager =
+                GameObject.Find(GUMBALL_MACHINE_KEY).GetComponent<GumballMachineManager>();
+            gumballMachineManager.SetGumballVisibility(isVisible);
+            gumballMachineManager.SetGoButtonVisibility(isVisible);
+            gumballMachineManager.SetGumballMachineState(GumballMachineState.Closed);
+        }
+
+        private static void SetGumballGoButtonVisibility(bool isVisible)
+        {
+            GameObject.Find(GUMBALL_MACHINE_KEY)
+                .GetComponent<GumballMachineManager>()
+                .SetGoButtonVisibility(isVisible);
         }
 
         private static void FreezeLeverWeights(string key)

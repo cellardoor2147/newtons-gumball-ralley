@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f1d9a3aac71db46a60eae1764cd808, type: 3}
   m_Name: Quinn
   m_EditorClassIdentifier: 
-  fullName: Quinn
+  fullName: Professor Quinn
   neutralPortrait: {fileID: 2383063441699928477, guid: f014c88d3f7dea14a8f8daf2aa12025f,
     type: 3}
   happyPortrait: {fileID: 230064946218503653, guid: b6cc70ae623373b4eb710539397d096c,

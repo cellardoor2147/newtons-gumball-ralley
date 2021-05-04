@@ -28,20 +28,30 @@ MonoBehaviour:
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "But that\u2019s only the first step. Now you have to get a gumball
-      to our friend, Ralph. Click on the gumball machine to get your gumball. Then
-      you can pull back on the gumball and slingshot it to Ralph."
+      to our friend, Jessie. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: "Click the \u2018GO!\u2019 button on the gumball machine to get your
+      gumball. Then you can pull back on the gumball and slingshot it to Jessie."
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
-    content: "Ralph is a little far though\u2026 you might need to use an inclined
-      plane to help. To find the inclined plane, press the pause button at the top
-      of the screen to bring up your toolbelt. Then press the play button to go back
-      to the level."
+    content: " Jessie is a little far though\u2026 you might need to use an inclined
+      plane to help. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 0
+    content: To find the inclined plane, press the edit button at the top of the
+      screen to bring up your toolbelt. Then press the play button to go back to
+      the level.
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
-    leftSpeakerExpression: 0
+    leftSpeakerExpression: 1
     rightSpeakerExpression: 3
     content: "You did it! But why doesn\u2019t it work without the inclined plane?"
   - secondDelayBetweenTypingEachChar: 0.05
@@ -49,7 +59,12 @@ MonoBehaviour:
     leftSpeakerExpression: 4
     rightSpeakerExpression: 3
     content: "I\u2019m glad you asked. That\u2019s because gravity brought the ball
-      to the ground too fast. Gravity is an invisible force that pulls objects together. "
+      to the ground too fast. "
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 3
+    content: 'Gravity is an invisible force that pulls objects together. '
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
@@ -58,12 +73,12 @@ MonoBehaviour:
       off into space?
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 4
+    leftSpeakerExpression: 3
     rightSpeakerExpression: 0
     content: Exactly!
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
-    content: Using the inclined plane to move the gumball towards Ralph gives the
+    content: Using the inclined plane to move the gumball towards Jessie gives the
       gumball more momentum, or strength that pushes something forward.
