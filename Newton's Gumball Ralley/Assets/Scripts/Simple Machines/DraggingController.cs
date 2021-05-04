@@ -111,7 +111,7 @@ namespace SimpleMachine
 
         public void OnMouseUp()
         {
-            if (GameStateManager.GetGameState.Equals(GameState.Playing))
+            if (GameStateManager.GetGameState().Equals(GameState.Playing))
             {
                 EditModeManager.SetLastSelectedMachine(this.gameObject);
             }
