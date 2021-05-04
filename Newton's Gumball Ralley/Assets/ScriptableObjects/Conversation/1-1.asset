@@ -39,7 +39,7 @@ MonoBehaviour:
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
-    content: " Jessie is a little far though\u2026 you might need to use an inclined
+    content: "Jessie is a little far though\u2026 you might need to use an inclined
       plane to help. "
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
@@ -53,13 +53,13 @@ MonoBehaviour:
     activeSpeakerDirection: 1
     leftSpeakerExpression: 1
     rightSpeakerExpression: 3
-    content: "You did it! But why doesn\u2019t it work without the inclined plane?"
+    content: You did it! But why do you need the inclined plane?
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 3
-    content: "I\u2019m glad you asked. That\u2019s because gravity brought the ball
-      to the ground too fast. "
+    content: "I\u2019m glad you asked. The inclined plane worked as a ramp, using
+      force from gravity to get over the edge."
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
@@ -80,5 +80,5 @@ MonoBehaviour:
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
-    content: Using the inclined plane to move the gumball towards Jessie gives the
-      gumball more momentum, or strength that pushes something forward.
+    content: Using the inclined plane to move the gumball up to Jessie helps the
+      gumball push against gravity, and make it over the edge.
