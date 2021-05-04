@@ -337,11 +337,11 @@
             "z": 1.0
         }
     },
-    "placeableScrapLimit": 30.0,
+    "placeableScrapLimit": 500.0,
     "starConditions": {
-        "shouldUseTimeConstraint": true,
+        "shouldUseTimeConstraint": false,
         "timeConstraint": 10.0,
-        "shouldUseScrapConstraint": true,
+        "shouldUseScrapConstraint": false,
         "scrapConstraint": 15.0
     }
 }

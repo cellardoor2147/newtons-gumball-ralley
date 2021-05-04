@@ -141,6 +141,11 @@ namespace Ball
             }
         }
 
+        public void SetGumballVisibility(bool isVisible)
+        {
+            ballSpriteRenderer.color = isVisible ? Color.white : Color.clear;
+        }
+
         public void SetGoButtonVisibility(bool isVisible)
         {
             goButtonSpriteRenderer.color = isVisible ? goButtonDefaultColor : Color.clear;

@@ -139,6 +139,7 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     }
                     LoadScene(GAME_SCENE_KEY);
+                    instance.StartCoroutine(AsyncSetGumballVisibility(false));
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
                 case GameState.Playing:
@@ -288,6 +289,16 @@ namespace Core
             SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, true);
             ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator AsyncSetGumballVisibility(bool isVisible)
+        {
+            yield return new WaitWhile(() => GameObject.Find(GUMBALL_MACHINE_KEY) == null);
+            GumballMachineManager gumballMachineManager =
+                GameObject.Find(GUMBALL_MACHINE_KEY).GetComponent<GumballMachineManager>();
+            gumballMachineManager.SetGumballVisibility(isVisible);
+            gumballMachineManager.SetGoButtonVisibility(isVisible);
+            gumballMachineManager.SetGumballMachineState(GumballMachineState.Closed);
         }
 
         private static void SetGumballGoButtonVisibility(bool isVisible)
