@@ -215,6 +215,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
             if (instance.gameState.Equals(GameState.Playing))
             {
+                SetGumballGoButtonVisibility(true);
                 ResetGumballMachine();
                 ResetObjectsTransforms(PLACED_OBJECTS_KEY);
                 ResetObjectsTransforms(PREPLACED_OBJECTS_KEY);
@@ -245,6 +246,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            SetGumballGoButtonVisibility(true);
             TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY);
             TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY);
             UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY);
@@ -271,6 +273,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
             UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY);
             UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY);
+            SetGumballGoButtonVisibility(false);
             ResetGumballMachine();
             ResetObjectsTransforms(PLACED_OBJECTS_KEY);
             ResetObjectsTransforms(PREPLACED_OBJECTS_KEY);
@@ -285,6 +288,13 @@ namespace Core
             SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, true);
             ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static void SetGumballGoButtonVisibility(bool isVisible)
+        {
+            GameObject.Find(GUMBALL_MACHINE_KEY)
+                .GetComponent<GumballMachineManager>()
+                .SetGoButtonVisibility(isVisible);
         }
 
         private static void FreezeLeverWeights(string key)

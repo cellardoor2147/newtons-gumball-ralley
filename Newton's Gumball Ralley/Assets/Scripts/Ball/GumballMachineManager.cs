@@ -17,6 +17,7 @@ namespace Ball
     {
         private readonly static string SLING_ANCHOR_KEY = "Sling Anchor";
         private readonly static string BALL_KEY = "Ball";
+        private readonly static string GO_BUTTON_KEY = "Go Button";
 
         [SerializeField] private Sprite gumballMachineClosedSprite;
         [SerializeField] private Sprite gumballMachineOpenSprite;
@@ -32,6 +33,8 @@ namespace Ball
         private GumballMachineState gumballMachineState;
         private BallMovement ballMovement;
         private SpriteRenderer ballSpriteRenderer;
+        private SpriteRenderer goButtonSpriteRenderer;
+        private Color goButtonDefaultColor;
         private Vector3 originalPosition;
         private Quaternion originalRotation;
         private Vector3 originalScale;
@@ -45,6 +48,9 @@ namespace Ball
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<BallMovement>();
             ballSpriteRenderer =
                 slingAnchor.transform.Find(BALL_KEY).GetComponent<SpriteRenderer>();
+            goButtonSpriteRenderer =
+                transform.Find(GO_BUTTON_KEY).GetComponent<SpriteRenderer>();
+            goButtonDefaultColor = goButtonSpriteRenderer.color;
             SetOriginalTransformAndResetTransform();
         }
 
@@ -126,12 +132,18 @@ namespace Ball
                 && GameStateManager.GetGameState().Equals(GameState.Playing);
             if (shouldShakeGumballMachine)
             {
+                SetGoButtonVisibility(false);
                 SetGumballMachineState(GumballMachineState.Shaking);
                 if (!AudioManager.instance.isPlaying(ShakeSound.name))
                 {
                     AudioManager.instance.PlaySound(ShakeSound.name);
                 }
             }
+        }
+
+        public void SetGoButtonVisibility(bool isVisible)
+        {
+            goButtonSpriteRenderer.color = isVisible ? goButtonDefaultColor : Color.clear;
         }
 
         private IEnumerator ShakeThenResetTransform()
