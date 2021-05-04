@@ -70,6 +70,7 @@ namespace GUI.EditMode
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
                 .GetComponent<RectTransform>();
             SetPlaceableObjectsMenuPositionConstraints();
+            SetLastSelectedMachine(null);
         }
         private void Update()
         {
@@ -94,7 +95,10 @@ namespace GUI.EditMode
                 draggingController.spriteRenderer.color = draggingController.defaultColor;
             }
             instance.lastSelectedMachine = machine;
-            instance.lastSelectedMachine.GetComponent<DraggingController>().spriteRenderer.color = Color.yellow;
+            if (machine != null)
+            {
+                instance.lastSelectedMachine.GetComponent<DraggingController>().spriteRenderer.color = Color.yellow;
+            }
         }
 
         public static void ClearLastSelectedMachine()
@@ -109,7 +113,11 @@ namespace GUI.EditMode
 
         public static GameObject GetLastSelectedMachine()
         {
-            return instance.lastSelectedMachine;
+            if (instance.lastSelectedMachine != null)
+            {
+                return instance.lastSelectedMachine;
+            }
+            return null;
         }
 
         private void SetInstance()
