@@ -113,11 +113,7 @@ namespace GUI.EditMode
 
         public static GameObject GetLastSelectedMachine()
         {
-            if (instance.lastSelectedMachine != null)
-            {
-                return instance.lastSelectedMachine;
-            }
-            return null;
+            return instance.lastSelectedMachine;
         }
 
         private void SetInstance()

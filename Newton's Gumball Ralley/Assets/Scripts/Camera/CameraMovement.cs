@@ -36,10 +36,7 @@ namespace MainCamera
             {
                 if (lastMachineAssigned)
                 {
-                    if (EditModeManager.GetLastSelectedMachine() != null)
-                    {
-                        EditModeManager.ClearLastSelectedMachine();
-                    }
+                    EditModeManager.ClearLastSelectedMachine();
                 }
                 else 
                 {
