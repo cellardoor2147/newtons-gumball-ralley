@@ -48,7 +48,6 @@ namespace Core
         [SerializeField] SoundMetaData LevelCompleteSound;
         [SerializeField] SoundMetaData BallRollingSound;
         
-        [SerializeField] PlacedObjectMetaData gearBackgroundMetaData;
         [SerializeField] PlacedObjectMetaData axleMetaData;
         [SerializeField] PlacedObjectMetaData gear1MetaData;
         [SerializeField] PlacedObjectMetaData screwMetaData;
@@ -250,7 +249,6 @@ namespace Core
             UnfreezeObjectsRigidbodies(PLACED_OBJECTS_KEY);
             UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY);
             RevertObjectsFromGray(PREPLACED_OBJECTS_KEY);
-            SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, false);
             RemoveAllRotationArrows(PLACED_OBJECTS_KEY);
             Physics2D.gravity = instance.defaultGravity;
         }
@@ -282,7 +280,6 @@ namespace Core
             AddAllRotationArrows(PLACED_OBJECTS_KEY);
             DestroyDebris(ENVIRONMENT_KEY);
             RepairDestructibleObjects(ENVIRONMENT_KEY);
-            SetObjectsActive(ENVIRONMENT_KEY, instance.gearBackgroundMetaData, true);
             ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
             Physics2D.gravity = Vector2.zero;
         }

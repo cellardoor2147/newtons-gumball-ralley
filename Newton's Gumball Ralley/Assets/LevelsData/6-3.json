@@ -269,7 +269,7 @@
             "objectName": "DestructibleObject",
             "transform": {
                 "position": {
-                    "x": 4.869999885559082,
+                    "x": 4.599999904632568,
                     "y": -3.4800000190734865,
                     "z": 0.0
                 },
@@ -685,8 +685,8 @@
             "objectName": "GearBackground",
             "transform": {
                 "position": {
-                    "x": 6.190000057220459,
-                    "y": -0.9300000071525574,
+                    "x": 6.269999980926514,
+                    "y": -0.6299999952316284,
                     "z": 0.0
                 },
                 "rotation": {

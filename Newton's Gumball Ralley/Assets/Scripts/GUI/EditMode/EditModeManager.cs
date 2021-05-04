@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Levels;
+using Core;
 using UnityEngine;
+using MainCamera;
+using SimpleMachine;
 
 namespace GUI.EditMode
 {
@@ -38,6 +41,8 @@ namespace GUI.EditMode
         private IEnumerator hideGUICoroutine;
         private IEnumerator showGUICoroutine;
 
+        [HideInInspector] public GameObject lastSelectedMachine { get; private set; }
+
         private EditModeManager() { } // Prevents instantiation outside of this class
 
         private void Awake()
@@ -65,6 +70,46 @@ namespace GUI.EditMode
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
                 .GetComponent<RectTransform>();
             SetPlaceableObjectsMenuPositionConstraints();
+        }
+        private void Update()
+        {
+            bool deletePressed = Input.GetKey(KeyCode.Backspace) || Input.GetKey(KeyCode.Delete);
+            if (deletePressed && (lastSelectedMachine != null) && GameStateManager.GetGameState().Equals(GameState.Editing))
+            {
+                CameraMovement.shouldPreventDragging = false;
+                DraggingController draggingController = lastSelectedMachine.GetComponent<DraggingController>();
+                draggingController.RemoveRotationArrows();
+                ShowEditModeGUI();
+                ScrapManager.ChangeScrapRemaining(draggingController.objectMetaData.amountOfScrap);
+                ToggleButtonsBasedOnAvailableScrap();
+                Destroy(lastSelectedMachine);
+            }
+        }
+
+        public static void SetLastSelectedMachine(GameObject machine)
+        {
+            if (instance.lastSelectedMachine !=null)
+            {
+                DraggingController draggingController = instance.lastSelectedMachine.GetComponent<DraggingController>();
+                draggingController.spriteRenderer.color = draggingController.defaultColor;
+            }
+            instance.lastSelectedMachine = machine;
+            instance.lastSelectedMachine.GetComponent<DraggingController>().spriteRenderer.color = Color.yellow;
+        }
+
+        public static void ClearLastSelectedMachine()
+        {
+            if (instance.lastSelectedMachine != null)
+            {
+                DraggingController draggingController = instance.lastSelectedMachine.GetComponent<DraggingController>();
+                draggingController.spriteRenderer.color = draggingController.defaultColor;
+                instance.lastSelectedMachine = null;
+            }
+        }
+
+        public static GameObject GetLastSelectedMachine()
+        {
+            return instance.lastSelectedMachine;
         }
 
         private void SetInstance()

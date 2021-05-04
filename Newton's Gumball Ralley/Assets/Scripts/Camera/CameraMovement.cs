@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using Background;
 using Core;
+using GUI.EditMode;
 
 namespace MainCamera
 {
@@ -32,6 +33,10 @@ namespace MainCamera
             bool playerIsDragging = Input.GetMouseButton(0);
             if (playerIsDragging && !shouldPreventDragging)
             {
+                if (EditModeManager.GetLastSelectedMachine() != null)
+                {
+                    EditModeManager.ClearLastSelectedMachine();
+                }
                 Camera.main.transform.position -= new Vector3(
                     Input.GetAxis("Mouse X") * cameraDragSpeed,
                     Input.GetAxis("Mouse Y") * cameraDragSpeed,
