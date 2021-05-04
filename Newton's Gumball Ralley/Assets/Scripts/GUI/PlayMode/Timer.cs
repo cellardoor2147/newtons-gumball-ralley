@@ -19,10 +19,7 @@ namespace GUI.PlayMode
 
         private void OnEnable()
         {
-            bool currentLevelIsFirstOrSecondLevel =
-                LevelManager.GetCurrentWorldIndex() == 1
-                && LevelManager.GetCurrentLevelIndex() < 3;
-            if (currentLevelIsFirstOrSecondLevel)
+            if (LevelManager.CurrentLevelShouldHideAllScrapAndTimeGUI())
             {
                 transform
                     .parent

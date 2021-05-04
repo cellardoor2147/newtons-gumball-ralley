@@ -30,7 +30,7 @@ MonoBehaviour:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
-    rightSpeakerExpression: 4
+    rightSpeakerExpression: 3
     content: I wonder what happens when you place the right wheel there.
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0

@@ -29,8 +29,8 @@ MonoBehaviour:
     content: 'Wait, what are those spikey things? '
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 0
-    rightSpeakerExpression: 3
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
     content: "You\u2019ll want to stay away from those. If you hit it your gumball
       will break!"
   - secondDelayBetweenTypingEachChar: 0.05

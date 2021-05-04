@@ -20,10 +20,7 @@ namespace GUI.EditMode
 
         private void OnEnable()
         {
-            bool currentLevelIsFirstOrSecondLevel =
-                LevelManager.GetCurrentWorldIndex() == 1
-                && LevelManager.GetCurrentLevelIndex() < 3;
-            if (currentLevelIsFirstOrSecondLevel)
+            if (LevelManager.CurrentLevelShouldHideStarConstraints())
             {
                 transform
                     .parent
@@ -46,7 +43,8 @@ namespace GUI.EditMode
         private void Update()
         {           
             timeConstraint = LevelManager.GetCurrentLevelTimeConstraint();
-            timeConstraintText.text = $"Time Constraint\n{timeConstraint}";
+            timeConstraintText.text =
+                $"Finish in {timeConstraint} Seconds or Less to Get a Star!";
         }
     }
 }
