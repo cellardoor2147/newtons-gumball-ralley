@@ -1,7 +1,7 @@
 {
     "worldIndex": 1,
-    "levelIndex": 2,
-    "customLevelName": "",
+    "levelIndex": 0,
+    "customLevelName": "2",
     "repeatedBackgroundRows": 2,
     "repeatedBackgroundColumns": 4,
     "environmentObjects": [
@@ -87,8 +87,8 @@
             "objectName": "EnvironmentBlock",
             "transform": {
                 "position": {
-                    "x": -2.2300000190734865,
-                    "y": -6.739999771118164,
+                    "x": -2.0899999141693117,
+                    "y": -6.769999980926514,
                     "z": 1.0
                 },
                 "rotation": {
@@ -271,7 +271,7 @@
                 "position": {
                     "x": 9.569999694824219,
                     "y": -6.599999904632568,
-                    "z": 1.0
+                    "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
