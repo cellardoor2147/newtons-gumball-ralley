@@ -209,5 +209,17 @@ namespace Core.Levels
         {
             currentLevelIsComplete = isComplete;
         }
+
+        public static bool CurrentLevelShouldHideAllScrapAndTimeGUI()
+        {
+            return GetCurrentWorldIndex() == 1
+                && GetCurrentLevelIndex() < 3;
+        }
+
+        public static bool CurrentLevelShouldHideStarConstraints()
+        {
+            return !(CurrentLevelShouldUseScrapConstraint()
+                || CurrentLevelShouldUseTimeConstraint());
+        }
     }
 }

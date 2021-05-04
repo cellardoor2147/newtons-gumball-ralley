@@ -19,13 +19,13 @@ MonoBehaviour:
   linesAtBeginningOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 0
+    leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "I\u2019m so impressed! Now we can try these new levels!"
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
-    rightSpeakerExpression: 4
+    rightSpeakerExpression: 2
     content: "Wait a second. There\u2019s something blocking the path to Jessie."
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0

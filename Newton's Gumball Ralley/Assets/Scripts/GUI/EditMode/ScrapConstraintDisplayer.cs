@@ -20,10 +20,7 @@ namespace GUI.EditMode
 
         private void OnEnable()
         {
-            bool currentLevelIsFirstOrSecondLevel =
-                LevelManager.GetCurrentWorldIndex() == 1
-                && LevelManager.GetCurrentLevelIndex() < 3;
-            if (currentLevelIsFirstOrSecondLevel)
+            if (LevelManager.CurrentLevelShouldHideStarConstraints())
             {
                 transform
                     .parent
@@ -46,7 +43,7 @@ namespace GUI.EditMode
         private void Update()
         {
             scrapConstraint = LevelManager.GetCurrentLevelScrapConstraint();
-            scrapConstraintText.text = $"Scrap Constraint\n{scrapConstraint}";
+            scrapConstraintText.text = $"Have {scrapConstraint} Scrap Left to Get a Star!";
         }
     }
 }

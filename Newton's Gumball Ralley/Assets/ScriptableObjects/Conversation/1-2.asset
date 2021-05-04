@@ -19,8 +19,8 @@ MonoBehaviour:
   linesAtBeginningOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 0
-    rightSpeakerExpression: 4
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
     content: Nice job on finishing the first challenge! Remember to use this handy
       machine to help you complete the next levels.
   - secondDelayBetweenTypingEachChar: 0.05
@@ -31,7 +31,7 @@ MonoBehaviour:
       be tall enough to create enough speed to make it up the ramp to Jessie."
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
-    leftSpeakerExpression: 4
+    leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: "We\u2019ll have to use a higher inclined plane. "
   - secondDelayBetweenTypingEachChar: 0.05

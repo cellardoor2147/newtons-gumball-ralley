@@ -19,7 +19,7 @@ MonoBehaviour:
   linesAtBeginningOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 0
+    leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "Hello! Welcome to Newton\u2019s Gumball Rally! I see you\u2019ve found
       the first gumball machine."
@@ -43,7 +43,7 @@ MonoBehaviour:
       plane to help. "
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 0
+    leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: To find the inclined plane, press the edit button at the top of the
       screen to bring up your toolbelt. Then press the play button to go back to
@@ -73,7 +73,7 @@ MonoBehaviour:
       off into space?
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
-    leftSpeakerExpression: 3
+    leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: Exactly!
   - secondDelayBetweenTypingEachChar: 0.05
