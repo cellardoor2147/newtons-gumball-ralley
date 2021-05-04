@@ -13,8 +13,9 @@ namespace GUI.EditMode
     {
         private static readonly string COST_TEXT_KEY = "Cost Text";
 
-        [Range(0f, 50f)] [SerializeField] private float maxSpriteHeightInToolbar;
+        [Range(0f, 30f)] [SerializeField] private float maxSpriteHeightInToolbar;
         [SerializeField] private GameObject placeableObjectPrefab;
+        [SerializeField] private Sprite spriteOverride;
 
         private GameObject placeableObjectsContainer;
         public PlacedObjectMetaData ObjectMetaData { get; private set; }
@@ -28,7 +29,9 @@ namespace GUI.EditMode
         private void Awake()
         {
             GetComponent<Image>().sprite =
-                placeableObjectPrefab.GetComponent<SpriteRenderer>().sprite;
+                spriteOverride != null
+                ? spriteOverride
+                : placeableObjectPrefab.GetComponent<SpriteRenderer>().sprite;
             GetComponent<RectTransform>().sizeDelta = GetSizeDelta();
             placeableObjectsContainer =
                 GameObject.Find(GameStateManager.PLACED_OBJECTS_KEY);

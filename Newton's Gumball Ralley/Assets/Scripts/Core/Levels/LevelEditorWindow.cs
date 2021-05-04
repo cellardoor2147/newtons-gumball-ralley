@@ -11,7 +11,9 @@ namespace Core.Levels
         private string customLevelName = "";
         private int repeatedBackgroundColumns;
         private int repeatedBackgroundRows;
+        private bool shouldUseTimeConstraint;
         private float timeConstraint;
+        private bool shouldUseScrapConstraint;
         private float scrapConstraint;
         private float placeableScrapLimit;
 
@@ -31,7 +33,9 @@ namespace Core.Levels
                     worldIndex,
                     levelIndex,
                     customLevelName,
+                    shouldUseTimeConstraint,
                     timeConstraint,
+                    shouldUseScrapConstraint,
                     scrapConstraint,
                     repeatedBackgroundColumns,
                     repeatedBackgroundRows,
@@ -53,7 +57,9 @@ namespace Core.Levels
                 customLevelName = levelData.customLevelName;
                 repeatedBackgroundColumns = levelData.repeatedBackgroundColumns;
                 repeatedBackgroundRows = levelData.repeatedBackgroundRows;
+                shouldUseTimeConstraint = levelData.starConditions.shouldUseTimeConstraint;
                 timeConstraint = levelData.starConditions.timeConstraint;
+                shouldUseScrapConstraint = levelData.starConditions.shouldUseScrapConstraint;
                 scrapConstraint = levelData.starConditions.scrapConstraint;
                 placeableScrapLimit = levelData.placeableScrapLimit;
             }
@@ -74,19 +80,23 @@ namespace Core.Levels
             repeatedBackgroundRows =
                 EditorGUI.IntField(new Rect(0, 30, position.width, 15), "# of Rows", repeatedBackgroundRows);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 180, position.width, 60));
+            GUILayout.BeginArea(new Rect(0, 180, position.width, 90));
             GUILayout.Label("Star Constraints", EditorStyles.boldLabel);
+            shouldUseTimeConstraint =
+                EditorGUI.Toggle(new Rect(0, 15, position.width, 15), "Use Time Constraint", shouldUseTimeConstraint);
             timeConstraint = 
-                EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Time Constraint", timeConstraint);
+                EditorGUI.FloatField(new Rect(0, 30, position.width, 15), "Time Constraint", timeConstraint);
+            shouldUseScrapConstraint =
+                EditorGUI.Toggle(new Rect(0, 45, position.width, 15), "Use Scrap Constraint", shouldUseScrapConstraint);
             scrapConstraint =
-                EditorGUI.FloatField(new Rect(0, 30, position.width, 15), "Scrap Constraint", scrapConstraint);
+                EditorGUI.FloatField(new Rect(0, 60, position.width, 15), "Scrap Constraint", scrapConstraint);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 240, position.width, 30));
+            GUILayout.BeginArea(new Rect(0, 270, position.width, 30));
             GUILayout.Label("Scrap Limit", EditorStyles.boldLabel);
             placeableScrapLimit =
                 EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Scrap Limit", placeableScrapLimit);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 285, position.width, 1000));
+            GUILayout.BeginArea(new Rect(0, 315, position.width, 1000));
             GUILayout.Label("How To Use", EditorStyles.boldLabel);
             GUILayout.Label(GetHowToUseText(), EditorStyles.helpBox);
             GUILayout.EndArea();
