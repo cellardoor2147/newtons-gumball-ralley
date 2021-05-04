@@ -2698,7 +2698,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Newton's Gumball Ralley
+  m_text: Newton's Gumball Rally
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 355272bc41a43a44a971fef5b5e17b50, type: 2}
   m_sharedMaterial: {fileID: 3426330872796497659, guid: 355272bc41a43a44a971fef5b5e17b50,
@@ -2726,7 +2726,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.15
+  m_fontSize: 43.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

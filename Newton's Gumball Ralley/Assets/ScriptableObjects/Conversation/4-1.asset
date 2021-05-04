@@ -33,6 +33,11 @@ MonoBehaviour:
     rightSpeakerExpression: 0
     content: "You\u2019re right, we might need to use a machine called a wedge to
       break the wall."
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 4
+    rightSpeakerExpression: 0
+    content: And you can use a screw to hold the handle in place.
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
