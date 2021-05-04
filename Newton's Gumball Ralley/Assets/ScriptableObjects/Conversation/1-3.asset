@@ -50,4 +50,25 @@ MonoBehaviour:
     rightSpeakerExpression: 4
     content: "If you don\u2019t spend more than a certain amount, you\u2019ll earn
       a star at the end of the level! "
-  linesAtEndOfLevel: []
+  linesAtEndOfLevel:
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 0
+    leftSpeakerExpression: 1
+    rightSpeakerExpression: 1
+    content: You did it!
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: One more thing.
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: When you click on a machine, it turns yellow because you've selected
+      it.
+  - secondDelayBetweenTypingEachChar: 0.05
+    activeSpeakerDirection: 1
+    leftSpeakerExpression: 0
+    rightSpeakerExpression: 4
+    content: If a machine is selected, press delete or backspace to delete it!
