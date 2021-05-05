@@ -221,5 +221,14 @@ namespace Core.Levels
             return !(CurrentLevelShouldUseScrapConstraint()
                 || CurrentLevelShouldUseTimeConstraint());
         }
+
+        public static int GetCurrentLevelNumberOfDesiredBackgroundColumns()
+        {
+            return currentLevelData.repeatedBackgroundColumns;
+        }
+        public static int GetCurrentLevelNumberOfDesiredBackgroundRows()
+        {
+            return currentLevelData.repeatedBackgroundRows;
+        }
     }
 }

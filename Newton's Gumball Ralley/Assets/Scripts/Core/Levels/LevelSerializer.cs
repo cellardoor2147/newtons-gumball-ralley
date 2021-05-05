@@ -226,13 +226,6 @@ namespace Core.Levels
 
         public static void SetSceneWithLevelData(LevelData levelData)
         {
-            if (Application.isPlaying)
-            {
-                RepeatedBackgroundManager.SetDesiredNumberOfColumnsAndRows(
-                    levelData.repeatedBackgroundColumns,
-                    levelData.repeatedBackgroundRows
-                );
-            }
             List<GameObject> rootGameObjects = new List<GameObject>();
             SceneManager.GetActiveScene().GetRootGameObjects(rootGameObjects);
             foreach (GameObject gameObject in rootGameObjects)
