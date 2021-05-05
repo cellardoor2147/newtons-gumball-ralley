@@ -140,6 +140,12 @@ namespace GUI.EditMode
                             ToggleObject(this.gameObject, true);
                         }
                         break;
+                    default:
+                        if (!gameObject.activeSelf)
+                        {
+                            ToggleObject(this.gameObject, true);
+                        }
+                        break;
                 }
             }
             else if (!gameObject.activeSelf)
