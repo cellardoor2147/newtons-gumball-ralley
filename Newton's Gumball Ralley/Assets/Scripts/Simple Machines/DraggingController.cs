@@ -19,16 +19,16 @@ namespace SimpleMachine
 
         [SerializeField] private GameObject rotationArrowsPrefab;
 
-        private bool hasBeenPlaced;
+        [HideInInspector] public bool hasBeenPlaced { get; private set; }
         private Collider2D collider2D;
         private bool colliderIsTriggerByDefault;
-        private SpriteRenderer spriteRenderer;
-        private Color defaultColor;
+        [HideInInspector] public SpriteRenderer spriteRenderer;
+        [HideInInspector] public Color defaultColor;
         private Rigidbody2D rigidbody2D;
         private GameObject rotationArrows;
         private GameObject placedObjectsContainer;
         private PlacedObjectManager objectManager;
-        private PlacedObjectMetaData objectMetaData;
+        [HideInInspector] public PlacedObjectMetaData objectMetaData { get; private set; }
 
         [SerializeField] private PlacedObjectMetaData leverPlatformMetaData;
         [SerializeField] private PlacedObjectMetaData leverFulcrumMetaData;
@@ -84,6 +84,7 @@ namespace SimpleMachine
             objectManager.SetLastValidRotation(transform.rotation);
             collider2D.isTrigger = true;
             transform.position = GetMousePositionInWorldCoordinates();
+            EditModeManager.ClearLastSelectedMachine();
         }
 
         public void OnMouseDrag()
@@ -96,18 +97,10 @@ namespace SimpleMachine
             transform.position = GetMousePositionInWorldCoordinates();
             if (ShouldPreventObjectFromBeingPlaced())
             {
-                if (objectMetaData.Equals(wheelMetaData)) 
-                {
-                    transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-                }
                 spriteRenderer.color = Color.red;
             }
             else
             {
-                if (objectMetaData.Equals(wheelMetaData))
-                {
-                    transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-                }
                 spriteRenderer.color = Color.green;
             }
             if (ShouldSnap())
@@ -118,11 +111,14 @@ namespace SimpleMachine
 
         public void OnMouseUp()
         {
+            if (GameStateManager.GetGameState().Equals(GameState.Editing))
+            {
+                EditModeManager.SetLastSelectedMachine(this.gameObject);
+            }
             if (ShouldPreventDragging())
             {
                 return;
             }
-
             ToggleSnapLocations(false);
             CameraMovement.shouldPreventDragging = false;
             if (ShouldPreventObjectFromBeingPlaced())
@@ -150,11 +146,6 @@ namespace SimpleMachine
                 }
             }
             collider2D.isTrigger = colliderIsTriggerByDefault;
-            if (objectMetaData.Equals(wheelMetaData))
-            {
-                transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = defaultColor;
-            }
-            spriteRenderer.color = defaultColor;
             AddRotationArrows();
             EditModeManager.ShowEditModeGUI();
         }
@@ -168,19 +159,6 @@ namespace SimpleMachine
                 {
                     return;
                 } 
-            }
-            bool playerRightClickedThisObject = Input.GetMouseButtonDown(1);
-            if (playerRightClickedThisObject)
-            {
-                CameraMovement.shouldPreventDragging = false;
-                RemoveRotationArrows();
-                EditModeManager.ShowEditModeGUI();
-                if (hasBeenPlaced)
-                {
-                    ScrapManager.ChangeScrapRemaining(objectMetaData.amountOfScrap);
-                    EditModeManager.ToggleButtonsBasedOnAvailableScrap();
-                }
-                Destroy(gameObject);
             }
         }
 

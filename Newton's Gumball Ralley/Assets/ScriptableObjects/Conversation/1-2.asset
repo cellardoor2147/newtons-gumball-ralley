@@ -28,7 +28,7 @@ MonoBehaviour:
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: "Hmmm\u2026 it looks like the inclined plane we used last time won\u2019t
-      be tall enough to create enough speed to make it up the ramp to Jessie."
+      be tall enough to create enough speed to make it up to Jessie."
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
@@ -49,6 +49,6 @@ MonoBehaviour:
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
-    content: But if you apply more force, the gumball will launch off that steep
-      slope and really fly! Give it a try.
+    content: But if you apply more force, the gumball will really get up that slope!
+      Give it a try.
   linesAtEndOfLevel: []

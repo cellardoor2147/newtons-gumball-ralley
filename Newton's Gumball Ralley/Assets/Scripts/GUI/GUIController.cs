@@ -102,7 +102,8 @@ namespace GUI
 
         public void LoadSettingsMenu()
         {
-            if (GameStateManager.GetGameState().Equals(GameState.Playing))
+            if (GameStateManager.GetGameState().Equals(GameState.Playing) 
+            || GameStateManager.GetGameState().Equals(GameState.Editing))
             {
                 GameStateManager.SetGameState(GameState.Paused);
             }

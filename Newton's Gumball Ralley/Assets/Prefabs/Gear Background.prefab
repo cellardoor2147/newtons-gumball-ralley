@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6858490828568171571}
   - component: {fileID: 6316009037694196497}
   - component: {fileID: 665421745395816373}
+  - component: {fileID: 8339664490890293246}
   m_Layer: 2
   m_Name: Gear Background
   m_TagString: Untagged
@@ -197,3 +198,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   metaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf, type: 2}
+--- !u!114 &8339664490890293246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8862932798149475211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67c164b4875747c6b1dab3acc2c3266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gear2MetaData: {fileID: 11400000, guid: 275d02e1e0c0d4854aa968a10e9d1e75, type: 2}
