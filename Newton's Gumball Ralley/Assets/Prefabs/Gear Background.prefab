@@ -210,4 +210,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c164b4875747c6b1dab3acc2c3266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gear2MetaData: {fileID: 11400000, guid: 275d02e1e0c0d4854aa968a10e9d1e75, type: 2}
