@@ -16,7 +16,6 @@ namespace MainCamera
         [SerializeField] private float cameraScrollSpeed = 0.1f;
         [SerializeField] private float cameraMinSize = 7f;
         [SerializeField] private float cameraMaxSize = 10f;
-        private bool lastMachineAssigned;
 
         private CameraMovement() { } // Prevent instantiation outside this class
 
@@ -55,14 +54,6 @@ namespace MainCamera
             bool playerIsDragging = Input.GetMouseButton(0);
             if (playerIsDragging && !shouldPreventDragging)
             {
-                if (lastMachineAssigned)
-                {
-                    EditModeManager.ClearLastSelectedMachine();
-                }
-                else 
-                {
-                    lastMachineAssigned = true;
-                }
                 Camera.main.transform.position -= new Vector3(
                     Input.GetAxis("Mouse X") * cameraDragSpeed,
                     Input.GetAxis("Mouse Y") * cameraDragSpeed,

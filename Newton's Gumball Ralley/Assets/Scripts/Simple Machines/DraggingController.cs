@@ -40,6 +40,8 @@ namespace SimpleMachine
         [SerializeField] private PlacedObjectMetaData axleMetaData;
         [SerializeField] SoundMetaData ScrewSound;
 
+        private bool shouldHide;
+
         private void Awake()
         {
             hasBeenPlaced = false;
@@ -84,7 +86,7 @@ namespace SimpleMachine
             objectManager.SetLastValidRotation(transform.rotation);
             collider2D.isTrigger = true;
             transform.position = GetMousePositionInWorldCoordinates();
-            EditModeManager.ClearLastSelectedMachine();
+            EditModeManager.SetSelectedMachine(this.gameObject);
         }
 
         public void OnMouseDrag()
@@ -95,11 +97,11 @@ namespace SimpleMachine
             }
             RemoveRotationArrows();
             transform.position = GetMousePositionInWorldCoordinates();
-            if (ShouldPreventObjectFromBeingPlaced())
+            if (ShouldPreventObjectFromBeingPlaced() && !shouldHide)
             {
                 spriteRenderer.color = Color.red;
             }
-            else
+            else if (!shouldHide)
             {
                 spriteRenderer.color = Color.green;
             }
@@ -111,9 +113,9 @@ namespace SimpleMachine
 
         public void OnMouseUp()
         {
-            if (GameStateManager.GetGameState().Equals(GameState.Editing))
+            if (!GameStateManager.GetGameState().Equals(GameState.Editing))
             {
-                EditModeManager.SetLastSelectedMachine(this.gameObject);
+                return;
             }
             if (ShouldPreventDragging())
             {
@@ -121,6 +123,12 @@ namespace SimpleMachine
             }
             ToggleSnapLocations(false);
             CameraMovement.shouldPreventDragging = false;
+            if (shouldHide)
+            {
+                EditModeManager.DeletedSelectedMachine(hasBeenPlaced);
+                return;
+            }
+            EditModeManager.ClearSelectedMachine();
             if (ShouldPreventObjectFromBeingPlaced())
             {
                 if (!hasBeenPlaced)
@@ -455,6 +463,12 @@ namespace SimpleMachine
                 }
             }
             return false;
+        }
+
+        public void SetSpriteVisibility(bool isVisible)
+        {
+            shouldHide = !isVisible;
+            spriteRenderer.color = isVisible ? defaultColor : Color.clear;
         }
     }
 }
