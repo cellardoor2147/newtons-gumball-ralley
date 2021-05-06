@@ -129,6 +129,7 @@ namespace Core.Levels
                 }               
                 GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
                 GameStateManager.StartStaticCoroutine(EditModeManager.DisableTabs());
+                GameStateManager.StartStaticCoroutine(EditModeManager.ToggleHintButton());
             }
 
         }
@@ -141,6 +142,11 @@ namespace Core.Levels
         public static int GetCurrentLevelIndex()
         {
             return currentLevelData.levelIndex;
+        }
+
+        public static bool CurrentLevelShouldHaveHint()
+        {
+            return currentLevelData.shouldHaveHint;
         }
 
         public static bool CurrentLevelShouldUseTimeConstraint()
