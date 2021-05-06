@@ -154,9 +154,9 @@ namespace Core
                     if (instance.gameState != GameState.Paused
                         && instance.gameState != GameState.GameOver)
                     {
+                        instance.StartCoroutine(CameraMovement.AsyncZoomOutForPlayMode());
                         instance.StartCoroutine(ResetSceneForPlayMode());
                     }
-                    instance.StartCoroutine(CameraMovement.AsyncZoomOutForPlayMode());
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.PlayMode));
                     break;
                 case GameState.Editing:
