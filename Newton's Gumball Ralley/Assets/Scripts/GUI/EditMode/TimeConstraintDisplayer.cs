@@ -2,6 +2,9 @@
 using Core.Levels;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
+
 
 namespace GUI.EditMode
 {
@@ -10,8 +13,10 @@ namespace GUI.EditMode
         private static readonly string TIME_CONSTRAINT_BACKGROUND_KEY =
             "Time Constraint Background";
 
+        [SerializeField] private LocalizeStringEvent stringRef;
+
         private TextMeshProUGUI timeConstraintText;
-        private static float timeConstraint;
+        public string timeConstraint;
 
         private void Awake()
         {
@@ -38,13 +43,13 @@ namespace GUI.EditMode
                     .color = Color.white;
                 timeConstraintText.color = Color.black;
             }
+            stringRef.StringReference.RefreshString();
         }
 
         private void Update()
-        {           
-            timeConstraint = LevelManager.GetCurrentLevelTimeConstraint();
-            timeConstraintText.text =
-                $"Finish in {timeConstraint} Seconds or Less to Get a Star!";
+        {
+            timeConstraint = LevelManager.GetCurrentLevelTimeConstraint().ToString();
+            stringRef.StringReference.RefreshString();
         }
     }
 }
