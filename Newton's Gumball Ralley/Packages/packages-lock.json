@@ -72,12 +72,14 @@
       "dependencies": {}
     },
     "com.unity.addressables": {
-      "version": "1.7.5",
+      "version": "1.17.15",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.scriptablebuildpipeline": "1.5.10",
+        "com.unity.scriptablebuildpipeline": "1.17.0",
         "com.unity.modules.assetbundle": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.modules.unitywebrequest": "1.0.0",
         "com.unity.modules.unitywebrequestassetbundle": "1.0.0"
       },
@@ -114,12 +116,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.localization": {
-      "version": "0.8.1-preview",
+      "version": "0.11.1-preview",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.addressables": "1.7.5",
-        "com.unity.nuget.newtonsoft-json": "2.0.0"
+        "com.unity.addressables": "1.17.15"
       },
       "url": "https://packages.unity.com"
     },
@@ -130,15 +131,8 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.nuget.newtonsoft-json": {
-      "version": "2.0.0",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.scriptablebuildpipeline": {
-      "version": "1.5.10",
+      "version": "1.17.0",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
