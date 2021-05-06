@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Levels;
-using Core;
 using UnityEngine;
-using MainCamera;
 using SimpleMachine;
+using Audio;
 
 namespace GUI.EditMode
 {
@@ -43,7 +42,7 @@ namespace GUI.EditMode
         private IEnumerator hideGUICoroutine;
         private IEnumerator showGUICoroutine;
 
-        [HideInInspector] public GameObject lastSelectedMachine { get; private set; }
+        [HideInInspector] public GameObject selectedMachine { get; private set; }
 
         private EditModeManager() { } // Prevents instantiation outside of this class
 
@@ -74,21 +73,11 @@ namespace GUI.EditMode
             hintButton = transform
                 .Find(HINT_BUTTON_KEY);
             SetPlaceableObjectsMenuPositionConstraints();
-            SetLastSelectedMachine(null);
         }
-        private void Update()
+
+        public static void SetSelectedMachine(GameObject selectedMachine)
         {
-            bool deletePressed = Input.GetKey(KeyCode.Backspace) || Input.GetKey(KeyCode.Delete);
-            if (deletePressed && (lastSelectedMachine != null) && GameStateManager.GetGameState().Equals(GameState.Editing))
-            {
-                CameraMovement.shouldPreventDragging = false;
-                DraggingController draggingController = lastSelectedMachine.GetComponent<DraggingController>();
-                draggingController.RemoveRotationArrows();
-                ShowEditModeGUI();
-                ScrapManager.ChangeScrapRemaining(draggingController.objectMetaData.amountOfScrap);
-                ToggleButtonsBasedOnAvailableScrap();
-                Destroy(lastSelectedMachine);
-            }
+            instance.selectedMachine = selectedMachine;
         }
 
         public static IEnumerator ToggleHintButton()
@@ -97,33 +86,49 @@ namespace GUI.EditMode
             hintButton.gameObject.SetActive(LevelManager.CurrentLevelShouldHaveHint());
         }
 
-        public static void SetLastSelectedMachine(GameObject machine)
+        public static void SetSelectedMachineVisibility(bool isVisible)
         {
-            if (instance.lastSelectedMachine !=null)
+            if (instance.selectedMachine == null)
             {
-                DraggingController draggingController = instance.lastSelectedMachine.GetComponent<DraggingController>();
-                draggingController.spriteRenderer.color = draggingController.defaultColor;
+                return;
             }
-            instance.lastSelectedMachine = machine;
-            if (machine != null)
-            {
-                instance.lastSelectedMachine.GetComponent<DraggingController>().spriteRenderer.color = Color.yellow;
-            }
+            DraggingController draggingController =
+                instance.selectedMachine.GetComponent<DraggingController>();
+            draggingController.SetSpriteVisibility(isVisible);
         }
 
-        public static void ClearLastSelectedMachine()
+        public static bool SomeMachineIsSelected()
         {
-            if (instance.lastSelectedMachine != null)
-            {
-                DraggingController draggingController = instance.lastSelectedMachine.GetComponent<DraggingController>();
-                draggingController.spriteRenderer.color = draggingController.defaultColor;
-                instance.lastSelectedMachine = null;
-            }
+            return instance.selectedMachine != null;
         }
 
-        public static GameObject GetLastSelectedMachine()
+        public static void ClearSelectedMachine()
         {
-            return instance.lastSelectedMachine;
+            if (instance.selectedMachine == null)
+            {
+                return;
+            }
+            DraggingController draggingController =
+                instance.selectedMachine.GetComponent<DraggingController>();
+            draggingController.SetSpriteVisibility(true);
+            instance.selectedMachine = null;
+        }
+
+        public static void DeletedSelectedMachine(bool shouldReturnScrap)
+        {
+            if (instance.selectedMachine == null)
+            {
+                return;
+            }
+            DraggingController draggingController = instance.selectedMachine.GetComponent<DraggingController>();
+            draggingController.RemoveRotationArrows();
+            if (shouldReturnScrap)
+            {
+                ScrapManager.ChangeScrapRemaining(draggingController.objectMetaData.amountOfScrap);
+            }
+            ToggleButtonsBasedOnAvailableScrap();
+            ShowEditModeGUI();
+            Destroy(instance.selectedMachine);
         }
 
         private void SetInstance()
