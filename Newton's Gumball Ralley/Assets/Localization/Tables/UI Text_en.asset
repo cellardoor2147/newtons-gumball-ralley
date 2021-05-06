@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI Text_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: db802420cfd3740adb32aef3b8b84d0e, type: 2}
+  m_Metadata:
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 9950922268672
+    m_Localized: Change Gumball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10603597914112
+    m_Localized: Story
+    m_Metadata:
+      m_Items: []
+  - m_Id: 34289423998976
+    m_Localized: Sandbox
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35016900861952
+    m_Localized: Select a Level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35208509251584
+    m_Localized: Select a Mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 35468036005888
+    m_Localized: 'Time
+
+      {time}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 35947012939776
+    m_Localized: Pick a Gumball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49665419501568
+    m_Localized: Finish in {timeConstraint} Seconds or Less to Get a Star!
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 269635378208768
+    m_Localized: Have {scrapConstraint} Scrap Left to Get a Star!
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 271246712365056
+    m_Localized: Try Again?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271399892541440
+    m_Localized: Level Completed!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271655602479104
+    m_Localized: Level Beat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272043156168704
+    m_Localized: Under {timeConstraint} Seconds
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 276190622375936
+    m_Localized: Over {scrapConstraint}  Remaining Scrap
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 278721331191808
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 280072912101376
+    m_Localized: Select Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 280661733662720
+    m_Localized: 'Scrap
+
+      {scrapRemainingString}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 287263253585920
+    m_Localized: Incline Planes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287387195269120
+    m_Localized: Screws
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287475883827200
+    m_Localized: Levers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287504761610240
+    m_Localized: Wedges
+    m_Metadata:
+      m_Items: []
+  - m_Id: 287580930170880
+    m_Localized: Wheels
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e0afa12b2d000000e0af0b4220000000e0ef603bf5000000e0affb6bf7000000e0efa331fb000000e0efa642ff0000

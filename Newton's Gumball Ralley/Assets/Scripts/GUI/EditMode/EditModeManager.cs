@@ -27,9 +27,11 @@ namespace GUI.EditMode
         private static readonly string ACTIVE_TABS_CONTAINER_KEY = "Active Tabs Container";
         private static readonly string TOOLBAR_KEY = "Toolbar";
         private static readonly string TOOLBAR_CONTENT_CONTAINER_KEY = "Toolbar Content Container";
+        private static readonly string HINT_BUTTON_KEY = "Hint Button";
 
         private static EditModeManager instance;
         public static ContentController ActiveContentController { get; private set; }
+        private static Transform hintButton;
 
         private List<TabController> inactiveTabControllers;
         private List<TabController> activeTabControllers;
@@ -69,12 +71,20 @@ namespace GUI.EditMode
             placeableObjectsMenuTransform = transform
                 .Find(PLACEABLE_OBJECTS_MENU_KEY)
                 .GetComponent<RectTransform>();
+            hintButton = transform
+                .Find(HINT_BUTTON_KEY);
             SetPlaceableObjectsMenuPositionConstraints();
         }
 
         public static void SetSelectedMachine(GameObject selectedMachine)
         {
             instance.selectedMachine = selectedMachine;
+        }
+
+        public static IEnumerator ToggleHintButton()
+        {
+            yield return new WaitUntil(() => instance != null);
+            hintButton.gameObject.SetActive(LevelManager.CurrentLevelShouldHaveHint());
         }
 
         public static void SetSelectedMachineVisibility(bool isVisible)

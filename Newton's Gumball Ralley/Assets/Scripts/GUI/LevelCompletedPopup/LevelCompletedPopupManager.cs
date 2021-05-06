@@ -5,6 +5,8 @@ using Audio;
 using Core;
 using Core.Levels;
 using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 namespace GUI.LevelCompletedPopup
 {
@@ -23,8 +25,13 @@ namespace GUI.LevelCompletedPopup
         private Image levelBeatStarImage;
         private Image timeStarImage;
         private TextMeshProUGUI timeStarText;
+        [SerializeField] private LocalizeStringEvent timeStringRef;
+        public string timeConstraint;
         private Image scrapStarImage;
         private TextMeshProUGUI scrapStarText;
+        [SerializeField] private LocalizeStringEvent scrapStringRef;
+        public string scrapConstraint;
+
 
         private void Awake()
         {
@@ -62,6 +69,8 @@ namespace GUI.LevelCompletedPopup
             ToggleStarsBasedOnCurrentLevelConstraints();
             StartCoroutine(RecordProgressWhenLevelComplete());
             StartCoroutine(DisplayAchievedStars());
+            timeStringRef.StringReference.RefreshString();
+            scrapStringRef.StringReference.RefreshString();
         }
 
         private void ToggleStarsBasedOnCurrentLevelConstraints()
@@ -70,7 +79,8 @@ namespace GUI.LevelCompletedPopup
             if (LevelManager.CurrentLevelShouldUseTimeConstraint())
             {
                 timeStarImage.transform.parent.gameObject.SetActive(true);
-                timeStarText.text = $"Under {LevelManager.GetCurrentLevelTimeConstraint()} Seconds";
+                timeConstraint = LevelManager.GetCurrentLevelTimeConstraint().ToString();
+                timeStringRef.StringReference.RefreshString();
                 timeStarImage.color = Color.black;
             }
             else
@@ -80,7 +90,8 @@ namespace GUI.LevelCompletedPopup
             if (LevelManager.CurrentLevelShouldUseScrapConstraint())
             {
                 scrapStarImage.transform.parent.gameObject.SetActive(true);
-                scrapStarText.text = $"Over {LevelManager.GetCurrentLevelScrapConstraint()} Remaining Scrap";
+                scrapConstraint = LevelManager.GetCurrentLevelScrapConstraint().ToString();
+                scrapStringRef.StringReference.RefreshString();
                 scrapStarImage.color = Color.black;
             }
             else

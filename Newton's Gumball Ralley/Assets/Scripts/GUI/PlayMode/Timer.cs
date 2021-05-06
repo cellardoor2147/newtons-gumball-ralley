@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using TMPro;
 using Core.Levels;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 namespace GUI.PlayMode
 {
@@ -9,6 +11,10 @@ namespace GUI.PlayMode
     {
         private static readonly string TIME_COUNTER_BACKGROUND_KEY =
             "Time Counter Background";
+
+        public string time;
+
+        [SerializeField] private LocalizeStringEvent stringRef;
 
         private TextMeshProUGUI timerText;
 
@@ -37,11 +43,13 @@ namespace GUI.PlayMode
                     .color = Color.white;
                 timerText.color = Color.black;
             }
+            stringRef.StringReference.RefreshString();
         }
-
+        
         void Update()
         {
-            timerText.text = $"Time\n{Mathf.RoundToInt(LevelTimer.Timer.CurrentTime)}";
+            time = Mathf.RoundToInt(LevelTimer.Timer.CurrentTime).ToString();
+            stringRef.StringReference.RefreshString();
         }
     }
 }

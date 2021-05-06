@@ -2,6 +2,8 @@
 using Core.Levels;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 
 namespace GUI.EditMode
 {
@@ -12,6 +14,9 @@ namespace GUI.EditMode
 
         public static float ScrapRemaining { get; private set; }
         private static TextMeshProUGUI scrapRemainingText;
+        [SerializeField] private LocalizeStringEvent stringRef;
+
+        public string scrapRemainingString;
 
         private void Awake()
         {
@@ -40,11 +45,13 @@ namespace GUI.EditMode
                     .color = Color.white;
                 scrapRemainingText.color = Color.black;
             }
+            stringRef.StringReference.RefreshString();
         }
 
         private void Update()
         {
-            scrapRemainingText.text = $"Scrap\n{ScrapRemaining}";
+            scrapRemainingString = ScrapRemaining.ToString();
+            stringRef.StringReference.RefreshString();
         }
 
         public static void ChangeScrapRemaining(float value)
