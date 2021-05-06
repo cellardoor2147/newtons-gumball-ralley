@@ -110,13 +110,14 @@ namespace MainCamera
         private void ZoomCameraOutToFitWholeLevelArea()
         {
             transform.position = new Vector3(0f, 0f, transform.position.z);
-            while (CameraIsWithinBoundsOfLevelArea())
+            Camera.main.orthographicSize = cameraMinSize;
+            while (CameraIsWithinEitherXOrYBounds())
             {
-                Camera.main.orthographicSize++;
+                Camera.main.orthographicSize += 0.1f;
             }
         }
 
-        private bool CameraIsWithinBoundsOfLevelArea()
+        private bool CameraIsWithinEitherXOrYBounds()
         {
             return transform.position.x > RepeatedBackgroundManager.GetBorderLeftPositionX()
                 || transform.position.y > RepeatedBackgroundManager.GetBorderUpPositionY();
@@ -125,9 +126,26 @@ namespace MainCamera
         public static IEnumerator AsyncZoomInForEditMode()
         {
             yield return new WaitWhile(() => instance == null);
-            instance.transform.position = new Vector3(0f, 0f, instance.transform.position.z);
-            Camera.main.orthographicSize = instance.cameraMaxSize;
             RepeatedBackgroundManager.ShrinkBackgroundForEditMode();
+            instance.SetCameraMaxSizeAndResize();
+        }
+
+        private void SetCameraMaxSizeAndResize()
+        {
+            transform.position = new Vector3(0f, 0f, transform.position.z);
+            Camera.main.orthographicSize = cameraMinSize;
+            while (CameraIsWithinBothXAndYBounds())
+            {
+                Camera.main.orthographicSize += 0.1f;
+            }
+            Camera.main.orthographicSize -= 0.1f;
+            cameraMaxSize = Camera.main.orthographicSize;
+        }
+
+        private bool CameraIsWithinBothXAndYBounds()
+        {
+            return transform.position.x > RepeatedBackgroundManager.GetBorderLeftPositionX()
+                && transform.position.y > RepeatedBackgroundManager.GetBorderUpPositionY();
         }
 
         public static IEnumerator AsyncZoomOutForDialogue()
