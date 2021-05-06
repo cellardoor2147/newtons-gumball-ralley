@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core.Levels;
-using Core;
 using UnityEngine;
-using MainCamera;
 using SimpleMachine;
+using Audio;
 
 namespace GUI.EditMode
 {

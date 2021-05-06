@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Audio;
 
 namespace GUI.EditMode
 {
@@ -11,6 +12,8 @@ namespace GUI.EditMode
     {
         [SerializeField] private Sprite trashClosedSprite;
         [SerializeField] private Sprite trashOpenSprite;
+        [SerializeField] private SoundMetaData trashOpenSound;
+        [SerializeField] private SoundMetaData trashCloseSound;
 
         private RectTransform rectTransform;
         private float originalRectTransformHeight;
@@ -34,12 +37,14 @@ namespace GUI.EditMode
             {
                 return;
             }
+            AudioManager.instance.PlaySound(trashOpenSound.name);
             SetSprite(trashOpenSprite);
             EditModeManager.SetSelectedMachineVisibility(false);
         }
 
         public void OnPointerExit(PointerEventData pointerEventData)
         {
+            AudioManager.instance.PlaySound(trashCloseSound.name);
             SetSprite(trashClosedSprite);
             EditModeManager.SetSelectedMachineVisibility(true);
         }
