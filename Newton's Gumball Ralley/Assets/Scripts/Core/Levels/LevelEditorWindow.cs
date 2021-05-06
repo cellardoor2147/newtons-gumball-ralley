@@ -17,6 +17,7 @@ namespace Core.Levels
         private float scrapConstraint;
         private float placeableScrapLimit;
         private bool shouldHaveHint;
+        private string hintText;
 
         [MenuItem("Window/Level Editor")]
         private static void Init()
@@ -41,7 +42,8 @@ namespace Core.Levels
                     repeatedBackgroundColumns,
                     repeatedBackgroundRows,
                     placeableScrapLimit,
-                    shouldHaveHint
+                    shouldHaveHint,
+                    hintText
                 );
             }
             if (GUILayout.Button("Load Level"))
@@ -64,6 +66,8 @@ namespace Core.Levels
                 shouldUseScrapConstraint = levelData.starConditions.shouldUseScrapConstraint;
                 scrapConstraint = levelData.starConditions.scrapConstraint;
                 placeableScrapLimit = levelData.placeableScrapLimit;
+                shouldHaveHint = levelData.shouldHaveHint;
+                hintText = levelData.hintText;
             }
 
             GUILayout.BeginArea(new Rect(0, 45, position.width, 60));
@@ -93,14 +97,19 @@ namespace Core.Levels
             scrapConstraint =
                 EditorGUI.FloatField(new Rect(0, 60, position.width, 15), "Scrap Constraint", scrapConstraint);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 270, position.width, 90));
+            GUILayout.BeginArea(new Rect(0, 270, position.width, 30));
             GUILayout.Label("Scrap Limit", EditorStyles.boldLabel);
             placeableScrapLimit =
                 EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Scrap Limit", placeableScrapLimit);
-            shouldHaveHint =
-                EditorGUI.Toggle(new Rect(0, 45, position.width, 15), "Should Have Hint", shouldHaveHint);
             GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 360, position.width, 1000));
+            GUILayout.BeginArea(new Rect(0, 305, position.width, 80));
+            GUILayout.Label("Hint", EditorStyles.boldLabel);
+            shouldHaveHint =
+                EditorGUI.Toggle(new Rect(0, 15, position.width, 15), "Should Have Hint", shouldHaveHint);
+            hintText =
+                EditorGUI.TextField(new Rect(0, 30, position.width, 45), "Hint Text", hintText);
+            GUILayout.EndArea();
+            GUILayout.BeginArea(new Rect(0, 400, position.width, 1000));
             GUILayout.Label("How To Use", EditorStyles.boldLabel);
             GUILayout.Label(GetHowToUseText(), EditorStyles.helpBox);
             GUILayout.EndArea();

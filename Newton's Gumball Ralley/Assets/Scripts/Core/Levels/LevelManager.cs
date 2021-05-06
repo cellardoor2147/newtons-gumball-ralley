@@ -144,6 +144,11 @@ namespace Core.Levels
             return currentLevelData.levelIndex;
         }
 
+        public static string GetCurrentLevelHintText()
+        {
+            return currentLevelData.hintText;
+        }
+
         public static bool CurrentLevelShouldHaveHint()
         {
             return currentLevelData.shouldHaveHint;

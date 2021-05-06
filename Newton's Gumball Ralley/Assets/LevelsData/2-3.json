@@ -677,6 +677,7 @@
     },
     "placeableScrapLimit": 140.0,
     "shouldHaveHint": true,
+    "hintText": "test",
     "starConditions": {
         "shouldUseTimeConstraint": true,
         "timeConstraint": 11.0,
