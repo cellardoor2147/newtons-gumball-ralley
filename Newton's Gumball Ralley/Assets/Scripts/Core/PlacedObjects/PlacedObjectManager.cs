@@ -15,7 +15,8 @@ namespace Core.PlacedObjects
         private void Awake()
         {
             if (!metaData.objectName.Contains("Pulley")
-                && !metaData.objectName.Equals("LeverWeightContraption"))
+                && !metaData.objectName.Equals("LeverWeightContraption")
+                && !metaData.objectName.Equals("InGameHint"))
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 defaultColor = spriteRenderer.color;
