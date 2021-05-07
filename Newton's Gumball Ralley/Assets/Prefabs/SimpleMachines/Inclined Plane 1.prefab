@@ -94,7 +94,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7746866466474776111, guid: 4bf8646de7283e447adbdb2aad016602,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationArrowsPrefab: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
   leverPlatformMetaData: {fileID: 11400000, guid: 965678d67fe819a4fb322e5f92894a77,
     type: 2}
   leverFulcrumMetaData: {fileID: 11400000, guid: 612b176ff5f05924eb464b4b401a1a7f,
@@ -155,7 +157,6 @@ MonoBehaviour:
   screwMetaData: {fileID: 11400000, guid: a060d4b5ca3f6a74eb82eceb500a2177, type: 2}
   gear1MetaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
   gear2MetaData: {fileID: 11400000, guid: 275d02e1e0c0d4854aa968a10e9d1e75, type: 2}
-  gear3MetaData: {fileID: 11400000, guid: c61080e63d78e4cdda7c294f915bedba, type: 2}
   gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
     type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}

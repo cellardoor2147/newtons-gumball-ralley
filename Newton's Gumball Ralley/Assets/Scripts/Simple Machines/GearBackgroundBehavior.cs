@@ -7,21 +7,22 @@ namespace SimpleMachine
     public class GearBackgroundBehavior : MonoBehaviour
     {
         private CircleCollider2D collider;
+        private SpriteRenderer spriteRenderer;
         private void Awake()
         {
             collider = transform.GetChild(0).GetComponent<CircleCollider2D>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
         private void Update()
         {
-            if (GameStateManager.GetGameState().Equals(GameState.Editing) && !gameObject.activeSelf)
+            if (GameStateManager.GetGameState().Equals(GameState.Editing))
             {
-                gameObject.SetActive(true);
+                spriteRenderer.enabled = true;
             }
             else if (!GameStateManager.GetGameState().Equals(GameState.Editing) 
-                && gameObject.activeSelf 
                 && collider.IsTouchingLayers(-1))
             {
-                gameObject.SetActive(false);
+                spriteRenderer.enabled = false;
             }
         }
     }

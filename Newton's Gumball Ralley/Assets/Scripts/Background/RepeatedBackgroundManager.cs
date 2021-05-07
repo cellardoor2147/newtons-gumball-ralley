@@ -171,5 +171,26 @@ namespace Background
                     return Color.white;
             }
         }
+
+        public static void ShrinkBackgroundForEditMode()
+        {
+            SetDesiredNumberOfColumnsAndRows(
+                LevelManager.GetCurrentLevelNumberOfDesiredBackgroundColumns(),
+                LevelManager.GetCurrentLevelNumberOfDesiredBackgroundRows()
+            );
+        }
+
+        public static void ExpandBackgroundForPlayMode()
+        {
+            float cameraHeight = Camera.main.orthographicSize * 2f;
+            float cameraWidth = cameraHeight * Camera.main.aspect;
+            int neededNumberOfColumns = Mathf.CeilToInt(
+                cameraWidth / instance.backgroundTextureWidth
+            );
+            int neededNumberOfRows = Mathf.CeilToInt(
+                cameraHeight / instance.backgroundTextureHeight
+            );
+            SetDesiredNumberOfColumnsAndRows(neededNumberOfColumns, neededNumberOfRows);
+        }
     }
 }

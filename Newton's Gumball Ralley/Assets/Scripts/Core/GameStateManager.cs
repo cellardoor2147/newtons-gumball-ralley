@@ -13,6 +13,7 @@ using System.Collections;
 using Background;
 using Core.PlacedObjects;
 using Core.Levels;
+using MainCamera;
 
 namespace Core
 {
@@ -138,6 +139,7 @@ namespace Core
                         AudioManager.instance.PlaySound(instance.DialogueMusicSound.name);
                     }
                     LoadScene(GAME_SCENE_KEY);
+                    instance.StartCoroutine(CameraMovement.AsyncZoomOutForDialogue());
                     instance.StartCoroutine(AsyncSetGumballVisibility(false));
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
                     break;
@@ -152,6 +154,7 @@ namespace Core
                     if (instance.gameState != GameState.Paused
                         && instance.gameState != GameState.GameOver)
                     {
+                        instance.StartCoroutine(CameraMovement.AsyncZoomOutForPlayMode());
                         instance.StartCoroutine(ResetSceneForPlayMode());
                     }
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.PlayMode));
@@ -168,6 +171,7 @@ namespace Core
                     {
                         instance.StartCoroutine(ResetSceneForEditMode());
                     }
+                    instance.StartCoroutine(CameraMovement.AsyncZoomInForEditMode());
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.EditMode));
                     break;
                 case GameState.Paused:

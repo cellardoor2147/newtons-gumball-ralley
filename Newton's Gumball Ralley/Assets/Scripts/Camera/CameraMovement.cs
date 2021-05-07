@@ -2,6 +2,7 @@
 using Background;
 using Core;
 using GUI.EditMode;
+using System.Collections;
 
 namespace MainCamera
 {
@@ -9,17 +10,36 @@ namespace MainCamera
     {
         public static bool shouldPreventDragging;
 
+        private static CameraMovement instance;
+
         [SerializeField] private float cameraDragSpeed = 0.1f;
         [SerializeField] private float cameraScrollSpeed = 0.1f;
         [SerializeField] private float cameraMinSize = 7f;
         [SerializeField] private float cameraMaxSize = 10f;
-        private bool lastMachineAssigned;
+
+        private CameraMovement() { } // Prevent instantiation outside this class
+
+        private void Awake()
+        {
+            SetInstance();
+        }
+
+        private void SetInstance()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
+        }
 
         private void Update()
         {
             bool cameraShouldNotMove =
-                !(GameStateManager.GetGameState().Equals(GameState.Playing)
-                || GameStateManager.GetGameState().Equals(GameState.Editing));
+                !GameStateManager.GetGameState().Equals(GameState.Editing);
             if (cameraShouldNotMove)
             {
                 return;
@@ -34,14 +54,6 @@ namespace MainCamera
             bool playerIsDragging = Input.GetMouseButton(0);
             if (playerIsDragging && !shouldPreventDragging)
             {
-                if (lastMachineAssigned)
-                {
-                    EditModeManager.ClearLastSelectedMachine();
-                }
-                else 
-                {
-                    lastMachineAssigned = true;
-                }
                 Camera.main.transform.position -= new Vector3(
                     Input.GetAxis("Mouse X") * cameraDragSpeed,
                     Input.GetAxis("Mouse Y") * cameraDragSpeed,
@@ -77,6 +89,63 @@ namespace MainCamera
                 Camera.main.orthographicSize + (-Input.mouseScrollDelta.y * cameraScrollSpeed);
             Camera.main.orthographicSize =
                 Mathf.Clamp(cameraNewSize, cameraMinSize, cameraMaxSize);
+        }
+
+        public static IEnumerator AsyncZoomOutForPlayMode()
+        {
+            yield return new WaitWhile(() => instance == null);
+            instance.ZoomCameraOutToFitWholeLevelArea();
+            RepeatedBackgroundManager.ExpandBackgroundForPlayMode();
+        }
+
+        private void ZoomCameraOutToFitWholeLevelArea()
+        {
+            transform.position = new Vector3(0f, 0f, transform.position.z);
+            Camera.main.orthographicSize = cameraMinSize;
+            while (CameraIsWithinEitherXOrYBounds())
+            {
+                Camera.main.orthographicSize += 0.1f;
+            }
+        }
+
+        private bool CameraIsWithinEitherXOrYBounds()
+        {
+            return transform.position.x > RepeatedBackgroundManager.GetBorderLeftPositionX()
+                || transform.position.y > RepeatedBackgroundManager.GetBorderUpPositionY();
+        }
+
+        public static IEnumerator AsyncZoomInForEditMode()
+        {
+            yield return new WaitWhile(() => instance == null);
+            RepeatedBackgroundManager.ShrinkBackgroundForEditMode();
+            instance.SetCameraMaxSizeAndResize();
+        }
+
+        private void SetCameraMaxSizeAndResize()
+        {
+            transform.position = new Vector3(0f, 0f, transform.position.z);
+            Camera.main.orthographicSize = cameraMinSize;
+            while (CameraIsWithinBothXAndYBounds())
+            {
+                Camera.main.orthographicSize += 0.1f;
+            }
+            Camera.main.orthographicSize -= 0.1f;
+            cameraMaxSize = Camera.main.orthographicSize;
+        }
+
+        private bool CameraIsWithinBothXAndYBounds()
+        {
+            return transform.position.x > RepeatedBackgroundManager.GetBorderLeftPositionX()
+                && transform.position.y > RepeatedBackgroundManager.GetBorderUpPositionY();
+        }
+
+        public static IEnumerator AsyncZoomOutForDialogue()
+        {
+            yield return new WaitWhile(() => instance == null);
+            instance.transform.position = new Vector3(0f, 0f, instance.transform.position.z);
+            RepeatedBackgroundManager.ShrinkBackgroundForEditMode();
+            instance.ZoomCameraOutToFitWholeLevelArea();
+            RepeatedBackgroundManager.ExpandBackgroundForPlayMode();
         }
     }
 }

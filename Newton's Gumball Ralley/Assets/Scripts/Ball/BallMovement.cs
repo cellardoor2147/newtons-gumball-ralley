@@ -37,9 +37,9 @@ namespace Ball
         private bool isBeingPulled;
         private bool hasBeenReleased;
         private SpriteRenderer spriteRenderer;
-
         public Vector3 originalScale;
         public bool hasBeenDispensed;
+        private TrailRenderer trailRenderer;
 
         private void Awake()
         {
@@ -51,6 +51,7 @@ namespace Ball
             parent = transform.parent;
             spriteRenderer = GetComponent<SpriteRenderer>();
             originalScale = transform.localScale;
+            trailRenderer = GetComponent<TrailRenderer>();
         }
 
         private void Start()
@@ -86,10 +87,12 @@ namespace Ball
                 if (pulledToMiddle && pulleyBehavior.grounded)
                 {
                     rigidBody.velocity = new Vector2(rigidBody.velocity.x / 2, rigidBody.velocity.y);
+                    SetTrailActive(false);
                 }
                 else if (!pulleyBehavior.grounded)
                 {
                     transform.parent = parent;
+                    SetTrailActive(true);
                     if (pulleyBehavior.ballRollDirection.Equals(SimpleMachine.BallRollDirection.Right)){
                         rigidBody.AddForce(pushForce);
                     }
@@ -238,6 +241,7 @@ namespace Ball
             ClampVelocityOnRelease();
             Timer.Start();
             GetComponent<SpringJoint2D>().enabled = false;
+            SetTrailActive(true);
         }
 
         private void ClampVelocityOnRelease()
@@ -256,6 +260,7 @@ namespace Ball
 
         private void Reset()
         {
+            SetTrailActive(false);
             StopAllCoroutines();
             transform.position = GetSlingAnchorPosition();
             transform.localScale = originalScale;
@@ -280,6 +285,7 @@ namespace Ball
 
         public void Die()
         {
+            SetTrailActive(false);
             rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
             StartCoroutine(FadeOutThenTriggerGameOverPopup());
         }
@@ -301,6 +307,11 @@ namespace Ball
         private void SetAsChild(GameObject pulleyPlatform)
         {
             transform.parent = pulleyPlatform.transform;
+        }
+
+        public void SetTrailActive(bool isActive)
+        {
+            trailRenderer.forceRenderingOff = !isActive;
         }
     }
 }
