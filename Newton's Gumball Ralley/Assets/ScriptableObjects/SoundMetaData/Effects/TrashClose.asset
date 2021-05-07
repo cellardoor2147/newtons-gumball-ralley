@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb7d6ad89dbd145f889e5f6ed405f992, type: 3}
   m_Name: TrashClose
   m_EditorClassIdentifier: 
-  name: New MyScriptableObject
-  clip: {fileID: 0}
+  name: TrashClose
+  clip: {fileID: 8300000, guid: b3f03c4c43eb0bf4c86495592b6933d0, type: 3}
   volume: 0.7
   pitch: 1
   loop: 0

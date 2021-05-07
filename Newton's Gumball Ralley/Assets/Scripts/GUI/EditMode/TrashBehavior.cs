@@ -44,7 +44,10 @@ namespace GUI.EditMode
 
         public void OnPointerExit(PointerEventData pointerEventData)
         {
-            AudioManager.instance.PlaySound(trashCloseSound.name);
+            if (trashImage.sprite.Equals(trashOpenSprite))
+            {
+                AudioManager.instance.PlaySound(trashCloseSound.name);
+            }
             SetSprite(trashClosedSprite);
             EditModeManager.SetSelectedMachineVisibility(true);
         }
