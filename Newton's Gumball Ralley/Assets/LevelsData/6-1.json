@@ -11,7 +11,7 @@
                 "position": {
                     "x": 0.0,
                     "y": 8.5,
-                    "z": -10.0
+                    "z": -1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -37,7 +37,7 @@
                 "position": {
                     "x": 0.0,
                     "y": -8.300000190734864,
-                    "z": 0.0
+                    "z": -1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -63,7 +63,7 @@
                 "position": {
                     "x": -17.40999984741211,
                     "y": 0.10000000149011612,
-                    "z": 0.0
+                    "z": -1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -89,7 +89,7 @@
                 "position": {
                     "x": 17.270000457763673,
                     "y": 0.019999999552965165,
-                    "z": 0.0
+                    "z": -1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -807,8 +807,12 @@
         }
     },
     "placeableScrapLimit": 27.0,
+    "shouldHaveHint": false,
+    "hintText": "",
     "starConditions": {
+        "shouldUseTimeConstraint": false,
         "timeConstraint": 10.0,
+        "shouldUseScrapConstraint": false,
         "scrapConstraint": 0.0
     }
 }

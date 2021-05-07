@@ -144,12 +144,12 @@ namespace Core.Levels
 
         public static bool LevelShouldBePlayable(int worldIndex, int levelIndex)
         {
-            if (worldIndex == 1 && levelIndex == 1)
+            if (worldIndex == 0 && levelIndex == 1)
             {
                 return true;
             }
             int previousWorldIndex = levelIndex == 1 ? worldIndex - 1 : worldIndex;
-            int previousLevelIndex = levelIndex == 1 ? 3 : levelIndex - 1;
+            int previousLevelIndex = levelIndex == 1 ? (worldIndex == 1 ? 1 : 3) : levelIndex - 1;
             LevelProgress previousLevelProgress = levelProgresses.Find(
                 levelProgress => levelProgress.worldIndex == previousWorldIndex
                                  && levelProgress.levelIndex == previousLevelIndex
