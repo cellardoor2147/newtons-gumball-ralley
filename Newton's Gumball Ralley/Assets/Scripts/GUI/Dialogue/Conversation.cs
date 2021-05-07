@@ -26,6 +26,10 @@ namespace GUI.Dialogue
         public Expression rightSpeakerExpression;
         [TextArea(2, 5)]
         public string content;
+        [TextArea(2, 5)]
+        public string englishContent;
+        [TextArea(2, 5)]
+        public string spanishContent;
     }
 
     [CreateAssetMenu(fileName = "Conversation", menuName = "ScriptableObjects/Conversation", order = 2)]

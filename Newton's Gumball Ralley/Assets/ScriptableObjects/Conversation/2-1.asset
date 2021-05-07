@@ -22,45 +22,64 @@ MonoBehaviour:
     leftSpeakerExpression: 1
     rightSpeakerExpression: 1
     content: "You finished those levels so fast! I\u2019m impressed!"
+    englishContent: "You finished those levels so fast! I\u2019m impressed!"
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: 'Wait, what are those spikey things? '
+    englishContent: 'Wait, what are those spikey things? '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "You\u2019ll want to stay away from those. If you hit it your gumball
       will break!"
+    englishContent: "You\u2019ll want to stay away from those. If you hit it your
+      gumball will break!"
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "I think they\u2019re ready to make an adjustable inclined plane. Check
       your toolbelt for a long rectangle and drag it into the scene. "
+    englishContent: "I think they\u2019re ready to make an adjustable inclined plane.
+      Check your toolbelt for a long rectangle and drag it into the scene. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "You\u2019ll need to use the arrows on each side of it to raise and
       lower each side until the incline is just how you want it. "
+    englishContent: "You\u2019ll need to use the arrows on each side of it to raise
+      and lower each side until the incline is just how you want it. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: But remember gravity will pull the inclined plane to the ground...
+    englishContent: But remember gravity will pull the inclined plane to the ground...
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: 'You might need to use a screw to help keep it in place. '
+    englishContent: 'You might need to use a screw to help keep it in place. '
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 1
     rightSpeakerExpression: 1
     content: 'You figured it out! '
+    englishContent: 'You figured it out! '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
@@ -68,15 +87,25 @@ MonoBehaviour:
     content: "A screw is another simple machine that can be used to keep objects
       in place by pinning them to a surface that doesn\u2019t move, like a wall or
       floor."
+    englishContent: "A screw is another simple machine that can be used to keep objects
+      in place by pinning them to a surface that doesn\u2019t move, like a wall or
+      floor."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "Right! Unlike a nail which you need to hit really hard to push into
       a wall, a screw\u2019s spiral shape makes it easier. "
+    englishContent: "Right! Unlike a nail which you need to hit really hard to push
+      into a wall, a screw\u2019s spiral shape makes it easier. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: Instead of banging on a nail with a hammer, you can twist a screw so
       that it goes in a little at a time with less force.
+    englishContent: Instead of banging on a nail with a hammer, you can twist a screw
+      so that it goes in a little at a time with less force.
+    spanishContent: 

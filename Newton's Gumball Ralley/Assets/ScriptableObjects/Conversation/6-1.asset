@@ -22,47 +22,69 @@ MonoBehaviour:
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "Woah, what\u2019s that purple machine? "
+    englishContent: "Woah, what\u2019s that purple machine? "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "That\u2019s a pulley. It can raise or lower objects. "
+    englishContent: "That\u2019s a pulley. It can raise or lower objects. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "But we will need something to pull on the other side of the rope\u2026 "
+    englishContent: "But we will need something to pull on the other side of the
+      rope\u2026 "
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 1
     rightSpeakerExpression: 1
     content: Nicely done!
+    englishContent: Nicely done!
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: The pulley is a very useful simple machine.
+    englishContent: The pulley is a very useful simple machine.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: It can make lifting objects easier by balancing the weight on each side
       of that circle part.
+    englishContent: It can make lifting objects easier by balancing the weight on
+      each side of that circle part.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: 'The circle part the rope goes over is also called a fulcrum. '
+    englishContent: 'The circle part the rope goes over is also called a fulcrum. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
     content: So like the lever, the pulley uses a fulcrum to create a point that
       the rope moves around?
+    englishContent: So like the lever, the pulley uses a fulcrum to create a point
+      that the rope moves around?
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: Yup! This type of pulley is called a simple pulley because it only has
       one fulcrum.
+    englishContent: Yup! This type of pulley is called a simple pulley because it
+      only has one fulcrum.
+    spanishContent: 

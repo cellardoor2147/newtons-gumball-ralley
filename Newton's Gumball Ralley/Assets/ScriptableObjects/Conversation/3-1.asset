@@ -22,62 +22,91 @@ MonoBehaviour:
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "You\u2019re doing great! "
+    englishContent: "You\u2019re doing great! "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: Huh, that hanging block is new.
+    englishContent: Huh, that hanging block is new.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "That\u2019s a weight. If you click on it in play mode, it will fall. "
+    englishContent: "That\u2019s a weight. If you click on it in play mode, it will
+      fall. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: Why would we want that?
+    englishContent: Why would we want that?
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: Well, if you use a machine called a lever, the weight can push down
       one side to raise the other.
+    englishContent: Well, if you use a machine called a lever, the weight can push
+      down one side to raise the other.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: Oh, like a seesaw!
+    englishContent: Oh, like a seesaw!
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: Exactly.
+    englishContent: Exactly.
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 1
     rightSpeakerExpression: 1
     content: Wow, did you see the gumball fly?!
+    englishContent: Wow, did you see the gumball fly?!
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "I did! That\u2019s because of the simple machine, the lever. "
+    englishContent: "I did! That\u2019s because of the simple machine, the lever. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: 'Levers can help lift heavy objects much easier, or launch lighter objects
       like you just did. '
+    englishContent: 'Levers can help lift heavy objects much easier, or launch lighter
+      objects like you just did. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: Levers are made of a long, straight board that does not bend and a fulcrum.
+    englishContent: Levers are made of a long, straight board that does not bend
+      and a fulcrum.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: A fulcrum is where the board is connected, and it allows the board to
       tilt either way.
+    englishContent: A fulcrum is where the board is connected, and it allows the
+      board to tilt either way.
+    spanishContent: 

@@ -22,57 +22,82 @@ MonoBehaviour:
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "Look, there\u2019s a wedge at the end of the pulley now!"
+    englishContent: "Look, there\u2019s a wedge at the end of the pulley now!"
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: 'That wedge looks a lot heavier than the platform from before. '
+    englishContent: 'That wedge looks a lot heavier than the platform from before. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: 'We might need a different kind of pulley to lift it. '
+    englishContent: 'We might need a different kind of pulley to lift it. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "I think you\u2019re right. Try clicking on the fulcrum in edit mode
       to switch to a compound pulley."
+    englishContent: "I think you\u2019re right. Try clicking on the fulcrum in edit
+      mode to switch to a compound pulley."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: 'And remember, like the weight, you can click on the wedge to drop it
       when you play the level. '
+    englishContent: 'And remember, like the weight, you can click on the wedge to
+      drop it when you play the level. '
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
     content: 'So what is a compound pulley? '
+    englishContent: 'So what is a compound pulley? '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "I\u2019m glad you asked!"
+    englishContent: "I\u2019m glad you asked!"
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: 'A compound pulley is a pulley that uses more than one fulcrum. '
+    englishContent: 'A compound pulley is a pulley that uses more than one fulcrum. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0
     activeSpeakerDirection: 1
     leftSpeakerExpression: 3
     rightSpeakerExpression: 4
     content: 'Adding fulcrums moves weight from the side pulling the rope, and puts
       some of that weight onto the fulcrums. '
+    englishContent: 'Adding fulcrums moves weight from the side pulling the rope,
+      and puts some of that weight onto the fulcrums. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: 'So you can lift heavier objects with more fulcrums! '
+    englishContent: 'So you can lift heavier objects with more fulcrums! '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "That\u2019s right!"
+    englishContent: "That\u2019s right!"
+    spanishContent: 

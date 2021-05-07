@@ -22,15 +22,23 @@ MonoBehaviour:
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: This time the missing piece looks a bit far from where you want it.
+    englishContent: This time the missing piece looks a bit far from where you want
+      it.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: Perhaps if we add a middle wheel, the spinning wheel will be able to
       turn a different wheel further away.
+    englishContent: Perhaps if we add a middle wheel, the spinning wheel will be
+      able to turn a different wheel further away.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "Just don\u2019t forget the axles!"
+    englishContent: "Just don\u2019t forget the axles!"
+    spanishContent: 
   linesAtEndOfLevel: []

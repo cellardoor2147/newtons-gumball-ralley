@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using Core;
 using Core.Levels;
 using Audio;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 namespace GUI.Dialogue
 {
@@ -97,6 +99,7 @@ namespace GUI.Dialogue
 
         public void StartConversation(Conversation conversation, bool shouldPlayBeginningDialogue)
         {
+            
             StartCoroutine(TypeEachDialogueBoxContent(conversation, shouldPlayBeginningDialogue));
         }
 
@@ -231,6 +234,14 @@ namespace GUI.Dialogue
              
         private IEnumerator TypeDialogueBoxContent(Line line)
         {
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+            {
+                line.content = line.englishContent;
+            }
+            else
+            {
+                line.content = line.spanishContent;
+            }
             dialogueBoxContent.text = "";
             dialogueBoxFinishedTyping = false;
             foreach (char character in line.content)

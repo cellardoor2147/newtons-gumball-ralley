@@ -23,32 +23,47 @@ MonoBehaviour:
     rightSpeakerExpression: 0
     content: Nice job on finishing the first challenge! Remember to use this handy
       machine to help you complete the next levels.
+    englishContent: Nice job on finishing the first challenge! Remember to use this
+      handy machine to help you complete the next levels.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: "Hmmm\u2026 it looks like the inclined plane we used last time won\u2019t
       be tall enough to create enough speed to make it up to Jessie."
+    englishContent: "Hmmm\u2026 it looks like the inclined plane we used last time
+      won\u2019t be tall enough to create enough speed to make it up to Jessie."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: "We\u2019ll have to use a higher inclined plane. "
+    englishContent: "We\u2019ll have to use a higher inclined plane. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "You\u2019re right! Good thing we have more choices in our toolbelt."
+    englishContent: "You\u2019re right! Good thing we have more choices in our toolbelt."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: 'Keep in mind, the steeper the slope, the harder it is to move the gumball
       upward. '
+    englishContent: 'Keep in mind, the steeper the slope, the harder it is to move
+      the gumball upward. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: But if you apply more force, the gumball will really get up that slope!
       Give it a try.
+    englishContent: 
+    spanishContent: 
   linesAtEndOfLevel: []

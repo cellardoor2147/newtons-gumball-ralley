@@ -22,46 +22,67 @@ MonoBehaviour:
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "Look, it seems like there\u2019s a piece missing over there."
+    englishContent: "Look, it seems like there\u2019s a piece missing over there."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: 'Yeah, it looks a lot like one of the wheel machines. '
+    englishContent: 'Yeah, it looks a lot like one of the wheel machines. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: I wonder what happens when you place the right wheel there.
+    englishContent: I wonder what happens when you place the right wheel there.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: One wheel might not be enough though to get the gumball to Jessie.
+    englishContent: One wheel might not be enough though to get the gumball to Jessie.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: But remember, if we place a wheel, we need something in the middle for
       it to spin on.
+    englishContent: But remember, if we place a wheel, we need something in the middle
+      for it to spin on.
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 1
     rightSpeakerExpression: 1
     content: Amazing!
+    englishContent: Amazing!
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
     content: 'So what is that part in the middle of the wheel? '
+    englishContent: 'So what is that part in the middle of the wheel? '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "That\u2019s called an axle. The wheel and axle together make up another
       simple machine."
+    englishContent: "That\u2019s called an axle. The wheel and axle together make
+      up another simple machine."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: 'The axle lets the wheel spin around it and lift objects like our gumball. '
+    englishContent: 'The axle lets the wheel spin around it and lift objects like
+      our gumball. '
+    spanishContent: 
