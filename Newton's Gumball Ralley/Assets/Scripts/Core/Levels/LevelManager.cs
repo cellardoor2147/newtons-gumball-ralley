@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GUI.EditMode;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 namespace Core.Levels
 {
@@ -146,6 +148,14 @@ namespace Core.Levels
 
         public static string GetCurrentLevelHintText()
         {
+            if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
+            {
+                currentLevelData.hintText = currentLevelData.englishHintText;
+            }
+            else
+            {
+                currentLevelData.hintText = currentLevelData.spanishHintText;
+            }
             return currentLevelData.hintText;
         }
 

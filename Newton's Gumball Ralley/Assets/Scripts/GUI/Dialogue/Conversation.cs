@@ -24,7 +24,7 @@ namespace GUI.Dialogue
         public SpeakerDirection activeSpeakerDirection;
         public Expression leftSpeakerExpression;
         public Expression rightSpeakerExpression;
-        [TextArea(2, 5)]
+        [TextArea(2, 5)] [HideInInspector]
         public string content;
         [TextArea(2, 5)]
         public string englishContent;
