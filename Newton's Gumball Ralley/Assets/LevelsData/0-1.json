@@ -1,0 +1,219 @@
+{
+    "worldIndex": 0,
+    "levelIndex": 1,
+    "customLevelName": "",
+    "repeatedBackgroundRows": 2,
+    "repeatedBackgroundColumns": 4,
+    "environmentObjects": [
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 7.5,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 15.0,
+                    "y": 5.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 0.0,
+                    "y": -7.400000095367432,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 15.0,
+                    "y": 5.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -17.079999923706056,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 5.5,
+                    "y": 5.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 17.149999618530275,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 5.5,
+                    "y": 5.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": -3.5299999713897707,
+                    "y": -3.6600000858306886,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.087155781686306,
+                    "w": 0.9961947202682495
+                },
+                "scale": {
+                    "x": 11.0,
+                    "y": 5.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "EnvironmentBlock",
+            "transform": {
+                "position": {
+                    "x": 12.779999732971192,
+                    "y": -6.0,
+                    "z": -1.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 3.0,
+                    "y": 5.0,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        },
+        {
+            "objectName": "Ralph",
+            "transform": {
+                "position": {
+                    "x": 12.548724174499512,
+                    "y": -3.740000009536743,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.800000011920929,
+                    "y": 0.800000011920929,
+                    "z": 1.0
+                }
+            },
+            "pulleyState": {
+                "platformState": 0,
+                "platformPosition": 0,
+                "ballRollDirection": 0
+            }
+        }
+    ],
+    "preplacedObjects": [],
+    "gumballMachineTransform": {
+        "position": {
+            "x": -12.380000114440918,
+            "y": 2.4700000286102297,
+            "z": 0.0
+        },
+        "rotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "w": 1.0
+        },
+        "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+        }
+    },
+    "placeableScrapLimit": 0.0,
+    "shouldHaveHint": false,
+    "hintText": "",
+    "starConditions": {
+        "shouldUseTimeConstraint": false,
+        "timeConstraint": 0.0,
+        "shouldUseScrapConstraint": false,
+        "scrapConstraint": 0.0
+    }
+}

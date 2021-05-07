@@ -505,7 +505,7 @@
                 "position": {
                     "x": -2.7100000381469728,
                     "y": 4.380000114440918,
-                    "z": 0.0
+                    "z": 1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -531,7 +531,7 @@
                 "position": {
                     "x": 1.100000023841858,
                     "y": 3.7100000381469728,
-                    "z": 0.0
+                    "z": 1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -557,7 +557,7 @@
                 "position": {
                     "x": 5.079999923706055,
                     "y": 3.010000228881836,
-                    "z": 0.0
+                    "z": 1.0
                 },
                 "rotation": {
                     "x": 0.0,
@@ -781,6 +781,8 @@
         }
     },
     "placeableScrapLimit": 100.0,
+    "shouldHaveHint": false,
+    "hintText": "",
     "starConditions": {
         "shouldUseTimeConstraint": true,
         "timeConstraint": 25.0,
