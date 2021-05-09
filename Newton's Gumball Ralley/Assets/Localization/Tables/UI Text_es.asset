@@ -119,6 +119,22 @@ MonoBehaviour:
     m_Localized: Ruedas
     m_Metadata:
       m_Items: []
+  - m_Id: 730751106408448
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731597676339200
+    m_Localized: Productora y Artista
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731599052070912
+    m_Localized: "Programaci\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732268785950720
+    m_Localized: "M\xFAsica"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

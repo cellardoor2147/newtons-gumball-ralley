@@ -11,6 +11,7 @@ namespace GUI
         private readonly static string LEVEL_MENU_KEY = "Level Menu";
         private readonly static string GUMBALL_COLOR_MENU_KEY = "Gumball Color Menu";
         private readonly static string LANGUAGE_MENU_KEY = "Language Menu";
+        private readonly static string CREDITS_MENU_KEY = "Credits Menu";
 
         public GUIType guiType;
 
@@ -31,6 +32,7 @@ namespace GUI
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
             transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
             transform.Find(LANGUAGE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(CREDITS_MENU_KEY).gameObject.SetActive(false);
         }
 
         public void LoadMainMenuModeMenu()
@@ -44,6 +46,7 @@ namespace GUI
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
             transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
             transform.Find(LANGUAGE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(CREDITS_MENU_KEY).gameObject.SetActive(false);
         }
 
         public void LoadMainMenuLevelMenu()
@@ -57,6 +60,7 @@ namespace GUI
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(true);
             transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
             transform.Find(LANGUAGE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(CREDITS_MENU_KEY).gameObject.SetActive(false);
         }
 
         public void LoadMainMenuGumballColorMenu()
@@ -70,6 +74,7 @@ namespace GUI
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
             transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(true);
             transform.Find(LANGUAGE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(CREDITS_MENU_KEY).gameObject.SetActive(false);
         }
 
         public void LoadMainMenuLanguageMenu()
@@ -83,6 +88,21 @@ namespace GUI
             transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
             transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
             transform.Find(LANGUAGE_MENU_KEY).gameObject.SetActive(true);
+            transform.Find(CREDITS_MENU_KEY).gameObject.SetActive(false);
+        }
+
+        public void LoadMainMenuCreditsMenu()
+        {
+            if (!CanLoadMainMenuSubMenu())
+            {
+                return;
+            }
+            transform.Find(PRIMARY_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(MODE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(LEVEL_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(GUMBALL_COLOR_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(LANGUAGE_MENU_KEY).gameObject.SetActive(false);
+            transform.Find(CREDITS_MENU_KEY).gameObject.SetActive(true);
         }
 
         private bool CanLoadMainMenuSubMenu()
