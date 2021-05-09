@@ -189,6 +189,96 @@
         }
     ],
     "preplacedObjects": [],
+    "inGameHints": [
+        {
+            "objectName": "InGameHint",
+            "text": "Click 'GO!'\nto Start!",
+            "characterSize": 0.5,
+            "fontSize": 15,
+            "textTransform": {
+                "position": {
+                    "x": -6.110000133514404,
+                    "y": 1.5800000429153443,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.4000000059604645,
+            "maxArrowScale": 0.6000000238418579,
+            "arrowTransform": {
+                "position": {
+                    "x": -6.630000114440918,
+                    "y": 0.5099999904632568,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 1.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 1.0
+                }
+            }
+        },
+        {
+            "objectName": "InGameHint",
+            "text": "Get the Ball\nHere to Win!",
+            "characterSize": 0.5,
+            "fontSize": 15,
+            "textTransform": {
+                "position": {
+                    "x": 3.609999895095825,
+                    "y": 0.25,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.4000000059604645,
+            "maxArrowScale": 0.6000000238418579,
+            "arrowTransform": {
+                "position": {
+                    "x": 6.189999580383301,
+                    "y": -0.06000000238418579,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.7071068286895752,
+                    "w": 0.7071068286895752
+                },
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5,
+                    "z": 1.0
+                }
+            }
+        }
+    ],
     "gumballMachineTransform": {
         "position": {
             "x": -9.039999961853028,
@@ -208,8 +298,12 @@
         }
     },
     "placeableScrapLimit": 24.0,
+    "shouldHaveHint": false,
+    "hintText": "",
     "starConditions": {
+        "shouldUseTimeConstraint": false,
         "timeConstraint": 10.0,
+        "shouldUseScrapConstraint": false,
         "scrapConstraint": 0.0
     }
 }

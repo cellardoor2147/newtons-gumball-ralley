@@ -11,6 +11,8 @@ TagManager:
   - Debris
   - Destructible
   - MainDestructible
+  - EnvironmentBlock
+  - GumballMachine
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - Destructible
   - Debris
   - Ball
-  - 
+  - InGameHint
   - 
   - 
   - 
