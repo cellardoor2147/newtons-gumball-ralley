@@ -234,17 +234,18 @@ namespace GUI.Dialogue
              
         private IEnumerator TypeDialogueBoxContent(Line line)
         {
+            string content;
             if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
             {
-                line.content = line.englishContent;
+                content = line.englishContent;
             }
             else
             {
-                line.content = line.spanishContent;
+                content = line.spanishContent;
             }
             dialogueBoxContent.text = "";
             dialogueBoxFinishedTyping = false;
-            foreach (char character in line.content)
+            foreach (char character in content)
             {
                 if (shouldSkipCurrentLine)
                 {
@@ -256,7 +257,7 @@ namespace GUI.Dialogue
                 dialogueBoxContent.text += character;
             }
             dialogueBoxFinishedTyping = true;
-            dialogueBoxContent.text = line.content;
+            dialogueBoxContent.text = content;
         }
     }
 }

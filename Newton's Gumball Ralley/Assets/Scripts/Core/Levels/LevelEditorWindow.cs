@@ -17,7 +17,6 @@ namespace Core.Levels
         private float scrapConstraint;
         private float placeableScrapLimit;
         private bool shouldHaveHint;
-        private string hintText;
         private string englishHintText;
         private string spanishHintText;
 
@@ -45,7 +44,6 @@ namespace Core.Levels
                     repeatedBackgroundRows,
                     placeableScrapLimit,
                     shouldHaveHint,
-                    hintText,
                     englishHintText,
                     spanishHintText
                 );

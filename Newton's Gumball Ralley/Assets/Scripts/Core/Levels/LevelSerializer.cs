@@ -55,7 +55,6 @@ namespace Core.Levels
         public SerializableTransform gumballMachineTransform;
         public float placeableScrapLimit;
         public bool shouldHaveHint;
-        public string hintText;
         public string englishHintText;
         public string spanishHintText;
         public StarConditions starConditions;
@@ -88,7 +87,6 @@ namespace Core.Levels
             int repeatedBackgroundRows,
             float placeableScrapLimit,
             bool shouldHaveHint,
-            string hintText,
             string englishHintText,
             string spanishHintText)
         {
@@ -105,7 +103,6 @@ namespace Core.Levels
             levelData.starConditions.scrapConstraint = scrapConstraint;
             levelData.placeableScrapLimit = placeableScrapLimit;
             levelData.shouldHaveHint = shouldHaveHint;
-            levelData.hintText = hintText;
             levelData.englishHintText = englishHintText;
             levelData.spanishHintText = spanishHintText;
             string serializedLevelData = JsonUtility.ToJson(levelData, true);

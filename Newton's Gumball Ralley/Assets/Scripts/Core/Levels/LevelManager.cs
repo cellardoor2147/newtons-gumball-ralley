@@ -150,13 +150,12 @@ namespace Core.Levels
         {
             if (LocalizationSettings.SelectedLocale == LocalizationSettings.AvailableLocales.Locales[0])
             {
-                currentLevelData.hintText = currentLevelData.englishHintText;
+                return currentLevelData.englishHintText;
             }
             else
             {
-                currentLevelData.hintText = currentLevelData.spanishHintText;
+                return currentLevelData.spanishHintText;
             }
-            return currentLevelData.hintText;
         }
 
         public static bool CurrentLevelShouldHaveHint()
