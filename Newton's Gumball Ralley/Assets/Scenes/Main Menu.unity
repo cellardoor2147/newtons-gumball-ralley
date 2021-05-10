@@ -153,6 +153,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1697645898412374056, guid: fd513e4562e541241b204c72c87e7ed9,
+        type: 3}
+      propertyPath: trashClosedSprite
+      value: 
+      objectReference: {fileID: 7858980336673299937, guid: dcaa4e5ff0fc5aa4f98d8ff6625b81bc,
+        type: 3}
     - target: {fileID: 2056439620573377558, guid: fd513e4562e541241b204c72c87e7ed9,
         type: 3}
       propertyPath: m_AnchorMax.y

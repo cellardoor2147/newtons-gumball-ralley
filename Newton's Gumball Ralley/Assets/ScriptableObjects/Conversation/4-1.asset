@@ -22,22 +22,31 @@ MonoBehaviour:
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "I\u2019m so impressed! Now we can try these new levels!"
+    englishContent: "I\u2019m so impressed! Now we can try these new levels!"
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 2
     content: "Wait a second. There\u2019s something blocking the path to Jessie."
+    englishContent: "Wait a second. There\u2019s something blocking the path to Jessie."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "You\u2019re right, we might need to use a machine called a wedge to
       break the wall."
+    englishContent: "You\u2019re right, we might need to use a machine called a wedge
+      to break the wall."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: And you can use a screw to hold the handle in place.
+    englishContent: And you can use a screw to hold the handle in place.
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
@@ -46,24 +55,37 @@ MonoBehaviour:
     content: 'Great work solving that puzzle!
 
 '
+    englishContent: 'Great work solving that puzzle!
+
+'
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
     content: But why does the wedge break through the wall?
+    englishContent: But why does the wedge break through the wall?
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: 'Wedges are wide at the back and skinny and sharp at the front. '
+    englishContent: 
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: When it hits the wall, the skinny side makes a small crack that the
       wide side then forces apart.
+    englishContent: When it hits the wall, the skinny side makes a small crack that
+      the wide side then forces apart.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "That\u2019s how it can split the wall in half!"
+    englishContent: "That\u2019s how it can split the wall in half!"
+    spanishContent: 

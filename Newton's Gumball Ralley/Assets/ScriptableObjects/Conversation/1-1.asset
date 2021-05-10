@@ -23,24 +23,36 @@ MonoBehaviour:
     rightSpeakerExpression: 0
     content: "Hello! Welcome to Newton\u2019s Gumball Rally! I see you\u2019ve found
       the first gumball machine."
+    englishContent: "Hello! Welcome to Newton\u2019s Gumball Rally! I see you\u2019ve
+      found the first gumball machine."
+    spanishContent: "\xA1Hola!"
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "But that\u2019s only the first step. Now you have to get a gumball
       to our friend, Jessie. "
+    englishContent: "But that\u2019s only the first step. Now you have to get a gumball
+      to our friend, Jessie. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "Click the \u2018GO!\u2019 button on the gumball machine to get your
       gumball. Then you can pull back on the gumball and slingshot it to Jessie."
+    englishContent: "Click the \u2018GO!\u2019 button on the gumball machine to get
+      your gumball. Then you can pull back on the gumball and slingshot it to Jessie."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 3
     rightSpeakerExpression: 0
     content: "Jessie is a little far though\u2026 you might need to use an inclined
       plane to help. "
+    englishContent: "Jessie is a little far though\u2026 you might need to use an
+      inclined plane to help. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
@@ -48,37 +60,56 @@ MonoBehaviour:
     content: To find the inclined plane, press the edit button at the top of the
       screen to bring up your toolbelt. Then press the play button to go back to
       the level.
+    englishContent: To find the inclined plane, press the edit button at the top
+      of the screen to bring up your toolbelt. Then press the play button to go back
+      to the level.
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 1
     rightSpeakerExpression: 3
     content: You did it! But why do you need the inclined plane?
+    englishContent: You did it! But why do you need the inclined plane?
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 3
     content: "I\u2019m glad you asked. The inclined plane worked as a ramp, using
       force from gravity to get over the edge."
+    englishContent: "I\u2019m glad you asked. The inclined plane worked as a ramp,
+      using force from gravity to get over the edge."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 3
     content: 'Gravity is an invisible force that pulls objects together. '
+    englishContent: 'Gravity is an invisible force that pulls objects together. '
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: So gravity is what pulls us to the ground and keeps us from floating
       off into space?
+    englishContent: So gravity is what pulls us to the ground and keeps us from floating
+      off into space?
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: Exactly!
+    englishContent: Exactly!
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: Using the inclined plane to move the gumball up to Jessie helps the
       gumball push against gravity, and make it over the edge.
+    englishContent: Using the inclined plane to move the gumball up to Jessie helps
+      the gumball push against gravity, and make it over the edge.
+    spanishContent: 

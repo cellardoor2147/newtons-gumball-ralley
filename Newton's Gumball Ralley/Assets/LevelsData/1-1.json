@@ -281,8 +281,8 @@
     ],
     "gumballMachineTransform": {
         "position": {
-            "x": -9.039999961853028,
-            "y": 1.7000000476837159,
+            "x": -8.279999732971192,
+            "y": 1.6799999475479127,
             "z": 0.0
         },
         "rotation": {
@@ -300,6 +300,8 @@
     "placeableScrapLimit": 24.0,
     "shouldHaveHint": false,
     "hintText": "",
+    "englishHintText": "Hint",
+    "spanishHintText": "Insinuar",
     "starConditions": {
         "shouldUseTimeConstraint": false,
         "timeConstraint": 10.0,

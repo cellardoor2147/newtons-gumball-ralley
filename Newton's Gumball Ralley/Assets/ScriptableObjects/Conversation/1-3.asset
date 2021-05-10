@@ -23,52 +23,78 @@ MonoBehaviour:
     rightSpeakerExpression: 0
     content: "Now that you\u2019ve got the hang of it, we\u2019ll let you try this
       level without our help."
+    englishContent: "Now that you\u2019ve got the hang of it, we\u2019ll let you
+      try this level without our help."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 3
     content: "Wait, aren\u2019t you forgetting something?"
+    englishContent: "Wait, aren\u2019t you forgetting something?"
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 4
     rightSpeakerExpression: 0
     content: "Oh, right! From now on, you\u2019ll have to buy your machines using
       Scrap."
+    englishContent: "Oh, right! From now on, you\u2019ll have to buy your machines
+      using Scrap."
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "That\u2019s right. Each machine costs different amounts of Scrap. "
+    englishContent: "That\u2019s right. Each machine costs different amounts of Scrap. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "At the start of each level, you\u2019ll be given some Scrap to spend. "
+    englishContent: "At the start of each level, you\u2019ll be given some Scrap
+      to spend. "
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: "If you don\u2019t spend more than a certain amount, you\u2019ll earn
       a star at the end of the level! "
+    englishContent: "If you don\u2019t spend more than a certain amount, you\u2019ll
+      earn a star at the end of the level! "
+    spanishContent: 
   linesAtEndOfLevel:
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 0
     leftSpeakerExpression: 1
     rightSpeakerExpression: 1
     content: You did it!
+    englishContent: You did it!
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: One more thing.
+    englishContent: One more thing.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: When you click on a machine, it turns yellow because you've selected
       it.
+    englishContent: When you click on a machine, it turns yellow because you've selected
+      it.
+    spanishContent: 
   - secondDelayBetweenTypingEachChar: 0.05
     activeSpeakerDirection: 1
     leftSpeakerExpression: 0
     rightSpeakerExpression: 4
     content: If a machine is selected, press delete or backspace to delete it!
+    englishContent: If a machine is selected, press delete or backspace to delete
+      it!
+    spanishContent: 
