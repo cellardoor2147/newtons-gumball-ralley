@@ -117,6 +117,22 @@ MonoBehaviour:
     m_Localized: Wheels
     m_Metadata:
       m_Items: []
+  - m_Id: 730751106408448
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731597676339200
+    m_Localized: Producer & Artist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 731599052070912
+    m_Localized: Programming
+    m_Metadata:
+      m_Items: []
+  - m_Id: 732268785950720
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

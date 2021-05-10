@@ -6,6 +6,7 @@ using Background;
 using System.Collections;
 using Core.PlacedObjects;
 using SimpleMachine;
+using Hints;
 
 namespace Core.Levels
 {
@@ -34,6 +35,19 @@ namespace Core.Levels
     }
 
     [System.Serializable]
+    public struct SerializableInGameHint
+    {
+        public string objectName;
+        public string text;
+        public float characterSize;
+        public int fontSize;
+        public SerializableTransform textTransform;
+        public float minArrowScale;
+        public float maxArrowScale;
+        public SerializableTransform arrowTransform;
+    }
+
+    [System.Serializable]
     public struct StarConditions
     {
         public bool shouldUseTimeConstraint;
@@ -52,6 +66,7 @@ namespace Core.Levels
         public int repeatedBackgroundColumns;
         public List<SerializablePreplacedObject> environmentObjects;
         public List<SerializablePreplacedObject> preplacedObjects;
+        public List<SerializableInGameHint> inGameHints;
         public SerializableTransform gumballMachineTransform;
         public float placeableScrapLimit;
         public bool shouldHaveHint;
@@ -65,15 +80,12 @@ namespace Core.Levels
         public static readonly string WRITE_DIRECTORY_PATH =
             Path.Combine(Application.dataPath, "LevelsData");
 
-        private static readonly string MANAGERS_KEY = "Managers";
-        private static readonly string BACKGROUND_MANAGER_KEY = "Background Manager";
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
+        private static readonly string IN_GAME_HINTS_KEY = "In-Game Hints";
+        private static readonly string HINT_ARROW_KEY = "Hint Arrow";
         private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string GAME_SCENE_KEY = "Game";
-
-        private static readonly string SIMPLE_PULLEY_SCENE_KEY = "SimplePulley";
-        private static readonly string COMPOUND_PULLEY_SCENE_KEY = "CompoundPulley";
 
         public static void Serialize(
             int worldIndex,
@@ -150,6 +162,11 @@ namespace Core.Levels
                     List<SerializablePreplacedObject> preplacedObjects = GetObjectsInContainer(gameObject);
                     levelData.preplacedObjects = preplacedObjects;
                 }
+                else if (gameObject.name.Equals(IN_GAME_HINTS_KEY))
+                {
+                    List<SerializableInGameHint> inGameHints = GetInGameHints(gameObject);
+                    levelData.inGameHints = inGameHints;
+                }
                 else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
                     levelData.gumballMachineTransform = SerializeTransform(gameObject.transform);
@@ -173,6 +190,31 @@ namespace Core.Levels
             }
 
             return preplacedObjects;
+        }
+
+        private static List<SerializableInGameHint> GetInGameHints(GameObject inGameHintsContainer)
+        {
+            List<SerializableInGameHint> inGameHints = new List<SerializableInGameHint>();
+            foreach (Transform inGameHintTransform in inGameHintsContainer.transform)
+            {
+                SerializableInGameHint inGameHint = new SerializableInGameHint();
+                inGameHint.objectName = inGameHintTransform
+                    .GetComponent<PlacedObjectManager>()
+                    .metaData.objectName;
+                TextMesh textMesh = inGameHintTransform.GetComponent<TextMesh>();
+                inGameHint.text = textMesh.text;
+                inGameHint.characterSize = textMesh.characterSize;
+                inGameHint.fontSize = textMesh.fontSize;
+                inGameHint.textTransform = SerializeTransform(inGameHintTransform);
+                Transform hintArrowTransform = inGameHintTransform.Find(HINT_ARROW_KEY).transform;
+                HintArrowEffectsManager hintArrowEffectsManager =
+                    hintArrowTransform.GetComponent<HintArrowEffectsManager>();
+                inGameHint.minArrowScale = hintArrowEffectsManager.minScale;
+                inGameHint.maxArrowScale = hintArrowEffectsManager.maxScale;
+                inGameHint.arrowTransform = SerializeTransform(hintArrowTransform);
+                inGameHints.Add(inGameHint);
+            }
+            return inGameHints;
         }
 
         private static SerializableTransform SerializeTransform(Transform transform)
@@ -246,6 +288,10 @@ namespace Core.Levels
                 {
                     PopulateContainer(gameObject, levelData.preplacedObjects);
                 }
+                else if (gameObject.name.Equals(IN_GAME_HINTS_KEY))
+                {
+                    PopulateInGameHints(gameObject, levelData.inGameHints);
+                }
                 else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
                     gameObject.transform.position = levelData.gumballMachineTransform.position;
@@ -271,6 +317,36 @@ namespace Core.Levels
                 preplacedObject.transform.localScale =
                     serializedPreplacedObject.transform.scale;
                 SetPulleyState(preplacedObject, serializedPreplacedObject);
+            }
+        }
+
+        private static void PopulateInGameHints(GameObject inGameHintsContainer, List<SerializableInGameHint> inGameHints)
+        {
+            DeleteAllChildren(inGameHintsContainer);
+            foreach (SerializableInGameHint serializedInGameHint in inGameHints)
+            {
+                GameObject inGameHintPrefab =
+                    PlacedObjectPrefabDictionary.Get(serializedInGameHint.objectName);
+                GameObject inGameHintObject = Object.Instantiate(
+                    inGameHintPrefab,
+                    serializedInGameHint.textTransform.position,
+                    serializedInGameHint.textTransform.rotation,
+                    inGameHintsContainer.transform
+                );
+                inGameHintObject.transform.localScale = serializedInGameHint.textTransform.scale;
+                TextMesh textMesh = inGameHintObject.GetComponent<TextMesh>();
+                textMesh.text = serializedInGameHint.text;
+                textMesh.characterSize = serializedInGameHint.characterSize;
+                textMesh.fontSize = serializedInGameHint.fontSize;
+                Transform hintArrowObject =
+                    inGameHintObject.transform.Find(HINT_ARROW_KEY).transform;
+                hintArrowObject.position = serializedInGameHint.arrowTransform.position;
+                hintArrowObject.rotation = serializedInGameHint.arrowTransform.rotation;
+                hintArrowObject.localScale = serializedInGameHint.arrowTransform.scale;
+                HintArrowEffectsManager hintArrowEffectsManager =
+                    hintArrowObject.GetComponent<HintArrowEffectsManager>();
+                hintArrowEffectsManager.SetMinScaleVector(serializedInGameHint.minArrowScale);
+                hintArrowEffectsManager.SetMaxScaleVector(serializedInGameHint.maxArrowScale);
             }
         }
 
