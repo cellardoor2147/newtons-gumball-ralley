@@ -45,6 +45,7 @@ namespace Core.Levels
         public float minArrowScale;
         public float maxArrowScale;
         public SerializableTransform arrowTransform;
+        public float arrowLifetimeDelay;
         public bool outlineIsFlipped;
         public string outlineHintName;
         public int outlineHintOrder;
@@ -209,6 +210,7 @@ namespace Core.Levels
                     hint.minArrowScale = hintEffectsManager.minScale;
                     hint.maxArrowScale = hintEffectsManager.maxScale;
                     hint.arrowTransform = SerializeTransform(hintArrowTransform);
+                    hint.arrowLifetimeDelay = hintEffectsManager.lifetimeDelay;
                 }
                 else
                 {
@@ -353,6 +355,7 @@ namespace Core.Levels
                         arrowTransform.GetComponent<HintArrowEffectsManager>();
                     hintArrowEffectsManager.SetMinScaleVector(serializedHint.minArrowScale);
                     hintArrowEffectsManager.SetMaxScaleVector(serializedHint.maxArrowScale);
+                    hintArrowEffectsManager.lifetimeDelay = serializedHint.arrowLifetimeDelay;
                 }
                 else
                 {

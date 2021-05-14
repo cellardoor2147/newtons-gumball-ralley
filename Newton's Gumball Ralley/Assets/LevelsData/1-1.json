@@ -234,8 +234,10 @@
                     "z": 1.0
                 }
             },
+            "arrowLifetimeDelay": 10.0,
             "outlineIsFlipped": false,
-            "outlineHintName": ""
+            "outlineHintName": "",
+            "outlineHintOrder": 0
         },
         {
             "objectName": "ArrowHint",
@@ -281,8 +283,10 @@
                     "z": 1.0
                 }
             },
+            "arrowLifetimeDelay": 5.0,
             "outlineIsFlipped": false,
-            "outlineHintName": ""
+            "outlineHintName": "",
+            "outlineHintOrder": 0
         },
         {
             "objectName": "OutlineHint",
@@ -328,8 +332,10 @@
                     "z": 0.0
                 }
             },
+            "arrowLifetimeDelay": 0.0,
             "outlineIsFlipped": true,
-            "outlineHintName": "InclinedPlanesHint_2"
+            "outlineHintName": "InclinedPlanesHint_2",
+            "outlineHintOrder": 0
         }
     ],
     "gumballMachineTransform": {
@@ -351,8 +357,6 @@
         }
     },
     "placeableScrapLimit": 24.0,
-    "shouldHaveHint": true,
-    "hintText": "another test",
     "starConditions": {
         "shouldUseTimeConstraint": false,
         "timeConstraint": 0.0,
