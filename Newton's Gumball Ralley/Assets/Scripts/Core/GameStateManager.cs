@@ -298,7 +298,7 @@ namespace Core
             RepairDestructibleObjects(ENVIRONMENT_KEY);
             ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
             SetHintVisibility(instance.arrowHintMetaData, false);
-            SetHintVisibility(instance.outlineHintMetaData, true);
+            SetHintVisibility(instance.outlineHintMetaData, false);
             Physics2D.gravity = Vector2.zero;
         }
 

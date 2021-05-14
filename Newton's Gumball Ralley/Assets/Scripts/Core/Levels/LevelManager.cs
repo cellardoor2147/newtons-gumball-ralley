@@ -130,7 +130,6 @@ namespace Core.Levels
                 GameStateManager.StartStaticCoroutine(EditModeManager.AsyncToggleButtonsBasedOnCurrentLevel());
                 GameStateManager.StartStaticCoroutine(EditModeManager.DisableTabs());
             }
-
         }
 
         public static int GetCurrentWorldIndex()
