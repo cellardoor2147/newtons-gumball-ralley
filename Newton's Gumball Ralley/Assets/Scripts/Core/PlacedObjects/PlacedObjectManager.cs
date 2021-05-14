@@ -101,10 +101,6 @@ namespace Core.PlacedObjects
 
         public static GameObject Get(string key)
         {
-            if (!dictionary.ContainsKey(key))
-            {
-                Debug.Log(key);
-            }
             return dictionary[key];
         }
     }
