@@ -189,16 +189,17 @@
         }
     ],
     "preplacedObjects": [],
-    "inGameHints": [
+    "hints": [
         {
-            "objectName": "InGameHint",
-            "text": "Click 'GO!'\nto Start!",
-            "characterSize": 0.5,
-            "fontSize": 15,
+            "objectName": "ArrowHint",
+            "text": "Get the gumball\nhere to win!",
+            "characterSize": 0.30000001192092898,
+            "fontSize": 40,
+            "isArrow": true,
             "textTransform": {
                 "position": {
-                    "x": -6.110000133514404,
-                    "y": 1.5800000429153443,
+                    "x": 6.53000020980835,
+                    "y": 0.6299999952316284,
                     "z": 0.0
                 },
                 "rotation": {
@@ -217,8 +218,8 @@
             "maxArrowScale": 0.6000000238418579,
             "arrowTransform": {
                 "position": {
-                    "x": -6.630000114440918,
-                    "y": 0.5099999904632568,
+                    "x": 8.09000015258789,
+                    "y": -1.399999976158142,
                     "z": 0.0
                 },
                 "rotation": {
@@ -228,21 +229,24 @@
                     "w": 0.0
                 },
                 "scale": {
-                    "x": 0.5,
-                    "y": 0.5,
+                    "x": 1.0,
+                    "y": 1.0,
                     "z": 1.0
                 }
-            }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": ""
         },
         {
-            "objectName": "InGameHint",
-            "text": "Get the Ball\nHere to Win!",
-            "characterSize": 0.5,
-            "fontSize": 15,
+            "objectName": "ArrowHint",
+            "text": "Press 'GO' and\nslingshot the \ngumball to start",
+            "characterSize": 0.30000001192092898,
+            "fontSize": 40,
+            "isArrow": true,
             "textTransform": {
                 "position": {
-                    "x": 3.609999895095825,
-                    "y": 0.25,
+                    "x": -3.819999933242798,
+                    "y": 3.319999933242798,
                     "z": 0.0
                 },
                 "rotation": {
@@ -261,22 +265,71 @@
             "maxArrowScale": 0.6000000238418579,
             "arrowTransform": {
                 "position": {
-                    "x": 6.189999580383301,
-                    "y": -0.06000000238418579,
+                    "x": -6.840000152587891,
+                    "y": 0.7799999713897705,
                     "z": 0.0
                 },
                 "rotation": {
                     "x": 0.0,
                     "y": 0.0,
-                    "z": -0.7071068286895752,
-                    "w": 0.7071068286895752
+                    "z": 1.0,
+                    "w": 0.0
                 },
                 "scale": {
-                    "x": 0.5,
-                    "y": 0.5,
+                    "x": 1.0,
+                    "y": 1.0,
                     "z": 1.0
                 }
-            }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": ""
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 3.990000009536743,
+                    "y": -3.319999933242798,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": true,
+            "outlineHintName": "InclinedPlanesHint_2"
         }
     ],
     "gumballMachineTransform": {
@@ -298,11 +351,11 @@
         }
     },
     "placeableScrapLimit": 24.0,
-    "shouldHaveHint": false,
-    "hintText": "",
+    "shouldHaveHint": true,
+    "hintText": "another test",
     "starConditions": {
         "shouldUseTimeConstraint": false,
-        "timeConstraint": 10.0,
+        "timeConstraint": 0.0,
         "shouldUseScrapConstraint": false,
         "scrapConstraint": 0.0
     }

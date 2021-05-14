@@ -16,7 +16,7 @@ namespace Core.PlacedObjects
         {
             if (!metaData.objectName.Contains("Pulley")
                 && !metaData.objectName.Equals("LeverWeightContraption")
-                && !metaData.objectName.Equals("InGameHint"))
+                && !metaData.objectName.Equals("ArrowHint"))
             {
                 spriteRenderer = GetComponent<SpriteRenderer>();
                 defaultColor = spriteRenderer.color;
@@ -101,7 +101,34 @@ namespace Core.PlacedObjects
 
         public static GameObject Get(string key)
         {
+            if (!dictionary.ContainsKey(key))
+            {
+                Debug.Log(key);
+            }
             return dictionary[key];
+        }
+    }
+
+    public static class OutlineHintSpriteDictionary
+    {
+        private static Dictionary<string, Sprite> dictionary;
+        private readonly static string RESOURCES_PATH = "OutlineHintSprites";
+
+        static OutlineHintSpriteDictionary()
+        {
+            dictionary = new Dictionary<string, Sprite>();
+            foreach (
+                Sprite outlineSprite in
+                Resources.LoadAll<Sprite>(RESOURCES_PATH)
+            )
+            {
+                dictionary.Add(outlineSprite.name, outlineSprite);
+            }
+        }
+
+        public static Sprite GetSpriteByName(string spriteName)
+        {
+            return dictionary[spriteName];
         }
     }
 }

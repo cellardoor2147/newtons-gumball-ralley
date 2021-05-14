@@ -34,6 +34,7 @@ namespace Core
         public static readonly string PLACED_OBJECTS_KEY = "Placed Objects";
         public static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
         public static readonly string ENVIRONMENT_KEY = "Environment";
+        public static readonly string HINTS_KEY = "Hints";
 
         private readonly static string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private readonly static string MAIN_MENU_SCENE_KEY = "Main Menu";
@@ -53,6 +54,8 @@ namespace Core
         [SerializeField] PlacedObjectMetaData gear1MetaData;
         [SerializeField] PlacedObjectMetaData screwMetaData;
         [SerializeField] PlacedObjectMetaData wheelMetaData;
+        [SerializeField] PlacedObjectMetaData arrowHintMetaData;
+        [SerializeField] PlacedObjectMetaData outlineHintMetaData;
 
         [SerializeField] private Sprite gumballSprite;
 
@@ -142,6 +145,7 @@ namespace Core
                     instance.StartCoroutine(CameraMovement.AsyncZoomOutForDialogue());
                     instance.StartCoroutine(AsyncSetGumballVisibility(false));
                     instance.StartCoroutine(GUIManager.AsyncSetActiveGUI(GUIType.Dialogue));
+                    instance.StartCoroutine(ResetSceneForDialogue());
                     break;
                 case GameState.Playing:
                     Time.timeScale = 1.0f;
@@ -250,6 +254,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(HINTS_KEY) != null);
             SetGumballGoButtonVisibility(true);
             TetherObjectsToPlacedScrews(PLACED_OBJECTS_KEY);
             TetherObjectsToPlacedScrews(PREPLACED_OBJECTS_KEY);
@@ -257,6 +262,8 @@ namespace Core
             UnfreezeObjectsRigidbodies(PREPLACED_OBJECTS_KEY);
             RevertObjectsFromGray(PREPLACED_OBJECTS_KEY);
             RemoveAllRotationArrows(PLACED_OBJECTS_KEY);
+            SetHintVisibility(instance.arrowHintMetaData, true);
+            SetHintVisibility(instance.outlineHintMetaData, false);
             Physics2D.gravity = instance.defaultGravity;
         }
 
@@ -274,6 +281,7 @@ namespace Core
             yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
             yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(HINTS_KEY) != null);
             UntetherObjectsFromPlacedScrews(PLACED_OBJECTS_KEY);
             UntetherObjectsFromPlacedScrews(PREPLACED_OBJECTS_KEY);
             SetGumballGoButtonVisibility(false);
@@ -289,7 +297,19 @@ namespace Core
             DestroyDebris(ENVIRONMENT_KEY);
             RepairDestructibleObjects(ENVIRONMENT_KEY);
             ResetDestructibleObjectLayer(ENVIRONMENT_KEY);
+            SetHintVisibility(instance.arrowHintMetaData, false);
+            SetHintVisibility(instance.outlineHintMetaData, true);
             Physics2D.gravity = Vector2.zero;
+        }
+
+        private static IEnumerator ResetSceneForDialogue()
+        {
+            yield return new WaitUntil(() => GameObject.Find(PLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(PREPLACED_OBJECTS_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(ENVIRONMENT_KEY) != null);
+            yield return new WaitUntil(() => GameObject.Find(HINTS_KEY) != null);
+            SetHintVisibility(instance.arrowHintMetaData, false);
+            SetHintVisibility(instance.outlineHintMetaData, false);
         }
 
         private static IEnumerator AsyncSetGumballVisibility(bool isVisible)
@@ -592,6 +612,17 @@ namespace Core
         public static Sprite GetGumballSprite()
         {
             return instance.gumballSprite;
+        }
+
+        private static void SetHintVisibility(PlacedObjectMetaData hintMetaData, bool isVisible)
+        {
+            foreach (Transform child in GameObject.Find(HINTS_KEY).transform)
+            {
+                if (child.GetComponent<PlacedObjectManager>().metaData.Equals(hintMetaData))
+                {
+                    child.gameObject.SetActive(isVisible);
+                }
+            }
         }
 
         private void Update()

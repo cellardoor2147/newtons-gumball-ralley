@@ -41,9 +41,7 @@ namespace Core.Levels
                     scrapConstraint,
                     repeatedBackgroundColumns,
                     repeatedBackgroundRows,
-                    placeableScrapLimit,
-                    shouldHaveHint,
-                    hintText
+                    placeableScrapLimit
                 );
             }
             if (GUILayout.Button("Load Level"))
@@ -66,8 +64,6 @@ namespace Core.Levels
                 shouldUseScrapConstraint = levelData.starConditions.shouldUseScrapConstraint;
                 scrapConstraint = levelData.starConditions.scrapConstraint;
                 placeableScrapLimit = levelData.placeableScrapLimit;
-                shouldHaveHint = levelData.shouldHaveHint;
-                hintText = levelData.hintText;
             }
 
             GUILayout.BeginArea(new Rect(0, 45, position.width, 60));
@@ -101,13 +97,6 @@ namespace Core.Levels
             GUILayout.Label("Scrap Limit", EditorStyles.boldLabel);
             placeableScrapLimit =
                 EditorGUI.FloatField(new Rect(0, 15, position.width, 15), "Scrap Limit", placeableScrapLimit);
-            GUILayout.EndArea();
-            GUILayout.BeginArea(new Rect(0, 305, position.width, 80));
-            GUILayout.Label("Hint", EditorStyles.boldLabel);
-            shouldHaveHint =
-                EditorGUI.Toggle(new Rect(0, 15, position.width, 15), "Should Have Hint", shouldHaveHint);
-            hintText =
-                EditorGUI.TextField(new Rect(0, 30, position.width, 45), "Hint Text", hintText);
             GUILayout.EndArea();
             GUILayout.BeginArea(new Rect(0, 400, position.width, 1000));
             GUILayout.Label("How To Use", EditorStyles.boldLabel);
