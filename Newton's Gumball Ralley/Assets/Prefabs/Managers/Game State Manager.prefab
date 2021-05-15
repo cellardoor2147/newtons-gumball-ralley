@@ -50,11 +50,12 @@ MonoBehaviour:
   DialogueMusicSound: {fileID: 11400000, guid: 7fab56f8fa53f4b82af6aa461328dcf9, type: 2}
   LevelCompleteSound: {fileID: 11400000, guid: c1c43e2fd25d84d9faef4daa2907d396, type: 2}
   BallRollingSound: {fileID: 11400000, guid: 5b19837bd08884f39b0fde5f5234a6b2, type: 2}
-  gearBackgroundMetaData: {fileID: 11400000, guid: 1c681e9e6539945e89c0458371f570cf,
-    type: 2}
   axleMetaData: {fileID: 11400000, guid: 2699ab06bb5e34bf59fcefaf2bf9572b, type: 2}
   gear1MetaData: {fileID: 11400000, guid: ac9d57978cb61419ea64680cd9a4734a, type: 2}
   screwMetaData: {fileID: 11400000, guid: a060d4b5ca3f6a74eb82eceb500a2177, type: 2}
   wheelMetaData: {fileID: 11400000, guid: 170248ffd03b6434f8545a1d8866b543, type: 2}
+  arrowHintMetaData: {fileID: 11400000, guid: c908178a8bb430643bcf16216b298e88, type: 2}
+  outlineHintMetaData: {fileID: 11400000, guid: 7d774b8b000db434f9e319593c060b83,
+    type: 2}
   gumballSprite: {fileID: -2290193954979453500, guid: f53430bdc296f984e804605fb0621209,
     type: 3}

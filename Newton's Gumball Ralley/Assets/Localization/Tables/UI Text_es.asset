@@ -135,6 +135,10 @@ MonoBehaviour:
     m_Localized: "M\xFAsica"
     m_Metadata:
       m_Items: []
+  - m_Id: 736272739852288
+    m_Localized: Escritura
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

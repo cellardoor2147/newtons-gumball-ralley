@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8671119144336076125}
   - component: {fileID: 255211551765422702}
   m_Layer: 0
-  m_Name: In-Game Hint
+  m_Name: Arrow Hint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,6 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Background;
 using System.Collections;
 using Core.PlacedObjects;
 using SimpleMachine;
@@ -35,16 +34,21 @@ namespace Core.Levels
     }
 
     [System.Serializable]
-    public struct SerializableInGameHint
+    public struct SerializableHint
     {
         public string objectName;
         public string text;
         public float characterSize;
         public int fontSize;
+        public bool isArrow;
         public SerializableTransform textTransform;
         public float minArrowScale;
         public float maxArrowScale;
         public SerializableTransform arrowTransform;
+        public float arrowLifetimeDelay;
+        public bool outlineIsFlipped;
+        public string outlineHintName;
+        public int outlineHintOrder;
     }
 
     [System.Serializable]
@@ -66,11 +70,9 @@ namespace Core.Levels
         public int repeatedBackgroundColumns;
         public List<SerializablePreplacedObject> environmentObjects;
         public List<SerializablePreplacedObject> preplacedObjects;
-        public List<SerializableInGameHint> inGameHints;
+        public List<SerializableHint> hints;
         public SerializableTransform gumballMachineTransform;
         public float placeableScrapLimit;
-        public bool shouldHaveHint;
-        public string hintText;
         public StarConditions starConditions;
     }
 
@@ -81,7 +83,7 @@ namespace Core.Levels
 
         private static readonly string ENVIRONMENT_KEY = "Environment";
         private static readonly string PREPLACED_OBJECTS_KEY = "Preplaced Objects";
-        private static readonly string IN_GAME_HINTS_KEY = "In-Game Hints";
+        private static readonly string HINTS_KEY = "Hints";
         private static readonly string HINT_ARROW_KEY = "Hint Arrow";
         private static readonly string GUMBALL_MACHINE_KEY = "Gumball Machine";
         private static readonly string GAME_SCENE_KEY = "Game";
@@ -96,9 +98,7 @@ namespace Core.Levels
             float scrapConstraint,
             int repeatedBackgroundColumns,
             int repeatedBackgroundRows,
-            float placeableScrapLimit,
-            bool shouldHaveHint,
-            string hintText
+            float placeableScrapLimit
         )
         {
             LevelData levelData = GetLevelData(
@@ -113,8 +113,6 @@ namespace Core.Levels
             levelData.starConditions.shouldUseScrapConstraint = shouldUseScrapConstraint;
             levelData.starConditions.scrapConstraint = scrapConstraint;
             levelData.placeableScrapLimit = placeableScrapLimit;
-            levelData.shouldHaveHint = shouldHaveHint;
-            levelData.hintText = hintText;
             string serializedLevelData = JsonUtility.ToJson(levelData, true);
             string writeFilePath = WRITE_DIRECTORY_PATH;
             if (customLevelName.Equals(""))
@@ -160,10 +158,10 @@ namespace Core.Levels
                     List<SerializablePreplacedObject> preplacedObjects = GetObjectsInContainer(gameObject);
                     levelData.preplacedObjects = preplacedObjects;
                 }
-                else if (gameObject.name.Equals(IN_GAME_HINTS_KEY))
+                else if (gameObject.name.Equals(HINTS_KEY))
                 {
-                    List<SerializableInGameHint> inGameHints = GetInGameHints(gameObject);
-                    levelData.inGameHints = inGameHints;
+                    List<SerializableHint> hints = GetHints(gameObject);
+                    levelData.hints = hints;
                 }
                 else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
@@ -190,29 +188,40 @@ namespace Core.Levels
             return preplacedObjects;
         }
 
-        private static List<SerializableInGameHint> GetInGameHints(GameObject inGameHintsContainer)
+        private static List<SerializableHint> GetHints(GameObject hintsContainer)
         {
-            List<SerializableInGameHint> inGameHints = new List<SerializableInGameHint>();
-            foreach (Transform inGameHintTransform in inGameHintsContainer.transform)
+            List<SerializableHint> hints = new List<SerializableHint>();
+            foreach (Transform hintTransform in hintsContainer.transform)
             {
-                SerializableInGameHint inGameHint = new SerializableInGameHint();
-                inGameHint.objectName = inGameHintTransform
-                    .GetComponent<PlacedObjectManager>()
-                    .metaData.objectName;
-                TextMesh textMesh = inGameHintTransform.GetComponent<TextMesh>();
-                inGameHint.text = textMesh.text;
-                inGameHint.characterSize = textMesh.characterSize;
-                inGameHint.fontSize = textMesh.fontSize;
-                inGameHint.textTransform = SerializeTransform(inGameHintTransform);
-                Transform hintArrowTransform = inGameHintTransform.Find(HINT_ARROW_KEY).transform;
-                HintArrowEffectsManager hintArrowEffectsManager =
-                    hintArrowTransform.GetComponent<HintArrowEffectsManager>();
-                inGameHint.minArrowScale = hintArrowEffectsManager.minScale;
-                inGameHint.maxArrowScale = hintArrowEffectsManager.maxScale;
-                inGameHint.arrowTransform = SerializeTransform(hintArrowTransform);
-                inGameHints.Add(inGameHint);
+                SerializableHint hint = new SerializableHint();
+                TextMesh textMesh = hintTransform.GetComponent<TextMesh>();
+                bool isArrow = hintTransform.GetComponent<TextMesh>() != null;
+                hint.isArrow = isArrow;
+                hint.objectName = hintTransform.GetComponent<PlacedObjectManager>().metaData.objectName;
+                hint.textTransform = SerializeTransform(hintTransform);
+                if (isArrow)
+                {
+                    hint.text = textMesh.text;
+                    hint.characterSize = textMesh.characterSize;
+                    hint.fontSize = textMesh.fontSize;
+                    Transform hintArrowTransform = hintTransform.Find(HINT_ARROW_KEY).transform;
+                    HintArrowEffectsManager hintEffectsManager =
+                        hintArrowTransform.GetComponent<HintArrowEffectsManager>();
+                    hint.minArrowScale = hintEffectsManager.minScale;
+                    hint.maxArrowScale = hintEffectsManager.maxScale;
+                    hint.arrowTransform = SerializeTransform(hintArrowTransform);
+                    hint.arrowLifetimeDelay = hintEffectsManager.lifetimeDelay;
+                }
+                else
+                {
+                    SpriteRenderer spriteRenderer = hintTransform.GetComponent<SpriteRenderer>();
+                    hint.outlineIsFlipped = spriteRenderer.flipX; 
+                    hint.outlineHintName = spriteRenderer.sprite.name;
+                    hint.outlineHintOrder = hintTransform.GetComponent<OutlineHintOrderTracker>().order;
+                }
+                hints.Add(hint);
             }
-            return inGameHints;
+            return hints;
         }
 
         private static SerializableTransform SerializeTransform(Transform transform)
@@ -286,9 +295,9 @@ namespace Core.Levels
                 {
                     PopulateContainer(gameObject, levelData.preplacedObjects);
                 }
-                else if (gameObject.name.Equals(IN_GAME_HINTS_KEY))
+                else if (gameObject.name.Equals(HINTS_KEY))
                 {
-                    PopulateInGameHints(gameObject, levelData.inGameHints);
+                    PopulateHints(gameObject, levelData.hints);
                 }
                 else if (gameObject.name.Equals(GUMBALL_MACHINE_KEY))
                 {
@@ -318,33 +327,46 @@ namespace Core.Levels
             }
         }
 
-        private static void PopulateInGameHints(GameObject inGameHintsContainer, List<SerializableInGameHint> inGameHints)
+        private static void PopulateHints(GameObject hintsContainer, List<SerializableHint> hints)
         {
-            DeleteAllChildren(inGameHintsContainer);
-            foreach (SerializableInGameHint serializedInGameHint in inGameHints)
+            DeleteAllChildren(hintsContainer);
+            foreach (SerializableHint serializedHint in hints)
             {
-                GameObject inGameHintPrefab =
-                    PlacedObjectPrefabDictionary.Get(serializedInGameHint.objectName);
-                GameObject inGameHintObject = Object.Instantiate(
-                    inGameHintPrefab,
-                    serializedInGameHint.textTransform.position,
-                    serializedInGameHint.textTransform.rotation,
-                    inGameHintsContainer.transform
+                GameObject hintPrefab = PlacedObjectPrefabDictionary.Get(serializedHint.objectName);
+                GameObject hintObject = Object.Instantiate(
+                    hintPrefab,
+                    serializedHint.textTransform.position,
+                    serializedHint.textTransform.rotation,
+                    hintsContainer.transform
                 );
-                inGameHintObject.transform.localScale = serializedInGameHint.textTransform.scale;
-                TextMesh textMesh = inGameHintObject.GetComponent<TextMesh>();
-                textMesh.text = serializedInGameHint.text;
-                textMesh.characterSize = serializedInGameHint.characterSize;
-                textMesh.fontSize = serializedInGameHint.fontSize;
-                Transform hintArrowObject =
-                    inGameHintObject.transform.Find(HINT_ARROW_KEY).transform;
-                hintArrowObject.position = serializedInGameHint.arrowTransform.position;
-                hintArrowObject.rotation = serializedInGameHint.arrowTransform.rotation;
-                hintArrowObject.localScale = serializedInGameHint.arrowTransform.scale;
-                HintArrowEffectsManager hintArrowEffectsManager =
-                    hintArrowObject.GetComponent<HintArrowEffectsManager>();
-                hintArrowEffectsManager.SetMinScaleVector(serializedInGameHint.minArrowScale);
-                hintArrowEffectsManager.SetMaxScaleVector(serializedInGameHint.maxArrowScale);
+                hintObject.transform.localScale = serializedHint.textTransform.scale;
+                if (serializedHint.isArrow)
+                {
+                    TextMesh textMesh = hintObject.GetComponent<TextMesh>();
+                    textMesh.text = serializedHint.text;
+                    textMesh.characterSize = serializedHint.characterSize;
+                    textMesh.fontSize = serializedHint.fontSize;
+                    Transform arrowTransform =
+                        hintObject.transform.Find(HINT_ARROW_KEY).transform;
+                    arrowTransform.position = serializedHint.arrowTransform.position;
+                    arrowTransform.rotation = serializedHint.arrowTransform.rotation;
+                    arrowTransform.localScale = serializedHint.arrowTransform.scale;
+                    HintArrowEffectsManager hintArrowEffectsManager =
+                        arrowTransform.GetComponent<HintArrowEffectsManager>();
+                    hintArrowEffectsManager.SetMinScaleVector(serializedHint.minArrowScale);
+                    hintArrowEffectsManager.SetMaxScaleVector(serializedHint.maxArrowScale);
+                    hintArrowEffectsManager.lifetimeDelay = serializedHint.arrowLifetimeDelay;
+                }
+                else
+                {
+                    SpriteRenderer spiteRenderer = hintObject.GetComponent<SpriteRenderer>();
+                    spiteRenderer.sprite =
+                        OutlineHintSpriteDictionary.GetSpriteByName(serializedHint.outlineHintName);
+                    spiteRenderer.flipX = serializedHint.outlineIsFlipped;
+                    OutlineHintOrderTracker orderTracker =
+                        hintObject.GetComponent<OutlineHintOrderTracker>();
+                    orderTracker.order = serializedHint.outlineHintOrder;
+                }
             }
         }
 

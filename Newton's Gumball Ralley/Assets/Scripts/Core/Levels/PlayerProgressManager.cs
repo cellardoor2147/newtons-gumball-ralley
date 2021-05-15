@@ -154,7 +154,7 @@ namespace Core.Levels
                 levelProgress => levelProgress.worldIndex == previousWorldIndex
                                  && levelProgress.levelIndex == previousLevelIndex
             );
-            return previousLevelProgress.bestStarsEarned > 0;
+            return true;//previousLevelProgress.bestStarsEarned > 0;
         }
     }
 }

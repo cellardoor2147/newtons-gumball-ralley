@@ -319,6 +319,104 @@
         }
     ],
     "preplacedObjects": [],
+    "hints": [
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 6.820000171661377,
+                    "y": 2.5399999618530275,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": true,
+            "outlineHintName": "AxeHint",
+            "outlineHintOrder": 0
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 7.079999923706055,
+                    "y": 1.7400000095367432,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 1.0
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": true,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 1
+        }
+    ],
     "gumballMachineTransform": {
         "position": {
             "x": -4.730000019073486,
@@ -339,7 +437,9 @@
     },
     "placeableScrapLimit": 12.0,
     "starConditions": {
+        "shouldUseTimeConstraint": false,
         "timeConstraint": 0.0,
+        "shouldUseScrapConstraint": false,
         "scrapConstraint": 0.0
     }
 }

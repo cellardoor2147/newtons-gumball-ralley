@@ -397,6 +397,440 @@
         }
     ],
     "preplacedObjects": [],
+    "hints": [
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 3.0,
+                    "y": -3.7899999618530275,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "InclinedPlanesHint_1",
+            "outlineHintOrder": 0
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 5.769999980926514,
+                    "y": -4.840000152587891,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "InclinedPlanesHint_1",
+            "outlineHintOrder": 3
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 8.380000114440918,
+                    "y": -5.909999847412109,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "InclinedPlanesHint_1",
+            "outlineHintOrder": 6
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 2.316999912261963,
+                    "y": -3.623000144958496,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 1
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 3.7230000495910646,
+                    "y": -3.9800000190734865,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 2
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 4.99399995803833,
+                    "y": -4.619999885559082,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 4
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 6.400000095367432,
+                    "y": -4.976999759674072,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 5
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 9.031000137329102,
+                    "y": -6.074999809265137,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 8
+        },
+        {
+            "objectName": "OutlineHint",
+            "text": "",
+            "characterSize": 0.0,
+            "fontSize": 0,
+            "isArrow": false,
+            "textTransform": {
+                "position": {
+                    "x": 7.625,
+                    "y": -5.7179999351501469,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": -0.13052624464035035,
+                    "w": 0.9914448857307434
+                },
+                "scale": {
+                    "x": 0.20000000298023225,
+                    "y": 0.20000000298023225,
+                    "z": 1.0
+                }
+            },
+            "minArrowScale": 0.0,
+            "maxArrowScale": 0.0,
+            "arrowTransform": {
+                "position": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                },
+                "rotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0,
+                    "w": 0.0
+                },
+                "scale": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                }
+            },
+            "outlineIsFlipped": false,
+            "outlineHintName": "ScrewHint",
+            "outlineHintOrder": 7
+        }
+    ],
     "gumballMachineTransform": {
         "position": {
             "x": -6.409999847412109,
@@ -417,7 +851,9 @@
     },
     "placeableScrapLimit": 57.0,
     "starConditions": {
+        "shouldUseTimeConstraint": false,
         "timeConstraint": 0.0,
+        "shouldUseScrapConstraint": false,
         "scrapConstraint": 0.0
     }
 }
