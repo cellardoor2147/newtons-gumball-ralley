@@ -42,7 +42,7 @@ namespace GUI.EditMode
         private void Update()
         {
             scrapConstraintText.text = $"Have {LevelManager.GetCurrentLevelScrapConstraint()}"
-                + "scrap left to get a star!";
+                + " scrap left to get a star!";
         }
     }
 }
