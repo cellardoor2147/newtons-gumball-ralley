@@ -24,13 +24,9 @@ namespace GUI.LevelCompletedPopup
 
         private Image levelBeatStarImage;
         private Image timeStarImage;
-        private TextMeshProUGUI timeStarText;
-        [SerializeField] private LocalizeStringEvent timeStringRef;
-        public string timeConstraint;
         private Image scrapStarImage;
+        private TextMeshProUGUI timeStarText;
         private TextMeshProUGUI scrapStarText;
-        [SerializeField] private LocalizeStringEvent scrapStringRef;
-        public string scrapConstraint;
 
 
         private void Awake()
@@ -69,8 +65,6 @@ namespace GUI.LevelCompletedPopup
             ToggleStarsBasedOnCurrentLevelConstraints();
             StartCoroutine(RecordProgressWhenLevelComplete());
             StartCoroutine(DisplayAchievedStars());
-            timeStringRef.StringReference.RefreshString();
-            scrapStringRef.StringReference.RefreshString();
         }
 
         private void ToggleStarsBasedOnCurrentLevelConstraints()
@@ -79,8 +73,7 @@ namespace GUI.LevelCompletedPopup
             if (LevelManager.CurrentLevelShouldUseTimeConstraint())
             {
                 timeStarImage.transform.parent.gameObject.SetActive(true);
-                timeConstraint = LevelManager.GetCurrentLevelTimeConstraint().ToString();
-                timeStringRef.StringReference.RefreshString();
+                timeStarText.text = $"Under {LevelManager.GetCurrentLevelTimeConstraint()}";
                 timeStarImage.color = Color.black;
             }
             else
@@ -90,8 +83,8 @@ namespace GUI.LevelCompletedPopup
             if (LevelManager.CurrentLevelShouldUseScrapConstraint())
             {
                 scrapStarImage.transform.parent.gameObject.SetActive(true);
-                scrapConstraint = LevelManager.GetCurrentLevelScrapConstraint().ToString();
-                scrapStringRef.StringReference.RefreshString();
+                timeStarText.text =
+                    $"Over {LevelManager.GetCurrentLevelTimeConstraint()} remaining scrap";
                 scrapStarImage.color = Color.black;
             }
             else

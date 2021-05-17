@@ -14,15 +14,11 @@ namespace GUI.EditMode
 
         public static float ScrapRemaining { get; private set; }
         private static TextMeshProUGUI scrapRemainingText;
-        [SerializeField] private LocalizeStringEvent stringRef;
-
-        public string scrapRemainingString;
 
         private void Awake()
         {
             ScrapRemaining = LevelManager.GetCurrentLevelScrapAllotted();
             scrapRemainingText = GetComponent<TextMeshProUGUI>();
-            scrapRemainingText.text = ScrapRemaining.ToString();
         }
 
         private void OnEnable()
@@ -45,13 +41,11 @@ namespace GUI.EditMode
                     .color = Color.white;
                 scrapRemainingText.color = Color.black;
             }
-            stringRef.StringReference.RefreshString();
         }
 
         private void Update()
         {
-            scrapRemainingString = ScrapRemaining.ToString();
-            stringRef.StringReference.RefreshString();
+            scrapRemainingText.text = $"Scrap\n{Mathf.Ceil(ScrapRemaining)}";
         }
 
         public static void ChangeScrapRemaining(float value)
