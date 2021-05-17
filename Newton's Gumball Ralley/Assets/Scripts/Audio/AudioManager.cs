@@ -14,10 +14,18 @@ namespace Audio {
             source.loop = MetaData.loop;
         }
 
-        public void Play (){
+        public void Play (float universalVolume){
             source.pitch = MetaData.pitch;
-            source.volume = MetaData.volume; 
+            source.volume = MetaData.volume * universalVolume; 
             source.Play();
+        }
+
+        public void ResumeWithNewUniveralVolume(float universalVolume)
+        {
+            float playbackTime = source.time;
+            source.volume = MetaData.volume * universalVolume;
+            source.Play();
+            source.time = playbackTime;
         }
 
         public void Pause (){
@@ -36,6 +44,8 @@ namespace Audio {
 
         private static readonly string Sound_ = "Sound_";
         private static readonly string SoundNotFound = "AudioManager: Sound not found in list ";
+
+        private float universalVolume = 0.5f;
 
         void Awake()
         {
@@ -63,7 +73,7 @@ namespace Audio {
             {
                 if (element.MetaData.name == _name)
                 {
-                    element.Play();
+                    element.Play(universalVolume);
                     return;
                 }
             }
@@ -154,6 +164,23 @@ namespace Audio {
             }
             //no sound with _name
             Debug.LogWarning(SoundNotFound + _name);
+        }
+
+        public void SetUniversalVolume(float universalVolume)
+        {
+            this.universalVolume = universalVolume;
+            ResetPlayingSoundVolumes();
+        }
+
+        private void ResetPlayingSoundVolumes()
+        {
+            foreach (Sound sound in sounds)
+            {
+                if (sound.source.isPlaying)
+                {
+                    sound.ResumeWithNewUniveralVolume(universalVolume);
+                }
+            }
         }
     }
 }

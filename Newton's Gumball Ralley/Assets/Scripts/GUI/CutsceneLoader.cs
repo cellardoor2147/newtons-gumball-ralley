@@ -21,6 +21,7 @@ namespace GUI
                 .GetComponent<RawImage>();
             VideoPlayer videoPlayer = transform.Find(VIDEO_PLAYER_KEY)
                 .GetComponent<VideoPlayer>();
+            videoPlayer.SetDirectAudioVolume(0, 0.1f);
             videoPlayer.url = VIDEO_PLAYER_URL;
             videoPlayer.loopPointReached += HandleOpeningCutsceneFinished;
         }
