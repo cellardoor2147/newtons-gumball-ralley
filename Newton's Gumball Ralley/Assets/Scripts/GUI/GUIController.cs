@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Levels;
 using LevelTimer;
 using UnityEngine;
 
@@ -131,9 +132,14 @@ namespace GUI
 
         public void SkipDialogue()
         {
-            if (GameStateManager.GetGameState().Equals(GameState.Dialogue))
+            bool shouldSkipDialogue = GameStateManager.GetGameState().Equals(GameState.Dialogue);
+            if (shouldSkipDialogue)
             {
-                GameStateManager.SetGameState(GameState.Playing);
+                GameStateManager.SetGameState(
+                    LevelManager.GetCurrentLevelIsComplete()
+                        ? GameState.LevelCompleted
+                        : GameState.Editing
+                );
             }
         }
 
