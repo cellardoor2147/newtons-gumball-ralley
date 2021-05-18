@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: MachineShake
   clip: {fileID: 8300000, guid: 69bfe6da3fbca45d88d44e8131fb3a76, type: 3}
-  volume: 0.2
+  volume: 0.15
   pitch: 1
   loop: 0
