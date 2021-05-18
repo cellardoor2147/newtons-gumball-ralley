@@ -83,7 +83,7 @@ namespace GUI.LevelCompletedPopup
             if (LevelManager.CurrentLevelShouldUseScrapConstraint())
             {
                 scrapStarImage.transform.parent.gameObject.SetActive(true);
-                timeStarText.text =
+                scrapStarText.text =
                     $"Over {LevelManager.GetCurrentLevelTimeConstraint()} remaining scrap";
                 scrapStarImage.color = Color.black;
             }
