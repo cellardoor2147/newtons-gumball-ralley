@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pulley
   clip: {fileID: 8300000, guid: 3d9c87b25ce5e48f5bf24387b42b2795, type: 3}
-  volume: 0.125
+  volume: 0.1
   pitch: 1
   loop: 1

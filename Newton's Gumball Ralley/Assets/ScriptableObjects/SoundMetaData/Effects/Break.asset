@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Break
   clip: {fileID: 8300000, guid: 29b9bd961a61745669ec916ea530cf1d, type: 3}
-  volume: 0.3
+  volume: 0.2
   pitch: 1
   loop: 0
