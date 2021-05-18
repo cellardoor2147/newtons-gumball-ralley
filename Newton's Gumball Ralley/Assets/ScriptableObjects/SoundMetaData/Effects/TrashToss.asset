@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: TrashToss
   clip: {fileID: 8300000, guid: 11766df303b6cdb45b1c499b6e353ace, type: 3}
-  volume: 0.7
+  volume: 0.4
   pitch: 1
   loop: 0
