@@ -22,7 +22,7 @@ namespace Ball
         [SerializeField] PlacedObjectMetaData compoundPulleyMetaData;
         [SerializeField] private float fadeTime = 0.25f;
         [SerializeField] private float finalVolume = 0f;
-        [SerializeField] private float rollingVolume = 0.1f;
+        [SerializeField] private float rollingVolume = 0.07f;
 
         private Vector2 pullForce;
         private Vector2 pushForce;
