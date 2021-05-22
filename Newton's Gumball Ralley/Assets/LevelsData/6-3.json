@@ -2,7 +2,7 @@
     "worldIndex": 6,
     "levelIndex": 3,
     "customLevelName": "",
-    "repeatedBackgroundRows": 3,
+    "repeatedBackgroundRows": 2,
     "repeatedBackgroundColumns": 6,
     "environmentObjects": [
         {
@@ -918,6 +918,7 @@
             }
         }
     ],
+    "hints": [],
     "gumballMachineTransform": {
         "position": {
             "x": 20.93000030517578,

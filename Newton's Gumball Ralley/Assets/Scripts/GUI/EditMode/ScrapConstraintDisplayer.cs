@@ -2,8 +2,6 @@
 using Core.Levels;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Components;
 
 namespace GUI.EditMode
 {
@@ -13,8 +11,6 @@ namespace GUI.EditMode
             "Scrap Constraint Background";
 
         private static TextMeshProUGUI scrapConstraintText;
-        public string scrapConstraint;
-        [SerializeField] private LocalizeStringEvent stringRef;
 
         private void Awake()
         {
@@ -41,13 +37,12 @@ namespace GUI.EditMode
                     .color = Color.white;
                 scrapConstraintText.color = Color.black;
             }
-            stringRef.StringReference.RefreshString();
         }
 
         private void Update()
         {
-            scrapConstraint = LevelManager.GetCurrentLevelScrapConstraint().ToString();
-            stringRef.StringReference.RefreshString();
+            scrapConstraintText.text = $"Have {LevelManager.GetCurrentLevelScrapConstraint()}"
+                + " scrap left to get a star!";
         }
     }
 }

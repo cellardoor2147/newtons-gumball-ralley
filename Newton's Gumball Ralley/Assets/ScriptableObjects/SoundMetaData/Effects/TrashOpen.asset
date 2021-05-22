@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: TrashOpen
   clip: {fileID: 8300000, guid: a033c4fe4f4f2bd4aaa6da36f337b4c2, type: 3}
-  volume: 0.7
+  volume: 0.4
   pitch: 1
   loop: 0

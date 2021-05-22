@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 1282317018168874870}
   - component: {fileID: 4551337119582463109}
   - component: {fileID: 7512979981522151017}
-  - component: {fileID: 8453071257690384338}
   m_Layer: 0
   m_Name: Time Constraint
   m_TagString: Untagged
@@ -274,43 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5089f2b851f6c2f479b02c0894e997bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stringRef: {fileID: 8453071257690384338}
+  stringRef: {fileID: 0}
   timeConstraint: '?'
---- !u!114 &8453071257690384338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4290707154430103332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:db802420cfd3740adb32aef3b8b84d0e
-    m_TableEntryReference:
-      m_KeyId: 49665419501568
-      m_Key: 
-    m_FallbackState: 0
-  m_FormatArguments:
-  - {fileID: 7512979981522151017}
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4551337119582463109}
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5086754363774727977
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,7 +398,6 @@ GameObject:
   - component: {fileID: 4234314104561890272}
   - component: {fileID: 5106223432952852944}
   - component: {fileID: 1770756432749145425}
-  - component: {fileID: 4652976544706274045}
   m_Layer: 0
   m_Name: Time Counter Text
   m_TagString: Untagged
@@ -572,43 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980e2f277a527a8409675922e507c668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 0
-  stringRef: {fileID: 4652976544706274045}
---- !u!114 &4652976544706274045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6425856840462876918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:db802420cfd3740adb32aef3b8b84d0e
-    m_TableEntryReference:
-      m_KeyId: 35468036005888
-      m_Key: 
-    m_FallbackState: 0
-  m_FormatArguments:
-  - {fileID: 1770756432749145425}
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5106223432952852944}
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6692545218553270813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,6 +1221,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d687d487e260c44a6ae1c27152b836b2, type: 3}
+--- !u!224 &763731474572448850 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8384924389565878543, guid: d687d487e260c44a6ae1c27152b836b2,
+    type: 3}
+  m_PrefabInstance: {fileID: 9134546840316298589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3726129286724373497 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5580438416918220452, guid: d687d487e260c44a6ae1c27152b836b2,
@@ -1307,9 +1239,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &763731474572448850 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8384924389565878543, guid: d687d487e260c44a6ae1c27152b836b2,
-    type: 3}
-  m_PrefabInstance: {fileID: 9134546840316298589}
-  m_PrefabAsset: {fileID: 0}

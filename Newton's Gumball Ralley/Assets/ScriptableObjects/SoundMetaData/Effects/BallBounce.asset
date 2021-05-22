@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: BallBounce
   clip: {fileID: 8300000, guid: 2ff5a361c3bff4297803b79d505df9f6, type: 3}
-  volume: 0.2
+  volume: 0.15
   pitch: 1
   loop: 0

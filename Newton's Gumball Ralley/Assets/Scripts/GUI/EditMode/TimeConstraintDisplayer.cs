@@ -13,10 +13,7 @@ namespace GUI.EditMode
         private static readonly string TIME_CONSTRAINT_BACKGROUND_KEY =
             "Time Constraint Background";
 
-        [SerializeField] private LocalizeStringEvent stringRef;
-
         private TextMeshProUGUI timeConstraintText;
-        public string timeConstraint;
 
         private void Awake()
         {
@@ -43,13 +40,12 @@ namespace GUI.EditMode
                     .color = Color.white;
                 timeConstraintText.color = Color.black;
             }
-            stringRef.StringReference.RefreshString();
         }
 
         private void Update()
         {
-            timeConstraint = LevelManager.GetCurrentLevelTimeConstraint().ToString();
-            stringRef.StringReference.RefreshString();
+            timeConstraintText.text = $"Finish in {LevelManager.GetCurrentLevelTimeConstraint()}"
+                + " seconds or less to get a star!";
         }
     }
 }

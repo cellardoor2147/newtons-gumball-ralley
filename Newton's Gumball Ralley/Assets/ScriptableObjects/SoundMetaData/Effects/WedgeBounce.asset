@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: WedgeBounce
   clip: {fileID: 8300000, guid: 50b55455a8e55479493e7f577e30f4bb, type: 3}
-  volume: 0.3
+  volume: 0.1
   pitch: 1
   loop: 0
